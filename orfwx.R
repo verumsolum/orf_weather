@@ -1,6 +1,9 @@
 # INITIAL SETUP:
 # Do not edit unless you know what you are doing!
-setwd("~/Documents/Rworkspace/orfweather")  # Ensure correct working directory
+
+# The following line is commented out for portability…
+# Make sure you are in the correct working directory!
+# setwd("~/Documents/Rworkspace/orfweather")  # Ensure correct working directory
 library(dplyr)  # Library for data wrangling
 library(Hmisc)  # Load library required for minor tick marks
 source("orfwxfunctions.r")  # Include function file.
