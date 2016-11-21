@@ -17,6 +17,7 @@
 #' is.leapYear(2015)  # FALSE (not divisible by 4)
 #' is.leapYear(1900)  # FALSE (divisible by 100)
 #' is.leapYear(2000)  # TRUE (divisible by 400)
+#' @export
 is.leapYear=function(year){
   #http://en.wikipedia.org/wiki/Leap_year
   return(((year %% 4 == 0) & (year %% 100 != 0)) | (year %% 400 == 0))
