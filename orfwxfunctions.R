@@ -23,11 +23,6 @@ readWeatherData <- function() {
                                 temperatureSpread = as.integer(MaxTemperature - MinTemperature))
 }
 
-padSingleDigitInteger <- function(theInteger) {
-  if(as.numeric(theInteger) >= 10 ) return(abs(as.integer(theInteger)))  # What is good style for if in R
-  paste0("0", as.character(abs(as.integer(theInteger))))
-}
-
 searchDate <- function(searchMonth = format(Sys.Date(), "%m"),
                        searchDay = format(Sys.Date(), "%d")) {
   searchDateString <- paste0(padSingleDigitInteger(searchMonth), 
