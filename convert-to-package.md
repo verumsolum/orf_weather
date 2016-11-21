@@ -18,6 +18,23 @@ Some of the information initially included here may,
 however,
 be useful in documenting the package.
 
+### Current status
+
+I have attempted to follow the instructions from Parker to create a package 
+containing a single function (`is.leapYear`) and exporting it for the user 
+to use. 
+However,
+it appears to have been only partially successful. 
+
+At this point 
+[November 21, 2016 11:42 AM], 
+I am unsure whether that partial success is due to 
+errors in my following the instructions,
+or changes in R and/or devtools 
+in the 2+ years since Parker was written.
+
+I have at least one idea of a possible error I may have made.
+
 ### Links
 
 Started by finding Parker and Wickham, 
