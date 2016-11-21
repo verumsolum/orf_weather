@@ -1,8 +1,3 @@
-is.leapYear=function(year){
-  #http://en.wikipedia.org/wiki/Leap_year
-  return(((year %% 4 == 0) & (year %% 100 != 0)) | (year %% 400 == 0))
-}
-
 readWeatherData <- function() {
   # Read Norfolk airport weather data from CSV
   airport <- read.csv("NorfolkIntlAp.csv",
