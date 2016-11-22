@@ -7,26 +7,25 @@
 padSingleDigitInteger(theInteger)
 }
 \arguments{
-\item{theInteger}{Any integer.}
+\item{theInteger}{Any integer between 0 and 99 (inclusive).}
 }
 \value{
-Intended to return a two-character string
+Returns a two-character string.
 }
 \description{
 \code{padSingleDigitInteger} returns a two-character string, padding a
 single-digit integer with a leading zero, if required.
 }
 \details{
-This function currently converts \code{theInteger} into an integer and
-returns that integer if greater than 10; otherwise, it adds a leading
-zero, intended to create a two-character string.
+This function converts \code{theInteger} into an integer and
+returns that integer if between 10 and 99 (inclusive); otherwise, 
+it adds a leading zero, to create a two-character string.
 
-The input is not currently checked for all necessary correctness.
-For sensible results, \code{TheInteger} should be a positive integer,
-less than or equal to 99.
+Errors will be provided for negative integers and integers with
+more than two digits.
 }
 \examples{
-padSingleDigitInteger(20)  # 20
+padSingleDigitInteger(20)  # "20"
 padSingleDigitInteger(9)  # "09"
 padSingleDigitInteger(0)  # "00"
 }
