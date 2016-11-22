@@ -29,6 +29,11 @@ plotWithManyBars <- function(sortedData,
                              yAxisLabelPlotWmb,
                              plottingPrecip = FALSE,
                              showAllLabels = FALSE) {
+  # Discard missing values (so they don't become maxSortedData)
+  sortedData <- na.omit(sortedData)
+  sortedDataFrame <- na.omit(sortedDataFrame)
+  # TODO: Handle the edge case where sortedDataFrame has missing year values.
+  
   # Convenience variables:
   minSortedData <- sortedData[1]
   maxSortedData <- sortedData[length(sortedData)]
