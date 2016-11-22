@@ -21,11 +21,34 @@ be useful in documenting the package.
 ### Current status
 
 A minimal package has been created. 
-It currently only includes the 
-`is.leapYear` 
-function,
+It currently only includes a small number of functions,
 and was intended to make sure I had the process correct, 
 before working to document and move the other functions currently in use.
+
+### Decisions
+
+#### readWeatherData function
+
+The `readWeatherData` function is key to giving these functions the raw data 
+they require. 
+Other functions depend on it,
+so a staged process for moving it
+(and the functions that depend on it)
+from the `orfwxfunctions.R` file
+to the `orfwx` package
+is necessary.
+
+From my reading,
+I believe that the 
+`readWeatherData` function
+may be properly part of a
+`data-raw` directory,
+but I am not yet certain the correct level for this directory
+(whether it belongs at the top level
+or whether it is a subdirectory of /R). 
+It would then be used 
+to create an Rdata file
+to be installed with the package.
 
 ### Links
 
@@ -35,6 +58,7 @@ and a number of links from Paulson (2016b).
 This is currently more of a “links I have found” list, 
 rather than links found to be helpful.
 
+* Chan, Fong Chun (2015, July 26). [Making Your First R Package](http://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html). _Fong Chun Chan's Blog._ Retrieved from http://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html
 * Leisch, Friedrich (2009, September 14). [Creating R Packages: A Tutorial](http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf). Retrieved from http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
 * Parker, Hilary (2014, April 29). [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/). _Not So Standard Deviations._ Retrieved from https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
 * Paulson, Josh (2016a, April 21). [Package Development Prerequisites](https://support.rstudio.com/hc/en-us/articles/200486498-Package-Development-Prerequisites). _RStudio Support._ Retrieved from https://support.rstudio.com/hc/en-us/articles/200486498-Package-Development-Prerequisites

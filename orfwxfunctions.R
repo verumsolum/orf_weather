@@ -1,4 +1,5 @@
 readWeatherData <- function() {
+  # Leave this function in orfwxfunctions.R until package complete.
   # Read Norfolk airport weather data from CSV
   airport <- read.csv("NorfolkIntlAp.csv",
                       colClasses = c("Date", "integer", "integer", "numeric", "factor", "factor"),
