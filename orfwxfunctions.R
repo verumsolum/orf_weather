@@ -23,13 +23,6 @@ readWeatherData <- function() {
                                 temperatureSpread = as.integer(MaxTemperature - MinTemperature))
 }
 
-searchDate <- function(searchMonth = format(Sys.Date(), "%m"),
-                       searchDay = format(Sys.Date(), "%d")) {
-  searchDateString <- paste0(padSingleDigitInteger(searchMonth), 
-                             padSingleDigitInteger(searchDay))
-  as.Date(searchDateString, "%m%d")
-}
-
 plotWithManyBars <- function(sortedData,
                              sortedDataFrame,
                              titlePlotWmb,
