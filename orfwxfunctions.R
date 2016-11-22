@@ -1,10 +1,10 @@
 readWeatherData <- function() {
   # Leave this function in orfwxfunctions.R until package complete.
   # Read Norfolk airport weather data from CSV
-  airport <- read.csv("NorfolkIntlAp.csv",
+  airport <- read.csv("orfwx/data-raw/NorfolkIntlAp.csv",
                       colClasses = c("Date", "integer", "integer", "numeric", "factor", "factor"),
                       na.strings = c("M", NULL))
-  overlappingDowntown <- read.csv("NorfolkWbCity.csv",
+  overlappingDowntown <- read.csv("orfwx/data-raw/NorfolkWbCity.csv",
                        colClasses = c("Date", "integer", "integer", "numeric", "factor", "factor"),
                        na.strings = c("M", NULL))
   # Remove duplicate dates (only use downtown before 1946-01-01)
