@@ -43,9 +43,7 @@ I believe that the
 `readWeatherData` function
 may be properly part of a
 `data-raw` directory,
-but I am not yet certain the correct level for this directory
-(whether it belongs at the top level
-or whether it is a subdirectory of /R). 
+at the top level.
 It would then be used 
 to create an Rdata file
 to be installed with the package.
@@ -59,6 +57,7 @@ This is currently more of a “links I have found” list,
 rather than links found to be helpful.
 
 * Chan, Fong Chun (2015, July 26). [Making Your First R Package](http://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html). _Fong Chun Chan's Blog._ Retrieved from http://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html
+* Kleinschmidt, Dave F. (2016, May 18). [Taking your data to go with R packages](http://www.davekleinschmidt.com/r-packages/). Retrieved from http://www.davekleinschmidt.com/r-packages/
 * Leisch, Friedrich (2009, September 14). [Creating R Packages: A Tutorial](http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf). Retrieved from http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
 * Parker, Hilary (2014, April 29). [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/). _Not So Standard Deviations._ Retrieved from https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
 * Paulson, Josh (2016a, April 21). [Package Development Prerequisites](https://support.rstudio.com/hc/en-us/articles/200486498-Package-Development-Prerequisites). _RStudio Support._ Retrieved from https://support.rstudio.com/hc/en-us/articles/200486498-Package-Development-Prerequisites
