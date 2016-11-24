@@ -1,3 +1,5 @@
+library(dplyr, warn.conflicts = FALSE)
+
 # Read Norfolk airport weather data from CSV
 airport <- read.csv(
   "NorfolkIntlAp.csv",
@@ -9,7 +11,7 @@ airport <- read.csv(
                  "factor"),
   na.strings = c("M", NULL)
 )
-downtown <- read.csv(
+overlappingDowntown <- read.csv(
   "NorfolkWbCity.csv",
   colClasses = c("Date",
                  "integer",
