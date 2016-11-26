@@ -15,7 +15,7 @@
 #' @export
 plotMaxTempOverHistory <- function(plotDate = searchDate()) {
   # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(readWeatherData(), 
+  dayInHistory <- subset(mutatedBothStations, 
                          format(Date, "%m%d") == format(plotDate, "%m%d"))
   
   # Make a data frame with only the year and maximum temperature (orftmax)
