@@ -19,8 +19,9 @@
 #'   \item{DayofYear}{the day of the observation within the year (1-366)}
 #'   \item{leapYearAwareDayOfYear}{\code{DayofYear} altered to ensure that the
 #'     number uniquely identifies the date whether the \code{Year} is a leap
-#'     year or not}
+#'     year or not (1-366)}
 #'   \item{temperatureSpread}{the difference between the day's high and low
 #'     temperatures (in °F)}
 #' }
+#' @source \url{http://climodtest.nrcc.cornell.edu/}
 "mutatedBothStations"
