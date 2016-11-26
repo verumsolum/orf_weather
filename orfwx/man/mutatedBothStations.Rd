@@ -12,6 +12,15 @@
   \item{AvgTemperature}{the average temperature (in °F)}
   \item{Precipitation}{the day's precipitation (in inches)}
   \item{Snowfall}{the day's snowfall (in inches)}
+  \item{Year}{the year of the observation (1874-2016)}
+  \item{Month}{the month of the observation (1-12)}
+  \item{DayofMonth}{the day of the observation (1-31)}
+  \item{DayofYear}{the day of the observation within the year (1-366)}
+  \item{leapYearAwareDayOfYear}{\code{DayofYear} altered to ensure that the
+    number uniquely identifies the date whether the \code{Year} is a leap
+    year or not}
+  \item{temperatureSpread}{the difference between the day's high and low
+    temperatures (in °F)}
 }}
 \usage{
 mutatedBothStations
