@@ -35,45 +35,46 @@ plotWithManyBars <- function(sortedData,
   minSortedData <- sortedData[1]
   maxSortedData <- sortedData[length(sortedData)]
   
-  # Determin ylim
-  yAxisLimitsCalculated <- ifelse(c(plottingPrecip == FALSE, plottingPrecip == FALSE),
+  # Determine ylim
+  yAxisLimitsCalculated <- ifelse(c(plottingPrecip == FALSE, 
+                                    plottingPrecip == FALSE),
                                   c(floor((minSortedData - 1) / 5) * 5,
                                     ceiling((maxSortedData) / 5) * 5),
                                   c(0,ceiling((maxSortedData) / 0.5) * 0.5))
   
   # Graph sortedData
   barplot(as.numeric(sortedData),
-          # cex.names = 0.6,  # Smaller text for year label
+          # Text size for year label
           cex.names = ifelse(showAllLabels == TRUE, 0.9, 0.6),
-          # las = 2, # rotate labels perpendicular to axis
+          # If 2, rotate labels perpendicular to axis
           las = ifelse(showAllLabels == TRUE, 0, 2),
           main = titlePlotWmb,  # Title
           ylab = yAxisLabelPlotWmb,  # Label for y axis
           ylim = yAxisLimitsCalculated,
-          #           ylim = c(floor((minSortedData - 1) / 5) * 5,
-          #                    ceiling((maxSortedData + 1) /5) * 5),  # Limits of y axis  # TODO: Automatic limits
-          xpd = FALSE,  # Do not allow the bars to go outside the plot region (i.e., above/below ylim)
-          # names.arg = ifelse(sortedDataFrame$year == 2016 |
-          #                      sortedData == minSortedData |
-          #                      sortedData == maxSortedData, 
-          #                    paste(sortedDataFrame$year, "-", paste0(sortedData, "°")),
-          #                    ""),  # Source of labels for x axis
+          # Do not allow the bars to go outside the plot region 
+          # (i.e., above/below ylim):
+          xpd = FALSE,  
           names.arg = if(showAllLabels == FALSE & plottingPrecip == FALSE) { 
             ifelse(sortedDataFrame$year == 2016 |
                      sortedData == minSortedData |
                      sortedData == maxSortedData, 
-                   paste(sortedDataFrame$year, "-", paste0(sortedData, "°")),
+                   paste(sortedDataFrame$year, 
+                         "-", 
+                         paste0(sortedData, "°")),
                    "")  # Source of labels for x axis
           } else {
-            # paste(sortedDataFrame$year, "-", paste0(sortedData, "°"))
             if(plottingPrecip == FALSE) {
               paste(paste0(sortedData, "°"), "\n", sortedDataFrame$year)
             } else {
-              paste(sortedDataFrame$year, "-", paste0(format(sortedData, nsmall = 2), '"'))
+              paste(sortedDataFrame$year, 
+                    "-", 
+                    paste0(format(sortedData, nsmall = 2), '"'))
             }
           },
           col = ifelse(sortedDataFrame$year == 2016, "mediumpurple", "steelblue1"),
           border = "white")
+  
+  # Add grid to barplot
   grid(nx = NA,
        ny = NULL,
        lty = "dotted")
