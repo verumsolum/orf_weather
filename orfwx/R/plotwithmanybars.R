@@ -71,7 +71,9 @@ plotWithManyBars <- function(sortedData,
                     paste0(format(sortedData, nsmall = 2), '"'))
             }
           },
-          col = ifelse(sortedDataFrame$year == 2016, "mediumpurple", "steelblue1"),
+          col = ifelse(sortedDataFrame$year == 2016, 
+                       "mediumpurple", 
+                       "steelblue1"),
           border = "white")
   
   # Add grid to barplot
