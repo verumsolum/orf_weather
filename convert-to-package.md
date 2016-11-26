@@ -20,10 +20,14 @@ be useful in documenting the package.
 
 ### Current status
 
-A minimal package has been created. 
-It currently only includes a small number of functions,
-and was intended to make sure I had the process correct, 
-before working to document and move the other functions currently in use.
+A package has been created. 
+It does not yet include all functions.
+
+#### Next step
+
+Document `plotCoolestMaxTempOverHistory`,
+edit it to ensure it stays to 80-column lines,
+and ensure that it uses `mutatedBothStations` instead of `readWeatherData()`.
 
 ### Decisions
 
