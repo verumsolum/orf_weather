@@ -2,5 +2,6 @@
 
 export(is.leapYear)
 export(padSingleDigitInteger)
+export(plotMaxTempOverHistory)
 export(plotWithManyBars)
 export(searchDate)
