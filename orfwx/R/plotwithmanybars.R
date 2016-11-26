@@ -1,3 +1,25 @@
+#' Create a barplot with temperature or precipitation data
+#' 
+#' \code{plotWithManyBars} returns a barplot with the data provided to it.
+#' 
+#' This code makes my head hurt, because it was some of the earliest R code I
+#' wrote, when I was mostly in make-it-work mode, with huge gaps in my
+#' understanding of R (and of barplot particularly)
+#' 
+#' @param sortedData A vector used for the values to be shown on the barplot. 
+#' @param sortedDataFrame A data frame, from which \code{sortedData} has
+#'   usually been excerpted.
+#' @param titlePlotWmb The title of the barplot
+#' @param yAxisLabelPlotWmb The label for the y axis
+#' @param plottingPrecip A logical value indicating if we are dealing with
+#'   precipitation
+#' @param showAllLabels A logical value indicating if we are showing all
+#'   labels (if \code{FALSE}, labels will only be shown on the max and min
+#'   values and on the current year)
+#' @return Returns a barplot.
+#' @examples
+#' # How do I show an example?
+#' @export
 plotWithManyBars <- function(sortedData,
                              sortedDataFrame,
                              titlePlotWmb,
