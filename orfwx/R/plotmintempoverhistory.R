@@ -1,14 +1,31 @@
+#' Plot historical low tempertures
+#' 
+#' \code{plotMinTempOverHistory} returns a barplot with the low temperatures
+#' of one day each year.
+#' 
+#' This code makes my head hurt, because it was some of the earliest R code I
+#' wrote, when I was mostly in make-it-work mode, with huge gaps in my
+#' understanding of R (and of barplot particularly)
+#' 
+#' @param plotDate (optional) The date to be searched for, defaulting to the 
+#'   current date.
+#' @return Returns a barplot.
+#' @examples
+#' plotMinTempOverHistory(searchDate(11, 26))  # plot for November 26th
+#' @export
 plotMinTempOverHistory <- function(plotDate = searchDate()) {
   # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(readWeatherData(), format(Date, "%m%d") == format(plotDate, "%m%d"))
+  dayInHistory <- subset(mutatedBothStations, 
+                         format(Date, "%m%d") == format(plotDate, "%m%d"))
   
   # Make a data frame with only the year and maximum temperature (orftmax)
   orfTMin <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
                         "lowTemperature" = dayInHistory$MinTemperature)
   
   # Manually add data for current year:
+  # todayTMin is temp data frame with current observations
   todayTMin <- data.frame("year" = format(plotDate, "%Y"),
-                          "lowTemperature" = todaysLow)  # Temp data frame with current observations
+                          "lowTemperature" = todaysLow)  
   orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
   
   # Sort orfTMax by highTemperature
@@ -16,8 +33,12 @@ plotMinTempOverHistory <- function(plotDate = searchDate()) {
   
   plotWithManyBars(orfTMinSorted$lowTemperature,
                    orfTMinSorted,
-                   paste("Low Temperatures on", format(plotDate, "%b %d"), "in Norfolk Weather History"),
-                   paste("Low Temperature on", format(plotDate, "%b %d"), "(in °F)")
+                   paste("Low Temperatures on", 
+                         format(plotDate, "%b %d"), 
+                         "in Norfolk Weather History"),
+                   paste("Low Temperature on", 
+                         format(plotDate, "%b %d"), 
+                         "(in °F)")
   )
   
   # minor.tick(nx = 1,
@@ -30,6 +51,4 @@ plotMinTempOverHistory <- function(plotDate = searchDate()) {
              ny = 2,
              tick.ratio = 0.67)
   mtext('Since 1874')
-  #  mtext('Record warmest: __°F', line=-1)
-  #  mtext('Record coldest: __°F', line=-2)
 }
