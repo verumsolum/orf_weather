@@ -56,6 +56,7 @@ and a number of links from Paulson (2016b).
 This is currently more of a “links I have found” list, 
 rather than links found to be helpful.
 
+* Broman, K. (n.d.) _[R package primer](http://kbroman.org/pkg_primer/)._ Retrieved from http://kbroman.org/pkg_primer/
 * Chan, F. C. (2015, July 26). [Making Your First R Package](http://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html). _Fong Chun Chan's Blog._ Retrieved from http://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html
 * Kleinschmidt, D. F. (2016, May 18). [Taking your data to go with R packages](http://www.davekleinschmidt.com/r-packages/). Retrieved from http://www.davekleinschmidt.com/r-packages/
 * Leisch, F. (2009, September 14). [Creating R Packages: A Tutorial](http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf). Retrieved from http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
