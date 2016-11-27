@@ -1,3 +1,18 @@
+#' Plot warmest historical low tempertures on a single date
+#' 
+#' \code{plotWarmestMinTempOverHistory} returns a barplot with the warmest 
+#' low temperatures of one day of the year.
+#' 
+#' This code makes my head hurt, because it was some of the earliest R code I
+#' wrote, when I was mostly in make-it-work mode, with huge gaps in my
+#' understanding of R (and of barplot particularly)
+#' 
+#' @param plotDate (optional) The date to be searched for, defaulting to the 
+#'   current date.
+#' @return Returns a barplot.
+#' @examples
+#' plotWarmestMinTempOverHistory(searchDate(11, 27))  # plot for November 27th
+#' @export
 plotWarmestMinTempOverHistory <- function(plotDate = searchDate()) {
   # Create a data frame with the weather for this day in history.
   dayInHistory <- subset(readWeatherData(), format(Date, "%m%d") == format(plotDate, "%m%d"))
