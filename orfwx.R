@@ -6,7 +6,6 @@
 # setwd("~/Documents/Rworkspace/orfweather")  # Ensure correct working directory
 library(dplyr)  # Library for data wrangling
 library(Hmisc)  # Load library required for minor tick marks
-# source("orfwxfunctions.R")  # Include function file.
 # END INITIAL SETUP
 
 # CONFIGURATION
