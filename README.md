@@ -4,13 +4,16 @@ This directory contains code used in the creation of tweets from the [@ORF_Weath
 
 ## Status
 
-As of November 19, 2016, 
-this code is mostly as it existed on my own computer, 
-and has not yet been adapted for convenient sharing.
-As this code is also from my initial explorations of R,
-what is here falls short of what I would write today,
+As of November 27, 2016, 
+this code has recently been adapted
+from a file of functions created as I learned to use R
+into an R package.
+This code falls short of what I would write today,
 and is far from what an experienced R user would probably write.
 
 ## Next step
 
-My next goal is to complete the transition from a directory on my main computer to a repository that can be used on multiple computers. (This is an admittedly fuzzy step.)
+My next goal is to polish the existing functions within the package.
+The highest priority is to adapt them
+to deal with the current dependency on variables
+which do not necessarily exist in the user's R environment.
