@@ -2,6 +2,12 @@
 
 export(is.leapYear)
 export(padSingleDigitInteger)
+export(plotCoolestMaxTempOverHistory)
+export(plotCoolestMinTempOverHistory)
 export(plotMaxTempOverHistory)
+export(plotMinTempOverHistory)
+export(plotPrecipitationOverHistory)
+export(plotWarmestMaxTempOverHistory)
+export(plotWarmestMinTempOverHistory)
 export(plotWithManyBars)
 export(searchDate)
