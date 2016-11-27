@@ -23,24 +23,30 @@ plotCoolestMinTempOverHistory <- function(plotDate = searchDate()) {
                         "lowTemperature" = dayInHistory$MinTemperature)
   
   # Manually add data for current year:
+  # todayTMin is temp data frame with current observations
   todayTMin <- data.frame("year" = format(plotDate, "%Y"),
-                          "lowTemperature" = todaysLow)  # Temp data frame with current observations
+                          "lowTemperature" = todaysLow)  
   orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
   
   # Sort orfTMin by lowTemperature
   orfTMinSorted <- arrange(orfTMin, lowTemperature)
   if(orfTMinSorted$lowTemperature[10] >= todaysLow) {
-    orfTMinSorted <- filter(orfTMinSorted, lowTemperature <= orfTMinSorted$lowTemperature[10])
+    orfTMinSorted <- filter(orfTMinSorted, 
+                            lowTemperature <= orfTMinSorted$lowTemperature[10])
   } else {
     orfTMinSorted <- filter(orfTMinSorted, lowTemperature <= todaysLow)
   }
-  # browser()
+  
   orfTMinSorted <- arrange(orfTMinSorted, lowTemperature)
   
   plotWithManyBars(orfTMinSorted$lowTemperature,
                    orfTMinSorted,
-                   paste("Coolest Low Temperatures on", format(plotDate, "%b %d"), "in Norfolk Weather History"),
-                   paste("Low temperature on", format(plotDate, "%b %d"), "(in °F)"),
+                   paste("Coolest Low Temperatures on", 
+                         format(plotDate, "%b %d"), 
+                         "in Norfolk Weather History"),
+                   paste("Low temperature on", 
+                         format(plotDate, "%b %d"), 
+                         "(in °F)"),
                    showAllLabels = TRUE
   )
   
@@ -54,6 +60,4 @@ plotCoolestMinTempOverHistory <- function(plotDate = searchDate()) {
              ny = 2,
              tick.ratio = 0.67)
   mtext('Since 1874')
-  #  mtext('Record warmest: __°F', line=-1)
-  #  mtext('Record coldest: __°F', line=-2)
 }
