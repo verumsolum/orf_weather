@@ -23,14 +23,17 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate()) {
                         "highTemperature" = dayInHistory$MaxTemperature)
   
   # Manually add data for current year:
+  # todayTMax is temp data frame with current observations
   todayTMax <- data.frame("year" = format(plotDate, "%Y"),
-                          "highTemperature" = todaysHigh)  # Temp data frame with current observations
+                          "highTemperature" = todaysHigh)  
   orfTMax <- rbind(orfTMax, todayTMax) # Merge with historical observations
   
   # Sort orfTMax by highTemperature
   orfTMaxSorted <- arrange(orfTMax, highTemperature)
   if(orfTMaxSorted$highTemperature[10] >= todaysHigh) {
-    orfTMaxSorted <- filter(orfTMaxSorted, highTemperature <= orfTMaxSorted$highTemperature[10])
+    orfTMaxSorted <- filter(orfTMaxSorted, 
+                            highTemperature <= 
+                              orfTMaxSorted$highTemperature[10])
   } else {
     orfTMaxSorted <- filter(orfTMaxSorted, highTemperature <= todaysHigh)
   }
@@ -39,8 +42,12 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate()) {
   
   plotWithManyBars(orfTMaxSorted$highTemperature,
                    orfTMaxSorted,
-                   paste("Coolest High Temperatures on", format(plotDate, "%b %d"), "in Norfolk Weather History"),
-                   paste("High temperature on", format(plotDate, "%b %d"), "(in °F)"),
+                   paste("Coolest High Temperatures on", 
+                         format(plotDate, "%b %d"), 
+                         "in Norfolk Weather History"),
+                   paste("High temperature on", 
+                         format(plotDate, "%b %d"), 
+                         "(in °F)"),
                    showAllLabels = TRUE
   )
   
@@ -54,6 +61,4 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate()) {
              ny = 2,
              tick.ratio = 0.67)
   mtext('Since 1874')
-  #  mtext('Record warmest: __°F', line=-1)
-  #  mtext('Record coldest: __°F', line=-2)
 }
