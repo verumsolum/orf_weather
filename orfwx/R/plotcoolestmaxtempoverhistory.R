@@ -1,3 +1,18 @@
+#' Plot coolest historical high tempertures on a single date
+#' 
+#' \code{plotCoolestMaxTempOverHistory} returns a barplot with the coolest 
+#' high temperatures of one day of the year.
+#' 
+#' This code makes my head hurt, because it was some of the earliest R code I
+#' wrote, when I was mostly in make-it-work mode, with huge gaps in my
+#' understanding of R (and of barplot particularly)
+#' 
+#' @param plotDate (optional) The date to be searched for, defaulting to the 
+#'   current date.
+#' @return Returns a barplot.
+#' @examples
+#' plotCoolestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
+#' @export
 plotCoolestMaxTempOverHistory <- function(plotDate = searchDate()) {
   # Create a data frame with the weather for this day in history.
   dayInHistory <- subset(readWeatherData(), format(Date, "%m%d") == format(plotDate, "%m%d"))
