@@ -25,3 +25,13 @@ expect one or more of those variables
 to be present in
 R's global environment,
 and will fail if they do not exist.
+
+### Files:lines affected
+
+* plotcoolestmaxtempoverhistory.R:28 (`todaysHigh`)
+* plotcoolestmintempoverhistory.R:28 (`todaysLow`)
+* plotmaxtempoverhistory.R:28 (`todaysHigh`)
+* plotintempoverhistory.R:28 (`todaysLow`)
+* plotprecipitationoverhistory.R:28 (`todaysPrecipitation`)
+* plotwarmestmaxtempoverhistory.R:28 (`todaysHigh`)
+* plotwarmestmintempoverhistory.R:28 (`todaysLow`)
