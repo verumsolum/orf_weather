@@ -22,10 +22,10 @@ singleDaysWeather <- function(highTemperature = NULL,
                               averageTemperature = NULL,
                               precipitation = NULL,
                               snowfall = NULL) {
-  # Sanitize input variables
+  # Sanitize input variables and ensure correct precision
   highTemperature = as.integer(highTemperature)
   lowTemperature = as.integer(lowTemperature)
-  averageTemperature = as.numeric(averageTemperature)
-  precipitation = as.numeric(precipitation)
-  snowfall = as.numeric(snowfall)
+  averageTemperature = round(averageTemperature, digits = 1)
+  precipitation = round(precipitation, digits = 2)
+  snowfall = round(snowfall, digits = 1)
 }
