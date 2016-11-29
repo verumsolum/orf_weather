@@ -17,25 +17,16 @@
 #' @examples
 #' singleDaysWeather(55, 34, 44.5, 0.00, 0.0)
 #' @export
-singleDaysWeather <- function(highTemperature = NULL,
-                              lowTemperature = NULL,
-                              averageTemperature = NULL,
-                              precipitation = NULL,
-                              snowfall = NULL) {
+singleDaysWeather <- function(highTemperature = NA,
+                              lowTemperature = NA,
+                              averageTemperature = NA,
+                              precipitation = NA,
+                              snowfall = NA) {
   # Sanitize input variables and ensure correct precision
-  if (!is.null(highTemperature)) {
-    highTemperature <- as.integer(highTemperature)
-  }
-  if (!is.null(lowTemperature)) {
-    lowTemperature <- as.integer(lowTemperature)
-  }
-  if (!is.null(averageTemperature)) {
-    averageTemperature <- round(averageTemperature, digits = 1)
-  }
-  if (!is.null(precipitation)) {
-    precipitation <- round(precipitation, digits = 2)
-  }
-  if (!is.null(snowfall)) { 
-    snowfall <- round(snowfall, digits = 1)
+  highTemperature <- as.integer(highTemperature)
+  lowTemperature <- as.integer(lowTemperature)
+  averageTemperature <- round(averageTemperature, digits = 1)
+  precipitation <- round(precipitation, digits = 2)
+  snowfall <- round(snowfall, digits = 1)
   }
 }
