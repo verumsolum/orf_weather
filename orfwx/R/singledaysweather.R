@@ -23,9 +23,19 @@ singleDaysWeather <- function(highTemperature = NULL,
                               precipitation = NULL,
                               snowfall = NULL) {
   # Sanitize input variables and ensure correct precision
-  highTemperature <- as.integer(highTemperature)
-  lowTemperature <- as.integer(lowTemperature)
-  averageTemperature <- round(averageTemperature, digits = 1)
-  precipitation <- round(precipitation, digits = 2)
-  snowfall <- round(snowfall, digits = 1)
+  if (!is.null(highTemperature)) {
+    highTemperature <- as.integer(highTemperature)
+  }
+  if (!is.null(lowTemperature)) {
+    lowTemperature <- as.integer(lowTemperature)
+  }
+  if (!is.null(averageTemperature)) {
+    averageTemperature <- round(averageTemperature, digits = 1)
+  }
+  if (!is.null(precipitation)) {
+    precipitation <- round(precipitation, digits = 2)
+  }
+  if (!is.null(snowfall)) { 
+    snowfall <- round(snowfall, digits = 1)
+  }
 }
