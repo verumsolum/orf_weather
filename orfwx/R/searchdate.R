@@ -19,10 +19,12 @@
 #' searchDate()  # The current date
 #' @export
 searchDate <- function(searchMonth = format(Sys.Date(), "%m"),
-                       searchDay = format(Sys.Date(), "%d")) {
+                       searchDay = format(Sys.Date(), "%d"),
+                       searchYear = format(Sys.Date()), "%Y") {
   # Convert inputs to integers
   searchMonth <- as.integer(searchMonth)
   searchDay <- as.integer(searchDay)
+  searchYear <- as.integer(searchYear)
   
   # Fail if given invalid inputs
   if(searchMonth < 0) stop("searchMonth is negative")
@@ -43,7 +45,10 @@ searchDate <- function(searchMonth = format(Sys.Date(), "%m"),
   }
   
   # Otherwise, proceed to return a date.
-  searchDateString <- paste0(padSingleDigitInteger(searchMonth), 
+  searchDateString <- paste0(as.character(searchYear),
+                             "-",
+                             padSingleDigitInteger(searchMonth),
+                             "-",
                              padSingleDigitInteger(searchDay))
-  as.Date(searchDateString, "%m%d")
+  as.Date(searchDateString)
 }
