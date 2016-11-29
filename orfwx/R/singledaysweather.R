@@ -28,5 +28,4 @@ singleDaysWeather <- function(highTemperature = NA,
   averageTemperature <- round(averageTemperature, digits = 1)
   precipitation <- round(precipitation, digits = 2)
   snowfall <- round(snowfall, digits = 1)
-  }
 }
