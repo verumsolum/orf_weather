@@ -55,6 +55,30 @@ will be added.
 
 #### Decisions to be made
 
+##### Precipitation and Snowfall
+
+The current dataframe
+`mutatedBothStations'
+defines
+`Precipitation`
+and
+`Snowfall`
+as factors.
+They can not be defined as numbers,
+because the "T" for trace precipitation or snowfall
+could not be distinguished from 0.00.
+The factors' character values all include a space
+prior to the first digit in the string,
+which should be trimmed,
+if these are staying as strings.
+
+The big question to answer:
+Should I hard-code a space and make these character values
+in the 'singleDaysWeather' function?
+Or should I fix the code in `data-raw/`
+to strip the leading space character?
+and/or to make these strings no longer factors?
+
 ##### Hardcoded 2016
 
 While I am mucking about in these functions,
