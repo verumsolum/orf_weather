@@ -35,4 +35,5 @@ singleDaysWeather <- function(highTemperature = NA,
                     averageTemperature, 
                     precipitation, 
                     snowfall)
+  return(sdw)
 }
