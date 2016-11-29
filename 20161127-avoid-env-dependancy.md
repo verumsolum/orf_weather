@@ -35,3 +35,7 @@ and will fail if they do not exist.
 * plotprecipitationoverhistory.R:28 (`todaysPrecipitation`)
 * plotwarmestmaxtempoverhistory.R:28 (`todaysHigh`)
 * plotwarmestmintempoverhistory.R:28 (`todaysLow`)
+
+## Links
+
+* King, W. B. (2016, January 18). [R Objects](https://ww2.coastal.edu/kingw/statistics/R-tutorials/objects.html). _Tutorials_. Retrieved from https://ww2.coastal.edu/kingw/statistics/R-tutorials/objects.html
