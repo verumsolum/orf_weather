@@ -55,7 +55,7 @@ plotWithManyBars <- function(sortedData,
           # (i.e., above/below ylim):
           xpd = FALSE,  
           names.arg = if(showAllLabels == FALSE & plottingPrecip == FALSE) { 
-            ifelse(sortedDataFrame$year == 2016 |
+            ifelse(sortedDataFrame$year == format(Sys.Date(), "%Y") |
                      sortedData == minSortedData |
                      sortedData == maxSortedData, 
                    paste(sortedDataFrame$year, 
@@ -71,7 +71,7 @@ plotWithManyBars <- function(sortedData,
                     paste0(format(sortedData, nsmall = 2), '"'))
             }
           },
-          col = ifelse(sortedDataFrame$year == 2016, 
+          col = ifelse(sortedDataFrame$year == format(Sys.Date(), "%Y"), 
                        "mediumpurple", 
                        "steelblue1"),
           border = "white")
