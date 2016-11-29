@@ -79,49 +79,22 @@ Or should I fix the code in `data-raw/`
 to strip the leading space character?
 and/or to make these strings no longer factors?
 
-##### Hardcoded 2016
+##### Hardcoded 2016 [fixed in 20161129-hardcoded-2016]
 
-While I am mucking about in these functions,
-I remember that the year 2016 is hardcoded into the functions,
-to allow the plot to show the current year's data in another color.
+Doing the simple fix
+of using the year of the system date
+instead of 2016
+for coloring the current year in barplots.
 
-I am not yet certain whether or not to fix this within this branch
-or to create a fix in a new branch.
-
-My initial idea was that this was a simple fix:
-simply replace 2016 with
-the year of the current system date,
-in which case,
-it is likely simple enough to add to this branch.
-
-However,
-I realize that this may cause issues
-when the current system date is not the date for which information is desired.
-The likeliest answer I can describe is from my current workflow.
-Each day, 
-I use this package to plot the data for the previous day.
-When I plot the data for December 31, 2016,
-it will be January 1, 2017,
-and so there will be no data for 2017.
-
-This type of fix is too involved for this branch.
-However, 
-it may be possible to make the "initial idea" fix
-in this branch,
-and later
-create a new branch
-to fix the edge case.
-
-Another simple idea for a fix:
-Add the year as a parameter to
-the `searchDate` function.
-It would default to the current year,
-but could be provided explicitly.
-The functions would then ignore the system date,
-and simply use the year from 
-`plotDate`
-(which currently silently defaults to the current year,
-if I correctly understand its behavior).
+A later fix will be required
+to allow plotting to work properly
+when a previous year is
+the "current year" for the data
+(e.g., plotting data for 12/31/2016 on 1/1/2017).
+This will probably be beyond the scope of this branch,
+and a Github issue should be filed 
+if this branch is closed
+without solving that issue.
 
 ### Files:lines affected
 
