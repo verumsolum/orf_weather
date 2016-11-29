@@ -28,4 +28,11 @@ singleDaysWeather <- function(highTemperature = NA,
   averageTemperature <- round(averageTemperature, digits = 1)
   precipitation <- round(precipitation, digits = 2)
   snowfall <- round(snowfall, digits = 1)
+  
+  # Create a data frame from the input variables
+  sdw <- data.frame(highTemperature, 
+                    lowTemperature, 
+                    averageTemperature, 
+                    precipitation, 
+                    snowfall)
 }
