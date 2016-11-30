@@ -10,8 +10,9 @@ airport <- read.csv(
                  "integer",
                  "integer",
                  "numeric",
-                 "factor",
-                 "factor"),
+                 "character",
+                 "character"),
+  strip.white = TRUE,
   na.strings = c("M", NULL)
 )
 overlappingDowntown <- read.csv(
@@ -20,8 +21,9 @@ overlappingDowntown <- read.csv(
                  "integer",
                  "integer",
                  "numeric",
-                 "factor",
-                 "factor"),
+                 "character",
+                 "character"),
+  strip.white = TRUE,
   na.strings = c("M", NULL)
 )
 
