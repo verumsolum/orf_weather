@@ -13,7 +13,7 @@
 #' @param precipitation A number representing the day's precipitation (in 
 #'   inches).
 #' @param snowfall A number representing the day's precipitation (in inches).
-#' @param dataDate A date for the data represented.
+#' @param dataDate A date for the data represented (defaults to current day).
 #' @return Returns a data frame.
 #' @examples
 #' singleDaysWeather(55, 34, 44.5, 0.00, 0.0, searchDate(12, 1, 2016))
