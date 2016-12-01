@@ -13,15 +13,17 @@
 #' @param precipitation A number representing the day's precipitation (in 
 #'   inches).
 #' @param snowfall A number representing the day's precipitation (in inches).
+#' @param dataDate A date for the data represented.
 #' @return Returns a data frame.
 #' @examples
-#' singleDaysWeather(55, 34, 44.5, 0.00, 0.0)
+#' singleDaysWeather(55, 34, 44.5, 0.00, 0.0, searchDate(12, 1, 2016))
 #' @export
 singleDaysWeather <- function(highTemperature = NA,
                               lowTemperature = NA,
                               averageTemperature = NA,
                               precipitation = NA,
-                              snowfall = NA) {
+                              snowfall = NA,
+                              dataDate = Sys.Date()) {
   # Sanitize input variables and ensure correct precision
   highTemperature <- as.integer(highTemperature)
   lowTemperature <- as.integer(lowTemperature)
@@ -29,9 +31,11 @@ singleDaysWeather <- function(highTemperature = NA,
   precipitation <- as.character(format(round(precipitation, digits = 2), 
                                        nsmall = 2))
   snowfall <- as.character(format(round(snowfall, digits = 1), nsmall = 1))
+  dataDate <- as.Date(dataDate)
   
   # Create a data frame from the input variables
-  sdw <- data.frame(MaxTemperature = highTemperature, 
+  sdw <- data.frame(Date = dataDate,
+                    MaxTemperature = highTemperature, 
                     MinTemperature = lowTemperature, 
                     AvgTemperature = averageTemperature, 
                     Precipitation = precipitation, 
