@@ -13,7 +13,24 @@
 #' @examples
 #' plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
-plotMaxTempOverHistory <- function(plotDate = searchDate()) {
+plotMaxTempOverHistory <- function(plotDate = searchDate(),
+                                   daysWeather = NULL) {
+  # Ensure that daysWeather is correct
+  if (!is.null(daysWeather)) {
+    # If daysWeather is set, 
+    # ensure that the date value from daysWeather matches
+    if (format(daysWeather$Date, "%m%d") != format(plotDate, "%m%d")) {
+      # If days don't match…
+      stop("plotDate and daysWeather$Date do not match")
+    } else {
+      # If they match, ensure that plotDate uses the same year as
+      # daysWeather$Date
+      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
+                                 "-",
+                                 format(plotDate, "%m-%d")))
+    }
+  }
+  
   # Create a data frame with the weather for this day in history.
   dayInHistory <- subset(mutatedBothStations, 
                          format(Date, "%m%d") == format(plotDate, "%m%d"))
@@ -22,12 +39,13 @@ plotMaxTempOverHistory <- function(plotDate = searchDate()) {
   orfTMax <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
                         "highTemperature" = dayInHistory$MaxTemperature)
   
-  # Manually add data for current year:
-  # todayTMax is temp data frame with current observations
-  todayTMax <- data.frame("year" = format(plotDate, "%Y"),
-                          "highTemperature" = todaysHigh)
-  orfTMax <- rbind(orfTMax, todayTMax) # Merge with historical observations
-  
+  # If daysWeather is not NULL, add data for current year:
+  if (!is.null(daysWeather)) {
+    # todayTMax is temp data frame with current observations
+    todayTMax <- data.frame("year" = format(plotDate, "%Y"),
+                            "highTemperature" = daysWeather$MaxTemperature)
+    orfTMax <- rbind(orfTMax, todayTMax) # Merge with historical observations
+  }
   # Sort orfTMax by highTemperature
   orfTMaxSorted <- orfTMax[order(orfTMax$highTemperature), ]
   
