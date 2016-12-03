@@ -16,6 +16,8 @@
 #' @param showAllLabels A logical value indicating if we are showing all
 #'   labels (if \code{FALSE}, labels will only be shown on the max and min
 #'   values and on the current year)
+#' @param highlightYear The year to highlight in the graph (defaults to the
+#'   current year)
 #' @return Returns a barplot.
 #' @examples
 #' # How do I show an example?
@@ -25,11 +27,24 @@ plotWithManyBars <- function(sortedData,
                              titlePlotWmb,
                              yAxisLabelPlotWmb,
                              plottingPrecip = FALSE,
-                             showAllLabels = FALSE) {
+                             showAllLabels = FALSE,
+                             highlightYear = format(Sys.Date(), "%Y")) {
   # Discard missing values (so they don't become maxSortedData)
   sortedData <- na.omit(sortedData)
   sortedDataFrame <- na.omit(sortedDataFrame)
   # TODO: Handle the edge case where sortedDataFrame has missing year values.
+  
+  # Ensure highlightYear is a valid year.
+  # Using the year 1724 as the year Gabriel Fahrenheit created scale for
+  # measuring temperature and the current year as the boundaries for validity
+  if (!is.numeric(highlightYear) | 
+      as.integer(highlightYear) < 1724 | 
+      as.integer(highlightYear) > as.integer(format(Sys.Date(), "%Y"))) {
+    # If the year is invalid, warn and set to curret year.
+    warning("Invalid highlightYear provided. Setting to current year and 
+            continuing.")
+    highlightYear <- format(Sys.Date(), "%Y")
+  }
   
   # Convenience variables:
   minSortedData <- sortedData[1]
@@ -55,7 +70,7 @@ plotWithManyBars <- function(sortedData,
           # (i.e., above/below ylim):
           xpd = FALSE,  
           names.arg = if(showAllLabels == FALSE & plottingPrecip == FALSE) { 
-            ifelse(sortedDataFrame$year == format(Sys.Date(), "%Y") |
+            ifelse(sortedDataFrame$year == highlightYear |
                      sortedData == minSortedData |
                      sortedData == maxSortedData, 
                    paste(sortedDataFrame$year, 
@@ -71,7 +86,7 @@ plotWithManyBars <- function(sortedData,
                     paste0(format(sortedData, nsmall = 2), '"'))
             }
           },
-          col = ifelse(sortedDataFrame$year == format(Sys.Date(), "%Y"), 
+          col = ifelse(sortedDataFrame$year == highlightYear), 
                        "mediumpurple", 
                        "steelblue1"),
           border = "white")
