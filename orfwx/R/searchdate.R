@@ -20,7 +20,7 @@
 #' @export
 searchDate <- function(searchMonth = format(Sys.Date(), "%m"),
                        searchDay = format(Sys.Date(), "%d"),
-                       searchYear = format(Sys.Date(), "%Y") {
+                       searchYear = format(Sys.Date(), "%Y")) {
   # Convert inputs to integers
   searchMonth <- as.integer(searchMonth)
   searchDay <- as.integer(searchDay)
