@@ -27,7 +27,7 @@ singleDaysWeather <- function(highTemperature = NA,
   # Sanitize input variables and ensure correct precision
   highTemperature <- as.integer(highTemperature)
   lowTemperature <- as.integer(lowTemperature)
-  averageTemperature <- round(averageTemperature, digits = 1)
+  averageTemperature <- round(averageTemperature, digits = 1, nsmall = 1)
   precipitation <- as.character(format(round(precipitation, digits = 2), 
                                        nsmall = 2))
   snowfall <- as.character(format(round(snowfall, digits = 1), nsmall = 1))
