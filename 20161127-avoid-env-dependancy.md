@@ -109,5 +109,6 @@ without solving that issue.
 ## Links
 
 * Cotton, R. (2015, April 14). [Should I use NULL or NA as default values for optional function parameters](http://stackoverflow.com/a/29620701). [answer] _Stack Overflow_. Retrieved from http://stackoverflow.com/a/29620701
+* Kabacoff, R. I. (2014). [Operators](http://www.statmethods.net/management/operators.html). _Quick-R_. Retrieved from http://www.statmethods.net/management/operators.html
 * King, W. B. (2016a, January 18). [R Objects](https://ww2.coastal.edu/kingw/statistics/R-tutorials/objects.html). _Tutorials_. Retrieved from https://ww2.coastal.edu/kingw/statistics/R-tutorials/objects.html
 * King, W. B. (2016b, January 21). [Data Frames](https://ww2.coastal.edu/kingw/statistics/R-tutorials/dataframes.html). _Tutorials_. Retrieved from https://ww2.coastal.edu/kingw/statistics/R-tutorials/dataframes.html
