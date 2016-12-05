@@ -86,7 +86,7 @@ plotWithManyBars <- function(sortedData,
                     paste0(format(sortedData, nsmall = 2), '"'))
             }
           },
-          col = ifelse(sortedDataFrame$year == highlightYear), 
+          col = ifelse(sortedDataFrame$year == highlightYear,
                        "mediumpurple", 
                        "steelblue1"),
           border = "white")
