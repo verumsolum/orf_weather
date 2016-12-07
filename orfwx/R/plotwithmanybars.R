@@ -37,10 +37,10 @@ plotWithManyBars <- function(sortedData,
   # Ensure highlightYear is a valid year.
   # Using the year 1724 as the year Gabriel Fahrenheit created scale for
   # measuring temperature and the current year as the boundaries for validity
-  if (!is.numeric(highlightYear) | 
+  if (is.null(highlightYear) |
       as.integer(highlightYear) < 1724 | 
       as.integer(highlightYear) > as.integer(format(Sys.Date(), "%Y"))) {
-    # If the year is invalid, warn and set to curret year.
+    # If the year is invalid, warn and set to current year.
     warning("Invalid highlightYear provided. Setting to current year and 
             continuing.")
     highlightYear <- format(Sys.Date(), "%Y")
