@@ -5,7 +5,8 @@
 \title{Create a date from a numeric month and day, for use in searches.}
 \usage{
 searchDate(searchMonth = format(Sys.Date(), "\%m"),
-  searchDay = format(Sys.Date(), "\%d"))
+  searchDay = format(Sys.Date(), "\%d"), searchYear = format(Sys.Date(),
+  "\%Y"))
 }
 \arguments{
 \item{searchMonth}{An integer between 1 [Jan] and 12 [Dec] (inclusive).}

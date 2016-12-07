@@ -4,7 +4,7 @@
 \alias{plotMaxTempOverHistory}
 \title{Plot historical high tempertures}
 \usage{
-plotMaxTempOverHistory(plotDate = searchDate())
+plotMaxTempOverHistory(plotDate = searchDate(), daysWeather = NULL)
 }
 \arguments{
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
