@@ -9,11 +9,31 @@
 #' 
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
+#' @param daysWeather (optional) The weather for a date not yet included in
+#'   the \code{mutatedBothStations} dataset, usually passed by the
+#'   \code{singleDaysWeather} function.
 #' @return Returns a barplot.
 #' @examples
 #' plotWarmestMinTempOverHistory(searchDate(11, 27))  # plot for November 27th
 #' @export
-plotWarmestMinTempOverHistory <- function(plotDate = searchDate()) {
+plotWarmestMinTempOverHistory <- function(plotDate = searchDate(),
+                                          daysWeather = NULL) {
+  # Ensure that daysWeather is correct
+  if (!is.null(daysWeather)) {
+    # If daysWeather is set, 
+    # ensure that the date value from daysWeather matches
+    if (format(daysWeather$Date, "%m%d") != format(plotDate, "%m%d")) {
+      # If days don't match…
+      stop("plotDate and daysWeather$Date do not match")
+    } else {
+      # If they match, ensure that plotDate uses the same year as
+      # daysWeather$Date
+      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
+                                 "-",
+                                 format(plotDate, "%m-%d")))
+    }
+  }
+  
   # Create a data frame with the weather for this day in history.
   dayInHistory <- subset(mutatedBothStations, 
                          format(Date, "%m%d") == format(plotDate, "%m%d"))
@@ -22,19 +42,24 @@ plotWarmestMinTempOverHistory <- function(plotDate = searchDate()) {
   orfTMin <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
                         "lowTemperature" = dayInHistory$MinTemperature)
   
-  # Manually add data for current year:
-  # todayTMin is temp data frame with current observations
-  todayTMin <- data.frame("year" = as.integer(format(plotDate, "%Y")),
-                          "lowTemperature" = todaysLow)  
-  orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
-  
+  # If daysWeather is not NULL, add data for current year:
+  if (!is.null(daysWeather)) {
+    daysWeatherYear <- format(daysWeather$Date, "%Y")
+    # todayTMin is temp data frame with current observations
+    todayTMin <- data.frame("year" = format(plotDate, "%Y"),
+                            "lowTemperature" = daysWeather$MinTemperature)  
+    orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
+  } else {
+    daysWeatherYear <- format(Sys.Date(), "%Y")
+  }
   # Sort orfTMin by lowTemperature
   orfTMinSorted <- arrange(orfTMin, desc(lowTemperature))
-  if(orfTMinSorted$lowTemperature[10] <= todaysLow) {
+  if(orfTMinSorted$lowTemperature[10] <= daysWeather$MinTemperature) {
     orfTMinSorted <- filter(orfTMinSorted, 
                             lowTemperature >= orfTMinSorted$lowTemperature[10])
   } else {
-    orfTMinSorted <- filter(orfTMinSorted, lowTemperature >= todaysLow)
+    orfTMinSorted <- filter(orfTMinSorted, 
+                            lowTemperature >= daysWeather$MinTemperature)
   }
   
   orfTMinSorted <- arrange(orfTMinSorted, lowTemperature, as.integer(year))
@@ -47,7 +72,8 @@ plotWarmestMinTempOverHistory <- function(plotDate = searchDate()) {
                    paste("Low temperature on", 
                          format(plotDate, "%b %d"), 
                          "(in °F)"),
-                   showAllLabels = TRUE
+                   showAllLabels = TRUE,
+                   highlightYear = daysWeatherYear
   )
   
   # minor.tick(nx = 1,
