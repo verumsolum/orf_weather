@@ -47,7 +47,7 @@ plotMinTempOverHistory <- function(plotDate = searchDate(),
     daysWeatherYear <- format(daysWeather$Date, "%Y")
     # todayTMin is temp data frame with current observations
     todayTMin <- data.frame("year" = format(plotDate, "%Y"),
-                            "lowTemperature" = todaysLow)  
+                            "lowTemperature" = daysWeather$MinTemperature)  
     orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
   } else {
     daysWeatherYear <- format(Sys.Date(), "%Y")
