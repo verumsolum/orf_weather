@@ -114,4 +114,4 @@ without solving that issue.
 * King, W. B. (2016b, January 21). [Data Frames](https://ww2.coastal.edu/kingw/statistics/R-tutorials/dataframes.html). _Tutorials_. Retrieved from https://ww2.coastal.edu/kingw/statistics/R-tutorials/dataframes.html
 
 ## Next step
-* Figure out passing the highlightYear from plotMaxTempOverHistory to plotWithManyBars
+* Check on (and make changes to?) the `plotCoolest\*` and `plotWarmest\*` functions
