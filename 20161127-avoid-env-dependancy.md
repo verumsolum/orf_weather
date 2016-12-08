@@ -96,6 +96,26 @@ and a Github issue should be filed
 if this branch is closed
 without solving that issue.
 
+##### as.numeric in singledaysweather
+
+In the 
+"Then, ensure values are of the proper type"
+section,
+those numbers that need rounding
+are coerced to numeric.
+This means that
+`"T"`
+(for trace precipitation)
+ends up changed to
+`NA`
+
+This may be appropriate for this particular function,
+but depending on how it may be used in future,
+this may or may not be desirable.
+
+In any event,
+this behavior should probably be documented.
+
 ### Files:lines affected
 
 * plotcoolestmaxtempoverhistory.R:28 (`todaysHigh`)
