@@ -9,11 +9,31 @@
 #' 
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
+#' @param daysWeather (optional) The weather for a date not yet included in
+#'   the \code{mutatedBothStations} dataset, usually passed by the
+#'   \code{singleDaysWeather} function.
 #' @return Returns a barplot.
 #' @examples
 #' plotPrecipitationOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
-plotPrecipitationOverHistory <- function(plotDate = searchDate()) {
+plotPrecipitationOverHistory <- function(plotDate = searchDate()
+                                         daysWeather = NULL) {
+  # Ensure that daysWeather is correct
+  if (!is.null(daysWeather)) {
+    # If daysWeather is set, 
+    # ensure that the date value from daysWeather matches
+    if (format(daysWeather$Date, "%m%d") != format(plotDate, "%m%d")) {
+      # If days don't match…
+      stop("plotDate and daysWeather$Date do not match")
+    } else {
+      # If they match, ensure that plotDate uses the same year as
+      # daysWeather$Date
+      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
+                                 "-",
+                                 format(plotDate, "%m-%d")))
+    }
+  }
+  
   # Create a data frame with the weather for this day in history.
   dayInHistory <- subset(mutatedBothStations, 
                          format(Date, "%m%d") == format(plotDate, "%m%d"))
@@ -23,12 +43,16 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate()) {
                         "precipitation" = 
                           as.numeric(as.character(dayInHistory$Precipitation)))
   
-  # Manually add data for current year:
-  # todayPrcp is temp data frame with current observations
-  todayPrcp <- data.frame("year" = format(plotDate, "%Y"),
-                          "precipitation" = todaysPrecipitation)
-  orfPrcp <- rbind(orfPrcp, todayPrcp) # Merge with historical observations
-  
+  # If daysWeather is not NULL, add data for current year:
+  if (!is.null(daysWeather)) {
+    daysWeatherYear <- format(daysWeather$Date, "%Y")
+    # todayPrcp is temp data frame with current observations
+    todayPrcp <- data.frame("year" = format(plotDate, "%Y"),
+                            "precipitation" = todaysPrecipitation)
+    orfPrcp <- rbind(orfPrcp, todayPrcp) # Merge with historical observations
+  } else {
+    daysWeatherYear <- format(Sys.Date(), "%Y")
+  }
   # Remove years with text values for precipitation (missing and trace)
   orfPrcp <- na.omit(orfPrcp, orfPrcp$precipitation)
   
@@ -46,7 +70,8 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate()) {
                    paste("Precipitation on", 
                          format(currentDate, "%b %d"), 
                          "(in inches)"),
-                   TRUE
+                   TRUE,
+                   highlightYear = daysWeatherYear
   )
   
   minor.tick(nx = 1,
