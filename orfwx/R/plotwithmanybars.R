@@ -16,6 +16,8 @@
 #' @param showAllLabels A logical value indicating if we are showing all
 #'   labels (if \code{FALSE}, labels will only be shown on the max and min
 #'   values and on the current year)
+#' @param highlightYear The year to highlight in the graph (defaults to the
+#'   current year)
 #' @return Returns a barplot.
 #' @examples
 #' # How do I show an example?
@@ -25,12 +27,16 @@ plotWithManyBars <- function(sortedData,
                              titlePlotWmb,
                              yAxisLabelPlotWmb,
                              plottingPrecip = FALSE,
-                             showAllLabels = FALSE) {
+                             showAllLabels = FALSE,
+                             highlightYear = format(Sys.Date(), "%Y")) {
   # Discard missing values (so they don't become maxSortedData)
   sortedData <- na.omit(sortedData)
   sortedDataFrame <- na.omit(sortedDataFrame)
   # TODO: Handle the edge case where sortedDataFrame has missing year values.
   
+  # Ensure highlightYear is a valid year.
+  highlightYear <- checkYear(highlightYear)
+
   # Convenience variables:
   minSortedData <- sortedData[1]
   maxSortedData <- sortedData[length(sortedData)]
@@ -55,7 +61,7 @@ plotWithManyBars <- function(sortedData,
           # (i.e., above/below ylim):
           xpd = FALSE,  
           names.arg = if(showAllLabels == FALSE & plottingPrecip == FALSE) { 
-            ifelse(sortedDataFrame$year == 2016 |
+            ifelse(sortedDataFrame$year == highlightYear |
                      sortedData == minSortedData |
                      sortedData == maxSortedData, 
                    paste(sortedDataFrame$year, 
@@ -71,7 +77,7 @@ plotWithManyBars <- function(sortedData,
                     paste0(format(sortedData, nsmall = 2), '"'))
             }
           },
-          col = ifelse(sortedDataFrame$year == 2016, 
+          col = ifelse(sortedDataFrame$year == highlightYear,
                        "mediumpurple", 
                        "steelblue1"),
           border = "white")

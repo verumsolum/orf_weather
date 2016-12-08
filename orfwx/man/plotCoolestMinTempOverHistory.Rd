@@ -4,11 +4,15 @@
 \alias{plotCoolestMinTempOverHistory}
 \title{Plot coolest historical low tempertures on a single date}
 \usage{
-plotCoolestMinTempOverHistory(plotDate = searchDate())
+plotCoolestMinTempOverHistory(plotDate = searchDate(), daysWeather = NULL)
 }
 \arguments{
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
 current date.}
+
+\item{daysWeather}{(optional) The weather for a date not yet included in
+the \code{mutatedBothStations} dataset, usually passed by the
+\code{singleDaysWeather} function.}
 }
 \value{
 Returns a barplot.

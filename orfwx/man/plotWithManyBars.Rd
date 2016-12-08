@@ -5,7 +5,8 @@
 \title{Create a barplot with temperature or precipitation data}
 \usage{
 plotWithManyBars(sortedData, sortedDataFrame, titlePlotWmb, yAxisLabelPlotWmb,
-  plottingPrecip = FALSE, showAllLabels = FALSE)
+  plottingPrecip = FALSE, showAllLabels = FALSE,
+  highlightYear = format(Sys.Date(), "\%Y"))
 }
 \arguments{
 \item{sortedData}{A vector used for the values to be shown on the barplot.}
@@ -23,6 +24,9 @@ precipitation}
 \item{showAllLabels}{A logical value indicating if we are showing all
 labels (if \code{FALSE}, labels will only be shown on the max and min
 values and on the current year)}
+
+\item{highlightYear}{The year to highlight in the graph (defaults to the
+current year)}
 }
 \value{
 Returns a barplot.
