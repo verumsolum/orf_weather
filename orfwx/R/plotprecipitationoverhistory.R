@@ -16,7 +16,7 @@
 #' @examples
 #' plotPrecipitationOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
-plotPrecipitationOverHistory <- function(plotDate = searchDate()
+plotPrecipitationOverHistory <- function(plotDate = searchDate(),
                                          daysWeather = NULL) {
   # Ensure that daysWeather is correct
   if (!is.null(daysWeather)) {
