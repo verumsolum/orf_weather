@@ -17,7 +17,6 @@
 #' checkYear("1776")  # "2016" (< 1724 becomes current year)
 #' checkYear("1984")  # "1984"
 #' checkYear("2020")  # "2016" (future year becomes current year)
-#' @export
 checkYear=function(uncheckedYear){
   # Ensure uncheckedYear is a valid year.
   # Using the year 1724 as the year Gabriel Fahrenheit created scale for
