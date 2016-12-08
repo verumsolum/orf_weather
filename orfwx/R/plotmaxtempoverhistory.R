@@ -9,6 +9,9 @@
 #' 
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
+#' @param daysWeather (optional) The weather for a date not yet included in
+#'   the \code{mutatedBothStations} dataset, usually passed by the
+#'   \code{singleDaysWeather} function.
 #' @return Returns a barplot.
 #' @examples
 #' plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
