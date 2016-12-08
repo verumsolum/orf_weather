@@ -29,8 +29,5 @@ checkYear=function(uncheckedYear){
     warning("Invalid year provided. Setting to current year and continuing.")
     uncheckedYear <- format(Sys.Date(), "%Y")
   }
-  warning(paste0("Returning ",
-                 uncheckedYear,
-                 " from checkYear."))
   return(uncheckedYear)
 }

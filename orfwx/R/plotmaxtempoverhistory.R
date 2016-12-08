@@ -41,10 +41,13 @@ plotMaxTempOverHistory <- function(plotDate = searchDate(),
   
   # If daysWeather is not NULL, add data for current year:
   if (!is.null(daysWeather)) {
+    daysWeatherYear <- format(daysWeather$Date, "%Y")
     # todayTMax is temp data frame with current observations
     todayTMax <- data.frame("year" = format(plotDate, "%Y"),
                             "highTemperature" = daysWeather$MaxTemperature)
     orfTMax <- rbind(orfTMax, todayTMax) # Merge with historical observations
+  } else {
+    daysWeatherYear <- format(Sys.Date(), "%Y")
   }
   # Sort orfTMax by highTemperature
   orfTMaxSorted <- orfTMax[order(orfTMax$highTemperature), ]
@@ -56,7 +59,8 @@ plotMaxTempOverHistory <- function(plotDate = searchDate(),
                          "in Norfolk Weather History"),
                    paste("High Temperature on", 
                          format(plotDate, "%b %d"), 
-                         "(in °F)")
+                         "(in °F)"),
+                   highlightYear = daysWeatherYear
   )
   
   # minor.tick(nx = 1,
