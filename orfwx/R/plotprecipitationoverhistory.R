@@ -48,7 +48,9 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
     daysWeatherYear <- format(daysWeather$Date, "%Y")
     # todayPrcp is temp data frame with current observations
     todayPrcp <- data.frame("year" = format(plotDate, "%Y"),
-                            "precipitation" = daysWeather$Precipitation)
+                            "precipitation" = 
+                              as.numeric(as.character(
+                                  daysWeather$Precipitation)))
     orfPrcp <- rbind(orfPrcp, todayPrcp) # Merge with historical observations
   } else {
     daysWeatherYear <- format(Sys.Date(), "%Y")
@@ -65,10 +67,10 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
   plotWithManyBars(orfPrcpSorted$precipitation,
                    orfPrcpSorted,
                    paste("Precipitation on", 
-                         format(currentDate, "%b %d"), 
+                         format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),
                    paste("Precipitation on", 
-                         format(currentDate, "%b %d"), 
+                         format(plotDate, "%b %d"), 
                          "(in inches)"),
                    TRUE,
                    highlightYear = daysWeatherYear
