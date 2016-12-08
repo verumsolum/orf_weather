@@ -54,12 +54,13 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
   }
   # Sort orfTMax by highTemperature
   orfTMaxSorted <- arrange(orfTMax, highTemperature)
-  if(orfTMaxSorted$highTemperature[10] >= todaysHigh) {
+  if(orfTMaxSorted$highTemperature[10] >= daysWeather$MaxTemperature) {
     orfTMaxSorted <- filter(orfTMaxSorted, 
                             highTemperature <= 
                               orfTMaxSorted$highTemperature[10])
   } else {
-    orfTMaxSorted <- filter(orfTMaxSorted, highTemperature <= todaysHigh)
+    orfTMaxSorted <- filter(orfTMaxSorted, 
+                            highTemperature <= daysWeather$MaxTemperature)
   }
   # browser()
   orfTMaxSorted <- arrange(orfTMaxSorted, highTemperature)
