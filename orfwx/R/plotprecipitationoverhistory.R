@@ -68,7 +68,7 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
   # Remove years with text values for precipitation (missing and trace)
-  orfPrcp <- na.omit(orfPrcp, orfPrcp$precipitation)
+  orfPrcp <- stats::na.omit(orfPrcp, orfPrcp$precipitation)
   
   # Remove years with no precipitation
   orfPrcp <- orfPrcp[orfPrcp$precipitation > 0, ]
@@ -99,5 +99,5 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
     #                   ny = 2,
     #                   tick.ratio = 0.67)
   }
-  mtext('Since 1874')
+  graphics::mtext('Since 1874')
 }
