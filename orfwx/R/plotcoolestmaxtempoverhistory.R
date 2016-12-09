@@ -68,17 +68,18 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
   # Sort orfTMax by highTemperature
-  orfTMaxSorted <- arrange(orfTMax, highTemperature)
+  orfTMaxSorted <- dplyr::arrange(orfTMax, highTemperature)
   if(orfTMaxSorted$highTemperature[10] >= daysWeather$MaxTemperature) {
-    orfTMaxSorted <- filter(orfTMaxSorted, 
-                            highTemperature <= 
-                              orfTMaxSorted$highTemperature[10])
+    orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
+                                   highTemperature <=
+                                     orfTMaxSorted$highTemperature[10])
   } else {
-    orfTMaxSorted <- filter(orfTMaxSorted, 
-                            highTemperature <= daysWeather$MaxTemperature)
+    orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
+                                   highTemperature <= 
+                                     daysWeather$MaxTemperature)
   }
-  # browser()
-  orfTMaxSorted <- arrange(orfTMaxSorted, highTemperature)
+  
+  orfTMaxSorted <- dplyr::arrange(orfTMaxSorted, highTemperature)
   
   plotWithManyBars(orfTMaxSorted$highTemperature,
                    orfTMaxSorted,
@@ -92,14 +93,16 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
                    highlightYear = daysWeatherYear
   )
   
-  # minor.tick(nx = 1,
-  #            ny = 5,
-  #            tick.ratio = 0.5)
-  # minor.tick(nx = 1,
-  #            ny = 10,
-  #            tick.ratio = 0.33)
-  minor.tick(nx = 1,
-             ny = 2,
-             tick.ratio = 0.67)
-  mtext('Since 1874')
+  if (!requireNamespace("Hmisc", quietly = TRUE)) {
+    # Hmisc::minor.tick(nx = 1,
+    #                   ny = 5,
+    #                   tick.ratio = 0.5)
+    # Hmisc::minor.tick(nx = 1,
+    #                   ny = 10,
+    #                   tick.ratio = 0.33)
+    Hmisc::minor.tick(nx = 1,
+                      ny = 2,
+                      tick.ratio = 0.67)
+  }
+  graphics::mtext('Since 1874')
 }
