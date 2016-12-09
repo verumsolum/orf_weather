@@ -25,9 +25,9 @@ This function determines that the year in question is:
 }
 }
 \examples{
-checkYear("2016")  # "2016"
-checkYear("1776")  # "2016" (< 1724 becomes current year)
-checkYear("1984")  # "1984"
-checkYear("2020")  # "2016" (future year becomes current year)
+\dontrun{checkYear("2016")}  # "2016"
+\dontrun{checkYear("1776")}  # "2016" (< 1724 becomes current year)
+\dontrun{checkYear("1984")}  # "1984"
+\dontrun{checkYear("2020")}  # "2016" (future year becomes current year)
 }
 
