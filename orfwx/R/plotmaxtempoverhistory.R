@@ -77,14 +77,16 @@ plotMaxTempOverHistory <- function(plotDate = searchDate(),
                    highlightYear = daysWeatherYear
   )
   
-  # minor.tick(nx = 1,
-  #            ny = 5,
-  #            tick.ratio = 0.5)
-  minor.tick(nx = 1,
-             ny = 10,
-             tick.ratio = 0.33)
-  minor.tick(nx = 1,
-             ny = 2,
-             tick.ratio = 0.67)
-  mtext('Since 1874')
+  if (!requireNamespace("Hmisc", quietly = TRUE)) {
+    # Hmisc::minor.tick(nx = 1,
+    #                   ny = 5,
+    #                   tick.ratio = 0.5)
+    Hmisc::minor.tick(nx = 1,
+                      ny = 10,
+                      tick.ratio = 0.33)
+    Hmisc::minor.tick(nx = 1,
+                      ny = 2,
+                      tick.ratio = 0.67)
+  }
+  graphics::mtext('Since 1874')
 }

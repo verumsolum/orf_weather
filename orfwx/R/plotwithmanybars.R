@@ -35,8 +35,8 @@ plotWithManyBars <- function(sortedData,
                              showAllLabels = FALSE,
                              highlightYear = format(Sys.Date(), "%Y")) {
   # Discard missing values (so they don't become maxSortedData)
-  sortedData <- na.omit(sortedData)
-  sortedDataFrame <- na.omit(sortedDataFrame)
+  sortedData <- stats::na.omit(sortedData)
+  sortedDataFrame <- stats::na.omit(sortedDataFrame)
   # TODO: Handle the edge case where sortedDataFrame has missing year values.
   
   # Ensure highlightYear is a valid year.
@@ -54,41 +54,44 @@ plotWithManyBars <- function(sortedData,
                                   c(0,ceiling((maxSortedData) / 0.5) * 0.5))
   
   # Graph sortedData
-  barplot(as.numeric(sortedData),
-          # Text size for year label
-          cex.names = ifelse(showAllLabels == TRUE, 0.9, 0.6),
-          # If 2, rotate labels perpendicular to axis
-          las = ifelse(showAllLabels == TRUE, 0, 2),
-          main = titlePlotWmb,  # Title
-          ylab = yAxisLabelPlotWmb,  # Label for y axis
-          ylim = yAxisLimitsCalculated,
-          # Do not allow the bars to go outside the plot region 
-          # (i.e., above/below ylim):
-          xpd = FALSE,  
-          names.arg = if(showAllLabels == FALSE & plottingPrecip == FALSE) { 
-            ifelse(sortedDataFrame$year == highlightYear |
-                     sortedData == minSortedData |
-                     sortedData == maxSortedData, 
-                   paste(sortedDataFrame$year, 
-                         "-", 
-                         paste0(sortedData, "°")),
-                   "")  # Source of labels for x axis
-          } else {
-            if(plottingPrecip == FALSE) {
-              paste(paste0(sortedData, "°"), "\n", sortedDataFrame$year)
-            } else {
-              paste(sortedDataFrame$year, 
-                    "-", 
-                    paste0(format(sortedData, nsmall = 2), '"'))
-            }
-          },
-          col = ifelse(sortedDataFrame$year == highlightYear,
-                       "mediumpurple", 
-                       "steelblue1"),
-          border = "white")
+  graphics::barplot(as.numeric(sortedData),
+                    # Text size for year label
+                    cex.names = ifelse(showAllLabels == TRUE, 0.9, 0.6),
+                    # If 2, rotate labels perpendicular to axis
+                    las = ifelse(showAllLabels == TRUE, 0, 2),
+                    main = titlePlotWmb,  # Title
+                    ylab = yAxisLabelPlotWmb,  # Label for y axis
+                    ylim = yAxisLimitsCalculated,
+                    # Do not allow the bars to go outside the plot region 
+                    # (i.e., above/below ylim):
+                    xpd = FALSE,
+                    names.arg = if(showAllLabels == FALSE & 
+                                   plottingPrecip == FALSE) {
+                      ifelse(sortedDataFrame$year == highlightYear |
+                               sortedData == minSortedData |
+                               sortedData == maxSortedData,
+                             paste(sortedDataFrame$year,
+                                   "-",
+                                   paste0(sortedData, "°")),
+                             "")  # Source of labels for x axis
+                      } else {
+                        if(plottingPrecip == FALSE) {
+                          paste(paste0(sortedData, "°"), 
+                                "\n", 
+                                sortedDataFrame$year)
+                          } else {
+                            paste(sortedDataFrame$year,
+                                  "-",
+                                  paste0(format(sortedData, nsmall = 2), '"'))
+                          }
+                        },
+                    col = ifelse(sortedDataFrame$year == highlightYear,
+                                 "mediumpurple",
+                                 "steelblue1"),
+                    border = "white")
   
   # Add grid to barplot
-  grid(nx = NA,
-       ny = NULL,
-       lty = "dotted")
+  graphics::grid(nx = NA,
+                 ny = NULL,
+                 lty = "dotted")
 }

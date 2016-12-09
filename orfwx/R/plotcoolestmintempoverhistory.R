@@ -68,16 +68,18 @@ plotCoolestMinTempOverHistory <- function(plotDate = searchDate(),
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
   # Sort orfTMin by lowTemperature
-  orfTMinSorted <- arrange(orfTMin, lowTemperature)
+  orfTMinSorted <- dplyr::arrange(orfTMin, lowTemperature)
   if(orfTMinSorted$lowTemperature[10] >= daysWeather$MinTemperature) {
-    orfTMinSorted <- filter(orfTMinSorted, 
-                            lowTemperature <= orfTMinSorted$lowTemperature[10])
+    orfTMinSorted <- dplyr::filter(orfTMinSorted,
+                                   lowTemperature <= 
+                                     orfTMinSorted$lowTemperature[10])
   } else {
-    orfTMinSorted <- filter(orfTMinSorted, 
-                            lowTemperature <= daysWeather$MinTemperature)
+    orfTMinSorted <- dplyr::filter(orfTMinSorted,
+                                   lowTemperature <= 
+                                     daysWeather$MinTemperature)
   }
   
-  orfTMinSorted <- arrange(orfTMinSorted, lowTemperature)
+  orfTMinSorted <- dplyr::arrange(orfTMinSorted, lowTemperature)
   
   plotWithManyBars(orfTMinSorted$lowTemperature,
                    orfTMinSorted,
@@ -91,14 +93,16 @@ plotCoolestMinTempOverHistory <- function(plotDate = searchDate(),
                    highlightYear = daysWeatherYear
   )
   
-  # minor.tick(nx = 1,
-  #            ny = 5,
-  #            tick.ratio = 0.5)
-  # minor.tick(nx = 1,
-  #            ny = 10,
-  #            tick.ratio = 0.33)
-  minor.tick(nx = 1,
-             ny = 2,
-             tick.ratio = 0.67)
-  mtext('Since 1874')
+  if (!requireNamespace("Hmisc", quietly = TRUE)) {
+    # Hmisc::minor.tick(nx = 1,
+    #                   ny = 5,
+    #                   tick.ratio = 0.5)
+    # Hmisc::minor.tick(nx = 1,
+    #                   ny = 10,
+    #                   tick.ratio = 0.33)
+    Hmisc::minor.tick(nx = 1,
+                      ny = 2,
+                      tick.ratio = 0.67)
+  }
+  graphics::mtext('Since 1874')
 }
