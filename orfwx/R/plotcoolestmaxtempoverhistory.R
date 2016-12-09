@@ -104,5 +104,5 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
                       ny = 2,
                       tick.ratio = 0.67)
   }
-  graphics::mtext('Since 1874')
+  mtext('Since 1874')
 }
