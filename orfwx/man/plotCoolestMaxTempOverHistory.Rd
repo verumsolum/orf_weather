@@ -22,9 +22,24 @@ Returns a barplot.
 high temperatures of one day of the year.
 }
 \details{
-This code makes my head hurt, because it was some of the earliest R code I
-wrote, when I was mostly in make-it-work mode, with huge gaps in my
-understanding of R (and of barplot particularly)
+If \code{daysWeather} is passed (usually using 
+\code{\link{singleDaysWeather}}), the function ensures that its weather is 
+for the same date as that provided by \code{plotDate} (either passed to the 
+function or the default value of the current system date). If they do not 
+match, the function terminates with an error message.
+
+The data from \code{daysWeather} is added to that provided by 
+\code{\link{mutatedBothStations}} and the weather on the same date each year
+is compared.
+
+A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
+temperatures for all days with a high temperature less than or equal to that 
+provided by \code{daysWeather}. (In all cases, the ten coolest years are 
+shown, along with any ties, with additional years added until the year 
+provided by \code{daysWeather} is shown, and also all years tied with the 
+same temperature.) The bar for the year provided by \code{daysWeather} (or,
+if \code{daysWeather} is not provided, the current year) is highlighted with
+a bar of a different color in the barplot.
 }
 \examples{
 plotCoolestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th

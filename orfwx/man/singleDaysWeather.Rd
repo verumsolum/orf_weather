@@ -32,7 +32,21 @@ Returns a data frame.
 \code{singleDaysWeather} returns a data frame.
 }
 \details{
-Details section to be written.
+There are several functions within the \code{orfwx} package that compare
+the current day's weather with past years' data. The past years' data are
+included in the provided \code{\link{mutatedBothStations}} dataset. The 
+current year's data is passed to those functions using 
+\code{singleDaysWeather}.
+
+All of the parameters are optional. Most will be set to \code{NA} if they 
+are missing. The one exception is \code{dataDate}, which is set to the 
+current date (as provided by the system), if it has not been explicitly 
+passed to \code{singleDaysWeather}.
+
+\strong{NOTE:} The values for \code{precipitation} and for \code{snowfall} 
+are coerced into numeric values. So, if one passes \code{"T"} (for
+\emph{trace} precipitation or snowfall), that ends up changed to 
+\code{NA}.
 }
 \examples{
 singleDaysWeather(55, 34, 44.5, 0.00, 0.0, searchDate(12, 1, 2016))
