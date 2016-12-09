@@ -18,4 +18,5 @@ rather than links found to be helpful.
 * R Core Team (2016, October 31). _[Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.pdf)._ Retrieved from https://cran.r-project.org/doc/manuals/R-exts.pdf
 * Ripley, R. M. (2012/13). [Making an R package](http://portal.stats.ox.ac.uk/userdata/ruth/APTS2012/Rcourse10.pdf).  Retrieved from http://portal.stats.ox.ac.uk/userdata/ruth/APTS2012/Rcourse10.pdf
 * _[roxygen2](https://github.com/klutometis/roxygen/blob/master/README.md)._ (2015, October 6). Retrieved from https://github.com/klutometis/roxygen/blob/master/README.md
-* Wickham, H. (2015). _[R Packages: Organize, Test, Document, and Share Your Code](http://r-pkgs.had.co.nz/)._ Retrieved from http://r-pkgs.had.co.nz/
+* Wickham, H. (2015a, April). _[R Packages: Organize, Test, Document, and Share Your Code](http://r-pkgs.had.co.nz/)._ Retrieved from http://r-pkgs.had.co.nz/
+* Wickham, H. (2015b, November 10). [Text formatting reference sheet](https://cran.r-project.org/web/packages/roxygen2/vignettes/formatting.html). Retrieved from https://cran.r-project.org/web/packages/roxygen2/vignettes/formatting.html

@@ -3,9 +3,21 @@
 #' \code{plotPrecipitationOverHistory} returns a barplot with the precipitation
 #' of one day each year.
 #' 
-#' This code makes my head hurt, because it was some of the earliest R code I
-#' wrote, when I was mostly in make-it-work mode, with huge gaps in my
-#' understanding of R (and of barplot particularly)
+#' If \code{daysWeather} is passed (usually using 
+#' \code{\link{singleDaysWeather}}), the function ensures that its weather is 
+#' for the same date as that provided by \code{plotDate} (either passed to the 
+#' function or the default value of the current system date). If they do not 
+#' match, the function terminates with an error message.
+#' 
+#' The data from \code{daysWeather} is added to that provided by 
+#' \code{\link{mutatedBothStations}} and the weather on the same date each year
+#' is compared.
+#' 
+#' A barplot is plotted by \code{\link{plotWithManyBars}} with the 
+#' precipitation for all days, excluding those with no precipitation or trace 
+#' precipitation. The bar for the year provided by \code{daysWeather} (or, if 
+#' \code{daysWeather} is not provided, the current year) is highlighted with 
+#' a bar of a different color in the barplot.
 #' 
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.

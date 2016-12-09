@@ -35,9 +35,14 @@ Returns a barplot.
 \code{plotWithManyBars} returns a barplot with the data provided to it.
 }
 \details{
-This code makes my head hurt, because it was some of the earliest R code I
-wrote, when I was mostly in make-it-work mode, with huge gaps in my
-understanding of R (and of barplot particularly)
+Missing values in both \code{sortedData} and \code{sortedDataFrame} are
+discarded (to avoid them being chosen as \code{maxSortedData}). Also, 
+\code{highlightYear} is checked to ensure it is a valid year.
+
+A barplot is created. Bars are created for all provided data. Unless
+\code{showAllLabels} is set to \code{TRUE}, labels are only shown for the
+highest and lowest values (and ties), as well as the \code{highlightYear}'s
+data.
 }
 \examples{
 # How do I show an example?
