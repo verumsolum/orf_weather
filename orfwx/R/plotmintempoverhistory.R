@@ -77,7 +77,7 @@ plotMinTempOverHistory <- function(plotDate = searchDate(),
                    highlightYear = daysWeatherYear
   )
   
-  if (!requireNamespace("Hmisc", quietly = TRUE)) {
+  if (requireNamespace("Hmisc", quietly = TRUE)) {
     # Hmisc::minor.tick(nx = 1,
     #                   ny = 5,
     #                   tick.ratio = 0.5)
