@@ -12,6 +12,9 @@ singleDaysWeather(highTemperature = NA, lowTemperature = NA,
 \item{highTemperature}{An integer representing the day's high temperature
 (in °F).}
 
+\item{lowTemperature}{An integer representing the day's low temperature (in
+°F).}
+
 \item{averageTemperature}{A number representing the day's average
 temperature (in °F).}
 
@@ -21,9 +24,6 @@ inches).}
 \item{snowfall}{A number representing the day's precipitation (in inches).}
 
 \item{dataDate}{A date for the data represented (defaults to current day).}
-
-\item{lowTemeprature}{An integer representing the day's low temperature (in
-°F).}
 }
 \value{
 Returns a data frame.

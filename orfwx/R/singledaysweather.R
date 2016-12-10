@@ -20,7 +20,7 @@
 #' 
 #' @param highTemperature An integer representing the day's high temperature
 #'   (in °F).
-#' @param lowTemeprature An integer representing the day's low temperature (in
+#' @param lowTemperature An integer representing the day's low temperature (in
 #'   °F).
 #' @param averageTemperature A number representing the day's average
 #'   temperature (in °F).
