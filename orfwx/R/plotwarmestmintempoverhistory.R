@@ -90,7 +90,7 @@ plotWarmestMinTempOverHistory <- function(plotDate = searchDate(),
                          "in Norfolk Weather History"),
                    paste("Low temperature on", 
                          format(plotDate, "%b %d"), 
-                         "(in °F)"),
+                         "(in \u00b0F)"),
                    showAllLabels = TRUE,
                    highlightYear = daysWeatherYear
   )
