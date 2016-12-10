@@ -73,7 +73,7 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
   # If daysWeather has not been passed,
   # or if daysWeather$highTemperature is in the coldest 10,
   # filter orfTMaxSorted to online include those 10 (and ties)
-  if (!is.null(daysWeather)) {
+  if (is.null(daysWeather)) {
     orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
                                    highTemperature <=
                                      orfTMaxSorted$highTemperature[10])
