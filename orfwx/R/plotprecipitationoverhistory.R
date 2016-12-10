@@ -89,9 +89,9 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
   )
   
   if (requireNamespace("Hmisc", quietly = TRUE)) {
-    Hmisc::minor.tick(nx = 1,
-                      ny = 5,
-                      tick.ratio = 0.5)
+    # Hmisc::minor.tick(nx = 1,
+    #                   ny = 5,
+    #                   tick.ratio = 0.5)
     # Hmisc::minor.tick(nx = 1,
     #                   ny = 10,
     #                   tick.ratio = 0.33)
