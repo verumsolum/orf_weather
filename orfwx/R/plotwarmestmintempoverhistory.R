@@ -69,11 +69,21 @@ plotWarmestMinTempOverHistory <- function(plotDate = searchDate(),
   }
   # Sort orfTMin by lowTemperature
   orfTMinSorted <- dplyr::arrange(orfTMin, dplyr::desc(lowTemperature))
-  if(orfTMinSorted$lowTemperature[10] <= daysWeather$MinTemperature) {
+  
+  # If daysWeather has not been passed,
+  # or if daysWeather$highTemperature is in the coldest 10,
+  # filter orfTMaxSorted to online include those 10 (and ties)
+  if (is.null(daysWeather)) {
+    orfTMaxSorted <- dplyr::filter(orfTMinSorted,
+                                   lowTemperature <=
+                                     orfTMinSorted$lowTemperature[10])
+  } else if (orfTMinSorted$lowTemperature[10] <= daysWeather$MinTemperature) {
     orfTMinSorted <- dplyr::filter(orfTMinSorted,
                                    lowTemperature >= 
                                      orfTMinSorted$lowTemperature[10])
   } else {
+    # Otherwise, include all days warmer than (or equal to)
+    # daysWeather$MinTemperature
     orfTMinSorted <- dplyr::filter(orfTMinSorted,
                                    lowTemperature >= 
                                      daysWeather$MinTemperature)
