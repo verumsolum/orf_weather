@@ -42,6 +42,6 @@ if \code{daysWeather} is not provided, the current year) is highlighted with
 a bar of a different color in the barplot.
 }
 \examples{
-plotCoolestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
+plotCoolestMinTempOverHistory(searchDate(11, 26))  # plot for November 26th
 }
 
