@@ -72,11 +72,11 @@ plotWithManyBars <- function(sortedData,
                                sortedData == maxSortedData,
                              paste(sortedDataFrame$year,
                                    "-",
-                                   paste0(sortedData, "°")),
+                                   paste0(sortedData, "\u00b0")),
                              "")  # Source of labels for x axis
                       } else {
                         if(plottingPrecip == FALSE) {
-                          paste(paste0(sortedData, "°"), 
+                          paste(paste0(sortedData, "\u00b0"), 
                                 "\n", 
                                 sortedDataFrame$year)
                           } else {

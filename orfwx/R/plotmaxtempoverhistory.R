@@ -73,7 +73,7 @@ plotMaxTempOverHistory <- function(plotDate = searchDate(),
                          "in Norfolk Weather History"),
                    paste("High Temperature on", 
                          format(plotDate, "%b %d"), 
-                         "(in °F)"),
+                         "(in \u00b0F)"),
                    highlightYear = daysWeatherYear
   )
   

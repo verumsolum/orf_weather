@@ -18,8 +18,8 @@
     expressed to the tenth of an inch}
   \item{Year}{(integer) the year of the observation (1874-2016)}
   \item{Month}{(integer) the month of the observation (1-12)}
-  \item{DayofMonth}{(integer) the day of the observation (1-31)}
-  \item{DayofYear}{(integer) the day of the observation within the year 
+  \item{DayOfMonth}{(integer) the day of the observation (1-31)}
+  \item{DayOfYear}{(integer) the day of the observation within the year 
     (1-366)}
   \item{leapYearAwareDayOfYear}{(integer) \code{DayofYear} altered to 
     ensure that the number uniquely identifies the date whether the 

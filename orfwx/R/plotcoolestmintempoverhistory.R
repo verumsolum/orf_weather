@@ -29,7 +29,7 @@
 #'   \code{singleDaysWeather} function.
 #' @return Returns a barplot.
 #' @examples
-#' plotCoolestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
+#' plotCoolestMinTempOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
 plotCoolestMinTempOverHistory <- function(plotDate = searchDate(),
                                           daysWeather = NULL) {
@@ -69,7 +69,15 @@ plotCoolestMinTempOverHistory <- function(plotDate = searchDate(),
   }
   # Sort orfTMin by lowTemperature
   orfTMinSorted <- dplyr::arrange(orfTMin, lowTemperature)
-  if(orfTMinSorted$lowTemperature[10] >= daysWeather$MinTemperature) {
+  
+  # If daysWeather has not been passed,
+  # or if daysWeather$lowTemperature is in the coldest 10,
+  # filter orfTMinSorted to online include those 10 (and ties)
+  if (is.null(daysWeather)) {
+    orfTMinSorted <- dplyr::filter(orfTMinSorted,
+                                   lowTemperature <=
+                                     orfTMinSorted$lowTemperature[10])
+  } else if (orfTMinSorted$lowTemperature[10] >= daysWeather$MinTemperature) {
     orfTMinSorted <- dplyr::filter(orfTMinSorted,
                                    lowTemperature <= 
                                      orfTMinSorted$lowTemperature[10])
@@ -88,7 +96,7 @@ plotCoolestMinTempOverHistory <- function(plotDate = searchDate(),
                          "in Norfolk Weather History"),
                    paste("Low temperature on", 
                          format(plotDate, "%b %d"), 
-                         "(in °F)"),
+                         "(in \u00b0F)"),
                    showAllLabels = TRUE,
                    highlightYear = daysWeatherYear
   )

@@ -7,14 +7,18 @@
 #' \code{padSingleDigitInteger} and uses them to create a string.
 #' That string is converted to a date.
 #' 
-#' Errors will result from invalid months or most invalid dates.
+#' Errors will result from invalid months or most invalid dates. Missing
+#' parameters are replaced with the appropriate portion of the current
+#' system date.
 #' 
 #' @param searchMonth An integer between 1 [Jan] and 12 [Dec] (inclusive).
 #' @param searchDay An integer between 1 and 31 for the day of the month.
+#' @param searchYear An integer representing the year.
 #' @return Returns a date.
 #' @examples
 #' searchDate(1, 1)  # January 1st
 #' searchDate(7, 4)  # July 4th
+#' searchDate(10, 21, 1976)  # October 21st, 1976
 #' searchDate(12, 31)  # December 31st
 #' searchDate()  # The current date
 #' @export

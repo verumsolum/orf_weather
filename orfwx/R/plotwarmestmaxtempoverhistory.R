@@ -69,11 +69,21 @@ plotWarmestMaxTempOverHistory <- function(plotDate = searchDate(),
   }
   # Sort orfTMax by highTemperature
   orfTMaxSorted <- dplyr::arrange(orfTMax, dplyr::desc(highTemperature))
-  if(orfTMaxSorted$highTemperature[10] <= daysWeather$MaxTemperature) {
+
+  # If daysWeather has not been passed,
+  # or if daysWeather$highTemperature is in the warmest 10,
+  # filter orfTMaxSorted to online include those 10 (and ties)
+  if (is.null(daysWeather)) {
+    orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
+                                   highTemperature >=
+                                     orfTMaxSorted$highTemperature[10])
+  } else if (orfTMaxSorted$highTemperature[10] <= daysWeather$MaxTemperature) {
     orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
                                    highTemperature >=
                                      orfTMaxSorted$highTemperature[10])
   } else {
+    # Otherwise, include all days colder than (or equal to)
+    # daysWeather$MaxTemperature
     orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
                                    highTemperature >= 
                                      daysWeather$MaxTemperature)
@@ -90,7 +100,7 @@ plotWarmestMaxTempOverHistory <- function(plotDate = searchDate(),
                          "in Norfolk Weather History"),
                    paste("High temperature on", 
                          format(plotDate, "%b %d"), 
-                         "(in °F)"),
+                         "(in \u00b0F)"),
                    showAllLabels = TRUE,
                    highlightYear = daysWeatherYear
   )
