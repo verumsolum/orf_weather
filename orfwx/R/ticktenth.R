@@ -2,7 +2,7 @@
 #' 
 #' \code{tickTenth} adds ten smaller ticks in between the full ticks.
 #' 
-#' The smaller ticks are \frac{1}{3} the size of the full ticks.
+#' The smaller ticks are one-third the size of the full ticks.
 #' 
 #' @examples
 #' \dontrun{tickTenth()}

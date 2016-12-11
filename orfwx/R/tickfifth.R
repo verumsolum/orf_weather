@@ -2,7 +2,7 @@
 #' 
 #' \code{tickFifth} adds five smaller ticks in between the full ticks.
 #' 
-#' The smaller ticks are \frac{1}{2} the size of the full ticks.
+#' The smaller ticks are one-half the size of the full ticks.
 #' 
 #' @examples
 #' \dontrun{tickFifth()}

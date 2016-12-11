@@ -2,7 +2,7 @@
 #' 
 #' \code{tickHalf} adds a smaller tick in between the full ticks.
 #' 
-#' The smaller ticks are \frac{2}{3} the size of the full ticks.
+#' The smaller ticks are two-thirds the size of the full ticks.
 #' 
 #' @examples
 #' \dontrun{tickHalf()}
