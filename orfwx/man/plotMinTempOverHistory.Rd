@@ -4,7 +4,8 @@
 \alias{plotMinTempOverHistory}
 \title{Plot historical low tempertures}
 \usage{
-plotMinTempOverHistory(plotDate = searchDate(), daysWeather = NULL)
+plotMinTempOverHistory(plotDate = searchDate(), daysWeather = NULL,
+  twoTicks = TRUE, fiveTicks = FALSE, tenTicks = TRUE)
 }
 \arguments{
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
@@ -13,6 +14,12 @@ current date.}
 \item{daysWeather}{(optional) The weather for a date not yet included in
 the \code{mutatedBothStations} dataset, usually passed by the
 \code{singleDaysWeather} function.}
+
+\item{twoTicks}{(optional) Writes half ticks (defaults to \code{TRUE}).}
+
+\item{fiveTicks}{(optional) Writes fifth ticks (defaults to \code{FALSE}).}
+
+\item{tenTicks}{(optional) Writes tenth ticks (defaults to \code{TRUE}).}
 }
 \value{
 Returns a barplot.
