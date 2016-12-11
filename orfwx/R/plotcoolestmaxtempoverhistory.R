@@ -27,6 +27,9 @@
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{mutatedBothStations} dataset, usually passed by the
 #'   \code{singleDaysWeather} function.
+#' @param twoTicks (optional) Writes half ticks (defaults to \code{TRUE}).
+#' @param fiveTicks (optional) Writes fifth ticks (defaults to \code{FALSE}).
+#' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
 #' plotCoolestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
