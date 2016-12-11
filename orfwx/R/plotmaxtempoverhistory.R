@@ -23,12 +23,18 @@
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{mutatedBothStations} dataset, usually passed by the
 #'   \code{singleDaysWeather} function.
+#' @param twoTicks (optional) Writes half ticks (defaults to \code{FALSE}).
+#' @param fiveTicks (optional) Writes fifth ticks (defaults to \code{TRUE}).
+#' @param tenTicks (optional) Writes tenth ticks (defaults to \code{TRUE}).
 #' @return Returns a barplot.
 #' @examples
 #' plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
 plotMaxTempOverHistory <- function(plotDate = searchDate(),
-                                   daysWeather = NULL) {
+                                   daysWeather = NULL,
+                                   twoTicks = FALSE,
+                                   fiveTicks = TRUE,
+                                   tenTicks = TRUE) {
   # Ensure that daysWeather is correct
   if (!is.null(daysWeather)) {
     # If daysWeather is set, 
@@ -77,16 +83,8 @@ plotMaxTempOverHistory <- function(plotDate = searchDate(),
                    highlightYear = daysWeatherYear
   )
   
-  if (requireNamespace("Hmisc", quietly = TRUE)) {
-    # Hmisc::minor.tick(nx = 1,
-    #                   ny = 5,
-    #                   tick.ratio = 0.5)
-    Hmisc::minor.tick(nx = 1,
-                      ny = 10,
-                      tick.ratio = 0.33)
-    Hmisc::minor.tick(nx = 1,
-                      ny = 2,
-                      tick.ratio = 0.67)
-  }
+  if (twoTicks) tickHalf()
+  if (fiveTicks) tickFifth()
+  if (tenTicks) tickTenth()
   graphics::mtext('Since 1874')
 }
