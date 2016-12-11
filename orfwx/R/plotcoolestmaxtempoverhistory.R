@@ -32,7 +32,10 @@
 #' plotCoolestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
 plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
-                                          daysWeather = NULL) {
+                                          daysWeather = NULL,
+                                          twoTicks = TRUE,
+                                          fiveTicks = FALSE,
+                                          tenTicks = FALSE) {
   # Ensure that daysWeather is correct
   if (!is.null(daysWeather)) {
     # If daysWeather is set, 
@@ -103,16 +106,8 @@ plotCoolestMaxTempOverHistory <- function(plotDate = searchDate(),
                    highlightYear = daysWeatherYear
   )
   
-  if (requireNamespace("Hmisc", quietly = TRUE)) {
-    # Hmisc::minor.tick(nx = 1,
-    #                   ny = 5,
-    #                   tick.ratio = 0.5)
-    # Hmisc::minor.tick(nx = 1,
-    #                   ny = 10,
-    #                   tick.ratio = 0.33)
-    # Hmisc::minor.tick(nx = 1,
-    #                   ny = 2,
-    #                   tick.ratio = 0.67)
-  }
+  if (twoTicks) tickHalf()
+  if (fiveTicks) tickFifth()
+  if (tenTicks) tickTenth()
   graphics::mtext('Since 1874')
 }
