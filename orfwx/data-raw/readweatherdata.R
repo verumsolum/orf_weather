@@ -5,6 +5,8 @@ library(dplyr, warn.conflicts = FALSE)
 library(devtools)
 library(orfwx)
 
+source("convertcsvtological.R")
+
 # Read Norfolk airport weather data from CSV
 airport <- read.csv(
   "NorfolkIntlAp.csv",
@@ -60,6 +62,13 @@ mutatedBothStations <- mutate(
 mutatedBothStations <- mutate(mutatedBothStations, 
                               CsvPrecipitation = Precipitation) %>%
   select(-Precipitation)
+
+# Create two new variables from CsvPrecipitation
+mutatedBothStations <- mutate(mutatedBothStations,
+                              PrecipitationInches = 
+                                as.numeric(as.character(CsvPrecipitation)),
+                              WithPrecipitation = 
+                                convertCsvToLogical(CsvPrecipitation))
 
 # Save this as data.
 devtools::use_data(mutatedBothStations, overwrite = TRUE)
