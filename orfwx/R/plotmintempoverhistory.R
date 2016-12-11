@@ -23,8 +23,8 @@
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{mutatedBothStations} dataset, usually passed by the
 #'   \code{singleDaysWeather} function.
-#' @param twoTicks (optional) Writes half ticks (defaults to \code{FALSE}).
-#' @param fiveTicks (optional) Writes fifth ticks (defaults to \code{TRUE}).
+#' @param twoTicks (optional) Writes half ticks (defaults to \code{TRUE}).
+#' @param fiveTicks (optional) Writes fifth ticks (defaults to \code{FALSE}).
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{TRUE}).
 #' @return Returns a barplot.
 #' @examples
@@ -32,8 +32,8 @@
 #' @export
 plotMinTempOverHistory <- function(plotDate = searchDate(),
                                    daysWeather = NULL,
-                                   twoTicks = FALSE,
-                                   fiveTicks = TRUE,
+                                   twoTicks = TRUE,
+                                   fiveTicks = FALSE,
                                    tenTicks = TRUE) {
   # Ensure that daysWeather is correct
   if (!is.null(daysWeather)) {
