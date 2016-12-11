@@ -1,7 +1,9 @@
 # NOTE: Run this file from the data-raw directory to create data objects.
 
+library(utils)
 library(dplyr, warn.conflicts = FALSE)
 library(devtools)
+library(orfwx)
 
 # Read Norfolk airport weather data from CSV
 airport <- read.csv(
@@ -53,6 +55,11 @@ mutatedBothStations <- mutate(
                                   DayOfYear),
   temperatureSpread = as.integer(MaxTemperature - MinTemperature)
 )
+
+# Rename Precipitation -> CsvPrecipitation
+mutatedBothStations <- mutate(mutatedBothStations, 
+                              CsvPrecipitation = Precipitation) %>%
+  select(-Precipitation)
 
 # Save this as data.
 devtools::use_data(mutatedBothStations, overwrite = TRUE)
