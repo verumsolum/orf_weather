@@ -70,5 +70,16 @@ mutatedBothStations <- mutate(mutatedBothStations,
                               WithPrecipitation = 
                                 convertCsvToLogical(CsvPrecipitation))
 
+# Rename Snowfall -> CsvSnowfall
+mutatedBothStations <- mutate(mutatedBothStations, CsvSnowfall = Snowfall) %>%
+  select(-Snowfall)
+
+# Create two new variables from CsvSnowfall
+mutatedBothStations <- mutate(mutatedBothStations,
+                              SnowfallInches = 
+                                as.numeric(as.character(CsvSnowfall)),
+                              WithSnowfall = 
+                                convertCsvToLogical(CsvSnowfall))
+
 # Save this as data.
 devtools::use_data(mutatedBothStations, overwrite = TRUE)
