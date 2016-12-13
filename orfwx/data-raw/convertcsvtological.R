@@ -1,10 +1,7 @@
 convertCsvToLogical <- function(reportedValue) {
-  if (reportedValue == "0.00") {
-    return(FALSE)
-  } else if (reportedValue == "M" | is.null(reportedValue)) {
-    return(NA)
-  } else {
-    # If "T" or > 0.00
-    return(TRUE)
-  }
+  ifelse(reportedValue == "0.00",
+         return(FALSE),  # if "0.00"
+         ifelse(reportedValue == "M" | is.null(reportedValue),
+                return(NA),  # if "M" or NULL
+                return(TRUE)))  # otherwise
 }
