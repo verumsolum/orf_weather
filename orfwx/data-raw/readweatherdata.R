@@ -3,9 +3,6 @@
 library(utils)
 library(dplyr, warn.conflicts = FALSE)
 library(devtools)
-library(orfwx)
-
-source("convertcsvtological.R")
 
 # Read Norfolk airport weather data from CSV
 airport <- read.csv(
@@ -65,10 +62,20 @@ mutatedBothStations <- mutate(mutatedBothStations,
 
 # Create two new variables from CsvPrecipitation
 mutatedBothStations <- mutate(mutatedBothStations,
-                              PrecipitationInches = 
-                                as.numeric(as.character(CsvPrecipitation)),
-                              WithPrecipitation = 
-                                convertCsvToLogical(CsvPrecipitation))
+                              PrecipitationInches =
+                                if_else(is.na(CsvPrecipitation),
+                                        NA_real_,
+                                        if_else(CsvPrecipitation == "T",
+                                                0,
+                                                as.numeric(as.character(
+                                                  CsvPrecipitation)))),
+                              WithPrecipitation =
+                                if_else(is.na(CsvPrecipitation),
+                                        NA,
+                                        if_else(CsvPrecipitation == "T",
+                                                TRUE,
+                                                as.logical(
+                                                  PrecipitationInches))))
 
 # Rename Snowfall -> CsvSnowfall
 mutatedBothStations <- mutate(mutatedBothStations, CsvSnowfall = Snowfall) %>%
@@ -76,10 +83,19 @@ mutatedBothStations <- mutate(mutatedBothStations, CsvSnowfall = Snowfall) %>%
 
 # Create two new variables from CsvSnowfall
 mutatedBothStations <- mutate(mutatedBothStations,
-                              SnowfallInches = 
-                                as.numeric(as.character(CsvSnowfall)),
-                              WithSnowfall = 
-                                convertCsvToLogical(CsvSnowfall))
+                              SnowfallInches =
+                                if_else(is.na(CsvSnowfall),
+                                        NA_real_,
+                                        if_else(CsvSnowfall == "T",
+                                                0,
+                                                as.numeric(as.character(
+                                                  CsvSnowfall)))),
+                              WithSnowfall =
+                                if_else(is.na(CsvSnowfall),
+                                        NA,
+                                        if_else(CsvSnowfall == "T",
+                                                TRUE,
+                                                as.logical(SnowfallInches))))
 
 # Save this as data.
 devtools::use_data(mutatedBothStations, overwrite = TRUE)
