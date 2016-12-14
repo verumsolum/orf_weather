@@ -1,4 +1,5 @@
 # 20161211-precip-snowfall
+## 20161213-use-new-precip-snow-vars sub-branch
 
 This branch is for converting precip and snowfall each into two columns,
 one representing the amount that fell,
@@ -9,18 +10,24 @@ precipitation or snowfall with `T`, when it is too little to be measured.)
 ## Status
 
 As of December 13, 2016, 
+and version 0.0.0.9023,
 the columns have been added to the mutatedBothStations data.
+`singleDaysWeather` has been updated.
+This should allow all the plotting functions,
+with the exception of
+`plotPrecipitationOverHistory`,
+to work with the new precipitation columns.
 
 ## Next step
 
-Next is to make sure that none of the functions are relying on the
+Next is to make sure that 
+`plotPrecipitationOverHistory` 
+is now relying on the
+`PrecipitationInches`
+variable, 
+instead of the
 now-removed `Precipitation` and `Snowfall` variables.
-They should now use `PrecipitationInches` and/or `WithPrecipitation`
-(or the snowfall complements) instead.
 
 ## Known issues
 
 * `plotPrecipitationOverHistory` obviously uses the precip data.
-* `singleDaysWeather` and all functions that may be passed that as a parameter
-(all plot functions?) will need to be examined to ensure that they continue to
-work.
