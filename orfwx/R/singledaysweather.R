@@ -68,12 +68,12 @@ singleDaysWeather <- function(highTemperature = NA,
   averageTemperature <- format(round(as.numeric(averageTemperature), 
                                      digits = 1), 
                                nsmall = 1)
-  if (precipitation != "T") {
+  if (precipitation != "T" | is.na(precipitation)) {
     precipitation <- as.character(format(round(as.numeric(precipitation),
                                                digits = 2),
                                          nsmall = 2))
   }
-  if (snowfall != "T") {
+  if (snowfall != "T" | is.na(snowfall)) {
     snowfall <- as.character(format(round(as.numeric(snowfall), digits = 1),
                                     nsmall = 1))
   }
