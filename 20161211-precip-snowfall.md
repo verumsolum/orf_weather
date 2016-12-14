@@ -10,24 +10,24 @@ precipitation or snowfall with `T`, when it is too little to be measured.)
 ## Status
 
 As of December 13, 2016, 
-and version 0.0.0.9023,
+and version 0.0.0.9024,
 the columns have been added to the mutatedBothStations data.
 `singleDaysWeather` has been updated.
-This should allow all the plotting functions,
-with the exception of
+All the plotting functions,
+including
 `plotPrecipitationOverHistory`,
-to work with the new precipitation columns.
+now work with the new precipitation columns.
 
 ## Next step
 
-Next is to make sure that 
-`plotPrecipitationOverHistory` 
-is now relying on the
-`PrecipitationInches`
-variable, 
-instead of the
-now-removed `Precipitation` and `Snowfall` variables.
+Testing
+`singleDaysWeather` has some issues with error
+`Error in if (snowfall != "T") { : missing value where TRUE/FALSE needed`
+when `snowfall` is `NA`.
 
 ## Known issues
 
-* `plotPrecipitationOverHistory` obviously uses the precip data.
+* Errors in 
+`singleDaysWeather`
+when parameters are 
+`NA`
