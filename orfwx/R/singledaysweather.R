@@ -40,19 +40,25 @@ singleDaysWeather <- function(highTemperature = NA,
                               dataDate = Sys.Date()) {
   # Sanitize input variables and ensure correct precision
   ## First, ensure that missing values are set to NA.
-  if (highTemperature == "M" | is.null(highTemperature)) { 
+  if (highTemperature == "M" | 
+      is.null(highTemperature) | 
+      is.na(highTemperature)) { 
     highTemperature <- NA 
   }
-  if (lowTemperature == "M" | is.null(lowTemperature)) { 
+  if (lowTemperature == "M" | 
+      is.null(lowTemperature) | 
+      is.na(lowTemperature)) { 
     lowTemperature <- NA 
   }
-  if (averageTemperature == "M" | is.null(averageTemperature)) { 
+  if (averageTemperature == "M" | 
+      is.null(averageTemperature) | 
+      is.na(averageTemperature)) { 
     averageTemperature <- NA 
   }
-  if (precipitation == "M" | is.null(precipitation)) { 
+  if (precipitation == "M" | is.null(precipitation) | is.na(precipitation)) { 
     precipitation <- NA 
   }
-  if (snowfall == "M" | is.null(snowfall)) { 
+  if (snowfall == "M" | is.null(snowfall) | is.na(snowfall)) { 
     snowfall <- NA 
   }
   
@@ -62,11 +68,15 @@ singleDaysWeather <- function(highTemperature = NA,
   averageTemperature <- format(round(as.numeric(averageTemperature), 
                                      digits = 1), 
                                nsmall = 1)
-  precipitation <- as.character(format(round(as.numeric(precipitation), 
-                                             digits = 2), 
-                                       nsmall = 2))
-  snowfall <- as.character(format(round(as.numeric(snowfall), digits = 1), 
-                                  nsmall = 1))
+  if (precipitation != "T" | is.na(precipitation)) {
+    precipitation <- as.character(format(round(as.numeric(precipitation),
+                                               digits = 2),
+                                         nsmall = 2))
+  }
+  if (snowfall != "T" | is.na(snowfall)) {
+    snowfall <- as.character(format(round(as.numeric(snowfall), digits = 1),
+                                    nsmall = 1))
+  }
   dataDate <- as.Date(dataDate)
   
   # Create a data frame from the input variables
@@ -74,7 +84,41 @@ singleDaysWeather <- function(highTemperature = NA,
                     MaxTemperature = highTemperature, 
                     MinTemperature = lowTemperature, 
                     AvgTemperature = averageTemperature, 
-                    Precipitation = precipitation, 
-                    Snowfall = snowfall)
+                    CsvPrecipitation = precipitation, 
+                    CsvSnowfall = snowfall)
+  
+  # Create two new variables from CsvPrecipitation
+  sdw <- dplyr::mutate(sdw,
+                       PrecipitationInches =
+                         dplyr::if_else(is.na(CsvPrecipitation),
+                                        NA_real_,
+                                        dplyr::if_else(CsvPrecipitation == "T",
+                                                       0,
+                                                       as.numeric(as.character(
+                                                         CsvPrecipitation)))),
+                       WithPrecipitation = 
+                         dplyr::if_else(is.na(CsvPrecipitation),
+                                        NA,
+                                        dplyr::if_else(
+                                          CsvPrecipitation == "T",
+                                          TRUE,
+                                          as.logical(PrecipitationInches))))
+
+  # Create two new variables from CsvSnowfall
+  sdw <- dplyr::mutate(sdw,
+                       SnowfallInches = 
+                         dplyr::if_else(is.na(CsvSnowfall),
+                                        NA_real_,
+                                        dplyr::if_else(CsvSnowfall == "T",
+                                                       0,
+                                                       as.numeric(as.character(
+                                                         CsvSnowfall)))),
+                       WithSnowfall = 
+                         dplyr::if_else(is.na(CsvSnowfall),
+                                        NA,
+                                        dplyr::if_else(CsvSnowfall == "T",
+                                                       TRUE,
+                                                       as.logical(
+                                                         SnowfallInches))))
   return(sdw)
 }
