@@ -62,7 +62,7 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
     todayPrcp <- data.frame("year" = format(plotDate, "%Y"),
                             "precipitation" = 
                               as.numeric(as.character(
-                                  daysWeather$Precipitation)))
+                                  daysWeather$CsvPrecipitation)))
     orfPrcp <- rbind(orfPrcp, todayPrcp) # Merge with historical observations
   } else {
     daysWeatherYear <- format(Sys.Date(), "%Y")
