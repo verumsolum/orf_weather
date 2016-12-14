@@ -53,7 +53,8 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
   # Make a data frame with only the year and maximum temperature (orftmax)
   orfPrcp <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
                         "precipitation" = 
-                          as.numeric(as.character(dayInHistory$Precipitation)))
+                          as.numeric(as.character(
+                            dayInHistory$CsvPrecipitation)))
   
   # If daysWeather is not NULL, add data for current year:
   if (!is.null(daysWeather)) {
