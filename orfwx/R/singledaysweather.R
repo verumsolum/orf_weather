@@ -40,19 +40,25 @@ singleDaysWeather <- function(highTemperature = NA,
                               dataDate = Sys.Date()) {
   # Sanitize input variables and ensure correct precision
   ## First, ensure that missing values are set to NA.
-  if (highTemperature == "M" | is.null(highTemperature)) { 
+  if (highTemperature == "M" | 
+      is.null(highTemperature) | 
+      is.na(highTemperature)) { 
     highTemperature <- NA 
   }
-  if (lowTemperature == "M" | is.null(lowTemperature)) { 
+  if (lowTemperature == "M" | 
+      is.null(lowTemperature) | 
+      is.na(lowTemperature)) { 
     lowTemperature <- NA 
   }
-  if (averageTemperature == "M" | is.null(averageTemperature)) { 
+  if (averageTemperature == "M" | 
+      is.null(averageTemperature) | 
+      is.na(averageTemperature)) { 
     averageTemperature <- NA 
   }
-  if (precipitation == "M" | is.null(precipitation)) { 
+  if (precipitation == "M" | is.null(precipitation) | is.na(precipitation)) { 
     precipitation <- NA 
   }
-  if (snowfall == "M" | is.null(snowfall)) { 
+  if (snowfall == "M" | is.null(snowfall) | is.na(snowfall)) { 
     snowfall <- NA 
   }
   
