@@ -76,5 +76,39 @@ singleDaysWeather <- function(highTemperature = NA,
                     AvgTemperature = averageTemperature, 
                     CsvPrecipitation = precipitation, 
                     CsvSnowfall = snowfall)
+  
+  # Create two new variables from CsvPrecipitation
+  sdw <- dplyr::mutate(sdw,
+                       PrecipitationInches =
+                         dplyr::if_else(is.na(CsvPrecipitation),
+                                        NA_real_,
+                                        dplyr::if_else(CsvPrecipitation == "T",
+                                                       0,
+                                                       as.numeric(as.character(
+                                                         CsvPrecipitation)))),
+                       WithPrecipitation = 
+                         dplyr::if_else(is.na(CsvPrecipitation),
+                                        NA,
+                                        dplyr::if_else(
+                                          CsvPrecipitation == "T",
+                                          TRUE,
+                                          as.logical(PrecipitationInches))))
+
+  # Create two new variables from CsvSnowfall
+  sdw <- dplyr::mutate(sdw,
+                       SnowfallInches = 
+                         dplyr::if_else(is.na(CsvSnowfall),
+                                        NA_real_,
+                                        dplyr::if_else(CsvSnowfall == "T",
+                                                       0,
+                                                       as.numeric(as.character(
+                                                         CsvSnowfall)))),
+                       WithSnowfall = 
+                         dplyr::if_else(is.na(CsvSnowfall),
+                                        NA,
+                                        dplyr::if_else(CsvSnowfall == "T",
+                                                       TRUE,
+                                                       as.logical(
+                                                         SnowfallInches))))
   return(sdw)
 }
