@@ -68,11 +68,15 @@ singleDaysWeather <- function(highTemperature = NA,
   averageTemperature <- format(round(as.numeric(averageTemperature), 
                                      digits = 1), 
                                nsmall = 1)
-  precipitation <- as.character(format(round(as.numeric(precipitation), 
-                                             digits = 2), 
-                                       nsmall = 2))
-  snowfall <- as.character(format(round(as.numeric(snowfall), digits = 1), 
-                                  nsmall = 1))
+  if (precipitation != "T") {
+    precipitation <- as.character(format(round(as.numeric(precipitation),
+                                               digits = 2),
+                                         nsmall = 2))
+  }
+  if (snowfall != "T") {
+    snowfall <- as.character(format(round(as.numeric(snowfall), digits = 1),
+                                    nsmall = 1))
+  }
   dataDate <- as.Date(dataDate)
   
   # Create a data frame from the input variables
