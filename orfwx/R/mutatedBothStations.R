@@ -5,7 +5,7 @@
 #' Airport. Prior to that, they were taken at the Weather Bureau offices in
 #' the city.
 #' 
-#' @format A data frame with 52,199 observations of 12 variables.
+#' @format A data frame with 52,213 observations of 16 variables.
 #' \describe{
 #'   \item{Date}{the date of the observation}
 #'   \item{MaxTemperature}{(integer) the high temperature (in °F)}
