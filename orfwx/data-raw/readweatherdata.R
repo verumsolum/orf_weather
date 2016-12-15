@@ -49,7 +49,7 @@ mutatedBothStations <- mutate(
 mutatedBothStations <- tbl_df(mutatedBothStations)
 mutatedBothStations <- mutate(
   mutatedBothStations,
-  leapYearAwareDayOfYear = ifelse(Month > 3 & !is.leapYear(Year), 
+  leapYearAwareDayOfYear = ifelse(Month > 3 & !orfwx::is.leapYear(Year), 
                                   DayOfYear + 1, 
                                   DayOfYear),
   temperatureSpread = as.integer(MaxTemperature - MinTemperature)
