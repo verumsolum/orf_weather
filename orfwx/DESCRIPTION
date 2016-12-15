@@ -12,5 +12,6 @@ LazyData: true
 RoxygenNote: 5.0.1
 Imports: dplyr (>= 0.5.0),
     graphics (>= 3.3.2),
-    stats (>= 3.3.2)
+    stats (>= 3.3.2),
+    utils (>= 3.3.2)
 Suggests: Hmisc (>= 4.0-0)

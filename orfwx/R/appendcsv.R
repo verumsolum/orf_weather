@@ -17,11 +17,11 @@
 #' \dontrun{append.csv()}
 #' @export
 append.csv <- function(appendData, CsvFile){
-  write.table(appendData,
-              file = CsvFile, 
-              quote = FALSE, 
-              row.names = FALSE, 
-              sep = ",", 
-              append = TRUE, 
-              col.names = FALSE)
+  utils::write.table(appendData,
+                     file = CsvFile, 
+                     quote = FALSE, 
+                     row.names = FALSE, 
+                     sep = ",", 
+                     append = TRUE, 
+                     col.names = FALSE)
 }
