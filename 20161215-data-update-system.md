@@ -20,3 +20,8 @@ which need to happen to
 both the package's internal data
 and the daily data to be appended,
 so that both can call a common function.
+* Let's reimagine the setup
+instead of simply solving the current issue.
+This idea is bigger than a bullet point,
+so expand it in a new whiteboard file:
+[`data-management.md`](data-management.md)
