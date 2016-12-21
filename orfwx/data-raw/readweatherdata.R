@@ -43,14 +43,6 @@ bothStations <- rbind(airportData, earlyDowntownData)
 bothStations <- dplyr::arrange(bothStations, Date)
 # mutatedBothStations <- dplyr::mutate(
 #   bothStations,
-#   Year = as.integer(strftime(Date, 
-#                              format = "%Y")),
-#   Month = as.integer(strftime(Date, 
-#                               format = "%m")),
-#   DayOfMonth = as.integer(strftime(Date, 
-#                                    format = "%d")),
-#   DayOfYear = as.integer(strftime(Date, 
-#                                   format = "%j")),
 #   MaxTemperature = as.integer(MaxTemperature),
 #   MinTemperature = as.integer(MinTemperature)
 # )
