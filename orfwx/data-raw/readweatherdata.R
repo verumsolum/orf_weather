@@ -51,8 +51,7 @@ bothStations <- dplyr::arrange(bothStations, Date)
 #   mutatedBothStations,
 #   leapYearAwareDayOfYear = ifelse(Month > 3 & !orfwx::is.leapYear(Year), 
 #                                   DayOfYear + 1, 
-#                                   DayOfYear),
-#   temperatureSpread = as.integer(MaxTemperature - MinTemperature)
+#                                   DayOfYear)
 # )
 # 
 # # Create two new variables from CsvPrecipitation
