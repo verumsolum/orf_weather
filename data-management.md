@@ -46,3 +46,43 @@ either
 the documentation
 or
 what it might mean to incorporate it into an R workflow.
+
+### Creation of extra variables
+
+Currently,
+there are a number of extra variables,
+beyond those in the source data.
+Some of these are for convenience;
+others are for specific calculations.
+
+These extra variables are currently created
+at the time the
+`mutatedBothStations`
+data object is created.
+As a result,
+they are always part of the results returned,
+even when they are irrelevant to the current use of
+`mutatedBothStations`
+(unless removed using
+`dplyr::select`).
+
+This causes difficulties for
+`singleDaysWeather`, 
+which must re-create these adaptations for that day's weather.
+
+I believe these adaptations should be removed from
+`data-raw/readweatherdata.R`
+and moved into functions
+within the 'orfwx' package.
+
+Each adaptation
+(or related group of adaptations)
+should be a separate function,
+so that the appropriate variables for each use can be included,
+and irrelevant variables easily excluded.
+
+There is likely a place for a
+"show all information" function,
+which will collect all these extra variables,
+for those situations
+where one wishes as much information as possible about each day's weather.
