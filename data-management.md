@@ -20,6 +20,37 @@ data file that is loaded by the
 `orfwx`
 package.
 
+### Status
+
+Most of the mutation functions
+have been removed from
+`data-raw/readweatherdata.R`
+and
+added into their own functions
+with the `orfwx` package.
+
+The functions which depend on
+`mutatedBothStations`
+must still be adapted for the new changes.
+
+Also, some of the changes are still incomplete.
+
+#### To-do list
+
+* Create a 
+`removeCsvVariables` 
+function
+to remove both
+`CsvPrecipitation` and `CsvSnowfall`
+from a data frame.
+* Create functions to remove the other precipitation and snowfall variables
+* Ensure
+`data-raw/readweatherdata.R`
+is fully cleaned
+* Adapt functions which rely upon
+`mutatedBothStations`
+* Figure out how to update data more easily
+
 ### Deficiencies of the current situation
 
 #### Manual data updating
