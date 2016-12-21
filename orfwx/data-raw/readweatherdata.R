@@ -48,41 +48,6 @@ bothStations <- dplyr::arrange(bothStations, Date)
 # )
 # mutatedBothStations <- dplyr::tbl_df(mutatedBothStations)
 # 
-# # Create two new variables from CsvPrecipitation
-# mutatedBothStations <- dplyr::mutate(
-#   mutatedBothStations,
-#   PrecipitationInches = dplyr::if_else(is.na(CsvPrecipitation),
-#                                        NA_real_,
-#                                        dplyr::if_else(CsvPrecipitation == "T",
-#                                                       0,
-#                                                       as.numeric(as.character(
-#                                                         CsvPrecipitation)))),
-#   WithPrecipitation = dplyr::if_else(is.na(CsvPrecipitation),
-#                                      NA,
-#                                      dplyr::if_else(CsvPrecipitation == "T",
-#                                                     TRUE,
-#                                                     as.logical(
-#                                                       PrecipitationInches))))
-# 
-# # Rename Snowfall -> CsvSnowfall
-# mutatedBothStations <- dplyr::mutate(mutatedBothStations, 
-#                                      CsvSnowfall = Snowfall) %>%
-#   select(-Snowfall)
-# 
-# # Create two new variables from CsvSnowfall
-# mutatedBothStations <- dplyr::mutate(
-#   mutatedBothStations,
-#   SnowfallInches = dplyr::if_else(is.na(CsvSnowfall),
-#                                   NA_real_,
-#                                   dplyr::if_else(CsvSnowfall == "T",
-#                                                  0,
-#                                                  as.numeric(as.character(
-#                                                    CsvSnowfall)))),
-#   WithSnowfall = dplyr::if_else(is.na(CsvSnowfall),
-#                                 NA,
-#                                 dplyr::if_else(CsvSnowfall == "T",
-#                                                TRUE,
-#                                                as.logical(SnowfallInches))))
 
 # Save these as data.
 devtools::use_data(airportData, overwrite = TRUE)
