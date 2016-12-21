@@ -47,12 +47,6 @@ bothStations <- dplyr::arrange(bothStations, Date)
 #   MinTemperature = as.integer(MinTemperature)
 # )
 # mutatedBothStations <- dplyr::tbl_df(mutatedBothStations)
-# mutatedBothStations <- dplyr::mutate(
-#   mutatedBothStations,
-#   leapYearAwareDayOfYear = ifelse(Month > 3 & !orfwx::is.leapYear(Year), 
-#                                   DayOfYear + 1, 
-#                                   DayOfYear)
-# )
 # 
 # # Create two new variables from CsvPrecipitation
 # mutatedBothStations <- dplyr::mutate(
