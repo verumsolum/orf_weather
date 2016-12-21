@@ -5,7 +5,7 @@ library(dplyr, warn.conflicts = FALSE)
 library(devtools)
 
 # Read Norfolk airport weather data from CSV
-airport <- read.csv(
+airportData <- read.csv(
   "NorfolkIntlAp.csv",
   colClasses = c("Date",
                  "integer",
@@ -16,7 +16,7 @@ airport <- read.csv(
   strip.white = TRUE,
   na.strings = c("M", NULL)
 )
-overlappingDowntown <- read.csv(
+downtownData <- read.csv(
   "NorfolkWbCity.csv",
   colClasses = c("Date",
                  "integer",
@@ -29,11 +29,11 @@ overlappingDowntown <- read.csv(
 )
 
 # Remove duplicate dates (only use downtown before 1946-01-01)
-downtown <-
-  overlappingDowntown[which(overlappingDowntown$Date < as.Date("1946-01-01")),]
-bothStations <- rbind(airport, downtown)
-bothStations <- arrange(bothStations, Date)
-mutatedBothStations <- mutate(
+earlyDowntownData <-
+  downtownData[which(downtownData$Date < as.Date("1946-01-01")),]
+bothStations <- rbind(airport, earlyDowntownData)
+bothStations <- dplyr::arrange(bothStations, Date)
+mutatedBothStations <- dplyr::mutate(
   bothStations,
   Year = as.integer(strftime(Date, 
                              format = "%Y")),
@@ -46,8 +46,8 @@ mutatedBothStations <- mutate(
   MaxTemperature = as.integer(MaxTemperature),
   MinTemperature = as.integer(MinTemperature)
 )
-mutatedBothStations <- tbl_df(mutatedBothStations)
-mutatedBothStations <- mutate(
+mutatedBothStations <- dplyr::tbl_df(mutatedBothStations)
+mutatedBothStations <- dplyr::mutate(
   mutatedBothStations,
   leapYearAwareDayOfYear = ifelse(Month > 3 & !orfwx::is.leapYear(Year), 
                                   DayOfYear + 1, 
@@ -56,46 +56,47 @@ mutatedBothStations <- mutate(
 )
 
 # Rename Precipitation -> CsvPrecipitation
-mutatedBothStations <- mutate(mutatedBothStations, 
-                              CsvPrecipitation = Precipitation) %>%
+mutatedBothStations <- dplyr::mutate(mutatedBothStations,
+                                     CsvPrecipitation = Precipitation) %>%
   select(-Precipitation)
 
 # Create two new variables from CsvPrecipitation
-mutatedBothStations <- mutate(mutatedBothStations,
-                              PrecipitationInches =
-                                if_else(is.na(CsvPrecipitation),
-                                        NA_real_,
-                                        if_else(CsvPrecipitation == "T",
-                                                0,
-                                                as.numeric(as.character(
-                                                  CsvPrecipitation)))),
-                              WithPrecipitation =
-                                if_else(is.na(CsvPrecipitation),
-                                        NA,
-                                        if_else(CsvPrecipitation == "T",
-                                                TRUE,
-                                                as.logical(
-                                                  PrecipitationInches))))
+mutatedBothStations <- dplyr::mutate(
+  mutatedBothStations,
+  PrecipitationInches = dplyr::if_else(is.na(CsvPrecipitation),
+                                       NA_real_,
+                                       dplyr::if_else(CsvPrecipitation == "T",
+                                                      0,
+                                                      as.numeric(as.character(
+                                                        CsvPrecipitation)))),
+  WithPrecipitation = dplyr::if_else(is.na(CsvPrecipitation),
+                                     NA,
+                                     dplyr::if_else(CsvPrecipitation == "T",
+                                                    TRUE,
+                                                    as.logical(
+                                                      PrecipitationInches))))
 
 # Rename Snowfall -> CsvSnowfall
-mutatedBothStations <- mutate(mutatedBothStations, CsvSnowfall = Snowfall) %>%
+mutatedBothStations <- dplyr::mutate(mutatedBothStations, 
+                                     CsvSnowfall = Snowfall) %>%
   select(-Snowfall)
 
 # Create two new variables from CsvSnowfall
-mutatedBothStations <- mutate(mutatedBothStations,
-                              SnowfallInches =
-                                if_else(is.na(CsvSnowfall),
-                                        NA_real_,
-                                        if_else(CsvSnowfall == "T",
-                                                0,
-                                                as.numeric(as.character(
-                                                  CsvSnowfall)))),
-                              WithSnowfall =
-                                if_else(is.na(CsvSnowfall),
-                                        NA,
-                                        if_else(CsvSnowfall == "T",
-                                                TRUE,
-                                                as.logical(SnowfallInches))))
+mutatedBothStations <- dplyr::mutate(
+  mutatedBothStations,
+  SnowfallInches = dplyr::if_else(is.na(CsvSnowfall),
+                                  NA_real_,
+                                  dplyr::if_else(CsvSnowfall == "T",
+                                                 0,
+                                                 as.numeric(as.character(
+                                                   CsvSnowfall)))),
+  WithSnowfall = dplyr::if_else(is.na(CsvSnowfall),
+                                NA,
+                                dplyr::if_else(CsvSnowfall == "T",
+                                               TRUE,
+                                               as.logical(SnowfallInches))))
 
-# Save this as data.
+# Save these as data.
+devtools::use_data(airportData, overwrite = TRUE)
+devtools::use_data(earlyDowntownData, overwrite = TRUE)
 devtools::use_data(mutatedBothStations, overwrite = TRUE)
