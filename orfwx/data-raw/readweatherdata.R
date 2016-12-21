@@ -28,6 +28,14 @@ downtownData <- read.csv(
   na.strings = c("M", NULL)
 )
 
+# Rename Precipitation and Snowfall variables, so we don't have to do it later
+airportData <- dplyr::rename(airportData,
+                             CsvPrecipitation = Precipitation,
+                             CsvSnowfall = Snowfall)
+downtownData <- dplyr::rename(downtownData,
+                              CsvPrecipitation = Precipitation,
+                              CsvSnowfall = Snowfall)
+
 # Remove duplicate dates (only use downtown before 1946-01-01)
 earlyDowntownData <-
   downtownData[which(downtownData$Date < as.Date("1946-01-01")),]
@@ -54,11 +62,6 @@ mutatedBothStations <- dplyr::mutate(
                                   DayOfYear),
   temperatureSpread = as.integer(MaxTemperature - MinTemperature)
 )
-
-# Rename Precipitation -> CsvPrecipitation
-mutatedBothStations <- dplyr::mutate(mutatedBothStations,
-                                     CsvPrecipitation = Precipitation) %>%
-  select(-Precipitation)
 
 # Create two new variables from CsvPrecipitation
 mutatedBothStations <- dplyr::mutate(
