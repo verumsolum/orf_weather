@@ -31,7 +31,7 @@ downtownData <- read.csv(
 # Remove duplicate dates (only use downtown before 1946-01-01)
 earlyDowntownData <-
   downtownData[which(downtownData$Date < as.Date("1946-01-01")),]
-bothStations <- rbind(airport, earlyDowntownData)
+bothStations <- rbind(airportData, earlyDowntownData)
 bothStations <- dplyr::arrange(bothStations, Date)
 mutatedBothStations <- dplyr::mutate(
   bothStations,
