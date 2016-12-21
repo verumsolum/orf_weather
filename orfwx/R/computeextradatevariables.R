@@ -1,6 +1,6 @@
 #' Add extra date variables to a data frame
 #' 
-#' \code{addExtraDateVariables} appends extra date variables to a data frame.
+#' \code{computeExtraDateVariables} appends extra date variables to a data frame.
 #' 
 #' These variables are integers for convenience use in filtering:
 #' 
@@ -16,9 +16,9 @@
 #'   appended.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{addExtraDateVariables(bothStations)}
+#' \dontrun{computeExtraDateVariables(bothStations)}
 #' @export
-addExtraDateVariables <- function(originalFrame){
+computeExtraDateVariables <- function(originalFrame){
   originalFrame <- dplyr::mutate(
     originalFrame,
     Year = as.integer(strftime(Date,

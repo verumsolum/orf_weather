@@ -1,7 +1,7 @@
 #' Remove extra date variables from a data frame
 #' 
 #' \code{removeExtraDateVariables} removes from a data frame the date
-#' variables which have been added by \code{\link{addExtraDateVariables}}.
+#' variables which have been added by \code{\link{computeExtraDateVariables}}.
 #' 
 #' These variables are integers for convenience use in filtering, and this
 #' function may be used to keep them from cluttering up display.
@@ -13,7 +13,7 @@
 #'   removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeExtraDateVariables(addExtraDateVariables(bothStations))}
+#' \dontrun{removeExtraDateVariables(computeExtraDateVariables(bothStations))}
 #' @export
 removeExtraDateVariables <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

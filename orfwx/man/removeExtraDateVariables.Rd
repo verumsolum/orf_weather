@@ -15,7 +15,7 @@ Returns a data frame.
 }
 \description{
 \code{removeExtraDateVariables} removes from a data frame the date
-variables which have been added by \code{\link{addExtraDateVariables}}.
+variables which have been added by \code{\link{computeExtraDateVariables}}.
 }
 \details{
 These variables are integers for convenience use in filtering, and this
@@ -25,6 +25,6 @@ Errors will result if any of the variables (\code{Year}, \code{Month},
 \code{DayOfMonth}, and \code{DayOfYear}) have been renamed or deleted.
 }
 \examples{
-\dontrun{removeExtraDateVariables(addExtraDateVariables(bothStations))}
+\dontrun{removeExtraDateVariables(computeExtraDateVariables(bothStations))}
 }
 
