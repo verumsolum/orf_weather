@@ -10,13 +10,13 @@ singleDaysWeather(highTemperature = NA, lowTemperature = NA,
 }
 \arguments{
 \item{highTemperature}{An integer representing the day's high temperature
-(in °F).}
+(in degrees F).}
 
 \item{lowTemperature}{An integer representing the day's low temperature (in
-°F).}
+degrees F).}
 
 \item{averageTemperature}{A number representing the day's average
-temperature (in °F).}
+temperature (in degrees F).}
 
 \item{precipitationString}{A character vector representing the day's 
 precipitation (in inches) (or the values \code{T} for trace or \code{M} 
