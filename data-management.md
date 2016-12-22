@@ -37,10 +37,6 @@ Also, some of the changes are still incomplete.
 
 #### To-do list
 
-* Create functions to remove the other precipitation and snowfall variables
-* Ensure
-`data-raw/readweatherdata.R`
-is fully cleaned
 * Adapt functions which rely upon
 `mutatedBothStations`
 * Figure out how to update data more easily

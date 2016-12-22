@@ -41,13 +41,6 @@ earlyDowntownData <-
   downtownData[which(downtownData$Date < as.Date("1946-01-01")),]
 bothStations <- rbind(airportData, earlyDowntownData)
 bothStations <- dplyr::arrange(bothStations, Date)
-# mutatedBothStations <- dplyr::mutate(
-#   bothStations,
-#   MaxTemperature = as.integer(MaxTemperature),
-#   MinTemperature = as.integer(MinTemperature)
-# )
-# mutatedBothStations <- dplyr::tbl_df(mutatedBothStations)
-# 
 
 # Save these as data.
 devtools::use_data(airportData, overwrite = TRUE)
