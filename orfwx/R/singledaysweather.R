@@ -15,11 +15,11 @@
 #' Service for missing data.
 #' 
 #' @param highTemperature An integer representing the day's high temperature
-#'   (in °F).
+#'   (in degrees F).
 #' @param lowTemperature An integer representing the day's low temperature (in
-#'   °F).
+#'   degrees F).
 #' @param averageTemperature A number representing the day's average
-#'   temperature (in °F).
+#'   temperature (in degrees F).
 #' @param precipitationString A character vector representing the day's 
 #'   precipitation (in inches) (or the values \code{T} for trace or \code{M} 
 #'   for missing value).
