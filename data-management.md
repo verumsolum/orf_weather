@@ -112,6 +112,11 @@ where one wishes as much information as possible about each day's weather.
 
 * Create a CSV to include updated observations since the last `orfwx` release.
   * That CSV will be created in its own branch of the repository.
+    * It has been created at
+    https://github.com/verumsolum/orf_weather/raw/wxupdate/orfwx/data-raw/updates.csv
+    and is updated in the
+    `wxupdate`
+    branch of the repository.
   * Eventually, that CSV will be downloaded from within R to add to the data
   packaged with
   `orfwx`
