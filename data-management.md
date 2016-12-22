@@ -37,9 +37,12 @@ Also, some of the changes are still incomplete.
 
 #### To-do list
 
+* Write
+`getUpdatedCsv`
+function to pull data from url below
+(the *Plan for updating data* section)
 * Adapt functions which rely upon
 `mutatedBothStations`
-* Figure out how to update data more easily
 
 ### Deficiencies of the current situation
 
