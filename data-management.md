@@ -129,7 +129,6 @@ where one wishes as much information as possible about each day's weather.
   * This can also be used to combine whatever data source with
   `singleDaysWeather`
     * **NOTE**: Updates to
-    `singleDaysWeather` will be required, as it currently does much of the
+    `singleDaysWeather` were required, as it used to do much of the
     mutating that used to be found in
     `data-raw/readweatherdata.R`
-    The new version should be much simpler.
