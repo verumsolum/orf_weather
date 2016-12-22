@@ -22,7 +22,7 @@ package.
 
 ### Status
 
-Most of the mutation functions
+The mutation functions
 have been removed from
 `data-raw/readweatherdata.R`
 and
@@ -107,3 +107,24 @@ There is likely a place for a
 which will collect all these extra variables,
 for those situations
 where one wishes as much information as possible about each day's weather.
+
+### Plan for updating data
+
+* Create a CSV to include updated observations since the last `orfwx` release.
+  * That CSV will be created in its own branch of the repository.
+  * Eventually, that CSV will be downloaded from within R to add to the data
+  packaged with
+  `orfwx`
+* Create a function to combine the raw observation files.
+  * This can be used to combine
+  `airportData`
+  with
+  `earlyDowntownData`
+  and/or with the downloadable update file.
+  * This can also be used to combine whatever data source with
+  `singleDaysWeather`
+    * **NOTE**: Updates to
+    `singleDaysWeather` will be required, as it currently does much of the
+    mutating that used to be found in
+    `data-raw/readweatherdata.R`
+    The new version should be much simpler.
