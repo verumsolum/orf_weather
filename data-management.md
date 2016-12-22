@@ -37,12 +37,6 @@ Also, some of the changes are still incomplete.
 
 #### To-do list
 
-* Create a 
-`removeCsvVariables` 
-function
-to remove both
-`CsvPrecipitation` and `CsvSnowfall`
-from a data frame.
 * Create functions to remove the other precipitation and snowfall variables
 * Ensure
 `data-raw/readweatherdata.R`
