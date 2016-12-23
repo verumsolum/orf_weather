@@ -70,10 +70,10 @@ plotWithManyBars <- function(sortedData,
                     xpd = FALSE,
                     names.arg = if(showAllLabels == FALSE & 
                                    plottingPrecip == FALSE) {
-                      ifelse(sortedDataFrame$year == highlightYear |
+                      ifelse(sortedDataFrame$Year == highlightYear |
                                sortedData == minSortedData |
                                sortedData == maxSortedData,
-                             paste(sortedDataFrame$year,
+                             paste(sortedDataFrame$Year,
                                    "-",
                                    paste0(sortedData, "\u00b0")),
                              "")  # Source of labels for x axis
@@ -81,14 +81,14 @@ plotWithManyBars <- function(sortedData,
                         if(plottingPrecip == FALSE) {
                           paste(paste0(sortedData, "\u00b0"), 
                                 "\n", 
-                                sortedDataFrame$year)
+                                sortedDataFrame$Year)
                           } else {
-                            paste(sortedDataFrame$year,
+                            paste(sortedDataFrame$Year,
                                   "-",
                                   paste0(format(sortedData, nsmall = 2), '"'))
                           }
                         },
-                    col = ifelse(sortedDataFrame$year == highlightYear,
+                    col = ifelse(sortedDataFrame$Year == highlightYear,
                                  "mediumpurple",
                                  "steelblue1"),
                     border = "white")
