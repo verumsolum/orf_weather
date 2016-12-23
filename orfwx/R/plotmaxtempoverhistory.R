@@ -65,10 +65,10 @@ plotMaxTempOverHistory <- function(wxUniverse = bothStations,
                          format(Date, "%m%d") == format(plotDate, "%m%d"))
   
   # Sort orfTMax by highTemperature
-  wxUniverse <- wxUniverse[order(wxUniverse$MaxTemperature), ]
+  dayInHistory <- dayInHistory[order(dayInHistory$MaxTemperature), ]
   
-  plotWithManyBars(wxUniverse$MaxTemperature,
-                   wxUniverse,
+  plotWithManyBars(dayInHistory$MaxTemperature,
+                   dayInHistory,
                    paste("High Temperatures on", 
                          format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),
