@@ -42,6 +42,11 @@ earlyDowntownData <-
 bothStations <- rbind(airportData, earlyDowntownData)
 bothStations <- dplyr::arrange(bothStations, Date)
 
+# Convert these variables to tibbles
+airportData <- dplyr::tbl_df(airportData)
+earlyDowntownData <- dplyr::tbl_df(earlyDowntownData)
+bothStations <- dplyr::tbl_df(bothStations)
+
 # Save these as data.
 devtools::use_data(airportData, overwrite = TRUE)
 devtools::use_data(earlyDowntownData, overwrite = TRUE)
