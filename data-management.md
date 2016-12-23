@@ -41,6 +41,8 @@ Also, some of the changes are still incomplete.
 `getUpdatedCsv`
 function to pull data from url below
 (the *Plan for updating data* section)
+  * Figure out where to save the
+  `updates.csv` file.
 * Adapt functions which rely upon
 `mutatedBothStations`
 
