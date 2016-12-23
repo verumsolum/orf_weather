@@ -14,7 +14,7 @@ Downloads a file to the working directory.
 }
 \details{
 This is a convenience wrapper that uses \code{httr} to download an
-\code{update.csv} file
+\code{updates.csv} file
 }
 \examples{
 \dontrun{getUpdatedCsv()}
