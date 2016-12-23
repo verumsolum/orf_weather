@@ -53,6 +53,9 @@ plotWithManyBars <- function(sortedData,
                                     ceiling((maxSortedData) / 5) * 5),
                                   c(0,ceiling((maxSortedData) / 0.5) * 0.5))
   
+  # Adapt sortedDataFrame to include year variable
+  sortedDataFrame <- computeExtraDateVariables(sortedDataFrame)
+  
   # Graph sortedData
   graphics::barplot(as.numeric(sortedData),
                     # Text size for year label
