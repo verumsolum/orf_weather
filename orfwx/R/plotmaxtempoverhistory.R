@@ -18,6 +18,8 @@
 #' \code{daysWeather} (or, if \code{daysWeather} is not provided, the current 
 #' year) is highlighted with a bar of a different color in the barplot.
 #' 
+#' @param wxUniverse (optional) The data frame containing the weather history
+#'   to be searched. Defaults to \code{bothStations}.
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -30,7 +32,8 @@
 #' @examples
 #' plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
-plotMaxTempOverHistory <- function(plotDate = searchDate(),
+plotMaxTempOverHistory <- function(wxUniverse = bothStations,
+                                   plotDate = searchDate(),
                                    daysWeather = NULL,
                                    twoTicks = TRUE,
                                    fiveTicks = FALSE,
@@ -45,35 +48,27 @@ plotMaxTempOverHistory <- function(plotDate = searchDate(),
     } else {
       # If they match, ensure that plotDate uses the same year as
       # daysWeather$Date
-      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
-                                 "-",
-                                 format(plotDate, "%m-%d")))
+      plotDate <- as.Date(daysWeather$Date)
+      daysWeatherYear <- format(daysWeather$Date, "%Y")
+      wxUniverse <- combineDataFrames(wxUniverse, daysWeather)
     }
-  }
-  
-  # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(mutatedBothStations, 
-                         format(Date, "%m%d") == format(plotDate, "%m%d"))
-  
-  # Make a data frame with only the year and maximum temperature (orftmax)
-  orfTMax <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
-                        "highTemperature" = dayInHistory$MaxTemperature)
-  
-  # If daysWeather is not NULL, add data for current year:
-  if (!is.null(daysWeather)) {
-    daysWeatherYear <- format(daysWeather$Date, "%Y")
-    # todayTMax is temp data frame with current observations
-    todayTMax <- data.frame("year" = format(plotDate, "%Y"),
-                            "highTemperature" = daysWeather$MaxTemperature)
-    orfTMax <- rbind(orfTMax, todayTMax) # Merge with historical observations
   } else {
+    # If daysWeather is NULL
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
-  # Sort orfTMax by highTemperature
-  orfTMaxSorted <- orfTMax[order(orfTMax$highTemperature), ]
   
-  plotWithManyBars(orfTMaxSorted$highTemperature,
-                   orfTMaxSorted,
+  # Throw away extra information
+  wxUniverse <- dplyr::select(wxUniverse, Date, MaxTemperature)
+  
+  # Create a data frame with the weather for this day in history.
+  dayInHistory <- dplyr::filter(wxUniverse, 
+                         format(Date, "%m%d") == format(plotDate, "%m%d"))
+  
+  # Sort orfTMax by highTemperature
+  wxUniverse <- wxUniverse[order(wxUniverse$MaxTemperature), ]
+  
+  plotWithManyBars(wxUniverse$MaxTemperature,
+                   wxUniverse,
                    paste("High Temperatures on", 
                          format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),
