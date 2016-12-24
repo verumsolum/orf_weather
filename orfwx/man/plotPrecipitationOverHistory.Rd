@@ -4,10 +4,14 @@
 \alias{plotPrecipitationOverHistory}
 \title{Plot historical daily precipitation}
 \usage{
-plotPrecipitationOverHistory(plotDate = searchDate(), daysWeather = NULL,
-  twoTicks = TRUE, fiveTicks = FALSE, tenTicks = TRUE)
+plotPrecipitationOverHistory(wxUniverse = orfwx::bothStations,
+  plotDate = searchDate(), daysWeather = NULL, twoTicks = TRUE,
+  fiveTicks = FALSE, tenTicks = TRUE)
 }
 \arguments{
+\item{wxUniverse}{(optional) The data frame containing the weather history
+to be searched. Defaults to \code{bothStations}.}
+
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
 current date.}
 
