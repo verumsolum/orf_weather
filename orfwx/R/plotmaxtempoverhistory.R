@@ -32,7 +32,7 @@
 #' @examples
 #' plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
 #' @export
-plotMaxTempOverHistory <- function(wxUniverse = bothStations,
+plotMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
                                    plotDate = searchDate(),
                                    daysWeather = NULL,
                                    twoTicks = TRUE,
