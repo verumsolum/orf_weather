@@ -4,8 +4,8 @@
 #' day, the current date from the system clock will be used.
 #' 
 #' This function passes \code{searchMonth} and \code{searchDay} through
-#' \code{padSingleDigitInteger} and uses them to create a string.
-#' That string is converted to a date.
+#' \code{padSingleDigitInteger} and uses them, along with \code{searchYear} to 
+#' create a string. That string is converted to a date.
 #' 
 #' Errors will result from invalid months or most invalid dates. Missing
 #' parameters are replaced with the appropriate portion of the current

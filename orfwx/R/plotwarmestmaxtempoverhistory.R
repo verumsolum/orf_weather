@@ -1,6 +1,6 @@
 #' Plot warmest historical high tempertures on a single date
 #' 
-#' \code{plotWarmestMaxTempOverHistory} returns a barplot with the warmest 
+#' \code{plotWarmestMaxTempOverHistory} creates a barplot with the warmest 
 #' high temperatures of one day of the year.
 #' 
 #' If \code{daysWeather} is passed (usually using 
@@ -10,8 +10,8 @@
 #' match, the function terminates with an error message.
 #' 
 #' The data from \code{daysWeather} is added to that provided by 
-#' \code{\link{mutatedBothStations}} and the weather on the same date each year
-#' is compared.
+#' \code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+#' on the same date each year is compared.
 #' 
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
 #' temperatures for all days with a high temperature greater than or equal to 
@@ -22,6 +22,8 @@
 #' (or, if \code{daysWeather} is not provided, the current year) is 
 #' highlighted with a bar of a different color in the barplot.
 #' 
+#' @param wxUniverse (optional) The data frame containing the weather history
+#'   to be searched (defaults to \code{bothStations}).
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -32,9 +34,10 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotWarmestMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
+#' plotWarmestMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
-plotWarmestMaxTempOverHistory <- function(plotDate = searchDate(),
+plotWarmestMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
+                                          plotDate = searchDate(),
                                           daysWeather = NULL,
                                           twoTicks = TRUE,
                                           fiveTicks = FALSE,
@@ -49,58 +52,43 @@ plotWarmestMaxTempOverHistory <- function(plotDate = searchDate(),
     } else {
       # If they match, ensure that plotDate uses the same year as
       # daysWeather$Date
-      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
-                                 "-",
-                                 format(plotDate, "%m-%d")))
+      plotDate <- as.Date(daysWeather$Date)
+      daysWeatherYear <- format(daysWeather$Date, "%Y")
+      wxUniverse <- combineDataFrames(wxUniverse, daysWeather)
     }
-  }
-  
-  # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(mutatedBothStations, 
-                         format(Date, "%m%d") == format(plotDate, "%m%d"))
-  
-  # Make a data frame with only the year and maximum temperature (orftmax)
-  orfTMax <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
-                        "highTemperature" = dayInHistory$MaxTemperature)
-  
-  # If daysWeather is not NULL, add data for current year:
-  if (!is.null(daysWeather)) {
-    daysWeatherYear <- format(daysWeather$Date, "%Y")
-    # todayTMax is temp data frame with current observations
-    todayTMax <- data.frame("year" = format(plotDate, "%Y"),
-                            "highTemperature" = daysWeather$MaxTemperature)
-    orfTMax <- rbind(orfTMax, todayTMax) # Merge with historical observations
   } else {
+    # If daysWeather is NULL
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
+  
+  # Throw away extra information
+  wxUniverse <- dplyr::select(wxUniverse, Date, MaxTemperature)
+  
+  # Create a data frame with the weather for this day in history.
+  dayInHistory <- dplyr::filter(wxUniverse, 
+                         format(Date, "%m%d") == format(plotDate, "%m%d"))
+  
   # Sort orfTMax by highTemperature
-  orfTMaxSorted <- dplyr::arrange(orfTMax, dplyr::desc(highTemperature))
+  dayInHistory <- dplyr::arrange(dayInHistory, dplyr::desc(MaxTemperature))
 
   # If daysWeather has not been passed,
   # or if daysWeather$highTemperature is in the warmest 10,
   # filter orfTMaxSorted to online include those 10 (and ties)
   if (is.null(daysWeather)) {
-    orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
-                                   highTemperature >=
-                                     orfTMaxSorted$highTemperature[10])
-  } else if (orfTMaxSorted$highTemperature[10] <= daysWeather$MaxTemperature) {
-    orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
-                                   highTemperature >=
-                                     orfTMaxSorted$highTemperature[10])
+    dayInHistory <- dplyr::top_n(dayInHistory, 10, MaxTemperature)
+  } else if (dayInHistory$MaxTemperature[10] <= daysWeather$MaxTemperature) {
+    dayInHistory <- dplyr::top_n(dayInHistory, 10, MaxTemperature)
   } else {
     # Otherwise, include all days colder than (or equal to)
     # daysWeather$MaxTemperature
-    orfTMaxSorted <- dplyr::filter(orfTMaxSorted,
-                                   highTemperature >= 
-                                     daysWeather$MaxTemperature)
+    dayInHistory <- dplyr::filter(dayInHistory,
+                                  MaxTemperature >= daysWeather$MaxTemperature)
   }
   
-  orfTMaxSorted <- dplyr::arrange(orfTMaxSorted, 
-                                  highTemperature, 
-                                  as.integer(year))
+  dayInHistory <- dplyr::arrange(dayInHistory, MaxTemperature, Date)
   
-  plotWithManyBars(orfTMaxSorted$highTemperature,
-                   orfTMaxSorted,
+  plotWithManyBars(dayInHistory$MaxTemperature,
+                   dayInHistory,
                    paste("Warmest High Temperatures on", 
                          format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),

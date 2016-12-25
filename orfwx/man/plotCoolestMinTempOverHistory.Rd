@@ -4,10 +4,14 @@
 \alias{plotCoolestMinTempOverHistory}
 \title{Plot coolest historical low tempertures on a single date}
 \usage{
-plotCoolestMinTempOverHistory(plotDate = searchDate(), daysWeather = NULL,
-  twoTicks = TRUE, fiveTicks = FALSE, tenTicks = FALSE)
+plotCoolestMinTempOverHistory(wxUniverse = orfwx::bothStations,
+  plotDate = searchDate(), daysWeather = NULL, twoTicks = TRUE,
+  fiveTicks = FALSE, tenTicks = FALSE)
 }
 \arguments{
+\item{wxUniverse}{(optional) The data frame containing the weather history
+to be searched (defaults to \code{bothStations}).}
+
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
 current date.}
 
@@ -25,7 +29,7 @@ the \code{mutatedBothStations} dataset, usually passed by the
 Returns a barplot.
 }
 \description{
-\code{plotCoolestMinTempOverHistory} returns a barplot with the coolest 
+\code{plotCoolestMinTempOverHistory} creates a barplot with the coolest 
 low temperatures of one day of the year.
 }
 \details{
@@ -36,8 +40,8 @@ function or the default value of the current system date). If they do not
 match, the function terminates with an error message.
 
 The data from \code{daysWeather} is added to that provided by 
-\code{\link{mutatedBothStations}} and the weather on the same date each year
-is compared.
+\code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+on the same date each year is compared.
 
 A barplot is plotted by \code{\link{plotWithManyBars}} with the low 
 temperatures for all days with a low temperature less than or equal to that 
@@ -49,6 +53,6 @@ if \code{daysWeather} is not provided, the current year) is highlighted with
 a bar of a different color in the barplot.
 }
 \examples{
-plotCoolestMinTempOverHistory(searchDate(11, 26))  # plot for November 26th
+plotCoolestMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 }
 

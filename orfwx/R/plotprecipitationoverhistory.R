@@ -1,6 +1,6 @@
-#' Plot historical daily precipitation
+#' Plot historical daily precipitation on a single date
 #' 
-#' \code{plotPrecipitationOverHistory} returns a barplot with the precipitation
+#' \code{plotPrecipitationOverHistory} creates a barplot with the precipitation
 #' of one day each year.
 #' 
 #' If \code{daysWeather} is passed (usually using 
@@ -10,15 +10,17 @@
 #' match, the function terminates with an error message.
 #' 
 #' The data from \code{daysWeather} is added to that provided by 
-#' \code{\link{mutatedBothStations}} and the weather on the same date each year
-#' is compared.
+#' \code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+#' on the same date each year is compared.
 #' 
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the 
-#' precipitation for all days, excluding those with no precipitation or trace 
-#' precipitation. The bar for the year provided by \code{daysWeather} (or, if 
-#' \code{daysWeather} is not provided, the current year) is highlighted with 
-#' a bar of a different color in the barplot.
+#' precipitation for the same date in all years, excluding those with no
+#' precipitation or trace precipitation. The bar for the year provided by
+#' \code{daysWeather} (or, if \code{daysWeather} is not provided, the current
+#' year) is highlighted with a bar of a different color in the barplot.
 #' 
+#' @param wxUniverse (optional) The data frame containing the weather history
+#'   to be searched (defaults to \code{bothStations}).
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -29,9 +31,10 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{TRUE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotPrecipitationOverHistory(searchDate(11, 26))  # plot for November 26th
+#' plotPrecipitationOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
-plotPrecipitationOverHistory <- function(plotDate = searchDate(),
+plotPrecipitationOverHistory <- function(wxUniverse = orfwx::bothStations,
+                                         plotDate = searchDate(),
                                          daysWeather = NULL,
                                          twoTicks = TRUE,
                                          fiveTicks = FALSE,
@@ -46,45 +49,40 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
     } else {
       # If they match, ensure that plotDate uses the same year as
       # daysWeather$Date
-      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
-                                 "-",
-                                 format(plotDate, "%m-%d")))
+      plotDate <- as.Date(daysWeather$Date)
+      daysWeatherYear <- format(daysWeather$Date, "%Y")
+      wxUniverse <- combineDataFrames(wxUniverse, daysWeather)
     }
-  }
-  
-  # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(mutatedBothStations, 
-                         format(Date, "%m%d") == format(plotDate, "%m%d"))
-  
-  # Make a data frame with only the year and maximum temperature (orftmax)
-  orfPrcp <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
-                        "precipitation" = 
-                          as.numeric(as.character(
-                            dayInHistory$CsvPrecipitation)))
-  
-  # If daysWeather is not NULL, add data for current year:
-  if (!is.null(daysWeather)) {
-    daysWeatherYear <- format(daysWeather$Date, "%Y")
-    # todayPrcp is temp data frame with current observations
-    todayPrcp <- data.frame("year" = format(plotDate, "%Y"),
-                            "precipitation" = 
-                              as.numeric(as.character(
-                                  daysWeather$CsvPrecipitation)))
-    orfPrcp <- rbind(orfPrcp, todayPrcp) # Merge with historical observations
   } else {
+    # If daysWeather is NULL
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
-  # Remove years with text values for precipitation (missing and trace)
-  orfPrcp <- stats::na.omit(orfPrcp, orfPrcp$precipitation)
+  
+  # Add "extra" variables for sorting
+  wxUniverse <- convertCsvToNumericAndLogical(wxUniverse)
+  
+  # Throw away extra information
+  wxUniverse <- dplyr::select(wxUniverse,
+                              Date,
+                              CsvPrecipitation,
+                              PrecipitationInches,
+                              WithPrecipitation)
+  
+  # Create a data frame with the weather for this day in history.
+  dayInHistory <- dplyr::filter(wxUniverse, 
+                         format(Date, "%m%d") == format(plotDate, "%m%d"))
+  
+  # Remove years with missing data
+  dayInHistory <- tidyr::drop_na(dayInHistory, PrecipitationInches)
   
   # Remove years with no precipitation
-  orfPrcp <- orfPrcp[orfPrcp$precipitation > 0, ]
+  dayInHistory <- dplyr::filter(dayInHistory, PrecipitationInches > 0)
   
   # Sort orfTMax by highTemperature
-  orfPrcpSorted <- orfPrcp[order(orfPrcp$precipitation), ]
+  dayInHistory <- dayInHistory[order(dayInHistory$PrecipitationInches), ]
   
-  plotWithManyBars(orfPrcpSorted$precipitation,
-                   orfPrcpSorted,
+  plotWithManyBars(dayInHistory$PrecipitationInches,
+                   dayInHistory,
                    paste("Precipitation on", 
                          format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),
@@ -98,5 +96,5 @@ plotPrecipitationOverHistory <- function(plotDate = searchDate(),
   if (twoTicks) tickHalf()
   if (fiveTicks) tickFifth()
   if (tenTicks) tickTenth()
-  graphics::mtext('Since 1874')
+  graphics::mtext('Years \u2265 0.01" since 1874')
 }

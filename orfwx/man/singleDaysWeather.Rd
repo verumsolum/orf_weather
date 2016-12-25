@@ -5,23 +5,26 @@
 \title{Create a data frame with a single day's weather}
 \usage{
 singleDaysWeather(highTemperature = NA, lowTemperature = NA,
-  averageTemperature = NA, precipitation = NA, snowfall = NA,
+  averageTemperature = NA, precipitationString = NA, snowfallString = NA,
   dataDate = Sys.Date())
 }
 \arguments{
 \item{highTemperature}{An integer representing the day's high temperature
-(in °F).}
+(in degrees F).}
 
 \item{lowTemperature}{An integer representing the day's low temperature (in
-°F).}
+degrees F).}
 
 \item{averageTemperature}{A number representing the day's average
-temperature (in °F).}
+temperature (in degrees F).}
 
-\item{precipitation}{A number representing the day's precipitation (in 
-inches).}
+\item{precipitationString}{A character vector representing the day's 
+precipitation (in inches) (or the values \code{T} for trace or \code{M} 
+for missing value).}
 
-\item{snowfall}{A number representing the day's precipitation (in inches).}
+\item{snowfallString}{A character vector representing the day's
+precipitation (in inches) (or the values \code{T} for trace or \code{M} 
+for missing value).}
 
 \item{dataDate}{A date for the data represented (defaults to current day).}
 }
@@ -34,19 +37,15 @@ Returns a data frame.
 \details{
 There are several functions within the \code{orfwx} package that compare
 the current day's weather with past years' data. The past years' data are
-included in the provided \code{\link{mutatedBothStations}} dataset. The 
-current year's data is passed to those functions using 
-\code{singleDaysWeather}.
+included in the provided datasets. The current year's data may be passed to
+those functions using \code{singleDaysWeather}.
 
 All of the parameters are optional. Most will be set to \code{NA} if they 
 are missing. The one exception is \code{dataDate}, which is set to the 
 current date (as provided by the system), if it has not been explicitly 
-passed to \code{singleDaysWeather}.
-
-\strong{NOTE:} The values for \code{precipitation} and for \code{snowfall} 
-are coerced into numeric values. So, if one passes \code{"T"} (for
-\emph{trace} precipitation or snowfall), that ends up changed to 
-\code{NA}.
+passed to \code{singleDaysWeather}.  \bold{NOTE:} \code{M} is converted to 
+\code{NA}, since that resembles the code used by the National Weather 
+Service for missing data.
 }
 \examples{
 singleDaysWeather(55, 34, 44.5, 0.00, 0.0, searchDate(12, 1, 2016))

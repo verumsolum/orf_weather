@@ -1,6 +1,6 @@
 #' Create a barplot with temperature or precipitation data
 #' 
-#' \code{plotWithManyBars} returns a barplot with the data provided to it.
+#' \code{plotWithManyBars} creates a barplot with the data provided to it.
 #' 
 #' Missing values in both \code{sortedData} and \code{sortedDataFrame} are
 #' discarded (to avoid them being chosen as \code{maxSortedData}). Also, 
@@ -53,6 +53,9 @@ plotWithManyBars <- function(sortedData,
                                     ceiling((maxSortedData) / 5) * 5),
                                   c(0,ceiling((maxSortedData) / 0.5) * 0.5))
   
+  # Adapt sortedDataFrame to include year variable
+  sortedDataFrame <- computeExtraDateVariables(sortedDataFrame)
+  
   # Graph sortedData
   graphics::barplot(as.numeric(sortedData),
                     # Text size for year label
@@ -67,10 +70,10 @@ plotWithManyBars <- function(sortedData,
                     xpd = FALSE,
                     names.arg = if(showAllLabels == FALSE & 
                                    plottingPrecip == FALSE) {
-                      ifelse(sortedDataFrame$year == highlightYear |
+                      ifelse(sortedDataFrame$Year == highlightYear |
                                sortedData == minSortedData |
                                sortedData == maxSortedData,
-                             paste(sortedDataFrame$year,
+                             paste(sortedDataFrame$Year,
                                    "-",
                                    paste0(sortedData, "\u00b0")),
                              "")  # Source of labels for x axis
@@ -78,14 +81,14 @@ plotWithManyBars <- function(sortedData,
                         if(plottingPrecip == FALSE) {
                           paste(paste0(sortedData, "\u00b0"), 
                                 "\n", 
-                                sortedDataFrame$year)
+                                sortedDataFrame$Year)
                           } else {
-                            paste(sortedDataFrame$year,
+                            paste(sortedDataFrame$Year,
                                   "-",
                                   paste0(format(sortedData, nsmall = 2), '"'))
                           }
                         },
-                    col = ifelse(sortedDataFrame$year == highlightYear,
+                    col = ifelse(sortedDataFrame$Year == highlightYear,
                                  "mediumpurple",
                                  "steelblue1"),
                     border = "white")

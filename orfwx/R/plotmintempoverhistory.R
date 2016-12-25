@@ -1,6 +1,6 @@
-#' Plot historical low tempertures
+#' Plot historical low tempertures on a single date
 #' 
-#' \code{plotMinTempOverHistory} returns a barplot with the low temperatures
+#' \code{plotMinTempOverHistory} creates a barplot with the low temperatures
 #' of one day each year.
 #' 
 #' If \code{daysWeather} is passed (usually using 
@@ -10,14 +10,16 @@
 #' match, the function terminates with an error message.
 #' 
 #' The data from \code{daysWeather} is added to that provided by 
-#' \code{\link{mutatedBothStations}} and the weather on the same date each year
-#' is compared.
+#' \code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+#' on the same date each year is compared.
 #' 
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the low 
-#' temperatures for all days. The bar for the year provided by 
-#' \code{daysWeather} (or, if \code{daysWeather} is not provided, the current 
-#' year) is highlighted with a bar of a different color in the barplot.
+#' temperatures for the same date in all years. The bar for the year provided
+#' by \code{daysWeather} (or, if \code{daysWeather} is not provided, the
+#' current year) is highlighted with a bar of a different color in the barplot.
 #' 
+#' @param wxUniverse (optional) The data frame containing the weather history
+#'   to be searched (defaults to \code{bothStations}).
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -28,9 +30,10 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{TRUE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotMinTempOverHistory(searchDate(11, 26))  # plot for November 26th
+#' plotMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
-plotMinTempOverHistory <- function(plotDate = searchDate(),
+plotMinTempOverHistory <- function(wxUniverse = orfwx::bothStations,
+                                   plotDate = searchDate(),
                                    daysWeather = NULL,
                                    twoTicks = TRUE,
                                    fiveTicks = FALSE,
@@ -45,35 +48,27 @@ plotMinTempOverHistory <- function(plotDate = searchDate(),
     } else {
       # If they match, ensure that plotDate uses the same year as
       # daysWeather$Date
-      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
-                                 "-",
-                                 format(plotDate, "%m-%d")))
+      plotDate <- as.Date(daysWeather$Date)
+      daysWeatherYear <- format(daysWeather$Date, "%Y")
+      wxUniverse <- combineDataFrames(wxUniverse, daysWeather)
     }
-  }
-  
-  # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(mutatedBothStations, 
-                         format(Date, "%m%d") == format(plotDate, "%m%d"))
-  
-  # Make a data frame with only the year and maximum temperature (orftmax)
-  orfTMin <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
-                        "lowTemperature" = dayInHistory$MinTemperature)
-  
-  # If daysWeather is not NULL, add data for current year:
-  if (!is.null(daysWeather)) {
-    daysWeatherYear <- format(daysWeather$Date, "%Y")
-    # todayTMin is temp data frame with current observations
-    todayTMin <- data.frame("year" = format(plotDate, "%Y"),
-                            "lowTemperature" = daysWeather$MinTemperature)  
-    orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
   } else {
+    # If daysWeather is NULL
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
-  # Sort orfTMax by highTemperature
-  orfTMinSorted <- orfTMin[order(orfTMin$lowTemperature), ]
   
-  plotWithManyBars(orfTMinSorted$lowTemperature,
-                   orfTMinSorted,
+  # Throw away extra information
+  wxUniverse <- dplyr::select(wxUniverse, Date, MinTemperature)
+  
+  # Create a data frame with the weather for this day in history.
+  dayInHistory <- dplyr::filter(wxUniverse, 
+                                format(Date, "%m%d") == format(plotDate, "%m%d"))
+  
+  # Sort orfTMax by highTemperature
+  dayInHistory <- dayInHistory[order(dayInHistory$MinTemperature), ]
+  
+  plotWithManyBars(dayInHistory$MinTemperature,
+                   dayInHistory,
                    paste("Low Temperatures on", 
                          format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),
