@@ -2,13 +2,13 @@
 % Please edit documentation in R/removewithsnowfall.R
 \name{removeWithSnowfall}
 \alias{removeWithSnowfall}
-\title{Remove extra date variables from a data frame}
+\title{Remove logical snowfall variable from a data frame}
 \usage{
 removeWithSnowfall(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
-removed.}
+\item{originalFrame}{The data frame from which the \code{WithSnowfall} 
+variable is removed.}
 }
 \value{
 Returns a data frame.
@@ -18,10 +18,10 @@ Returns a data frame.
 \code{WithSnowfall} variable.
 }
 \details{
-This function may be used to keep them from cluttering up display, if the
-\code{WithSnowfall} is no longer needed.
+This function may be used to keep the \code{WithSnowfall} variable from
+cluttering up display, if it is no longer needed.
 }
 \examples{
-\dontrun{removeWithSnowfall(bothStations)}
+removeWithSnowfall(convertCsvToNumericAndLogical(airportData))
 }
 

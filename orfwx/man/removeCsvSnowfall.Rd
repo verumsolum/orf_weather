@@ -2,13 +2,13 @@
 % Please edit documentation in R/removecsvsnowfall.R
 \name{removeCsvSnowfall}
 \alias{removeCsvSnowfall}
-\title{Remove extra date variables from a data frame}
+\title{Remove original snowfall variable from a data frame}
 \usage{
 removeCsvSnowfall(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
-removed.}
+\item{originalFrame}{The data frame from which the \code{CsvSnowfall}
+variable is removed.}
 }
 \value{
 Returns a data frame.
@@ -18,10 +18,10 @@ Returns a data frame.
 \code{CsvSnowfall} variable.
 }
 \details{
-This function may be used to keep them from cluttering up display, if the
-\code{CsvSnowfall} is no longer needed.
+This function may be used to keep this information from cluttering up 
+display, if the \code{CsvSnowfall} is no longer needed.
 }
 \examples{
-\dontrun{removeCsvSnowfall(bothStations)}
+removeCsvSnowfall(bothStations)
 }
 

@@ -1,6 +1,6 @@
 #' Create a barplot with temperature or precipitation data
 #' 
-#' \code{plotWithManyBars} returns a barplot with the data provided to it.
+#' \code{plotWithManyBars} creates a barplot with the data provided to it.
 #' 
 #' Missing values in both \code{sortedData} and \code{sortedDataFrame} are
 #' discarded (to avoid them being chosen as \code{maxSortedData}). Also, 

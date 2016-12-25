@@ -25,6 +25,6 @@ Errors will result if any of the variables (\code{Year}, \code{Month},
 \code{DayOfMonth}, and \code{DayOfYear}) have been renamed or deleted.
 }
 \examples{
-\dontrun{removeExtraDateVariables(computeExtraDateVariables(bothStations))}
+removeExtraDateVariables(computeExtraDateVariables(airportData))
 }
 

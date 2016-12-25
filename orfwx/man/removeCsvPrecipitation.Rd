@@ -2,13 +2,13 @@
 % Please edit documentation in R/removecsvprecipitation.R
 \name{removeCsvPrecipitation}
 \alias{removeCsvPrecipitation}
-\title{Remove extra date variables from a data frame}
+\title{Remove original precipitation variable from a data frame}
 \usage{
 removeCsvPrecipitation(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
-removed.}
+\item{originalFrame}{The data frame from which the \code{CsvPrecipitation}
+variable is removed.}
 }
 \value{
 Returns a data frame.
@@ -18,10 +18,10 @@ Returns a data frame.
 \code{CsvPrecipitation} variable.
 }
 \details{
-This function may be used to keep them from cluttering up display, if the
-\code{CsvPrecipitation} is no longer needed.
+This function may be used to keep this information from cluttering up 
+display, if the \code{CsvPrecipitation} is no longer needed.
 }
 \examples{
-\dontrun{removeCsvPrecipitation(bothStations)}
+removeCsvPrecipitation(airportData)
 }
 

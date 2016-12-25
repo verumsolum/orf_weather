@@ -1,16 +1,16 @@
-#' Remove extra date variables from a data frame
+#' Remove snowfall amount variable from a data frame
 #' 
 #' \code{removeSnowfallInches} removes from a data frame the
 #' \code{SnowfallInches} variable.
 #' 
-#' This function may be used to keep them from cluttering up display, if the
-#' \code{SnowfallInches} is no longer needed.
+#' This function may be used to keep the \code{SnowfallInches} variable from
+#' cluttering up display, if it is no longer needed.
 #' 
-#' @param originalFrame The data frame from which the date variables are 
-#'   removed.
+#' @param originalFrame The data frame from which the \code{SnowfallInches}
+#'   variable is removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeSnowfallInches(bothStations)}
+#' removeSnowfallInches(convertCsvToNumericAndLogical(airportData))
 #' @export
 removeSnowfallInches <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/removeinchesvariables.R
 \name{removeInchesVariables}
 \alias{removeInchesVariables}
-\title{Remove extra date variables from a data frame}
+\title{Remove inches variables from a data frame}
 \usage{
 removeInchesVariables(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
+\item{originalFrame}{The data frame from which the inches variables are 
 removed.}
 }
 \value{
@@ -18,10 +18,10 @@ Returns a data frame.
 \code{PrecipitationInches} and  \code{SnowfallInches} variables.
 }
 \details{
-This function may be used to keep them from cluttering up display, if these
-variables are no longer needed.
+This function may be used to keep these variables from cluttering up
+display, if they are no longer needed.
 }
 \examples{
-\dontrun{removeInchesVariables(bothStations)}
+removeInchesVariables(convertCsvToNumericAndLogical(airportData))
 }
 

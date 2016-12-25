@@ -1,16 +1,16 @@
-#' Remove extra date variables from a data frame
+#' Remove inches variables from a data frame
 #' 
 #' \code{removeInchesVariables} removes from a data frame the
 #' \code{PrecipitationInches} and  \code{SnowfallInches} variables.
 #' 
-#' This function may be used to keep them from cluttering up display, if these
-#' variables are no longer needed.
+#' This function may be used to keep these variables from cluttering up
+#' display, if they are no longer needed.
 #' 
-#' @param originalFrame The data frame from which the date variables are 
+#' @param originalFrame The data frame from which the inches variables are 
 #'   removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeInchesVariables(bothStations)}
+#' removeInchesVariables(convertCsvToNumericAndLogical(airportData))
 #' @export
 removeInchesVariables <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame,

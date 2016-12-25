@@ -2,20 +2,19 @@
 % Please edit documentation in R/removecsvvariables.R
 \name{removeCsvVariables}
 \alias{removeCsvVariables}
-\title{Remove extra date variables from a data frame}
+\title{Remove original precipitation and snowfall variables from a data frame}
 \usage{
 removeCsvVariables(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
-removed.}
+\item{originalFrame}{The data frame from which the variables are removed.}
 }
 \value{
 Returns a data frame.
 }
 \description{
 \code{removeCsvVariables} removes from a data frame the
-\code{removeCsvPrecipitation} and \code{CsvSnowfall} variables.
+\code{CsvPrecipitation} and \code{CsvSnowfall} variables.
 }
 \details{
 This function may be used to keep them from cluttering up display, if the

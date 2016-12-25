@@ -1,4 +1,4 @@
-#' Remove extra date variables from a data frame
+#' Remove logical variables from a data frame
 #' 
 #' \code{removeWithVariables} removes from a data frame the
 #' \code{WithPrecipitation} and \code{WithSnowfall} variables.
@@ -6,11 +6,11 @@
 #' This function may be used to keep them from cluttering up display, if these
 #' variables are no longer needed.
 #' 
-#' @param originalFrame The data frame from which the date variables are 
+#' @param originalFrame The data frame from which the logical variables are 
 #'   removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeWithVariables(bothStations)}
+#' removeWithVariables(convertCsvToNumericAndLogical(airportData))
 #' @export
 removeWithVariables <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

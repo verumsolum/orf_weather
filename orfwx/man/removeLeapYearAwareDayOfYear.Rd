@@ -2,7 +2,7 @@
 % Please edit documentation in R/removeleapyearawaredayofyear.R
 \name{removeLeapYearAwareDayOfYear}
 \alias{removeLeapYearAwareDayOfYear}
-\title{Remove extra date variables from a data frame}
+\title{Remove added date variable from a data frame}
 \usage{
 removeLeapYearAwareDayOfYear(originalFrame)
 }
@@ -19,12 +19,10 @@ Returns a data frame.
 \code{\link{computeLeapYearAwareDayOfYear}}.
 }
 \details{
-This function may be used to keep them from cluttering up display, if the
-\code{LeapYearAwareDayOfYear} is no longer needed.
+This function may be used to keep this variable from cluttering up display,
+if the \code{LeapYearAwareDayOfYear} is no longer needed.
 }
 \examples{
-\dontrun{
 removeLeapYearAwareDayOfYear(computeLeapYearAwareDayOfYear(bothStations))
-}
 }
 

@@ -1,16 +1,16 @@
-#' Remove extra date variables from a data frame
+#' Remove logical precipitation variable from a data frame
 #' 
 #' \code{removeWithPrecipitation} removes from a data frame the
 #' \code{WithPrecipitation} variable.
 #' 
-#' This function may be used to keep them from cluttering up display, if the
-#' \code{WithPrecipitation} is no longer needed.
+#' This function may be used to keep the \code{WithPrecipitation} variable
+#' from cluttering up display, if it is no longer needed.
 #' 
-#' @param originalFrame The data frame from which the date variables are 
-#'   removed.
+#' @param originalFrame The data frame from which the \code{WithPrecipitation} 
+#'   variable is removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeWithPrecipitation(bothStations)}
+#' removeWithPrecipitation(convertCsvToNumericAndLogical(airportData))
 #' @export
 removeWithPrecipitation <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

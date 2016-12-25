@@ -2,13 +2,13 @@
 % Please edit documentation in R/removesnowfallinches.R
 \name{removeSnowfallInches}
 \alias{removeSnowfallInches}
-\title{Remove extra date variables from a data frame}
+\title{Remove snowfall amount variable from a data frame}
 \usage{
 removeSnowfallInches(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
-removed.}
+\item{originalFrame}{The data frame from which the \code{SnowfallInches}
+variable is removed.}
 }
 \value{
 Returns a data frame.
@@ -18,10 +18,10 @@ Returns a data frame.
 \code{SnowfallInches} variable.
 }
 \details{
-This function may be used to keep them from cluttering up display, if the
-\code{SnowfallInches} is no longer needed.
+This function may be used to keep the \code{SnowfallInches} variable from
+cluttering up display, if it is no longer needed.
 }
 \examples{
-\dontrun{removeSnowfallInches(bothStations)}
+removeSnowfallInches(convertCsvToNumericAndLogical(airportData))
 }
 

@@ -1,16 +1,16 @@
-#' Remove extra date variables from a data frame
+#' Remove precipitation amount variable from a data frame
 #' 
 #' \code{removePrecipitationInches} removes from a data frame the
 #' \code{PrecipitationInches} variable.
 #' 
-#' This function may be used to keep them from cluttering up display, if the
-#' \code{PrecipitationInches} is no longer needed.
+#' This function may be used to keep the \code{PrecipitationInches} variable
+#' from cluttering up display, if it is no longer needed.
 #' 
-#' @param originalFrame The data frame from which the date variables are 
-#'   removed.
+#' @param originalFrame The data frame from which the
+#'   \code{PrecipitationInches} variable is removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removePrecipitationInches(bothStations)}
+#' removePrecipitationInches(convertCsvToNumericAndLogical(airportData))
 #' @export
 removePrecipitationInches <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

@@ -13,7 +13,7 @@
 #'   removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeExtraDateVariables(computeExtraDateVariables(bothStations))}
+#' removeExtraDateVariables(computeExtraDateVariables(airportData))
 #' @export
 removeExtraDateVariables <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

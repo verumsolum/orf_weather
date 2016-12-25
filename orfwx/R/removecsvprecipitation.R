@@ -1,16 +1,16 @@
-#' Remove extra date variables from a data frame
+#' Remove original precipitation variable from a data frame
 #' 
 #' \code{removeCsvPrecipitation} removes from a data frame the
 #' \code{CsvPrecipitation} variable.
 #' 
-#' This function may be used to keep them from cluttering up display, if the
-#' \code{CsvPrecipitation} is no longer needed.
+#' This function may be used to keep this information from cluttering up 
+#' display, if the \code{CsvPrecipitation} is no longer needed.
 #' 
-#' @param originalFrame The data frame from which the date variables are 
-#'   removed.
+#' @param originalFrame The data frame from which the \code{CsvPrecipitation}
+#'   variable is removed.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{removeCsvPrecipitation(bothStations)}
+#' removeCsvPrecipitation(airportData)
 #' @export
 removeCsvPrecipitation <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 

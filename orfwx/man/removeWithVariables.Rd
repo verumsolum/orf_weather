@@ -2,12 +2,12 @@
 % Please edit documentation in R/removewithvariables.R
 \name{removeWithVariables}
 \alias{removeWithVariables}
-\title{Remove extra date variables from a data frame}
+\title{Remove logical variables from a data frame}
 \usage{
 removeWithVariables(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
+\item{originalFrame}{The data frame from which the logical variables are 
 removed.}
 }
 \value{
@@ -22,6 +22,6 @@ This function may be used to keep them from cluttering up display, if these
 variables are no longer needed.
 }
 \examples{
-\dontrun{removeWithVariables(bothStations)}
+removeWithVariables(convertCsvToNumericAndLogical(airportData))
 }
 

@@ -2,13 +2,13 @@
 % Please edit documentation in R/removetemperaturespread.R
 \name{removeTemperatureSpread}
 \alias{removeTemperatureSpread}
-\title{Remove extra date variables from a data frame}
+\title{Remove temperature spread variable from a data frame}
 \usage{
 removeTemperatureSpread(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
-removed.}
+\item{originalFrame}{The data frame from which the \code{TemperatureSpread} 
+variable is removed.}
 }
 \value{
 Returns a data frame.
@@ -19,10 +19,10 @@ Returns a data frame.
 \code{\link{computeTemperatureSpread}}.
 }
 \details{
-This function may be used to keep them from cluttering up display, if the
-\code{TemperatureSpread} is no longer needed.
+This function may be used to keep the \code{TemperatureSpread} variable
+from cluttering up display, if it is no longer needed.
 }
 \examples{
-\dontrun{removeTemperatureSpread(computeTemperatureSpread(bothStations))}
+removeTemperatureSpread(computeTemperatureSpread(airportData))
 }
 

@@ -32,7 +32,7 @@ current year)}
 Returns a barplot.
 }
 \description{
-\code{plotWithManyBars} returns a barplot with the data provided to it.
+\code{plotWithManyBars} creates a barplot with the data provided to it.
 }
 \details{
 Missing values in both \code{sortedData} and \code{sortedDataFrame} are
