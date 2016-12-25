@@ -22,6 +22,8 @@
 #' (or, if \code{daysWeather} is not provided, the current year) is 
 #' highlighted with a bar of a different color in the barplot.
 #' 
+#' @param wxUniverse (optional) The data frame containing the weather history
+#'   to be searched. Defaults to \code{bothStations}.
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -34,7 +36,8 @@
 #' @examples
 #' plotWarmestMinTempOverHistory(searchDate(11, 27))  # plot for November 27th
 #' @export
-plotWarmestMinTempOverHistory <- function(plotDate = searchDate(),
+plotWarmestMinTempOverHistory <- function(wxUniverse = orfwx::bothStations,
+                                          plotDate = searchDate(),
                                           daysWeather = NULL,
                                           twoTicks = TRUE,
                                           fiveTicks = FALSE,
@@ -49,58 +52,43 @@ plotWarmestMinTempOverHistory <- function(plotDate = searchDate(),
     } else {
       # If they match, ensure that plotDate uses the same year as
       # daysWeather$Date
-      plotDate <- as.Date(paste0(format(daysWeather$Date, "%Y"),
-                                 "-",
-                                 format(plotDate, "%m-%d")))
+      plotDate <- as.Date(daysWeather$Date)
+      daysWeatherYear <- format(daysWeather$Date, "%Y")
+      wxUniverse <- combineDataFrames(wxUniverse, daysWeather)
     }
-  }
-  
-  # Create a data frame with the weather for this day in history.
-  dayInHistory <- subset(mutatedBothStations, 
-                         format(Date, "%m%d") == format(plotDate, "%m%d"))
-  
-  # Make a data frame with only the year and minimum temperature (orftmin)
-  orfTMin <- data.frame("year" = as.integer(format(dayInHistory$Date, "%Y")),
-                        "lowTemperature" = dayInHistory$MinTemperature)
-  
-  # If daysWeather is not NULL, add data for current year:
-  if (!is.null(daysWeather)) {
-    daysWeatherYear <- format(daysWeather$Date, "%Y")
-    # todayTMin is temp data frame with current observations
-    todayTMin <- data.frame("year" = format(plotDate, "%Y"),
-                            "lowTemperature" = daysWeather$MinTemperature)  
-    orfTMin <- rbind(orfTMin, todayTMin) # Merge with historical observations
   } else {
+    # If daysWeather is NULL
     daysWeatherYear <- format(Sys.Date(), "%Y")
   }
-  # Sort orfTMin by lowTemperature
-  orfTMinSorted <- dplyr::arrange(orfTMin, dplyr::desc(lowTemperature))
+  
+  # Throw away extra information
+  wxUniverse <- dplyr::select(wxUniverse, Date, MinTemperature)
+  
+  # Create a data frame with the weather for this day in history.
+  dayInHistory <- dplyr::filter(wxUniverse, 
+                                format(Date, "%m%d") == format(plotDate, "%m%d"))
+  
+  # Sort orfTMax by highTemperature
+  dayInHistory <- dplyr::arrange(dayInHistory, dplyr::desc(MinTemperature))
   
   # If daysWeather has not been passed,
-  # or if daysWeather$lowTemperature is in the coldest 10,
+  # or if daysWeather$lowTemperature is in the warmest 10,
   # filter orfTMinSorted to online include those 10 (and ties)
   if (is.null(daysWeather)) {
-    orfTMinSorted <- dplyr::filter(orfTMinSorted,
-                                   lowTemperature <=
-                                     orfTMinSorted$lowTemperature[10])
-  } else if (orfTMinSorted$lowTemperature[10] <= daysWeather$MinTemperature) {
-    orfTMinSorted <- dplyr::filter(orfTMinSorted,
-                                   lowTemperature >= 
-                                     orfTMinSorted$lowTemperature[10])
+    dayInHistory <- dplyr::top_n(dayInHistory, 10, MinTemperature)
+  } else if (dayInHistory$MinTemperature[10] <= daysWeather$MinTemperature) {
+    dayInHistory <- dplyr::top_n(dayInHistory, 10, MinTemperature)
   } else {
     # Otherwise, include all days warmer than (or equal to)
     # daysWeather$MinTemperature
-    orfTMinSorted <- dplyr::filter(orfTMinSorted,
-                                   lowTemperature >= 
-                                     daysWeather$MinTemperature)
+    dayInHistory <- dplyr::filter(dayInHistory,
+                                  MinTemperature >= daysWeather$MinTemperature)
   }
   
-  orfTMinSorted <- dplyr::arrange(orfTMinSorted, 
-                                  lowTemperature, 
-                                  as.integer(year))
+  dayInHistory <- dplyr::arrange(dayInHistory, MinTemperature, Date)
   
-  plotWithManyBars(orfTMinSorted$lowTemperature,
-                   orfTMinSorted,
+  plotWithManyBars(dayInHistory$MinTemperature,
+                   dayInHistory,
                    paste("Warmest Low Temperatures on", 
                          format(plotDate, "%b %d"), 
                          "in Norfolk Weather History"),
