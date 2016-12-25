@@ -10,7 +10,7 @@ plotWarmestMinTempOverHistory(wxUniverse = orfwx::bothStations,
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
-to be searched. Defaults to \code{bothStations}.}
+to be searched (defaults to \code{bothStations}).}
 
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
 current date.}
@@ -29,7 +29,7 @@ the \code{mutatedBothStations} dataset, usually passed by the
 Returns a barplot.
 }
 \description{
-\code{plotWarmestMinTempOverHistory} returns a barplot with the warmest 
+\code{plotWarmestMinTempOverHistory} creates a barplot with the warmest 
 low temperatures of one day of the year.
 }
 \details{
@@ -40,8 +40,8 @@ function or the default value of the current system date). If they do not
 match, the function terminates with an error message.
 
 The data from \code{daysWeather} is added to that provided by 
-\code{\link{mutatedBothStations}} and the weather on the same date each year
-is compared.
+\code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+on the same date each year is compared.
 
 A barplot is plotted by \code{\link{plotWithManyBars}} with the low 
 temperatures for all days with a low temperature greater than or equal to 

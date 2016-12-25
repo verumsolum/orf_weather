@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotmaxtempoverhistory.R
 \name{plotMaxTempOverHistory}
 \alias{plotMaxTempOverHistory}
-\title{Plot historical high tempertures}
+\title{Plot historical high tempertures on a single date}
 \usage{
 plotMaxTempOverHistory(wxUniverse = orfwx::bothStations,
   plotDate = searchDate(), daysWeather = NULL, twoTicks = TRUE,
@@ -10,7 +10,7 @@ plotMaxTempOverHistory(wxUniverse = orfwx::bothStations,
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
-to be searched. Defaults to \code{bothStations}.}
+to be searched (defaults to \code{bothStations}).}
 
 \item{plotDate}{(optional) The date to be searched for, defaulting to the 
 current date.}
@@ -29,7 +29,7 @@ the \code{mutatedBothStations} dataset, usually passed by the
 Returns a barplot.
 }
 \description{
-\code{plotMaxTempOverHistory} returns a barplot with the high temperatures
+\code{plotMaxTempOverHistory} creates a barplot with the high temperatures
 of one day each year.
 }
 \details{
@@ -40,13 +40,13 @@ function or the default value of the current system date). If they do not
 match, the function terminates with an error message.
 
 The data from \code{daysWeather} is added to that provided by 
-\code{\link{mutatedBothStations}} and the weather on the same date each year
-is compared.
+\code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+on the same date each year is compared.
 
 A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
-temperatures for all days. The bar for the year provided by 
-\code{daysWeather} (or, if \code{daysWeather} is not provided, the current 
-year) is highlighted with a bar of a different color in the barplot.
+temperatures for the same date in all years. The bar for the year provided
+by \code{daysWeather} (or, if \code{daysWeather} is not provided, the
+current year) is highlighted with a bar of a different color in the barplot.
 }
 \examples{
 plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th

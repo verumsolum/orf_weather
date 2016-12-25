@@ -1,6 +1,6 @@
-#' Plot historical daily precipitation
+#' Plot historical daily precipitation on a single date
 #' 
-#' \code{plotPrecipitationOverHistory} returns a barplot with the precipitation
+#' \code{plotPrecipitationOverHistory} creates a barplot with the precipitation
 #' of one day each year.
 #' 
 #' If \code{daysWeather} is passed (usually using 
@@ -10,17 +10,17 @@
 #' match, the function terminates with an error message.
 #' 
 #' The data from \code{daysWeather} is added to that provided by 
-#' \code{\link{mutatedBothStations}} and the weather on the same date each year
-#' is compared.
+#' \code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+#' on the same date each year is compared.
 #' 
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the 
-#' precipitation for all days, excluding those with no precipitation or trace 
-#' precipitation. The bar for the year provided by \code{daysWeather} (or, if 
-#' \code{daysWeather} is not provided, the current year) is highlighted with 
-#' a bar of a different color in the barplot.
+#' precipitation for the same date in all years, excluding those with no
+#' precipitation or trace precipitation. The bar for the year provided by
+#' \code{daysWeather} (or, if \code{daysWeather} is not provided, the current
+#' year) is highlighted with a bar of a different color in the barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
-#'   to be searched. Defaults to \code{bothStations}.
+#'   to be searched (defaults to \code{bothStations}).
 #' @param plotDate (optional) The date to be searched for, defaulting to the 
 #'   current date.
 #' @param daysWeather (optional) The weather for a date not yet included in
