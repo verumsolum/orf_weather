@@ -11,10 +11,10 @@
 #'   \code{LeapYearAwareDayOfYear} variables is removed.
 #' @return Returns a data frame.
 #' @examples
-#' removeLeapYearAwareDayOfYear(computeLeapYearAwareDayOfYear(bothStations))
+#' removeLeapYearAwareDayOfYear(computeLeapYearAwareDayOfYear(computeExtraDateVariables(bothStations)))
 #' @export
 removeLeapYearAwareDayOfYear <- function(originalFrame){
   originalFrame <- dplyr::select(originalFrame, 
-                                 -LeapYearAwareDayOfYear)
+                                 -leapYearAwareDayOfYear)
   return(originalFrame)
 }

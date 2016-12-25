@@ -23,6 +23,6 @@ This function may be used to keep this variable from cluttering up display,
 if the \code{LeapYearAwareDayOfYear} is no longer needed.
 }
 \examples{
-removeLeapYearAwareDayOfYear(computeLeapYearAwareDayOfYear(bothStations))
+removeLeapYearAwareDayOfYear(computeLeapYearAwareDayOfYear(computeExtraDateVariables(bothStations)))
 }
 
