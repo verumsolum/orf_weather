@@ -1,13 +1,21 @@
-#' Combines two data frames with weather observations
+#' Retrieves a file of updated weather observations
 #' 
-#' \code{getUpdatedCsv} takes two data frames and combines them.
+#' \code{getUpdatedCsv} downloads a CSV file with weather observations.
 #' 
-#' This is a convenience wrapper that uses \code{httr} to download an
-#' \code{updates.csv} file
+#' Most observations are included within the `orfwx` package. (See 
+#' \code{\link{airportData}}, \code{\link{bothStations}}, and 
+#' \code{\link{earlyDowntownData}}).  This function is used to retrieve data
+#' newer than that included within the package.
 #' 
-#' @return Downloads a file to the working directory.
+#' \code{getUpdatedCsv} uses \code{httr} to download an
+#' \code{updates.csv} file. It is stored in the \code{~/.orfwx} directory,
+#' which this function attempts to create if it is not already present.
+#' 
+#' @return Downloads a file to the \code{~/.orfwx} directory.
 #' @examples
-#' \dontrun{getUpdatedCsv()}
+#' \dontrun{
+#' getUpdatedCsv()
+#' }
 #' @export
 getUpdatedCsv <- function(){
   gucURL <- "https://github.com/verumsolum/orf_weather/raw/wxupdate/orfwx/data-raw/updates.csv"

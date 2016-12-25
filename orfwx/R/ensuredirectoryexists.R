@@ -13,9 +13,11 @@
 #'   exist.
 #' @return Logical value: \code{TRUE} if the directory exists (either it
 #'   already existed or was created if \code{createIfMissing == TRUE}) and
-#'   \code{FALSE} if the directory does not exist.
+#'   \code{FALSE} if the directory does not already exist.
 #' @examples
-#' \dontrun{ensureDirectoryExists()}
+#' \dontrun{
+#' ensureDirectoryExists("~/.orfwx")
+#' }
 #' @export
 ensureDirectoryExists <- function(whichDirectory = "~/.orfwx",
                                   createIfMissing = FALSE){

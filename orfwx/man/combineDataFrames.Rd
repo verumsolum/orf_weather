@@ -25,6 +25,6 @@ No error checking is done: Users should ensure that both data frames are
 in the proper format.
 }
 \examples{
-\dontrun{combineDataFrames(earlyDowntownData, airportData)}
+combineDataFrames(earlyDowntownData, airportData)
 }
 

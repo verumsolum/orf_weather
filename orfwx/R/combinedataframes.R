@@ -12,7 +12,7 @@
 #' @param dfTwo The second data frame, which is added to the first.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{combineDataFrames(earlyDowntownData, airportData)}
+#' combineDataFrames(earlyDowntownData, airportData)
 #' @export
 combineDataFrames <- function(dfOne, dfTwo){
   cdf <- rbind(dfOne, dfTwo)

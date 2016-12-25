@@ -33,6 +33,6 @@ The variables added are:
 }
 }
 \examples{
-\dontrun{convertCsvToNumericAndLogical(bothStations)}
+convertCsvToNumericAndLogical(airportData)
 }
 

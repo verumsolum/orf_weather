@@ -2,13 +2,13 @@
 % Please edit documentation in R/computeleapyearawaredayofyear.R
 \name{computeLeapYearAwareDayOfYear}
 \alias{computeLeapYearAwareDayOfYear}
-\title{Add variable for temperature spread to a data frame}
+\title{Add variable with a number for each date in the year to a data frame}
 \usage{
 computeLeapYearAwareDayOfYear(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame to which the \code{TemperatureSpread} 
-variable is appended.}
+\item{originalFrame}{The data frame to which the 
+\code{LeapYearAwareDayOfYear} variable is appended.}
 }
 \value{
 Returns a data frame.
@@ -25,13 +25,11 @@ In non-leap years, where the month is greater than or equal to 3,
 In leap years, and in January and February of all years,
 \code{LeapYearAwareDayOfYear} and \code{DayOfYear} will be equal.
 
-The difference between \code{MaxTemperature} and \code{MinTemperature} is
-computed and added to a \code{TemperatureSpread} variable in the data frame.
-
-This will stop with an error if those columns are not present in
-\code{originalFrame}.
+This will stop with an error if the \code{DayOfYear} variable is not 
+present in \code{originalFrame}. Usually, this means having run
+\code{computeExtraDateVariables} first.
 }
 \examples{
-\dontrun{computeLeapYearAwareDayOfYear(bothStations)}
+computeLeapYearAwareDayOfYear(computeExtraDateVariables(airportData))
 }
 

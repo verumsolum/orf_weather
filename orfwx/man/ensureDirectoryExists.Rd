@@ -16,7 +16,7 @@ exist.}
 \value{
 Logical value: \code{TRUE} if the directory exists (either it
   already existed or was created if \code{createIfMissing == TRUE}) and
-  \code{FALSE} if the directory does not exist.
+  \code{FALSE} if the directory does not already exist.
 }
 \description{
 \code{ensureDirectoryExists} ensures that the a directory exists, and, if 
@@ -28,6 +28,8 @@ create that directory if it is missing. Both of those options can be
 overridden by parameters.
 }
 \examples{
-\dontrun{ensureDirectoryExists()}
+\dontrun{
+ensureDirectoryExists("~/.orfwx")
+}
 }
 

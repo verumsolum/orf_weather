@@ -1,6 +1,7 @@
 #' Add variable for temperature spread to a data frame
 #' 
-#' \code{computeTemperatureSpread} appends extra date variables to data frame.
+#' \code{computeTemperatureSpread} appends a variable to the data frame with
+#' the difference between the day's high and low temperatures.
 #' 
 #' The difference between \code{MaxTemperature} and \code{MinTemperature} is
 #' computed and added to a \code{TemperatureSpread} variable in the data frame.
@@ -12,7 +13,7 @@
 #'   variable is appended.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{computeTemperatureSpread(bothStations)}
+#' computeTemperatureSpread(airportData)
 #' @export
 computeTemperatureSpread <- function(originalFrame){
   originalFrame <- dplyr::mutate(

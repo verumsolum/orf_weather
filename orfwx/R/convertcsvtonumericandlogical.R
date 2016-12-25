@@ -21,7 +21,7 @@
 #'   appended.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{convertCsvToNumericAndLogical(bothStations)}
+#' convertCsvToNumericAndLogical(airportData)
 #' @export
 convertCsvToNumericAndLogical <- function(originalFrame){
   # Create two new variables from CsvPrecipitation

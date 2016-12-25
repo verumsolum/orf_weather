@@ -14,7 +14,8 @@ variable is appended.}
 Returns a data frame.
 }
 \description{
-\code{computeTemperatureSpread} appends extra date variables to data frame.
+\code{computeTemperatureSpread} appends a variable to the data frame with
+the difference between the day's high and low temperatures.
 }
 \details{
 The difference between \code{MaxTemperature} and \code{MinTemperature} is
@@ -24,6 +25,6 @@ This will stop with an error if those columns are not present in
 \code{originalFrame}.
 }
 \examples{
-\dontrun{computeTemperatureSpread(bothStations)}
+computeTemperatureSpread(airportData)
 }
 

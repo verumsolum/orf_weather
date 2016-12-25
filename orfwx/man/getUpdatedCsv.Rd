@@ -2,21 +2,29 @@
 % Please edit documentation in R/getupdatedcsv.R
 \name{getUpdatedCsv}
 \alias{getUpdatedCsv}
-\title{Combines two data frames with weather observations}
+\title{Retrieves a file of updated weather observations}
 \usage{
 getUpdatedCsv()
 }
 \value{
-Downloads a file to the working directory.
+Downloads a file to the \code{~/.orfwx} directory.
 }
 \description{
-\code{getUpdatedCsv} takes two data frames and combines them.
+\code{getUpdatedCsv} downloads a CSV file with weather observations.
 }
 \details{
-This is a convenience wrapper that uses \code{httr} to download an
-\code{updates.csv} file
+Most observations are included within the `orfwx` package. (See 
+\code{\link{airportData}}, \code{\link{bothStations}}, and 
+\code{\link{earlyDowntownData}}).  This function is used to retrieve data
+newer than that included within the package.
+
+\code{getUpdatedCsv} uses \code{httr} to download an
+\code{updates.csv} file. It is stored in the \code{~/.orfwx} directory,
+which this function attempts to create if it is not already present.
 }
 \examples{
-\dontrun{getUpdatedCsv()}
+\dontrun{
+getUpdatedCsv()
+}
 }
 

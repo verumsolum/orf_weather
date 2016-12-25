@@ -16,7 +16,7 @@
 #'   appended.
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{computeExtraDateVariables(bothStations)}
+#' computeExtraDateVariables(airportData)
 #' @export
 computeExtraDateVariables <- function(originalFrame){
   originalFrame <- dplyr::mutate(

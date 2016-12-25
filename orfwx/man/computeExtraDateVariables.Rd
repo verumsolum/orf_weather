@@ -28,6 +28,6 @@ These variables are integers for convenience use in filtering:
 }
 }
 \examples{
-\dontrun{computeExtraDateVariables(bothStations)}
+computeExtraDateVariables(airportData)
 }
 
