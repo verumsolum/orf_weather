@@ -53,6 +53,6 @@ the same temperature.) The bar for the year provided by \code{daysWeather}
 highlighted with a bar of a different color in the barplot.
 }
 \examples{
-plotWarmestMinTempOverHistory(searchDate(11, 27))  # plot for November 27th
+plotWarmestMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 27th
 }
 

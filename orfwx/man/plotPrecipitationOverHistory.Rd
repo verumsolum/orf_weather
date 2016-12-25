@@ -50,6 +50,6 @@ precipitation or trace precipitation. The bar for the year provided by
 year) is highlighted with a bar of a different color in the barplot.
 }
 \examples{
-plotPrecipitationOverHistory(searchDate(11, 26))  # plot for November 26th
+plotPrecipitationOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 }
 

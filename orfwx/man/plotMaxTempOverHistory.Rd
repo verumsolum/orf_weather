@@ -49,6 +49,6 @@ by \code{daysWeather} (or, if \code{daysWeather} is not provided, the
 current year) is highlighted with a bar of a different color in the barplot.
 }
 \examples{
-plotMaxTempOverHistory(searchDate(11, 26))  # plot for November 26th
+plotMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 }
 
