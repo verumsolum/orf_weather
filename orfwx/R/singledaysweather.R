@@ -89,6 +89,7 @@ singleDaysWeather <- function(highTemperature = NA,
                     MinTemperature = lowTemperature, 
                     AvgTemperature = averageTemperature, 
                     CsvPrecipitation = precipitationString, 
-                    CsvSnowfall = snowfallString)
+                    CsvSnowfall = snowfallString,
+                    stringsAsFactors = FALSE)
   return(sdw)
 }
