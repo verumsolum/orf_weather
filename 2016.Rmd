@@ -16,9 +16,9 @@ wxYear <- combineDataFrames(airportData, updatedData()) %>%
   removeExtraDateVariables()
 ```
 
-## MaxTemperature
+## Daily High Temperature
 
-These are the ten hottest days of 2016, by daily high temperature.
+These are the ten **hottest** days of 2016, by daily high temperature.
 
 ```{r echo = FALSE}
 wxYear %<>% mutate(Rank = as.integer(rank(-MaxTemperature)))
@@ -29,7 +29,7 @@ knitr::kable(
   )
 ```
 
-These are the ten coldest days of 2016 (by daily high temperature)
+These are the ten **coldest** days of 2016 (by daily high temperature)
 
 ```{r echo = FALSE}
 wxYear %<>% mutate(Rank = as.integer(rank(MaxTemperature)))
@@ -40,12 +40,26 @@ knitr::kable(
   )
 ```
 
-## Including Plots
+## Daily Low Temperature
 
-You can also embed plots, for example:
+These are the ten **coldest** days of 2016, by daily low temperature.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(rank(MinTemperature)))
+knitr::kable(
+  top_n(wxYear, -10, MinTemperature) %>%
+    select(Rank, Date, MinTemperature) %>%
+    arrange(MinTemperature, desc(Date))
+  )
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+These are the ten **hottest** days of 2016 (by daily low temperature).
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(rank(-MinTemperature)))
+knitr::kable(
+  top_n(wxYear, 10, MinTemperature) %>%
+    select(Rank, Date, MinTemperature) %>%
+    arrange(desc(MinTemperature), desc(Date))
+  )
+```
