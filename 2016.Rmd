@@ -127,6 +127,9 @@ wxYear <- filter(computeExtraDateVariables(combineDataFrames(bothStations,
                                                              updatedData())), 
                  Year == 2016)
 ```
+
+### High temperatures
+
 Days with highs greater than...
 
 * 100 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 100)))`
@@ -152,3 +155,29 @@ Days with highs less than...
 * 30 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 30)))`
 * 25 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))`
 * 20 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))`
+
+### Low temperatures
+
+Days with lows greater than...
+
+* 85 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 85)))`
+* 80 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 80)))`
+* 75 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 75)))`
+* 70 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 70)))`
+* 65 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 65)))`
+* 60 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 60)))`
+* 55 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 55)))`
+* 50 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 50)))`
+
+Days with lows less than...
+
+* 55 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 55)))`
+* 50 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 50)))`
+* 45 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 45)))`
+* 40 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 40)))`
+* 35 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 35)))`
+* 32 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 32)))`
+* 30 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 30)))`
+* 25 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 25)))`
+* 20 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 20)))`
+* 15 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 15)))`
