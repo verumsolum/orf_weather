@@ -6,15 +6,23 @@
 #' 
 #' Details section to be written.
 #' 
+#' @param runUpdate If \code{TRUE}, uses \code{\link{getUpdatedCsv}} to
+#'   retrieve updated data
 #' @return Returns a data frame
 #' @examples
 #' \dontrun{updatedData()}
 #' @export
-updatedData <- function(){
-  # TODO: Check for existance of file
+updatedData <- function(runUpdate = FALSE){
+  fLocation <- "~/.orfwx/updates.csv"
+  # Retrieve updates, if runUpdate == TRUE
+  if (runUpdate == TRUE) {
+    getUpdatedCsv()
+  } else if (!file.exists(fLocation)) {
+    stop("~/.orfwx/updates.csv is missing and runUpdate == FALSE")
+  }
   
   # Read updated Norfolk airport weather data from CSV
-  csvData <- utils::read.csv("~/.orfwx/updates.csv",
+  csvData <- utils::read.csv(fLocation,
                              colClasses = c("Date",
                                             "integer",
                                             "integer",
