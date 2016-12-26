@@ -88,3 +88,35 @@ knitr::kable(
     arrange(TemperatureSpread, desc(Date))
   )
 ```
+
+## Precipitation
+
+These are the ten days with the greatest precipitation.
+
+```{r echo = FALSE, warning = FALSE}
+wxYear %<>% tidyr::drop_na(CsvPrecipitation, CsvSnowfall) %>%
+  convertCsvToNumericAndLogical() %>%
+  mutate(Rank = as.integer(min_rank(-PrecipitationInches)))
+knitr::kable(
+  top_n(wxYear, 10, PrecipitationInches) %>%
+    select(Rank, Date, PrecipitationInches) %>%
+    arrange(desc(PrecipitationInches), desc(Date))
+  )
+```
+
+## Snowfall
+
+These are the days with snowfall (in inches, `T` is trace snowfall).
+
+```{r echo = FALSE, warning = FALSE}
+wxYear %<>% tidyr::drop_na(CsvPrecipitation, CsvSnowfall) %>%
+  convertCsvToNumericAndLogical() %>%
+  mutate(Rank = as.integer(min_rank(-SnowfallInches)))
+knitr::kable(
+  top_n(wxYear %>% filter(WithSnowfall == TRUE), 10, SnowfallInches) %>%
+    select(Rank, Date, SnowfallInches, CsvSnowfall) %>%
+    arrange(desc(SnowfallInches), desc(Date)) %>%
+    mutate(Snowfall = CsvSnowfall) %>%
+    select(-SnowfallInches, -CsvSnowfall)
+  )
+```
