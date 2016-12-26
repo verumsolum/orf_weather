@@ -120,3 +120,35 @@ knitr::kable(
     select(-SnowfallInches, -CsvSnowfall)
   )
 ```
+
+## Counts of temperature extremes
+```{r echo = FALSE}
+wxYear <- filter(computeExtraDateVariables(combineDataFrames(bothStations, 
+                                                             updatedData())), 
+                 Year == 2016)
+```
+Days with highs greater than...
+
+* 100 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 100)))`
+* 95 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 95)))`
+* 90 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 90)))`
+* 85 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 85)))`
+* 80 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 80)))`
+* 75 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 75)))`
+* 70 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 70)))`
+
+Days with highs less than...
+
+* 75 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 75)))`
+* 70 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 70)))`
+* 65 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 65)))`
+* 60 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 60)))`
+* 55 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 55)))`
+* 50 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 50)))`
+* 45 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 45)))`
+* 40 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 40)))`
+* 35 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 35)))`
+* 32 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 32)))`
+* 30 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 30)))`
+* 25 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))`
+* 20 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))`
