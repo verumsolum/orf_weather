@@ -42,4 +42,5 @@ updatedData <- function(runUpdate = FALSE){
   
   # Convert to tibble
   csvData <- dplyr::tbl_df(csvData)
+  return(csvData)
 }
