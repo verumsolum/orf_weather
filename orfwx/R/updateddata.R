@@ -7,7 +7,7 @@
 #' Details section to be written.
 #' 
 #' @param runUpdate If \code{TRUE}, uses \code{\link{getUpdatedCsv}} to
-#'   retrieve updated data
+#'   retrieve updated data (defaults to \code{FALSE}).
 #' @return Returns a data frame
 #' @examples
 #' \dontrun{updatedData()}

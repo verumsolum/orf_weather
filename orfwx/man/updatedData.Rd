@@ -8,7 +8,7 @@ updatedData(runUpdate = FALSE)
 }
 \arguments{
 \item{runUpdate}{If \code{TRUE}, uses \code{\link{getUpdatedCsv}} to
-retrieve updated data}
+retrieve updated data (defaults to \code{FALSE}).}
 }
 \value{
 Returns a data frame
