@@ -63,3 +63,28 @@ knitr::kable(
     arrange(desc(MinTemperature), desc(Date))
   )
 ```
+
+## Temperature Spread
+
+These are the ten days with the greatest spread between low and high temperatures.
+
+```{r echo = FALSE}
+wxYear %<>% computeTemperatureSpread() %>% 
+  mutate(Rank = as.integer(min_rank(-TemperatureSpread)))
+knitr::kable(
+  top_n(wxYear, 10, TemperatureSpread) %>%
+    select(Rank, Date, TemperatureSpread, MaxTemperature, MinTemperature) %>%
+    arrange(desc(TemperatureSpread), desc(Date))
+  )
+```
+
+These are the ten days with the smallest spread between low and high temperatures.
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(min_rank(TemperatureSpread)))
+knitr::kable(
+  top_n(wxYear, -10, TemperatureSpread) %>%
+    select(Rank, Date, TemperatureSpread, MaxTemperature, MinTemperature) %>%
+    arrange(TemperatureSpread, desc(Date))
+  )
+```
