@@ -37,3 +37,7 @@ vignettes/*.pdf
 
 # Believed to have been added by RStudio
 .Rproj.user
+
+# Don't save temporarily generated files while developing 2016.Rmd
+2016.html
+2016.pdf
