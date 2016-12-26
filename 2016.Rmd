@@ -18,7 +18,7 @@ wxYear <- combineDataFrames(airportData, updatedData()) %>%
 
 ## MaxTemperature
 
-These are the ten hottest days of 2016.
+These are the ten hottest days of 2016, by daily high temperature.
 
 ```{r}
 wxYear %<>% mutate(Rank = as.integer(rank(-MaxTemperature)))
@@ -29,10 +29,15 @@ knitr::kable(
   )
 ```
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+These are the ten coldest days of 2016 (by daily high temperature)
 
-```{r cars}
-summary(cars)
+```{r}
+wxYear %<>% mutate(Rank = as.integer(rank(MaxTemperature)))
+knitr::kable(
+  top_n(wxYear, -10, MaxTemperature) %>%
+    select(Rank, Date, MaxTemperature) %>%
+    arrange(MaxTemperature, desc(Date))
+  )
 ```
 
 ## Including Plots
