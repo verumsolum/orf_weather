@@ -2,7 +2,9 @@
 title: "2016 In Review"
 author: "Kristin Rollins"
 date: "12/26/2016"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
