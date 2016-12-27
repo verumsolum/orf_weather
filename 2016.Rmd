@@ -183,3 +183,45 @@ Days with lows less than...
 * 25 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 25)))`
 * 20 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 20)))`
 * 15 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 15)))`
+
+## Precipitation
+
+```{r echo = FALSE, warning = FALSE}
+wxYearPrecip <- select(convertCsvToNumericAndLogical(wxYear), 
+                       Date, 
+                       PrecipitationInches, 
+                       WithPrecipitation, 
+                       CsvPrecipitation)
+daysWithPrecipitation <- filter(wxYearPrecip, WithPrecipitation == TRUE) %>% 
+  count()
+daysWithTrace <- filter(wxYearPrecip, CsvPrecipitation == "T") %>% count()
+daysWithMoreThan <- function(dwmtInches) {
+  dwmtCount <- filter(wxYearPrecip, PrecipitationInches >= dwmtInches) %>%
+    count()
+  return(dwmtCount)
+}
+```
+
+There were **`r daysWithPrecipitation`** days with precipitation:
+
+* Days with trace precipitation: `r daysWithTrace`
+* Days with measurable precipitation: `r daysWithMoreThan(0.01)`
+* Days with precipitation greater than or equal to:
+    * 0.02 inches: `r daysWithMoreThan(0.02)`
+    * 0.03 inches: `r daysWithMoreThan(0.03)`
+    * 0.04 inches: `r daysWithMoreThan(0.04)`
+    * 0.05 inches: `r daysWithMoreThan(0.05)`
+    * 0.1 inches: `r daysWithMoreThan(0.1)`
+    * 0.2 inches: `r daysWithMoreThan(0.2)`
+    * 0.25 inches: `r daysWithMoreThan(0.25)`
+    * 0.5 inches: `r daysWithMoreThan(0.5)`
+    * 0.75 inches: `r daysWithMoreThan(0.75)`
+    * 1 inch: `r daysWithMoreThan(1)`
+    * 1.5 inches: `r daysWithMoreThan(1.5)`
+    * 2 inches: `r daysWithMoreThan(2)`
+    * 3 inches: `r daysWithMoreThan(3)`
+    * 4 inches: `r daysWithMoreThan(4)`
+    * 5 inches: `r daysWithMoreThan(5)`
+    * 6 inches: `r daysWithMoreThan(6)`
+    * 7 inches: `r daysWithMoreThan(7)`
+    * 8 inches: `r daysWithMoreThan(8)`
