@@ -1,9 +1,9 @@
 Package: orfwx
 Title: ORF Weather Utilities
-Version: 0.0.0.9029
+Version: 0.0.0.9030
 Authors@R: person("Kristin", "Rollins", email = "dev@kristin.verumsolum.com", 
                   role = c("aut", "cre"))
-Description: Various utilities for creating @ORF_Weather tweets
+Description: Various utilities are provided for creating @ORF_Weather tweets.
 Depends:
     R (>= 3.3.2)
 License: file LICENSE

@@ -16,7 +16,7 @@ to be searched (defaults to \code{bothStations}).}
 current date.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
-the \code{mutatedBothStations} dataset, usually passed by the
+the \code{wxUniverse} data frame, usually passed by the
 \code{singleDaysWeather} function.}
 
 \item{twoTicks}{(optional) Writes half ticks (defaults to \code{TRUE}).}
