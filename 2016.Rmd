@@ -1,7 +1,7 @@
 ---
 title: "2016 In Review"
 author: "Kristin Rollins"
-date: "12/26/2016"
+date: "12/28/2016"
 output:
   html_document: default
   pdf_document: default
@@ -132,7 +132,7 @@ wxYear <- filter(computeExtraDateVariables(combineDataFrames(bothStations,
 
 ### High temperatures
 
-Days with highs greater than...
+Days with highs greater than or equal to...
 
 * 100 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 100)))`
 * 95 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 95)))`
@@ -142,7 +142,7 @@ Days with highs greater than...
 * 75 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 75)))`
 * 70 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 70)))`
 
-Days with highs less than...
+Days with highs less than or equal to...
 
 * 75 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 75)))`
 * 70 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 70)))`
@@ -160,7 +160,7 @@ Days with highs less than...
 
 ### Low temperatures
 
-Days with lows greater than...
+Days with lows greater than or equal to...
 
 * 85 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 85)))`
 * 80 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 80)))`
@@ -171,7 +171,7 @@ Days with lows greater than...
 * 55 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 55)))`
 * 50 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 50)))`
 
-Days with lows less than...
+Days with lows less than or equal to...
 
 * 55 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 55)))`
 * 50 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 50)))`
