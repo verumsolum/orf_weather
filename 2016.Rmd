@@ -212,27 +212,28 @@ daysWithMoreThan <- function(dwmtInches) {
 
 There were **`r daysWithPrecipitation`** days with precipitation:
 
-* Days with trace precipitation: `r daysWithTrace`
-* Days with measurable precipitation: `r daysWithMoreThan(0.01)`
-* Days with precipitation greater than or equal to:
-    * 0.02 inches: `r daysWithMoreThan(0.02)`
-    * 0.03 inches: `r daysWithMoreThan(0.03)`
-    * 0.04 inches: `r daysWithMoreThan(0.04)`
-    * 0.05 inches: `r daysWithMoreThan(0.05)`
-    * 0.1 inches: `r daysWithMoreThan(0.1)`
-    * 0.2 inches: `r daysWithMoreThan(0.2)`
-    * 0.25 inches: `r daysWithMoreThan(0.25)`
-    * 0.5 inches: `r daysWithMoreThan(0.5)`
-    * 0.75 inches: `r daysWithMoreThan(0.75)`
-    * 1 inch: `r daysWithMoreThan(1)`
-    * 1.5 inches: `r daysWithMoreThan(1.5)`
-    * 2 inches: `r daysWithMoreThan(2)`
-    * 3 inches: `r daysWithMoreThan(3)`
-    * 4 inches: `r daysWithMoreThan(4)`
-    * 5 inches: `r daysWithMoreThan(5)`
-    * 6 inches: `r daysWithMoreThan(6)`
-    * 7 inches: `r daysWithMoreThan(7)`
-    * 8 inches: `r daysWithMoreThan(8)`
+| Precipitation | Frequency (in days) |
+|------:|-----:|
+| Trace | `r daysWithTrace` |
+| Measurable (>= 0.01 inches) | `r daysWithMoreThan(0.01)` |
+| >= 0.02 inches | `r daysWithMoreThan(0.02)` |
+| >= 0.03 inches | `r daysWithMoreThan(0.03)` |
+| >= 0.04 inches | `r daysWithMoreThan(0.04)` |
+| >= 0.05 inches | `r daysWithMoreThan(0.05)` |
+| >= 0.1 inches | `r daysWithMoreThan(0.1)` |
+| >= 0.2 inches | `r daysWithMoreThan(0.2)` |
+| >= 0.25 inches | `r daysWithMoreThan(0.25)` |
+| >= 0.5 inches | `r daysWithMoreThan(0.5)` |
+| >= 0.75 inches | `r daysWithMoreThan(0.75)` |
+| >= 1 inch | `r daysWithMoreThan(1)` |
+| >= 1.5 inches | `r daysWithMoreThan(1.5)` |
+| >= 2 inches | `r daysWithMoreThan(2)` |
+| >= 3 inches | `r daysWithMoreThan(3)` |
+| >= 4 inches | `r daysWithMoreThan(4)` |
+| >= 5 inches | `r daysWithMoreThan(5)` |
+| >= 6 inches | `r daysWithMoreThan(6)` |
+| >= 7 inches | `r daysWithMoreThan(7)` |
+| >= 8 inches | `r daysWithMoreThan(8)` |
 
 ## Snowfall
 
@@ -252,12 +253,13 @@ daysWithMoreThan <- function(dwmtInches) {
 
 There were **`r daysWithSnowfall`** days with snowfall:
 
-* Days with trace snowfall: `r daysWithTrace`
-* Days with measurable snowfall: `r daysWithMoreThan(0.1)`
-* Days with snowfall greater than or equal to:
-    * 0.2 inches: `r daysWithMoreThan(0.2)`
-    * 0.3 inches: `r daysWithMoreThan(0.3)`
-    * 0.4 inches: `r daysWithMoreThan(0.4)`
-    * 0.5 inches: `r daysWithMoreThan(0.5)`
-    * 1 inch: `r daysWithMoreThan(1)`
-    * 1.5 inches: `r daysWithMoreThan(1.5)`
+| Snowfall | Frequency (in days) |
+|------:|-----:|
+| Trace | `r daysWithTrace` |
+| Measurable (>= 0.1 inches) | `r daysWithMoreThan(0.1)` |
+| >= 0.2 inches | `r daysWithMoreThan(0.2)` |
+| >= 0.3 inches | `r daysWithMoreThan(0.3)` |
+| >= 0.4 inches | `r daysWithMoreThan(0.4)` |
+| >= 0.5 inches | `r daysWithMoreThan(0.5)` |
+| >= 1 inch | `r daysWithMoreThan(1)` |
+| >= 1.5 inches | `r daysWithMoreThan(1.5)` |
