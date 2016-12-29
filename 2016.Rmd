@@ -263,3 +263,30 @@ There were **`r daysWithSnowfall`** days with snowfall:
 | >= 0.5 inches | `r daysWithMoreThan(0.5)` |
 | >= 1 inch | `r daysWithMoreThan(1)` |
 | >= 1.5 inches | `r daysWithMoreThan(1.5)` |
+
+## Days with Precipitation and Snowfall by Month
+
+```{r echo = FALSE}
+wxYearPrecip %>% 
+  computeExtraDateVariables() %>% 
+  dplyr::select(Date, WithPrecipitation, Month) %>% 
+  filter(WithPrecipitation) %>% 
+  group_by(Month) %>% 
+  count() %>%
+  mutate(Precipitation= n) %>% 
+  select(-n) -> wpDf
+wxYearSnow %>%
+  computeExtraDateVariables() %>%
+  select(Date, WithSnowfall, Month) %>%
+  filter(WithSnowfall) %>%
+  group_by(Month) %>%
+  count() %>%
+  mutate(Snowfall = n) %>%
+  select(-n) -> wsDf
+bothDf <- full_join(wpDf, wsDf, by = "Month") %>%
+    mutate(Month = month.name[Month])
+bothDf[is.na(bothDf)] <- 0
+knitr::kable(
+  bothDf
+  )
+```
