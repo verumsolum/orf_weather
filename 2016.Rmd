@@ -134,55 +134,63 @@ wxYear <- filter(computeExtraDateVariables(combineDataFrames(bothStations,
 
 Days with highs greater than or equal to...
 
-* 100 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 100)))`
-* 95 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 95)))`
-* 90 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 90)))`
-* 85 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 85)))`
-* 80 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 80)))`
-* 75 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 75)))`
-* 70 degrees: `r as.integer(count(filter(wxYear, MaxTemperature >= 70)))`
+| High temperature >= | Frequency (in days) |
+|------:|-----:|
+| 100 | `r as.integer(count(filter(wxYear, MaxTemperature >= 100)))` |
+| 95 | `r as.integer(count(filter(wxYear, MaxTemperature >= 95)))` | |
+| 90 | `r as.integer(count(filter(wxYear, MaxTemperature >= 90)))` |
+| 85 | `r as.integer(count(filter(wxYear, MaxTemperature >= 85)))` |
+| 80 | `r as.integer(count(filter(wxYear, MaxTemperature >= 80)))` |
+| 75 | `r as.integer(count(filter(wxYear, MaxTemperature >= 75)))` |
+| 70 | `r as.integer(count(filter(wxYear, MaxTemperature >= 70)))` |
 
 Days with highs less than or equal to...
 
-* 75 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 75)))`
-* 70 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 70)))`
-* 65 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 65)))`
-* 60 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 60)))`
-* 55 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 55)))`
-* 50 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 50)))`
-* 45 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 45)))`
-* 40 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 40)))`
-* 35 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 35)))`
-* 32 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 32)))`
-* 30 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 30)))`
-* 25 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))`
-* 20 degrees: `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))`
+| High temperature <= | Frequency (in days) |
+|------:|-----:|
+| 75 | `r as.integer(count(filter(wxYear, MaxTemperature <= 75)))` |
+| 70 | `r as.integer(count(filter(wxYear, MaxTemperature <= 70)))` |
+| 65 | `r as.integer(count(filter(wxYear, MaxTemperature <= 65)))` |
+| 60 | `r as.integer(count(filter(wxYear, MaxTemperature <= 60)))` |
+| 55 | `r as.integer(count(filter(wxYear, MaxTemperature <= 55)))` |
+| 50 | `r as.integer(count(filter(wxYear, MaxTemperature <= 50)))` |
+| 45 | `r as.integer(count(filter(wxYear, MaxTemperature <= 45)))` |
+| 40 | `r as.integer(count(filter(wxYear, MaxTemperature <= 40)))` |
+| 35 | `r as.integer(count(filter(wxYear, MaxTemperature <= 35)))` |
+| 32 | `r as.integer(count(filter(wxYear, MaxTemperature <= 32)))` |
+| 30 | `r as.integer(count(filter(wxYear, MaxTemperature <= 30)))` |
+| 25 | `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))` |
+| 20 | `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))` |
 
 ### Low temperatures
 
 Days with lows greater than or equal to...
 
-* 85 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 85)))`
-* 80 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 80)))`
-* 75 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 75)))`
-* 70 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 70)))`
-* 65 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 65)))`
-* 60 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 60)))`
-* 55 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 55)))`
-* 50 degrees: `r as.integer(count(filter(wxYear, MinTemperature >= 50)))`
+| Low temperature >= | Frequency (in days) |
+|------:|-----:|
+| 85 | `r as.integer(count(filter(wxYear, MinTemperature >= 85)))` |
+| 80 | `r as.integer(count(filter(wxYear, MinTemperature >= 80)))` |
+| 75 | `r as.integer(count(filter(wxYear, MinTemperature >= 75)))` |
+| 70 | `r as.integer(count(filter(wxYear, MinTemperature >= 70)))` |
+| 65 | `r as.integer(count(filter(wxYear, MinTemperature >= 65)))` |
+| 60 | `r as.integer(count(filter(wxYear, MinTemperature >= 60)))` |
+| 55 | `r as.integer(count(filter(wxYear, MinTemperature >= 55)))` |
+| 50 | `r as.integer(count(filter(wxYear, MinTemperature >= 50)))` |
 
 Days with lows less than or equal to...
 
-* 55 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 55)))`
-* 50 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 50)))`
-* 45 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 45)))`
-* 40 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 40)))`
-* 35 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 35)))`
-* 32 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 32)))`
-* 30 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 30)))`
-* 25 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 25)))`
-* 20 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 20)))`
-* 15 degrees: `r as.integer(count(filter(wxYear, MinTemperature <= 15)))`
+| Low temperature >= | Frequency (in days) |
+|------:|-----:|
+| 55 | `r as.integer(count(filter(wxYear, MinTemperature <= 55)))` |
+| 50 | `r as.integer(count(filter(wxYear, MinTemperature <= 50)))` |
+| 45 | `r as.integer(count(filter(wxYear, MinTemperature <= 45)))` |
+| 40 | `r as.integer(count(filter(wxYear, MinTemperature <= 40)))` |
+| 35 | `r as.integer(count(filter(wxYear, MinTemperature <= 35)))` |
+| 32 | `r as.integer(count(filter(wxYear, MinTemperature <= 32)))` |
+| 30 | `r as.integer(count(filter(wxYear, MinTemperature <= 30)))` |
+| 25 | `r as.integer(count(filter(wxYear, MinTemperature <= 25)))` |
+| 20 | `r as.integer(count(filter(wxYear, MinTemperature <= 20)))` |
+| 15 | `r as.integer(count(filter(wxYear, MinTemperature <= 15)))` |
 
 ## Precipitation
 
