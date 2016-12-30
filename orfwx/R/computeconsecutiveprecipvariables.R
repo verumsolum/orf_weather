@@ -14,7 +14,7 @@
 computeConsecutivePrecipVariables <- function(originalFrame) {
   # Set up variables for consecutive days...
   originalFrame[["consecutivePrecipitation"]] <- 0
-  originalFrame[["consecutiveSnowfall"]] <-0
+  originalFrame[["consecutiveSnowfall"]] <- 0
 
   for(i in 1:nrow(originalFrame)) {
     # For each row, first calculate for precipitation.
