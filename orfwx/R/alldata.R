@@ -8,7 +8,7 @@
 #' 
 #' @return Returns a data frame.
 #' @examples
-#' combineDataFrames(earlyDowntownData, airportData)
+#' allData()
 #' @export
 allData <- function(){
   dfAll <- combineDataFrames(bothStations, updatedData())
