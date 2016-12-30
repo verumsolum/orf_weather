@@ -38,6 +38,6 @@ incorrect.
 }
 \examples{
 computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(
-                                    computeExtraDateVariables(airportData)))
+                                    airportData))
 }
 
