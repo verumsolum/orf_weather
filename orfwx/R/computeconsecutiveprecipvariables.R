@@ -1,12 +1,28 @@
 #' Calculate consecutive days of precipitation
 #' 
-#' \code{computeConsecutivePrecipVariables} appends a 
-#' \code{consecutivePrecipitation} variable containing an integer.
+#' \code{computeConsecutivePrecipVariables} appends 
+#' \code{consecutivePrecipitation} and \code{consecutiveSnowfall} variables, 
+#' each containing an integer representing the number of consecutive days with
+#' recorded precipitation and snowfall, respectively.
 #' 
-#' Details section to be added.
+#' The two variables (\code{consecutivePrecipitation} and 
+#' \code{consecutiveSnowfall}) are initialized with a value of 0. Then, a
+#' for loop is used which leaves that initialized value alone if
+#' \code{WithPrecipitation} (or \code{WithSnowfall}) is \code{FALSE} or 
+#' \code{NA}. If the \dQuote{With* variable} is \code{TRUE}, the value of the
+#' previous day's \dQuote{consecutive* variable} is taken and incremented
+#' by 1.
+#' 
+#' This function assumes that \code{originalFrame} contains the precipitation
+#' variables (which are usually created by 
+#' \code{\link{convertCsvToNumericAndLogical}}) and assumes that 
+#' \code{originalFrame} is sorted from earliest to most recent. If either of
+#' these is not the case, this function will fail or return data which are
+#' incorrect.
 #' 
 #' @param originalFrame The data frame to which the 
-#'   \code{consecutivePrecipitation} variable is appended.
+#'   \code{consecutivePrecipitation} and \code{consecutiveSnowfall} variables 
+#'   will be appended.
 #' @return Returns a data frame.
 #' @examples
 #' computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(computeExtraDateVariables(airportData)))
