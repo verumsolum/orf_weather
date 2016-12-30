@@ -37,6 +37,7 @@ these is not the case, this function will fail or return data which are
 incorrect.
 }
 \examples{
-computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(computeExtraDateVariables(airportData)))
+computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(
+                                    computeExtraDateVariables(airportData)))
 }
 

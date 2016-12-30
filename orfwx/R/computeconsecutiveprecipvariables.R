@@ -25,7 +25,8 @@
 #'   will be appended.
 #' @return Returns a data frame.
 #' @examples
-#' computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(computeExtraDateVariables(airportData)))
+#' computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(
+#'                                     computeExtraDateVariables(airportData)))
 #' @export
 computeConsecutivePrecipVariables <- function(originalFrame) {
   # Ensure originalFrame is sorted by date.
