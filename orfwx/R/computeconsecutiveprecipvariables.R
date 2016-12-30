@@ -5,13 +5,13 @@
 #' each containing an integer representing the number of consecutive days with
 #' recorded precipitation and snowfall, respectively.
 #' 
-#' The two variables (\code{consecutivePrecipitation} and 
-#' \code{consecutiveSnowfall}) are initialized with a value of 0. Then, a
-#' for loop is used which leaves that initialized value alone if
-#' \code{WithPrecipitation} (or \code{WithSnowfall}) is \code{FALSE} or 
-#' \code{NA}. If the \dQuote{With* variable} is \code{TRUE}, the value of the
-#' previous day's \dQuote{consecutive* variable} is taken and incremented
-#' by 1.
+#' This function sorts \code{originalFrame} by date, and then the two 
+#' variables (\code{consecutivePrecipitation} and \code{consecutiveSnowfall}) 
+#' are initialized with a value of 0. Then, a for loop is used which leaves 
+#' that initialized value alone if \code{WithPrecipitation} (or 
+#' \code{WithSnowfall}) is \code{FALSE} or \code{NA}. If the 
+#' \dQuote{With* variable} is \code{TRUE}, the value of the previous day's
+#' \dQuote{consecutive* variable} is taken and incremented by 1.
 #' 
 #' This function assumes that \code{originalFrame} contains the precipitation
 #' variables (which are usually created by 
@@ -28,6 +28,9 @@
 #' computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(computeExtraDateVariables(airportData)))
 #' @export
 computeConsecutivePrecipVariables <- function(originalFrame) {
+  # Ensure originalFrame is sorted by date.
+  originalFrame <- dplyr::arrange(originalFrame, Date)
+  
   # Set up variables for consecutive days...
   originalFrame[["consecutivePrecipitation"]] <- 0
   originalFrame[["consecutiveSnowfall"]] <- 0
