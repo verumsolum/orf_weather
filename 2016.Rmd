@@ -290,3 +290,42 @@ knitr::kable(
   bothDf
   )
 ```
+
+## Consecutive days of precipitation
+
+```{r echo = FALSE}
+# This is beyond my powers of R, especially in the short time remaining in 2016.
+# If this is being redone in a future year, this might be redone using
+# computeConsecutivePrecipVariables
+```
+
+| Rank | Dates | Consecutive days of precipitation |
+|-----:|:------|-----:|
+| 1 | May 1-7 | 7 |
+| 2 | June 30-July 5 | 6 |
+| 3 | December 4-8 | 5 |
+| 3 | July 27-31 | 5 |
+| 3 | May 10-14 | 5 |
+| 6 | September 19-22 | 4 |
+| 6 | September 1-4 | 4 |
+| 6 | March 25-28 | 4 |
+| 6 | February 21-24 | 4 |
+| 6 | February 14-17 | 4 |
+| 6 | January 7-10 | 4 |
+
+**Most recent stretch of: *3 days:*** December 17-19; ***2+ days:*** December 17-19; *Exactly 2 days:* December 12-13; ***1 day:*** December 29.
+
+## Consecutive days of snowfall
+
+| Rank | Dates | Consecutive days of snowfall |
+|-----:|:------|-----:|
+| 1 | January 22-24 | 3 |
+| 2 | March 3-4 | 2 |
+| 2 | February 14-15 | 2 |
+| 4 | April 9 | 1 |
+| 4 | April 5 | 1 |
+| 4 | February 12 | 1 |
+| 4 | February 5 | 1 |
+| 4 | January 20 | 1 |
+| 4 | January 17 | 1 |
+| 4 | January 5 | 1 |
