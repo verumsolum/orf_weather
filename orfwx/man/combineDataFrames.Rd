@@ -18,8 +18,8 @@ Returns a data frame.
 \code{combineDataFrames} takes two data frames and combines them.
 }
 \details{
-This is a convenience wrapper that uses \code{rbind} to append to 
-a CSV, then sorts the data frame by date.
+This is a convenience wrapper that uses \code{rbind} to combine two data
+frames, then sorts the resulting data frame by date.
 
 No error checking is done: Users should ensure that both data frames are
 in the proper format.
