@@ -322,7 +322,7 @@ knitr::kable(
 | 6 | February 14-17 | 4 |
 | 6 | January 7-10 | 4 |
 
-**Most recent stretch of: *3 days:*** December 17-19; ***2+ days:*** December 17-19; *Exactly 2 days:* December 12-13; ***1 day:*** December 29.
+**Most recent stretch of:** ***3 days:*** December 17-19; ***2+ days:*** December 17-19; *Exactly 2 days:* December 12-13; ***1 day:*** December 29.
 
 ## Consecutive days of snowfall
 
