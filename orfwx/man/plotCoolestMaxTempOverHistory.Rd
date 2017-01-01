@@ -5,15 +5,15 @@
 \title{Plot coolest historical high tempertures on a single date}
 \usage{
 plotCoolestMaxTempOverHistory(wxUniverse = orfwx::bothStations,
-  plotDate = searchDate(), daysWeather = NULL, twoTicks = TRUE,
+  plotDate = yesterdate(), daysWeather = NULL, twoTicks = TRUE,
   fiveTicks = FALSE, tenTicks = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
 to be searched (defaults to \code{bothStations}).}
 
-\item{plotDate}{(optional) The date to be searched for, defaulting to the 
-current date.}
+\item{plotDate}{(optional) The date to be searched for, defaulting to 
+yesterday's date.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
 the \code{wxUniverse} data frame, usually passed by the

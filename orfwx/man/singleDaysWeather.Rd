@@ -6,7 +6,7 @@
 \usage{
 singleDaysWeather(highTemperature = NA, lowTemperature = NA,
   averageTemperature = NA, precipitationString = NA, snowfallString = NA,
-  dataDate = Sys.Date())
+  dataDate = yesterdate())
 }
 \arguments{
 \item{highTemperature}{An integer representing the day's high temperature
@@ -26,7 +26,7 @@ for missing value).}
 precipitation (in inches) (or the values \code{T} for trace or \code{M} 
 for missing value).}
 
-\item{dataDate}{A date for the data represented (defaults to current day).}
+\item{dataDate}{A date for the data represented (defaults to yesterday).}
 }
 \value{
 Returns a data frame.
@@ -36,13 +36,13 @@ Returns a data frame.
 }
 \details{
 There are several functions within the \code{orfwx} package that compare
-the current day's weather with past years' data. The past years' data are
+a day's weather with past years' data. The past years' data are
 included in the provided datasets. The current year's data may be passed to
 those functions using \code{singleDaysWeather}.
 
 All of the parameters are optional. Most will be set to \code{NA} if they 
-are missing. The one exception is \code{dataDate}, which is set to the 
-current date (as provided by the system), if it has not been explicitly 
+are missing. The one exception is \code{dataDate}, which is set to 
+yesterday's date (as provided by the system), if it has not been explicitly 
 passed to \code{singleDaysWeather}.  \bold{NOTE:} \code{M} is converted to 
 \code{NA}, since that resembles the code used by the National Weather 
 Service for missing data.
