@@ -1,7 +1,7 @@
 ---
 title: "2016 In Review"
 author: "Kristin Rollins"
-date: "12/28/2016"
+date: "January 1, 2017"
 output:
   html_document: default
   pdf_document: default
@@ -41,6 +41,8 @@ knitr::kable(
     arrange(MaxTemperature, desc(Date))
   )
 ```
+
+\pagebreak
 
 ## Daily Low Temperature
 
@@ -106,6 +108,8 @@ knitr::kable(
   )
 ```
 
+\pagebreak
+
 ## Snowfall
 
 These are the days with snowfall (in inches, `T` is trace snowfall).
@@ -143,6 +147,8 @@ Days with highs greater than or equal to...
 | 80 | `r as.integer(count(filter(wxYear, MaxTemperature >= 80)))` |
 | 75 | `r as.integer(count(filter(wxYear, MaxTemperature >= 75)))` |
 | 70 | `r as.integer(count(filter(wxYear, MaxTemperature >= 70)))` |
+
+\pagebreak
 
 Days with highs less than or equal to...
 
@@ -191,6 +197,8 @@ Days with lows less than or equal to...
 | 25 | `r as.integer(count(filter(wxYear, MinTemperature <= 25)))` |
 | 20 | `r as.integer(count(filter(wxYear, MinTemperature <= 20)))` |
 | 15 | `r as.integer(count(filter(wxYear, MinTemperature <= 15)))` |
+
+\pagebreak
 
 ## Precipitation
 
