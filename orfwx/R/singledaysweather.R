@@ -3,13 +3,13 @@
 #' \code{singleDaysWeather} returns a data frame.
 #' 
 #' There are several functions within the \code{orfwx} package that compare
-#' the current day's weather with past years' data. The past years' data are
+#' a day's weather with past years' data. The past years' data are
 #' included in the provided datasets. The current year's data may be passed to
 #' those functions using \code{singleDaysWeather}.
 #' 
 #' All of the parameters are optional. Most will be set to \code{NA} if they 
-#' are missing. The one exception is \code{dataDate}, which is set to the 
-#' current date (as provided by the system), if it has not been explicitly 
+#' are missing. The one exception is \code{dataDate}, which is set to 
+#' yesterday's date (as provided by the system), if it has not been explicitly 
 #' passed to \code{singleDaysWeather}.  \bold{NOTE:} \code{M} is converted to 
 #' \code{NA}, since that resembles the code used by the National Weather 
 #' Service for missing data.
