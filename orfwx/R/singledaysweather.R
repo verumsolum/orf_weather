@@ -26,7 +26,7 @@
 #' @param snowfallString A character vector representing the day's
 #'   precipitation (in inches) (or the values \code{T} for trace or \code{M} 
 #'   for missing value).
-#' @param dataDate A date for the data represented (defaults to current day).
+#' @param dataDate A date for the data represented (defaults to yesterday).
 #' @return Returns a data frame.
 #' @examples
 #' singleDaysWeather(55, 34, 44.5, 0.00, 0.0, searchDate(12, 1, 2016))
@@ -36,7 +36,7 @@ singleDaysWeather <- function(highTemperature = NA,
                               averageTemperature = NA,
                               precipitationString = NA,
                               snowfallString = NA,
-                              dataDate = Sys.Date()) {
+                              dataDate = yesterdate()) {
   # Sanitize input variables and ensure correct precision
   ## First, ensure that missing values are set to NA.
   if (highTemperature == "M" | 

@@ -20,8 +20,8 @@
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
 #'   to be searched (defaults to \code{bothStations}).
-#' @param plotDate (optional) The date to be searched for, defaulting to the 
-#'   current date.
+#' @param plotDate (optional) The date to be searched for, defaulting to
+#'   yesterday's date.
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{wxUniverse} data frame, usually passed by the
 #'   \code{singleDaysWeather} function.
@@ -33,7 +33,7 @@
 #' plotMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
 plotMinTempOverHistory <- function(wxUniverse = orfwx::bothStations,
-                                   plotDate = searchDate(),
+                                   plotDate = yesterdate(),
                                    daysWeather = NULL,
                                    twoTicks = TRUE,
                                    fiveTicks = FALSE,
