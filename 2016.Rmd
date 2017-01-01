@@ -4,6 +4,7 @@ author: "Kristin Rollins"
 date: "January 1, 2017"
 output:
   html_document: default
+  github_document: default
   pdf_document: default
 ---
 
