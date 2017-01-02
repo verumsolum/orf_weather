@@ -5,15 +5,15 @@
 \title{Plot warmest historical high tempertures on a single date}
 \usage{
 plotWarmestMaxTempOverHistory(wxUniverse = orfwx::bothStations,
-  plotDate = searchDate(), daysWeather = NULL, twoTicks = TRUE,
+  plotDate = yesterdate(), daysWeather = NULL, twoTicks = TRUE,
   fiveTicks = FALSE, tenTicks = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
 to be searched (defaults to \code{bothStations}).}
 
-\item{plotDate}{(optional) The date to be searched for, defaulting to the 
-current date.}
+\item{plotDate}{(optional) The date to be searched for, defaulting to
+yesterday's date.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
 the \code{wxUniverse} data frame, usually passed by the
@@ -49,7 +49,7 @@ that provided by \code{daysWeather}. (In all cases, the ten warmest years
 shown, along with any ties, with additional years added until the year 
 are provided by \code{daysWeather} is shown, and also all years tied with 
 the same temperature.) The bar for the year provided by \code{daysWeather} 
-(or, if \code{daysWeather} is not provided, the current year) is 
+(or, if \code{daysWeather} is not provided, the year as of yesterday) is 
 highlighted with a bar of a different color in the barplot.
 }
 \examples{

@@ -16,12 +16,13 @@
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
 #' temperatures for the same date in all years. The bar for the year provided
 #' by \code{daysWeather} (or, if \code{daysWeather} is not provided, the
-#' current year) is highlighted with a bar of a different color in the barplot.
+#' year as of yesterday) is highlighted with a bar of a different color in the 
+#' barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
 #'   to be searched (defaults to \code{bothStations}).
-#' @param plotDate (optional) The date to be searched for, defaulting to the 
-#'   current date.
+#' @param plotDate (optional) The date to be searched for, defaulting to
+#'   yesterday's date.
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{wxUniverse} data frame, usually passed by the
 #'   \code{singleDaysWeather} function.
@@ -33,7 +34,7 @@
 #' plotMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
 plotMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
-                                   plotDate = searchDate(),
+                                   plotDate = yesterdate(),
                                    daysWeather = NULL,
                                    twoTicks = TRUE,
                                    fiveTicks = FALSE,
@@ -54,7 +55,7 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
     }
   } else {
     # If daysWeather is NULL
-    daysWeatherYear <- format(Sys.Date(), "%Y")
+    daysWeatherYear <- format(yesterdate(), "%Y")
   }
   
   # Throw away extra information

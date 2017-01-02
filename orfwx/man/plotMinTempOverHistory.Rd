@@ -5,15 +5,15 @@
 \title{Plot historical low tempertures on a single date}
 \usage{
 plotMinTempOverHistory(wxUniverse = orfwx::bothStations,
-  plotDate = searchDate(), daysWeather = NULL, twoTicks = TRUE,
+  plotDate = yesterdate(), daysWeather = NULL, twoTicks = TRUE,
   fiveTicks = FALSE, tenTicks = TRUE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
 to be searched (defaults to \code{bothStations}).}
 
-\item{plotDate}{(optional) The date to be searched for, defaulting to the 
-current date.}
+\item{plotDate}{(optional) The date to be searched for, defaulting to
+yesterday's date.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
 the \code{wxUniverse} data frame, usually passed by the
@@ -46,7 +46,8 @@ on the same date each year is compared.
 A barplot is plotted by \code{\link{plotWithManyBars}} with the low 
 temperatures for the same date in all years. The bar for the year provided
 by \code{daysWeather} (or, if \code{daysWeather} is not provided, the
-current year) is highlighted with a bar of a different color in the barplot.
+year as of yesterday) is highlighted with a bar of a different color in the 
+barplot.
 }
 \examples{
 plotMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th

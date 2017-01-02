@@ -19,13 +19,13 @@
 #' shown, along with any ties, with additional years added until the year 
 #' are provided by \code{daysWeather} is shown, and also all years tied with 
 #' the same temperature.) The bar for the year provided by \code{daysWeather} 
-#' (or, if \code{daysWeather} is not provided, the current year) is 
+#' (or, if \code{daysWeather} is not provided, the year as of yesterday) is 
 #' highlighted with a bar of a different color in the barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
 #'   to be searched (defaults to \code{bothStations}).
-#' @param plotDate (optional) The date to be searched for, defaulting to the 
-#'   current date.
+#' @param plotDate (optional) The date to be searched for, defaulting to
+#'   yesterday's date.
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{wxUniverse} data frame, usually passed by the
 #'   \code{singleDaysWeather} function.
@@ -37,7 +37,7 @@
 #' plotWarmestMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
 plotWarmestMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
-                                          plotDate = searchDate(),
+                                          plotDate = yesterdate(),
                                           daysWeather = NULL,
                                           twoTicks = TRUE,
                                           fiveTicks = FALSE,
@@ -58,7 +58,7 @@ plotWarmestMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
     }
   } else {
     # If daysWeather is NULL
-    daysWeatherYear <- format(Sys.Date(), "%Y")
+    daysWeatherYear <- format(yesterdate(), "%Y")
   }
   
   # Throw away extra information

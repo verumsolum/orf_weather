@@ -20,9 +20,9 @@
 #'   precipitation
 #' @param showAllLabels A logical value indicating if we are showing all
 #'   labels (if \code{FALSE}, labels will only be shown on the max and min
-#'   values and on the current year)
+#'   values and on the year as of yesterday)
 #' @param highlightYear The year to highlight in the graph (defaults to the
-#'   current year)
+#'   year as of yesterday)
 #' @return Returns a barplot.
 #' @examples
 #' # How do I show an example?
@@ -33,7 +33,7 @@ plotWithManyBars <- function(sortedData,
                              yAxisLabelPlotWmb,
                              plottingPrecip = FALSE,
                              showAllLabels = FALSE,
-                             highlightYear = format(Sys.Date(), "%Y")) {
+                             highlightYear = format(yesterdate(), "%Y")) {
   # Discard missing values (so they don't become maxSortedData)
   sortedData <- stats::na.omit(sortedData)
   sortedDataFrame <- stats::na.omit(sortedDataFrame)
