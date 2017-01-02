@@ -41,3 +41,6 @@ vignettes/*.pdf
 # Don't save temporarily generated files while developing 2016.Rmd
 2016.html
 2016.pdf
+
+# Preview version of NEWS.md created by RStudio
+NEWS.html
