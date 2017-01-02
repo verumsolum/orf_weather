@@ -46,7 +46,8 @@ on the same date each year is compared.
 A barplot is plotted by \code{\link{plotWithManyBars}} with the low 
 temperatures for the same date in all years. The bar for the year provided
 by \code{daysWeather} (or, if \code{daysWeather} is not provided, the
-current year) is highlighted with a bar of a different color in the barplot.
+year as of yesterday) is highlighted with a bar of a different color in the 
+barplot.
 }
 \examples{
 plotMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th

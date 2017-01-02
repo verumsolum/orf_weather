@@ -49,7 +49,7 @@ that provided by \code{daysWeather}. (In all cases, the ten warmest years
 shown, along with any ties, with additional years added until the year 
 are provided by \code{daysWeather} is shown, and also all years tied with 
 the same temperature.) The bar for the year provided by \code{daysWeather} 
-(or, if \code{daysWeather} is not provided, the current year) is 
+(or, if \code{daysWeather} is not provided, the year as of yesterday) is 
 highlighted with a bar of a different color in the barplot.
 }
 \examples{

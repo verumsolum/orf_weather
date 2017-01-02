@@ -19,8 +19,8 @@
 #' shown, along with any ties, with additional years added until the year 
 #' provided by \code{daysWeather} is shown, and also all years tied with the 
 #' same temperature.) The bar for the year provided by \code{daysWeather} (or,
-#' if \code{daysWeather} is not provided, the current year) is highlighted with
-#' a bar of a different color in the barplot.
+#' if \code{daysWeather} is not provided, the year as of yesterday) is 
+#' highlighted with a bar of a different color in the barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
 #'   to be searched (defaults to \code{bothStations}).
@@ -58,7 +58,7 @@ plotCoolestMinTempOverHistory <- function(wxUniverse = orfwx::bothStations,
     }
   } else {
     # If daysWeather is NULL
-    daysWeatherYear <- format(Sys.Date(), "%Y")
+    daysWeatherYear <- format(yesterdate(), "%Y")
   }
   
   # Throw away extra information
