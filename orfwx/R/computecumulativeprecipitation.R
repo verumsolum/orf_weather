@@ -22,15 +22,15 @@ computeCumulativePrecipitation <- function(originalFrame = allData(),
   ccpDf <- ccpDf %>%
     convertCsvToNumericAndLogical() %>% 
     computeExtraDateVariables() %>% 
-    select(Date, 
-           CsvPrecipitation, 
-           PrecipitationInches, 
-           WithPrecipitation, 
-           Year, 
-           Month, 
-           DayOfMonth) %>% 
-    group_by(Year, Month) %>% 
-    mutate(MTDPrecip = cumsum(PrecipitationInches)) %>% 
-    group_by(Year) %>% 
-    mutate(YTDPrecip = cumsum(PrecipitationInches))
+    dplyr::select(Date,
+                  CsvPrecipitation,
+                  PrecipitationInches,
+                  WithPrecipitation,
+                  Year,
+                  Month,
+                  DayOfMonth) %>% 
+    dplyr::group_by(Year, Month) %>% 
+    dplyr::mutate(MTDPrecip = cumsum(PrecipitationInches)) %>% 
+    dplyr::group_by(Year) %>% 
+    dplyr::mutate(YTDPrecip = cumsum(PrecipitationInches))
 }
