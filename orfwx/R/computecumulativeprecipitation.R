@@ -14,6 +14,7 @@
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
 #' @export
+#' @importFrom dplyr "%>%"
 computeCumulativePrecipitation <- function(originalFrame = allData(),
                                            daysWeather = NULL) {
   # Give ccpDf the data to be used.
