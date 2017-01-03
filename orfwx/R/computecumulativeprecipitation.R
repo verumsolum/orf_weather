@@ -5,6 +5,11 @@
 #' 
 #' Details section to be written
 #' 
+#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} and 
+#'   \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
+#' @param daysWeather (optional) The weather for a date not yet included in
+#'   the \code{originalFrame} data frame, usually passed by the
+#'   \code{singleDaysWeather} function.
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
