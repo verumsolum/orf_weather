@@ -13,7 +13,7 @@
 #' @export
 #' @importFrom dplyr "%>%"
 computeCumulativePrecipitationRecords <- 
-  function(originalFrame = orfwx::computeCumulativePrecipitation() {
+  function(originalFrame = orfwx::computeCumulativePrecipitation()) {
     originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
       dplyr::select(-DayOfYear) %>% 
       dplyr::filter(Month == 1) %>% 
