@@ -11,6 +11,11 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9035 (2017-01-05)
+* **airportData**, **bothStations**: Update data to end of 2016
+* **updatedData**: Update function to ensure only one set of observations is
+included for each day
+
 ### Changes in version 0.0.0.9033 (2017-01-02)
 * **2016.md**, **2016.Rmd**: Create "2016 in Review" summary report
 * **plot* functions**: Change `plotDate` default to `yesterdate`
