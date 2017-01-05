@@ -41,4 +41,5 @@ computeCumulativePrecipitation <- function(originalFrame = allData(),
     dplyr::mutate(YTDPrecip = cumsum(PrecipitationInches)) %>%
     dplyr::ungroup() %>%
     dplyr::select(-Month, -DayOfMonth)
+  return(ccpDf)
 }
