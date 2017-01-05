@@ -26,7 +26,14 @@ computeCumulativePrecipitation <- function(originalFrame = allData(),
   
   # Create MTD and YTD precipitation variables
   ccpDf <- ccpDf %>%
-    convertCsvToNumericAndLogical() %>% 
+    convertCsvToNumericAndLogical()
+  
+  # To avoid `NA` values in cumulative totals, change PrecipitationInches to 0
+  # (while saving a copy of the original)
+  ccpOriginalPI <- ccpDf[["PrecipitationInches"]]
+  ccpDf[["PrecipitationInches"]][is.na(ccpDf[["PrecipitationInches"]])] <- 0
+
+  ccpDf <- ccpDf %>%  
     computeExtraDateVariables() %>% 
     dplyr::select(Date,
                   CsvPrecipitation,
@@ -41,5 +48,9 @@ computeCumulativePrecipitation <- function(originalFrame = allData(),
     dplyr::mutate(YTDPrecip = cumsum(PrecipitationInches)) %>%
     dplyr::ungroup() %>%
     dplyr::select(-Month, -DayOfMonth)
+  
+  # # TODO: Restore original values for PrecipitationInches
+  # ccpDf[["PrecipitationInches"]] <- ccpOriginalPI[["PrecipitationInches"]]
+  
   return(ccpDf)
 }
