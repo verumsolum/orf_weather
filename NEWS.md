@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.0934 (2017-01-05)
+* **allData**: Explicitly reference package in default values for parameters.
+(So it can be used with `orfwx::` notation, if the package is not loaded.)
+
 ### Changes in version 0.0.0.9033 (2017-01-02)
 * **2016.md**, **2016.Rmd**: Create "2016 in Review" summary report
 * **plot* functions**: Change `plotDate` default to `yesterdate`
