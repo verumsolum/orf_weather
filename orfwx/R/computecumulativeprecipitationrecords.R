@@ -12,13 +12,13 @@
 #' \dontrun{computeCumulativePrecipitation()}
 #' @export
 #' @importFrom dplyr "%>%"
-computeCumulativePrecipitationRecords <- function(originalFrame = 
-                                             computeCumulativePrecipitation(allData())) {
-  originalFrame <- computeExtraDateVariables(originalFrame) %>% 
-    select(-DayOfYear) %>% 
-    dplyr::filter(Month == 1) %>% 
-    group_by(Month, DayOfMonth) %>% 
-    summarise(maxMTDPrecip = max(MTDPrecip), 
-              minMTDPrecip = min(MTDPrecip)) %>% 
-    as.data.frame()
+computeCumulativePrecipitationRecords <- 
+  function(originalFrame = orfwx::computeCumulativePrecipitation() {
+    originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
+      dplyr::select(-DayOfYear) %>% 
+      dplyr::filter(Month == 1) %>% 
+      dplyr::group_by(Month, DayOfMonth) %>% 
+      dplyr::summarise(maxMTDPrecip = max(MTDPrecip),
+                       minMTDPrecip = min(MTDPrecip)) %>% 
+      as.data.frame()
 }
