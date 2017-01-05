@@ -11,6 +11,6 @@
 #' allData()
 #' @export
 allData <- function(){
-  dfAll <- combineDataFrames(bothStations, updatedData())
+  dfAll <- combineDataFrames(orfwx::bothStations, orfwx::updatedData())
   return(dfAll)
 }
