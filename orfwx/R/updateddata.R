@@ -38,7 +38,8 @@ updatedData <- function(runUpdate = FALSE){
                            CsvPrecipitation = Precipitation,
                            CsvSnowfall = Snowfall)
   
-  # TODO: Check for duplicate or missing dates
+  # Check for duplicate or missing dates
+  csvData <- dplyr::anti_join(csvData, orfwx::bothStations, by = "Date")
   
   # Convert to tibble
   csvData <- dplyr::tbl_df(csvData)
