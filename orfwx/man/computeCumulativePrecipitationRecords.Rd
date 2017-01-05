@@ -5,7 +5,8 @@
 \title{Compute cumulative precipitation variables}
 \usage{
 
-  computeCumulativePrecipitationRecords(originalFrame = orfwx::computeCumulativePrecipitation())
+  computeCumulativePrecipitationRecords(originalFrame = orfwx::computeCumulativePrecipitation(),
+  ccprMonth = format(orfwx::yesterdate(), "\%m"))
 }
 \arguments{
 \item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} and 
