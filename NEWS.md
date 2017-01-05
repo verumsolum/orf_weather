@@ -11,6 +11,11 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9035 (2017-01-05)
+* **airportData**, **bothStations**: Update data to end of 2016
+* **updatedData**: Update function to ensure only one set of observations is
+included for each day
+
 ### Changes in version 0.0.0.9034 (2017-01-05)
 * **allData**: Explicitly reference package in default values for parameters.
 (So it can be used with `orfwx::` notation, if the package is not loaded.)
