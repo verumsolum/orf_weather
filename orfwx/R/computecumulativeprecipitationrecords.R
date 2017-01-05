@@ -13,10 +13,19 @@
 #' @export
 #' @importFrom dplyr "%>%"
 computeCumulativePrecipitationRecords <- 
-  function(originalFrame = orfwx::computeCumulativePrecipitation()) {
+  function(originalFrame = orfwx::computeCumulativePrecipitation(),
+           ccprMonth = format(orfwx::yesterdate(), "%m")) {
+    # Ensure ccprMonth is an integer between 1 and 12, inclusive.
+    ccprMonth <- as.integer(ccprMonth)
+    if(ccprMonth < 1 | ccprMonth > 12) {
+      warning("Invalid month passed to computeCumulativePrecipitationRecords.")
+      # Use yesterday's month
+      ccprMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
+    }
+    
     originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
       dplyr::select(-DayOfYear) %>% 
-      dplyr::filter(Month == 1) %>% 
+      dplyr::filter(Month == ccprMonth) %>% 
       dplyr::group_by(Month, DayOfMonth) %>% 
       dplyr::summarise(maxMTDPrecip = max(MTDPrecip),
                        minMTDPrecip = min(MTDPrecip)) %>% 
