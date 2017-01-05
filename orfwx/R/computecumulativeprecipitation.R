@@ -49,8 +49,8 @@ computeCumulativePrecipitation <- function(originalFrame = allData(),
     dplyr::ungroup() %>%
     dplyr::select(-Month, -DayOfMonth)
   
-  # # TODO: Restore original values for PrecipitationInches
-  # ccpDf[["PrecipitationInches"]] <- ccpOriginalPI[["PrecipitationInches"]]
+  # Restore original values for PrecipitationInches
+  ccpDf[["PrecipitationInches"]] <- ccpOriginalPI
   
   return(ccpDf)
 }
