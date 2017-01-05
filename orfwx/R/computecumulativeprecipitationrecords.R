@@ -12,7 +12,7 @@
 #' \dontrun{computeCumulativePrecipitation()}
 #' @export
 #' @importFrom dplyr "%>%"
-computeCumulativePrecipitation <- function(originalFrame = 
+computeCumulativePrecipitationRecords <- function(originalFrame = 
                                              computeCumulativePrecipitation(allData())) {
   originalFrame <- computeExtraDateVariables(originalFrame) %>% 
     select(-DayOfYear) %>% 
