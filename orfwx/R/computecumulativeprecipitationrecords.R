@@ -21,4 +21,5 @@ computeCumulativePrecipitationRecords <- function(originalFrame =
     summarise(maxMTDPrecip = max(MTDPrecip), 
               minMTDPrecip = min(MTDPrecip)) %>% 
     as.data.frame()
+  return(originalFrame)
 }
