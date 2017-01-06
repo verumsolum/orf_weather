@@ -37,7 +37,7 @@ getUpdatedCsv <- function(){
     if (!ensureDirectoryExists(createIfMissing = TRUE)) {
       stop("Directory does not exist and apprently could not be created.")
     }
-    download.file(gucURL, fLocation)
+    utils::download.file(gucURL, fLocation)
   } else {
     stop(paste("Update not written to file: A file at",
                fLocation,
