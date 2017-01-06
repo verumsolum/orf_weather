@@ -37,10 +37,6 @@ computeCumulativePrecipitationRecords <-
     # Initialize new variables within yearsFrame.
     yearsFrame[["maxMTDYear"]] <- NA
     yearsFrame[["minMTDYear"]] <- NA
-    # CURRENTLY: yearsFrame only contains the Month and DayOfMonth for the
-    #            appropriate month.
-    
-    # browser()
     
     for (calDate in 1:nrow(yearsFrame)) {
       maxOnDate <- recordsFrame[calDate, "maxMTDPrecip"]
@@ -50,12 +46,28 @@ computeCumulativePrecipitationRecords <-
         dplyr::top_n(1, Year)
       minYear <- dplyr::filter(searchFrame, MTDPrecip == minOnDate) %>%
         dplyr::top_n(1, Year)
-      yearsFrame[["maxMTDYear"]][calDate] <- maxYear[["Year"]][1]
-      yearsFrame[["minMTDYear"]][calDate] <- minYear[["Year"]][1]
+      yearsFrame[["maxMTDYear"]][calDate] <- as.character(maxYear[["Year"]][1])
+      yearsFrame[["minMTDYear"]][calDate] <- as.character(minYear[["Year"]][1])
     }
     
     recordsFrame <- dplyr::full_join(recordsFrame, yearsFrame, by = c("Month", "DayOfMonth")) %>%
       dplyr::select(Month, DayOfMonth, maxMTDPrecip, maxMTDYear, minMTDPrecip, minMTDYear)
+    
+    # # Code to remove labels where they are the same as the previous and next 
+    # # day's.
+    # # TODO: Fix this. Every second label currently shows, because when the
+    # # previous day's label is erased, it is no longer the same as the current
+    # # day's.
+    # for (calDate in 2:(nrow(yearsFrame) - 1)) {
+    #   if (recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate - 1] & 
+    #       recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate - 1]) {
+    #     recordsFrame[["maxMTDYear"]][calDate] <- ""
+    #   }
+    #   if (recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate - 1] & 
+    #       recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate - 1]) {
+    #     recordsFrame[["minMTDYear"]][calDate] <- ""
+    #   }
+    # }
     
     return(recordsFrame)
 }
