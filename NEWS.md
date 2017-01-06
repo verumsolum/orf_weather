@@ -11,6 +11,9 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9036 (2017-01-06)
+* **getUpdatedCsv**: Use `utils::download.file` instead of `httr:` functions
+
 ### Changes in version 0.0.0.9035 (2017-01-05)
 * **airportData**, **bothStations**: Update data to end of 2016
 * **updatedData**: Update function to ensure only one set of observations is
