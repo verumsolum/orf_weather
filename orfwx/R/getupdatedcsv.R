@@ -19,8 +19,6 @@
 #' @export
 getUpdatedCsv <- function(){
   gucURL <- "https://github.com/verumsolum/orf_weather/raw/wxupdate/orfwx/data-raw/updates.csv"
-  hResponse <- httr::GET(gucURL)
-  fileContents <- httr::content(hResponse, "raw")
   fLocation <- "~/.orfwx/updates.csv"
   bfTimestamp <- strftime(Sys.time(), "%Y%m%d%H%M%S")
   bfName <- paste0("~/.orfwx/updates.", bfTimestamp, ".backup.csv")
@@ -39,7 +37,7 @@ getUpdatedCsv <- function(){
     if (!ensureDirectoryExists(createIfMissing = TRUE)) {
       stop("Directory does not exist and apprently could not be created.")
     }
-    writeBin(fileContents, fLocation)
+    download.file(gucURL, fLocation)
   } else {
     stop(paste("Update not written to file: A file at",
                fLocation,
