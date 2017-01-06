@@ -23,12 +23,12 @@ computeCumulativePrecipitationRecords <-
       ccprMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
     }
     
-    originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
+    recordsFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
       dplyr::select(-DayOfYear) %>% 
       dplyr::filter(Month == ccprMonth) %>% 
       dplyr::group_by(Month, DayOfMonth) %>% 
       dplyr::summarise(maxMTDPrecip = max(MTDPrecip),
                        minMTDPrecip = min(MTDPrecip)) %>% 
       as.data.frame()
-    return(originalFrame)
+    return(recordsFrame)
 }
