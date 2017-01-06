@@ -33,8 +33,29 @@ computeCumulativePrecipitationRecords <-
     
     # Determine the most recent year for the records.
     yearsFrame <- dplyr::select(recordsFrame, Month, DayOfMonth)
+    
+    # Initialize new variables within yearsFrame.
+    yearsFrame[["maxMTDYear"]] <- NA
+    yearsFrame[["minMTDYear"]] <- NA
     # CURRENTLY: yearsFrame only contains the Month and DayOfMonth for the
     #            appropriate month.
+    
+    # browser()
+    
+    for (calDate in 1:nrow(yearsFrame)) {
+      maxOnDate <- recordsFrame[calDate, "maxMTDPrecip"]
+      minOnDate <- recordsFrame[calDate, "minMTDPrecip"]
+      searchFrame <- dplyr::filter(originalFrame, Month == ccprMonth, DayOfMonth == calDate)
+      maxYear <- dplyr::filter(searchFrame, MTDPrecip == maxOnDate) %>%
+        dplyr::top_n(1, Year)
+      minYear <- dplyr::filter(searchFrame, MTDPrecip == minOnDate) %>%
+        dplyr::top_n(1, Year)
+      yearsFrame[["maxMTDYear"]][calDate] <- maxYear[["Year"]][1]
+      yearsFrame[["minMTDYear"]][calDate] <- minYear[["Year"]][1]
+    }
+    
+    recordsFrame <- dplyr::full_join(recordsFrame, yearsFrame, by = c("Month", "DayOfMonth")) %>%
+      dplyr::select(Month, DayOfMonth, maxMTDPrecip, maxMTDYear, minMTDPrecip, minMTDYear)
     
     return(recordsFrame)
 }
