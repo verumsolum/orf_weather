@@ -7,6 +7,9 @@
 #' 
 #' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} 
 #'   and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
+#' @param ccprMonth (optional) The month for which precipitation records are
+#'   desired. Defaults to the current month (except on the 1st of the month,
+#'   when it defaults to the previous month).
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
