@@ -28,7 +28,9 @@ computeCumulativePrecipitationRecords <-
       dplyr::filter(Month == ccprMonth)
     recordsFrame <- dplyr::group_by(originalFrame, Month, DayOfMonth) %>% 
       dplyr::summarise(maxMTDPrecip = max(MTDPrecip),
-                       minMTDPrecip = min(MTDPrecip)) %>% 
+                       minMTDPrecip = min(MTDPrecip),
+                       maxYTDPrecip = max(YTDPrecip),
+                       minYTDPrecip = min(YTDPrecip)) %>% 
       as.data.frame()
     
     # Determine the most recent year for the records.
@@ -37,10 +39,14 @@ computeCumulativePrecipitationRecords <-
     # Initialize new variables within yearsFrame.
     yearsFrame[["maxMTDYear"]] <- NA
     yearsFrame[["minMTDYear"]] <- NA
+    yearsFrame[["maxYTDYear"]] <- NA
+    yearsFrame[["minYTDYear"]] <- NA
     
     for (calDate in 1:nrow(yearsFrame)) {
       maxOnDate <- recordsFrame[calDate, "maxMTDPrecip"]
       minOnDate <- recordsFrame[calDate, "minMTDPrecip"]
+      maxYTDOnDate <- recordsFrame[calDate, "maxYTDPrecip"]
+      minYTDOnDate <- recordsFrame[calDate, "minYTDPrecip"]
       searchFrame <- dplyr::filter(originalFrame,
                                    Month == ccprMonth,
                                    DayOfMonth == calDate)
@@ -48,8 +54,16 @@ computeCumulativePrecipitationRecords <-
         dplyr::top_n(1, Year)
       minYear <- dplyr::filter(searchFrame, MTDPrecip == minOnDate) %>%
         dplyr::top_n(1, Year)
+      maxYTDYear <- dplyr::filter(searchFrame, YTDPrecip == maxYTDOnDate) %>%
+        dplyr::top_n(1, Year)
+      minYTDYear <- dplyr::filter(searchFrame, YTDPrecip == minYTDOnDate) %>%
+        dplyr::top_n(1, Year)
       yearsFrame[["maxMTDYear"]][calDate] <- as.character(maxYear[["Year"]][1])
       yearsFrame[["minMTDYear"]][calDate] <- as.character(minYear[["Year"]][1])
+      yearsFrame[["maxYTDYear"]][calDate] <- 
+        as.character(maxYTDYear[["Year"]][1])
+      yearsFrame[["minYTDYear"]][calDate] <-
+        as.character(minYTDYear[["Year"]][1])
     }
     
     recordsFrame <- dplyr::full_join(recordsFrame,
@@ -60,7 +74,11 @@ computeCumulativePrecipitationRecords <-
                     maxMTDPrecip,
                     maxMTDYear,
                     minMTDPrecip,
-                    minMTDYear)
+                    minMTDYear,
+                    maxYTDPrecip,
+                    maxYTDYear,
+                    minYTDPrecip,
+                    minYTDYear)
     
     # Code to remove labels where they are the same as the previous and 
     # next day's.
@@ -69,6 +87,8 @@ computeCumulativePrecipitationRecords <-
     # year labels to remove.
     maxYears <- recordsFrame[["maxMTDYear"]]
     minYears <- recordsFrame[["minMTDYear"]]
+    maxYTDYears <- recordsFrame[["maxYTDYear"]]
+    minYTDYears <- recordsFrame[["minYTDYear"]]
     
     for (calDate in 2:(nrow(yearsFrame) - 1)) {
       if (maxYears[calDate] == maxYears[calDate - 1] &
@@ -78,6 +98,14 @@ computeCumulativePrecipitationRecords <-
       if (minYears[calDate] == minYears[calDate - 1] &
             minYears[calDate] == minYears[calDate + 1]) {
         recordsFrame[["minMTDYear"]][calDate] <- ""
+      }
+      if (maxYTDYears[calDate] == maxYTDYears[calDate - 1] &
+          maxYTDYears[calDate] == maxYTDYears[calDate + 1]) {
+        recordsFrame[["maxYTDYear"]][calDate] <- ""
+      }
+      if (minYTDYears[calDate] == minYTDYears[calDate - 1] &
+          minYTDYears[calDate] == minYTDYears[calDate + 1]) {
+        recordsFrame[["minYTDYear"]][calDate] <- ""
       }
     }
     
