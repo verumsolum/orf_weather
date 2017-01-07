@@ -5,8 +5,8 @@
 #' 
 #' Details section to be written
 #' 
-#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} and 
-#'   \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
+#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} 
+#'   and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
@@ -41,7 +41,9 @@ computeCumulativePrecipitationRecords <-
     for (calDate in 1:nrow(yearsFrame)) {
       maxOnDate <- recordsFrame[calDate, "maxMTDPrecip"]
       minOnDate <- recordsFrame[calDate, "minMTDPrecip"]
-      searchFrame <- dplyr::filter(originalFrame, Month == ccprMonth, DayOfMonth == calDate)
+      searchFrame <- dplyr::filter(originalFrame,
+                                   Month == ccprMonth,
+                                   DayOfMonth == calDate)
       maxYear <- dplyr::filter(searchFrame, MTDPrecip == maxOnDate) %>%
         dplyr::top_n(1, Year)
       minYear <- dplyr::filter(searchFrame, MTDPrecip == minOnDate) %>%
@@ -50,21 +52,32 @@ computeCumulativePrecipitationRecords <-
       yearsFrame[["minMTDYear"]][calDate] <- as.character(minYear[["Year"]][1])
     }
     
-    recordsFrame <- dplyr::full_join(recordsFrame, yearsFrame, by = c("Month", "DayOfMonth")) %>%
-      dplyr::select(Month, DayOfMonth, maxMTDPrecip, maxMTDYear, minMTDPrecip, minMTDYear)
+    recordsFrame <- dplyr::full_join(recordsFrame,
+                                     yearsFrame,
+                                     by = c("Month", "DayOfMonth")) %>%
+      dplyr::select(Month,
+                    DayOfMonth,
+                    maxMTDPrecip,
+                    maxMTDYear,
+                    minMTDPrecip,
+                    minMTDYear)
     
-    # # Code to remove labels where they are the same as the previous and next 
-    # # day's.
+    # # Code to remove labels where they are the same as the previous and 
+    # # next day's.
     # # TODO: Fix this. Every second label currently shows, because when the
     # # previous day's label is erased, it is no longer the same as the current
     # # day's.
     # for (calDate in 2:(nrow(yearsFrame) - 1)) {
-    #   if (recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate - 1] & 
-    #       recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate + 1]) {
+    #   if (recordsFrame[["maxMTDYear"]][calDate] == 
+    #           recordsFrame[["maxMTDYear"]][calDate - 1] &
+    #         recordsFrame[["maxMTDYear"]][calDate] ==
+    #           recordsFrame[["maxMTDYear"]][calDate + 1]) {
     #     recordsFrame[["maxMTDYear"]][calDate] <- ""
     #   }
-    #   if (recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate - 1] & 
-    #       recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate + 1]) {
+    #   if (recordsFrame[["minMTDYear"]][calDate] ==
+    #           recordsFrame[["minMTDYear"]][calDate - 1] &
+    #         recordsFrame[["minMTDYear"]][calDate] ==
+    #           recordsFrame[["minMTDYear"]][calDate + 1]) {
     #     recordsFrame[["minMTDYear"]][calDate] <- ""
     #   }
     # }
