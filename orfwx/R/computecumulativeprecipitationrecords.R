@@ -62,25 +62,27 @@ computeCumulativePrecipitationRecords <-
                     minMTDPrecip,
                     minMTDYear)
     
-    # # Code to remove labels where they are the same as the previous and 
-    # # next day's.
-    # # TODO: Fix this. Every second label currently shows, because when the
-    # # previous day's label is erased, it is no longer the same as the current
-    # # day's.
-    # for (calDate in 2:(nrow(yearsFrame) - 1)) {
-    #   if (recordsFrame[["maxMTDYear"]][calDate] == 
-    #           recordsFrame[["maxMTDYear"]][calDate - 1] &
-    #         recordsFrame[["maxMTDYear"]][calDate] ==
-    #           recordsFrame[["maxMTDYear"]][calDate + 1]) {
-    #     recordsFrame[["maxMTDYear"]][calDate] <- ""
-    #   }
-    #   if (recordsFrame[["minMTDYear"]][calDate] ==
-    #           recordsFrame[["minMTDYear"]][calDate - 1] &
-    #         recordsFrame[["minMTDYear"]][calDate] ==
-    #           recordsFrame[["minMTDYear"]][calDate + 1]) {
-    #     recordsFrame[["minMTDYear"]][calDate] <- ""
-    #   }
-    # }
+    # Code to remove labels where they are the same as the previous and 
+    # next day's.
+    
+    # First, make copies of the year variables to use in determining which
+    # year labels to remove.
+    maxYears <- recordsFrame[["maxMTDYear"]]
+    minYears <- recordsFrame[["minMTDYear"]]
+    
+    # TODO: Fix this. Every second label currently shows, because when the
+    # previous day's label is erased, it is no longer the same as the current
+    # day's.
+    for (calDate in 2:(nrow(yearsFrame) - 1)) {
+      if (maxYears[calDate] == maxYears[calDate - 1] &
+            maxYears[calDate] == maxYears[calDate + 1]) {
+        recordsFrame[["maxMTDYear"]][calDate] <- ""
+      }
+      if (minYears[calDate] == minYears[calDate - 1] &
+            minYears[calDate] == minYears[calDate + 1]) {
+        recordsFrame[["minMTDYear"]][calDate] <- ""
+      }
+    }
     
     return(recordsFrame)
 }
