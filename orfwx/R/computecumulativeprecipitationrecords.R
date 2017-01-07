@@ -70,9 +70,6 @@ computeCumulativePrecipitationRecords <-
     maxYears <- recordsFrame[["maxMTDYear"]]
     minYears <- recordsFrame[["minMTDYear"]]
     
-    # TODO: Fix this. Every second label currently shows, because when the
-    # previous day's label is erased, it is no longer the same as the current
-    # day's.
     for (calDate in 2:(nrow(yearsFrame) - 1)) {
       if (maxYears[calDate] == maxYears[calDate - 1] &
             maxYears[calDate] == maxYears[calDate + 1]) {
