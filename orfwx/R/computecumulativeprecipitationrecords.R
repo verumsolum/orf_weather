@@ -60,11 +60,11 @@ computeCumulativePrecipitationRecords <-
     # # day's.
     # for (calDate in 2:(nrow(yearsFrame) - 1)) {
     #   if (recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate - 1] & 
-    #       recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate - 1]) {
+    #       recordsFrame[["maxMTDYear"]][calDate] == recordsFrame[["maxMTDYear"]][calDate + 1]) {
     #     recordsFrame[["maxMTDYear"]][calDate] <- ""
     #   }
     #   if (recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate - 1] & 
-    #       recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate - 1]) {
+    #       recordsFrame[["minMTDYear"]][calDate] == recordsFrame[["minMTDYear"]][calDate + 1]) {
     #     recordsFrame[["minMTDYear"]][calDate] <- ""
     #   }
     # }
