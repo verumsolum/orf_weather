@@ -9,8 +9,12 @@
   ccprMonth = format(orfwx::yesterdate(), "\%m"))
 }
 \arguments{
-\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} and 
-\code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
+\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
+and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
+
+\item{ccprMonth}{(optional) The month for which precipitation records are
+desired. Defaults to the current month (except on the 1st of the month,
+when it defaults to the previous month).}
 }
 \value{
 Returns a data frame.

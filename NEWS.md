@@ -14,6 +14,8 @@ require details about earlier changes.
 ### Changes not yet ported to master
 * **computeCumulativePrecipitation**: Add `computeCumulativePrecipitation`
 function to calculate `MTDPrecip` and `YTDPrecip` variables
+* **computeCumulativePrecipitationRecords**: Find records (and years) for
+`MTDPrecip` and `YTDPrecip`
 * **%>%**: Import function from `dplyr`
 
 ### Changes in version 0.0.0.9034 (2017-01-05)
