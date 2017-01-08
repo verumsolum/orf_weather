@@ -33,7 +33,7 @@ computeCumulativePrecipitationRecords <-
     if(showYear) {
       currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
       currentYear <- as.integer(format(orfwx::yesterdate(), "%Y"))
-      if(currentMonth > ccprMonth) {
+      if(currentMonth < ccprMonth) {
         # If we haven't yet had the month to be displayed this calendar year,
         # then use last year.
         currentYear <- currentYear - 1
