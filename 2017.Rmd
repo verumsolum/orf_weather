@@ -1,0 +1,294 @@
+---
+title: "2017 In Review"
+author: "Kristin Rollins"
+date: '`r format(orfwx::yesterdate() + 1, "%B %d, %Y")`'
+output:
+  pdf_document: default
+  html_document: default
+  github_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(orfwx)
+library(magrittr)
+library(dplyr)
+wxYear <- combineDataFrames(airportData, updatedData()) %>% 
+  computeExtraDateVariables() %>% 
+  filter(Year == 2017) %>%
+  removeExtraDateVariables()
+```
+
+## Daily High Temperature
+
+These are the ten **hottest** days of 2016, by daily high temperature.
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(min_rank(-MaxTemperature)))
+knitr::kable(
+  top_n(wxYear, 10, MaxTemperature) %>%
+    select(Rank, Date, MaxTemperature) %>%
+    arrange(desc(MaxTemperature), desc(Date))
+  )
+```
+
+These are the ten **coldest** days of 2016 (by daily high temperature)
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(min_rank(MaxTemperature)))
+knitr::kable(
+  top_n(wxYear, -10, MaxTemperature) %>%
+    select(Rank, Date, MaxTemperature) %>%
+    arrange(MaxTemperature, desc(Date))
+  )
+```
+
+\pagebreak
+
+## Daily Low Temperature
+
+These are the ten **coldest** days of 2016, by daily low temperature.
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(min_rank(MinTemperature)))
+knitr::kable(
+  top_n(wxYear, -10, MinTemperature) %>%
+    select(Rank, Date, MinTemperature) %>%
+    arrange(MinTemperature, desc(Date))
+  )
+```
+
+These are the ten **hottest** days of 2016 (by daily low temperature).
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(min_rank(-MinTemperature)))
+knitr::kable(
+  top_n(wxYear, 10, MinTemperature) %>%
+    select(Rank, Date, MinTemperature) %>%
+    arrange(desc(MinTemperature), desc(Date))
+  )
+```
+
+## Temperature Spread
+
+These are the ten days with the greatest spread between low and high temperatures.
+
+```{r echo = FALSE}
+wxYear %<>% computeTemperatureSpread() %>% 
+  mutate(Rank = as.integer(min_rank(-TemperatureSpread)))
+knitr::kable(
+  top_n(wxYear, 10, TemperatureSpread) %>%
+    select(Rank, Date, TemperatureSpread, MaxTemperature, MinTemperature) %>%
+    arrange(desc(TemperatureSpread), desc(Date))
+  )
+```
+
+These are the ten days with the smallest spread between low and high temperatures.
+
+```{r echo = FALSE}
+wxYear %<>% mutate(Rank = as.integer(min_rank(TemperatureSpread)))
+knitr::kable(
+  top_n(wxYear, -10, TemperatureSpread) %>%
+    select(Rank, Date, TemperatureSpread, MaxTemperature, MinTemperature) %>%
+    arrange(TemperatureSpread, desc(Date))
+  )
+```
+
+## Precipitation
+
+These are the ten days with the greatest precipitation.
+
+```{r echo = FALSE, warning = FALSE}
+wxYear %<>% tidyr::drop_na(CsvPrecipitation, CsvSnowfall) %>%
+  convertCsvToNumericAndLogical() %>%
+  mutate(Rank = as.integer(min_rank(-PrecipitationInches)))
+knitr::kable(
+  top_n(wxYear, 10, PrecipitationInches) %>%
+    select(Rank, Date, PrecipitationInches) %>%
+    arrange(desc(PrecipitationInches), desc(Date))
+  )
+```
+
+\pagebreak
+
+## Snowfall
+
+These are the days with snowfall (in inches, `T` is trace snowfall).
+
+```{r echo = FALSE, warning = FALSE}
+wxYear %<>% tidyr::drop_na(CsvPrecipitation, CsvSnowfall) %>%
+  convertCsvToNumericAndLogical() %>%
+  mutate(Rank = as.integer(min_rank(-SnowfallInches)))
+knitr::kable(
+  top_n(wxYear %>% filter(WithSnowfall == TRUE), 10, SnowfallInches) %>%
+    select(Rank, Date, SnowfallInches, CsvSnowfall) %>%
+    arrange(desc(SnowfallInches), desc(Date)) %>%
+    mutate(Snowfall = CsvSnowfall) %>%
+    select(-SnowfallInches, -CsvSnowfall)
+  )
+```
+
+## Counts of temperature extremes
+```{r echo = FALSE}
+wxYear <- filter(computeExtraDateVariables(combineDataFrames(bothStations, 
+                                                             updatedData())), 
+                 Year == 2017)
+```
+
+### High temperatures
+
+Days with highs greater than or equal to...
+
+| High temperature >= | Frequency (in days) |
+|------:|-----:|
+| 65 | `r as.integer(count(filter(wxYear, MaxTemperature >= 65)))` |
+| 60 | `r as.integer(count(filter(wxYear, MaxTemperature >= 60)))` |
+| 55 | `r as.integer(count(filter(wxYear, MaxTemperature >= 55)))` |
+
+
+\pagebreak
+
+Days with highs less than or equal to...
+
+| High temperature <= | Frequency (in days) |
+|------:|-----:|
+| 60 | `r as.integer(count(filter(wxYear, MaxTemperature <= 60)))` |
+| 55 | `r as.integer(count(filter(wxYear, MaxTemperature <= 55)))` |
+| 50 | `r as.integer(count(filter(wxYear, MaxTemperature <= 50)))` |
+| 45 | `r as.integer(count(filter(wxYear, MaxTemperature <= 45)))` |
+| 40 | `r as.integer(count(filter(wxYear, MaxTemperature <= 40)))` |
+| 35 | `r as.integer(count(filter(wxYear, MaxTemperature <= 35)))` |
+| 32 | `r as.integer(count(filter(wxYear, MaxTemperature <= 32)))` |
+| 30 | `r as.integer(count(filter(wxYear, MaxTemperature <= 30)))` |
+<!-- | 25 | `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))` | -->
+<!-- | 20 | `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))` | -->
+
+### Low temperatures
+
+Days with lows greater than or equal to...
+
+| Low temperature >= | Frequency (in days) |
+|------:|-----:|
+| 50 | `r as.integer(count(filter(wxYear, MinTemperature >= 50)))` |
+| 45 | `r as.integer(count(filter(wxYear, MinTemperature >= 45)))` |
+
+Days with lows less than or equal to...
+
+| Low temperature >= | Frequency (in days) |
+|------:|-----:|
+| 50 | `r as.integer(count(filter(wxYear, MinTemperature <= 50)))` |
+| 45 | `r as.integer(count(filter(wxYear, MinTemperature <= 45)))` |
+| 40 | `r as.integer(count(filter(wxYear, MinTemperature <= 40)))` |
+| 35 | `r as.integer(count(filter(wxYear, MinTemperature <= 35)))` |
+| 32 | `r as.integer(count(filter(wxYear, MinTemperature <= 32)))` |
+| 30 | `r as.integer(count(filter(wxYear, MinTemperature <= 30)))` |
+| 25 | `r as.integer(count(filter(wxYear, MinTemperature <= 25)))` |
+| 20 | `r as.integer(count(filter(wxYear, MinTemperature <= 20)))` |
+<!-- | 15 | `r as.integer(count(filter(wxYear, MinTemperature <= 15)))` | -->
+
+\pagebreak
+
+## Precipitation
+
+```{r echo = FALSE, warning = FALSE}
+wxYearPrecip <- select(convertCsvToNumericAndLogical(wxYear), 
+                       Date, 
+                       PrecipitationInches, 
+                       WithPrecipitation, 
+                       CsvPrecipitation)
+daysWithPrecipitation <- filter(wxYearPrecip, WithPrecipitation == TRUE) %>% 
+  count()
+daysWithTrace <- filter(wxYearPrecip, CsvPrecipitation == "T") %>% count()
+daysWithMoreThan <- function(dwmtInches) {
+  dwmtCount <- filter(wxYearPrecip, PrecipitationInches >= dwmtInches) %>%
+    count()
+  return(dwmtCount)
+}
+```
+
+There were **`r daysWithPrecipitation`** days with precipitation:
+
+| Precipitation | Frequency (in days) |
+|------:|-----:|
+| Trace | `r daysWithTrace` |
+| Measurable (>= 0.01 inches) | `r daysWithMoreThan(0.01)` |
+| >= 0.02 inches | `r daysWithMoreThan(0.02)` |
+| >= 0.03 inches | `r daysWithMoreThan(0.03)` |
+| >= 0.04 inches | `r daysWithMoreThan(0.04)` |
+| >= 0.05 inches | `r daysWithMoreThan(0.05)` |
+| >= 0.1 inches | `r daysWithMoreThan(0.1)` |
+| >= 0.2 inches | `r daysWithMoreThan(0.2)` |
+| >= 0.25 inches | `r daysWithMoreThan(0.25)` |
+| >= 0.5 inches | `r daysWithMoreThan(0.5)` |
+| >= 0.75 inches | `r daysWithMoreThan(0.75)` |
+| >= 1 inch | `r daysWithMoreThan(1)` |
+| >= 1.5 inches | `r daysWithMoreThan(1.5)` |
+| >= 2 inches | `r daysWithMoreThan(2)` |
+<!-- | >= 3 inches | `r daysWithMoreThan(3)` | -->
+<!-- | >= 4 inches | `r daysWithMoreThan(4)` | -->
+<!-- | >= 5 inches | `r daysWithMoreThan(5)` | -->
+<!-- | >= 6 inches | `r daysWithMoreThan(6)` | -->
+<!-- | >= 7 inches | `r daysWithMoreThan(7)` | -->
+<!-- | >= 8 inches | `r daysWithMoreThan(8)` | -->
+
+## Snowfall
+
+```{r echo = FALSE, warning = FALSE}
+wxYearSnow <- select(convertCsvToNumericAndLogical(wxYear), 
+                       Date, 
+                       SnowfallInches, 
+                       WithSnowfall, 
+                       CsvSnowfall)
+daysWithSnowfall <- filter(wxYearSnow, WithSnowfall == TRUE) %>% count()
+daysWithTrace <- filter(wxYearSnow, CsvSnowfall == "T") %>% count()
+daysWithMoreThan <- function(dwmtInches) {
+  dwmtCount <- filter(wxYearSnow, SnowfallInches >= dwmtInches) %>% count()
+  return(dwmtCount)
+}
+```
+
+There were **`r daysWithSnowfall`** days with snowfall:
+
+| Snowfall | Frequency (in days) |
+|------:|-----:|
+| Trace | `r daysWithTrace` |
+| Measurable (>= 0.1 inches) | `r daysWithMoreThan(0.1)` |
+| >= 0.2 inches | `r daysWithMoreThan(0.2)` |
+| >= 0.3 inches | `r daysWithMoreThan(0.3)` |
+| >= 0.4 inches | `r daysWithMoreThan(0.4)` |
+| >= 0.5 inches | `r daysWithMoreThan(0.5)` |
+| >= 1 inch | `r daysWithMoreThan(1)` |
+| >= 1.5 inches | `r daysWithMoreThan(1.5)` |
+| >= 2 inches | `r daysWithMoreThan(2)` |
+| >= 3 inches | `r daysWithMoreThan(3)` |
+| >= 4 inches | `r daysWithMoreThan(4)` |
+| >= 5 inches | `r daysWithMoreThan(5)` |
+| >= 6 inches | `r daysWithMoreThan(6)` |
+
+## Days with Precipitation and Snowfall by Month
+
+```{r echo = FALSE}
+wxYearPrecip %>% 
+  computeExtraDateVariables() %>% 
+  dplyr::select(Date, WithPrecipitation, Month) %>% 
+  filter(WithPrecipitation) %>% 
+  group_by(Month) %>% 
+  count() %>%
+  mutate(Precipitation= n) %>% 
+  select(-n) -> wpDf
+wxYearSnow %>%
+  computeExtraDateVariables() %>%
+  select(Date, WithSnowfall, Month) %>%
+  filter(WithSnowfall) %>%
+  group_by(Month) %>%
+  count() %>%
+  mutate(Snowfall = n) %>%
+  select(-n) -> wsDf
+bothDf <- full_join(wpDf, wsDf, by = "Month") %>%
+    mutate(Month = month.name[Month])
+bothDf[is.na(bothDf)] <- 0
+knitr::kable(
+  bothDf
+  )
+```
+
