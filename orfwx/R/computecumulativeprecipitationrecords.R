@@ -10,6 +10,8 @@
 #' @param ccprMonth (optional) The month for which precipitation records are
 #'   desired. Defaults to the current month (except on the 1st of the month,
 #'   when it defaults to the previous month).
+#' @param showYear (optional) Whether or not to show the current or most recent
+#'   year's data for comparison (defaults to \code{FALSE}).
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
@@ -17,13 +19,26 @@
 #' @importFrom dplyr "%>%"
 computeCumulativePrecipitationRecords <- 
   function(originalFrame = orfwx::computeCumulativePrecipitation(),
-           ccprMonth = format(orfwx::yesterdate(), "%m")) {
+           ccprMonth = format(orfwx::yesterdate(), "%m"),
+           showYear = FALSE) {
     # Ensure ccprMonth is an integer between 1 and 12, inclusive.
     ccprMonth <- as.integer(ccprMonth)
     if(ccprMonth < 1 | ccprMonth > 12) {
       warning("Invalid month passed to computeCumulativePrecipitationRecords.")
       # Use yesterday's month
       ccprMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
+    }
+    
+    # Set year to display, if desired
+    if(showYear) {
+      currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
+      currentYear <- as.integer(format(orfwx::yesterdate(), "%Y"))
+      if(currentMonth > ccprMonth) {
+        # If we haven't yet had the month to be displayed this calendar year,
+        # then use last year.
+        currentYear <- currentYear - 1
+      }
+      yearColumnName <- as.character(currentYear)
     }
     
     originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
@@ -110,6 +125,30 @@ computeCumulativePrecipitationRecords <-
           minYTDYears[calDate] == minYTDYears[calDate + 1]) {
         recordsFrame[["minYTDYear"]][calDate] <- ""
       }
+    }
+    
+    # Add the current year's data, if desired
+    if(showYear) {
+      # Filter originalFrame to only include the current year's data
+      currentYearFrame <- originalFrame %>%
+        dplyr::filter(Year == currentYear, Month == ccprMonth) %>%
+        dplyr::mutate(MTD = MTDPrecip, YTD = YTDPrecip) %>%
+        dplyr::select(Month, DayOfMonth, MTD, YTD)
+      recordsFrame <- dplyr::full_join(recordsFrame,
+                                       currentYearFrame,
+                                       by = c("Month", "DayOfMonth")) %>%
+        dplyr::select(Month,
+                      DayOfMonth,
+                      maxMTDPrecip,
+                      maxMTDYear,
+                      MTD,
+                      minMTDPrecip,
+                      minMTDYear,
+                      maxYTDPrecip,
+                      maxYTDYear,
+                      YTD,
+                      minYTDPrecip,
+                      minYTDYear)
     }
     
     return(recordsFrame)
