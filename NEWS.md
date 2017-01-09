@@ -11,11 +11,13 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
-### Changes not yet ported to master
+### Changes in version 0.0.0.9037 (2017-01-09)
 * **computeCumulativePrecipitation**: Add `computeCumulativePrecipitation`
 function to calculate `MTDPrecip` and `YTDPrecip` variables
-* **computeCumulativePrecipitationRecords**: Find records (and years) for
+* **computeCumulativePrecipRecords**: Find records (and years) for
 `MTDPrecip` and `YTDPrecip`
+* **plotMTDPrecipitation**: Plot month-to-date precipitation, with historical
+maximum and minimum month-to-date precipitation totals.
 * **%>%**: Import function from `dplyr`
 
 ### Changes in version 0.0.0.9034 (2017-01-05)
