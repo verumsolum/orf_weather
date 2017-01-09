@@ -21,7 +21,7 @@ wxYear <- combineDataFrames(airportData, updatedData()) %>%
 
 ## Daily High Temperature
 
-These are the ten **hottest** days of 2016, by daily high temperature.
+These are the ten **hottest** days of 2017, by daily high temperature.
 
 ```{r echo = FALSE}
 wxYear %<>% mutate(Rank = as.integer(min_rank(-MaxTemperature)))
@@ -32,7 +32,7 @@ knitr::kable(
   )
 ```
 
-These are the ten **coldest** days of 2016 (by daily high temperature)
+These are the ten **coldest** days of 2017 (by daily high temperature)
 
 ```{r echo = FALSE}
 wxYear %<>% mutate(Rank = as.integer(min_rank(MaxTemperature)))
@@ -47,7 +47,7 @@ knitr::kable(
 
 ## Daily Low Temperature
 
-These are the ten **coldest** days of 2016, by daily low temperature.
+These are the ten **coldest** days of 2017, by daily low temperature.
 
 ```{r echo = FALSE}
 wxYear %<>% mutate(Rank = as.integer(min_rank(MinTemperature)))
@@ -58,7 +58,7 @@ knitr::kable(
   )
 ```
 
-These are the ten **hottest** days of 2016 (by daily low temperature).
+These are the ten **hottest** days of 2017 (by daily low temperature).
 
 ```{r echo = FALSE}
 wxYear %<>% mutate(Rank = as.integer(min_rank(-MinTemperature)))
@@ -99,7 +99,7 @@ knitr::kable(
 These are the ten days with the greatest precipitation.
 
 ```{r echo = FALSE, warning = FALSE}
-wxYear %<>% tidyr::drop_na(CsvPrecipitation, CsvSnowfall) %>%
+wxYear %<>% tidyr::drop_na(CsvPrecipitation) %>%
   convertCsvToNumericAndLogical() %>%
   mutate(Rank = as.integer(min_rank(-PrecipitationInches)))
 knitr::kable(
@@ -116,7 +116,7 @@ knitr::kable(
 These are the days with snowfall (in inches, `T` is trace snowfall).
 
 ```{r echo = FALSE, warning = FALSE}
-wxYear %<>% tidyr::drop_na(CsvPrecipitation, CsvSnowfall) %>%
+wxYear %<>% tidyr::drop_na(CsvSnowfall) %>%
   convertCsvToNumericAndLogical() %>%
   mutate(Rank = as.integer(min_rank(-SnowfallInches)))
 knitr::kable(
@@ -144,7 +144,8 @@ Days with highs greater than or equal to...
 | 65 | `r as.integer(count(filter(wxYear, MaxTemperature >= 65)))` |
 | 60 | `r as.integer(count(filter(wxYear, MaxTemperature >= 60)))` |
 | 55 | `r as.integer(count(filter(wxYear, MaxTemperature >= 55)))` |
-
+| 50 | `r as.integer(count(filter(wxYear, MaxTemperature >= 50)))` |
+| 45 | `r as.integer(count(filter(wxYear, MaxTemperature >= 45)))` |
 
 \pagebreak
 
@@ -160,8 +161,8 @@ Days with highs less than or equal to...
 | 35 | `r as.integer(count(filter(wxYear, MaxTemperature <= 35)))` |
 | 32 | `r as.integer(count(filter(wxYear, MaxTemperature <= 32)))` |
 | 30 | `r as.integer(count(filter(wxYear, MaxTemperature <= 30)))` |
-<!-- | 25 | `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))` | -->
-<!-- | 20 | `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))` | -->
+| 25 | `r as.integer(count(filter(wxYear, MaxTemperature <= 25)))` |
+| 20 | `r as.integer(count(filter(wxYear, MaxTemperature <= 20)))` |
 
 ### Low temperatures
 
@@ -171,6 +172,9 @@ Days with lows greater than or equal to...
 |------:|-----:|
 | 50 | `r as.integer(count(filter(wxYear, MinTemperature >= 50)))` |
 | 45 | `r as.integer(count(filter(wxYear, MinTemperature >= 45)))` |
+| 40 | `r as.integer(count(filter(wxYear, MinTemperature >= 40)))` |
+| 35 | `r as.integer(count(filter(wxYear, MinTemperature >= 35)))` |
+| 32 | `r as.integer(count(filter(wxYear, MinTemperature >= 32)))` |
 
 Days with lows less than or equal to...
 
@@ -184,7 +188,7 @@ Days with lows less than or equal to...
 | 30 | `r as.integer(count(filter(wxYear, MinTemperature <= 30)))` |
 | 25 | `r as.integer(count(filter(wxYear, MinTemperature <= 25)))` |
 | 20 | `r as.integer(count(filter(wxYear, MinTemperature <= 20)))` |
-<!-- | 15 | `r as.integer(count(filter(wxYear, MinTemperature <= 15)))` | -->
+| 15 | `r as.integer(count(filter(wxYear, MinTemperature <= 15)))` |
 
 \pagebreak
 
