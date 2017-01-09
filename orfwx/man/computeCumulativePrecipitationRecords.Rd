@@ -6,7 +6,7 @@
 \usage{
 
   computeCumulativePrecipitationRecords(originalFrame = orfwx::computeCumulativePrecipitation(),
-  ccprMonth = format(orfwx::yesterdate(), "\%m"))
+  ccprMonth = format(orfwx::yesterdate(), "\%m"), showYear = FALSE)
 }
 \arguments{
 \item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
@@ -15,6 +15,9 @@ and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
 \item{ccprMonth}{(optional) The month for which precipitation records are
 desired. Defaults to the current month (except on the 1st of the month,
 when it defaults to the previous month).}
+
+\item{showYear}{(optional) Whether or not to show the current or most recent
+year's data for comparison (defaults to \code{FALSE}).}
 }
 \value{
 Returns a data frame.
