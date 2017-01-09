@@ -4,13 +4,18 @@
 \alias{plotMTDPrecipitation}
 \title{Plot month-to-date precipitation}
 \usage{
-plotMTDPrecipitation()
+plotMTDPrecipitation(plotMonth = format(orfwx::yesterdate(), "\%m"))
+}
+\arguments{
+\item{plotMonth}{(optional) The month for which precipitation records are
+desired. Defaults to the current month (except on the 1st of the month,
+when it defaults to the previous month).}
 }
 \value{
 Returns a plot.
 }
 \description{
-\code{plotMTDPrecipitation} creates a barplot with the precipitation
+\code{plotMTDPrecipitation} creates a plot with the precipitation
 of the month to date.
 }
 \details{
@@ -20,6 +25,7 @@ lowest month-to-date precipitation recorded by that point in the month, and
 a black line with the curent year's month-to-date precipitation.
 }
 \examples{
-plotMTDPrecipitation()
+\dontrun{
+plotMTDPrecipitation()}
 }
 

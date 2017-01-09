@@ -13,7 +13,8 @@
 #'   when it defaults to the previous month).
 #' @return Returns a plot.
 #' @examples
-#' plotMTDPrecipitation()
+#' \dontrun{
+#' plotMTDPrecipitation()}
 #' @export
 plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
                                                     "%m")) {
