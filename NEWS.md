@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes not yet ported to master
+* *Data*: Add `ApNormals1981-2010.csv` to `data-raw` directory, convert to
+`airportNormals` dataset
+
 ### Changes in version 0.0.0.9037 (2017-01-09)
 * **computeCumulativePrecipitation**: Add `computeCumulativePrecipitation`
 function to calculate `MTDPrecip` and `YTDPrecip` variables
