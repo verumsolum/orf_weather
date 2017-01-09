@@ -19,7 +19,7 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                                     "%m")) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
-  currentMonth <- as.integer(orfwx::yesterdate(), "%m")
+  currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
   plotYear <- as.integer(format(orfwx::yesterdate(), "%Y"))
   if(currentMonth < plotMonth) {
     # If we haven't yet had the month to be displayed this calendar year,
