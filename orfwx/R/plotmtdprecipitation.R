@@ -19,6 +19,10 @@ plotMTDPrecipitation <- function() {
                   ggplot2::aes(DayOfMonth, maxMTDPrecip)) +
     ggplot2::geom_point(color = "firebrick") + 
     ggplot2::geom_line(color = "firebrick") + 
+    ggplot2::geom_text(ggplot2::aes(label = maxMTDYear), 
+                       nudge_y = 0.5, 
+                       angle = 90, 
+                       size = 3) +
     ggplot2::ggtitle("January month-to-date precipitation") + 
     ggplot2::theme(plot.title = ggplot2::element_text(face = "bold",
                                                       family = "Optima")) + 
@@ -26,5 +30,9 @@ plotMTDPrecipitation <- function() {
     ggplot2::geom_point(ggplot2::aes(y = MTD), color = "black") + 
     ggplot2::geom_line(ggplot2::aes(y = MTD), color = "black") + 
     ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip), color = "blue") + 
-    ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip), color = "blue")
+    ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip), color = "blue") + 
+    ggplot2::geom_text(ggplot2::aes(y = minMTDPrecip, label = minMTDYear), 
+                       nudge_y = -0.5, 
+                       angle = 90, 
+                       size = 3)
   }
