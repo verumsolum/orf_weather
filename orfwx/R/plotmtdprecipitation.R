@@ -1,6 +1,6 @@
 #' Plot month-to-date precipitation
 #' 
-#' \code{plotMTDPrecipitation} creates a barplot with the precipitation
+#' \code{plotMTDPrecipitation} creates a plot with the precipitation
 #' of the month to date.
 #' 
 #' Three lines are displayed: a red line with the highest month-to-date
