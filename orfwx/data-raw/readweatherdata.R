@@ -52,6 +52,28 @@ airportNormals <- dplyr::rename(airportNormals,
                   as.integer()) %>%
   dplyr::select(Month, DayOfMonth, dplyr::everything(), -date)
 
+# Determine a monthly baseline (for use in calculating MTDPrecip)
+monthlyBaseline <- airportNormals %>%
+  dplyr::group_by(Month) %>%
+  dplyr::summarise(maxYTDPrecip = max(YTDPrecip)) %>%
+  dplyr::mutate(Month = Month + 1) %>% 
+  dplyr::rename(prevMonthEndYTDPrecip = maxYTDPrecip)
+
+# Get rid of month 13 and add a month 1 with 0 and re-sort
+monthlyBaseline[12, ] <- list(1,0)
+monthlyBaseline <- dplyr::arrange(monthlyBaseline, Month)
+
+# Join monthlyBaseline to airportNormals, then use to calculate MTDPrecip
+airportNormals <- dplyr::left_join(airportNormals, 
+                                   monthlyBaseline, 
+                                   by = "Month") %>% 
+  dplyr::mutate(MTDPrecip = YTDPrecip - prevMonthEndYTDPrecip) %>%
+  dplyr::select(Month, 
+                DayOfMonth, 
+                MTDPrecip, 
+                dplyr::everything(), 
+                -prevMonthEndYTDPrecip)
+
 # Remove duplicate dates (only use downtown before 1946-01-01)
 earlyDowntownData <-
   downtownData[which(downtownData$Date < as.Date("1946-01-01")),]
