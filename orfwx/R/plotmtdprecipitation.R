@@ -38,5 +38,5 @@ plotMTDPrecipitation <- function() {
                        angle = 90, 
                        size = 3,
                        color = "black") +
-    ggplot2::scale_color_manual(name = "Legend", values = col2legend)
+    ggplot2::scale_color_manual(name = "Legend", values = col2legend, breaks = c("Maximum", "2017", "Minimum"), labels = c("Maximum\n(1874-present)", "2017", "Minimum\n(1874-present)"))
   }
