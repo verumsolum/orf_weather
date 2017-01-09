@@ -14,15 +14,17 @@
 #' @export
 plotMTDPrecipitation <- function() {
   # DRAFT - not yet suitable for inclusion in package
-  ggplot2::ggplot(computeCumulativePrecipitationRecords(showYear = TRUE),
-                  aes(DayOfMonth, maxMTDPrecip)) +
-    geom_point(color = "firebrick") + 
-    geom_line(color = "firebrick") + 
-    ggtitle("January month-to-date precipitation") + 
-    theme(plot.title = element_text(face = "bold", family = "Optima")) + 
-    labs(x = "Day of January", y = "Precipitation (in inches)") + 
-    geom_point(aes(y = MTD), color = "black") + 
-    geom_line(aes(y = MTD), color = "black") + 
-    geom_point(aes(y = minMTDPrecip), color = "blue") + 
-    geom_line(aes(y = minMTDPrecip), color = "blue")
+  ggplot2::ggplot(orfwx::computeCumulativePrecipitationRecords(
+                    showYear = TRUE),
+                  ggplot2::aes(DayOfMonth, maxMTDPrecip)) +
+    ggplot2::geom_point(color = "firebrick") + 
+    ggplot2::geom_line(color = "firebrick") + 
+    ggplot2::ggtitle("January month-to-date precipitation") + 
+    ggplot2::theme(plot.title = ggplot2::element_text(face = "bold",
+                                                      family = "Optima")) + 
+    ggplot2::labs(x = "Day of January", y = "Precipitation (in inches)") + 
+    ggplot2::geom_point(ggplot2::aes(y = MTD), color = "black") + 
+    ggplot2::geom_line(ggplot2::aes(y = MTD), color = "black") + 
+    ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip), color = "blue") + 
+    ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip), color = "blue")
   }
