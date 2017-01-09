@@ -8,12 +8,17 @@
 #' lowest month-to-date precipitation recorded by that point in the month, and
 #' a black line with the curent year's month-to-date precipitation.
 #' 
+#' @param plotMonth (optional) The month for which precipitation records are
+#'   desired. Defaults to the current month (except on the 1st of the month,
+#'   when it defaults to the previous month).
 #' @return Returns a plot.
 #' @examples
 #' plotMTDPrecipitation()
 #' @export
-plotMTDPrecipitation <- function() {
+plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
+                                                    "%m")) {
   # DRAFT - not yet suitable for inclusion in package
+  plotMonth <- as.integer(plotMonth)
   col2legend <- c("Maximum" = "firebrick", 
                   "2017" = "black", 
                   "Minimum" = "blue")
@@ -27,10 +32,12 @@ plotMTDPrecipitation <- function() {
                        angle = 90, 
                        size = 3,
                        color = "black") +
-    ggplot2::ggtitle("January month-to-date precipitation") + 
+    ggplot2::ggtitle(paste(month.name[plotMonth], 
+                           "month-to-date precipitation")) + 
     ggplot2::theme(plot.title = ggplot2::element_text(face = "bold",
                                                       family = "Optima")) + 
-    ggplot2::labs(x = "Day of January", y = "Precipitation (in inches)") + 
+    ggplot2::labs(x = paste("Day of", month.name[plotMonth]),
+                  y = "Precipitation (in inches)") + 
     ggplot2::geom_point(ggplot2::aes(y = MTD, color = "2017")) + 
     ggplot2::geom_line(ggplot2::aes(y = MTD, color = "2017")) + 
     ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
