@@ -17,8 +17,9 @@
 #' \dontrun{computeCumulativePrecipitation()}
 #' @export
 #' @importFrom dplyr "%>%"
-computeCumulativePrecipitationRecords <- 
-  function(originalFrame = orfwx::computeCumulativePrecipitation(),
+computeCumulativePrecipRecords <- 
+  function(originalFrame = 
+             orfwx::computeCumulativePrecipitation(),
            ccprMonth = format(orfwx::yesterdate(), "%m"),
            showYear = FALSE) {
     # Ensure ccprMonth is an integer between 1 and 12, inclusive.

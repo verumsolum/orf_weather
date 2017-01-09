@@ -31,7 +31,7 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
   col2legend <- c("Maximum" = "firebrick", 
                   "Current" = "black", 
                   "Minimum" = "blue")
-  ggplot2::ggplot(orfwx::computeCumulativePrecipitationRecords(
+  ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
                     ccprMonth = plotMonth,
                     showYear = TRUE),
                   ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
