@@ -14,7 +14,9 @@
 #' @export
 plotMTDPrecipitation <- function() {
   # DRAFT - not yet suitable for inclusion in package
-  col2legend <- c("Maximum" = "firebrick", "2017" = "black", "Minimum" = "blue")
+  col2legend <- c("Maximum" = "firebrick", 
+                  "2017" = "black", 
+                  "Minimum" = "blue")
   ggplot2::ggplot(orfwx::computeCumulativePrecipitationRecords(
                     showYear = TRUE),
                   ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
@@ -33,10 +35,17 @@ plotMTDPrecipitation <- function() {
     ggplot2::geom_line(ggplot2::aes(y = MTD, color = "2017")) + 
     ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
     ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
-    ggplot2::geom_text(ggplot2::aes(y = minMTDPrecip, label = minMTDYear, color = "Minimum"), 
+    ggplot2::geom_text(ggplot2::aes(y = minMTDPrecip, 
+                                    label = minMTDYear, 
+                                    color = "Minimum"), 
                        nudge_y = -0.5, 
                        angle = 90, 
                        size = 3,
                        color = "black") +
-    ggplot2::scale_color_manual(name = "Legend", values = col2legend, breaks = c("Maximum", "2017", "Minimum"), labels = c("Maximum\n(1874-present)", "2017", "Minimum\n(1874-present)"))
+    ggplot2::scale_color_manual(name = "Legend", 
+                                values = col2legend, 
+                                breaks = c("Maximum", "2017", "Minimum"), 
+                                labels = c("Maximum\n(1874-present)", 
+                                           "2017", 
+                                           "Minimum\n(1874-present)"))
   }
