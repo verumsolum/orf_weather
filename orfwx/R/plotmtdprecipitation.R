@@ -19,10 +19,19 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                                     "%m")) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
+  currentMonth <- as.integer(orfwx::yesterdate(), "%m")
+  plotYear <- as.integer(format(orfwx::yesterdate(), "%Y"))
+  if(currentMonth < plotMonth) {
+    # If we haven't yet had the month to be displayed this calendar year,
+    # then use last year.
+    plotYear <- plotYear - 1
+  }
+  plotYear <- as.character(plotYear)
   col2legend <- c("Maximum" = "firebrick", 
-                  "2017" = "black", 
+                  "Current" = "black", 
                   "Minimum" = "blue")
   ggplot2::ggplot(orfwx::computeCumulativePrecipitationRecords(
+                    ccprMonth = plotMonth,
                     showYear = TRUE),
                   ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
     ggplot2::geom_point(ggplot2::aes(color = "Maximum")) + 
@@ -38,8 +47,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                                       family = "Optima")) + 
     ggplot2::labs(x = paste("Day of", month.name[plotMonth]),
                   y = "Precipitation (in inches)") + 
-    ggplot2::geom_point(ggplot2::aes(y = MTD, color = "2017")) + 
-    ggplot2::geom_line(ggplot2::aes(y = MTD, color = "2017")) + 
+    ggplot2::geom_point(ggplot2::aes(y = MTD, color = "Current")) + 
+    ggplot2::geom_line(ggplot2::aes(y = MTD, color = "Current")) + 
     ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
     ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
     ggplot2::geom_text(ggplot2::aes(y = minMTDPrecip, 
@@ -51,8 +60,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                        color = "black") +
     ggplot2::scale_color_manual(name = "Legend", 
                                 values = col2legend, 
-                                breaks = c("Maximum", "2017", "Minimum"), 
+                                breaks = c("Maximum", "Current", "Minimum"), 
                                 labels = c("Maximum\n(1874-present)", 
-                                           "2017", 
+                                           plotYear, 
                                            "Minimum\n(1874-present)"))
   }
