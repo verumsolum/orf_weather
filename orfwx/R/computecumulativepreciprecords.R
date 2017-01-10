@@ -12,6 +12,8 @@
 #'   when it defaults to the previous month).
 #' @param showYear (optional) Whether or not to show the current or most recent
 #'   year's data for comparison (defaults to \code{FALSE}).
+#' @param includeNormals (optional) Whether or not to show the 1981-2010 
+#'   normals for comparison (defaults to \code{FALSE}).
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
@@ -21,7 +23,8 @@ computeCumulativePrecipRecords <-
   function(originalFrame = 
              orfwx::computeCumulativePrecipitation(),
            ccprMonth = format(orfwx::yesterdate(), "%m"),
-           showYear = FALSE) {
+           showYear = FALSE,
+           includeNormals = FALSE) {
     # Ensure ccprMonth is an integer between 1 and 12, inclusive.
     ccprMonth <- as.integer(ccprMonth)
     if(ccprMonth < 1 | ccprMonth > 12) {
@@ -150,6 +153,48 @@ computeCumulativePrecipRecords <-
                       YTD,
                       minYTDPrecip,
                       minYTDYear)
+    }
+    
+    # Add normals, if desired
+    if(includeNormals) {
+      # Join normals to the data
+      recordsFrame <- dplyr::left_join(recordsFrame,
+                                       airportNormals %>%
+                                         dplyr::select(
+                                           -dplyr::ends_with("re")),
+                                       by = c("Month", "DayOfMonth")) %>%
+        dplyr::rename(MTDNormal = MTDPrecip, YTDNormal = YTDPrecip)
+      if(showYear) {
+        recordsFrame <- dplyr::select(recordsFrame,
+                                      Month,
+                                      DayOfMonth,
+                                      maxMTDPrecip,
+                                      maxMTDYear,
+                                      MTDNormal,
+                                      MTD,
+                                      minMTDPrecip,
+                                      minMTDYear,
+                                      maxYTDPrecip,
+                                      maxYTDYear,
+                                      YTDNormal,
+                                      YTD,
+                                      minYTDPrecip,
+                                      minYTDYear)
+      } else {
+        recordsFrame <- dplyr::select(recordsFrame,
+                                      Month,
+                                      DayOfMonth,
+                                      maxMTDPrecip,
+                                      maxMTDYear,
+                                      MTDNormal,
+                                      minMTDPrecip,
+                                      minMTDYear,
+                                      maxYTDPrecip,
+                                      maxYTDYear,
+                                      YTDNormal,
+                                      minYTDPrecip,
+                                      minYTDYear)
+      }
     }
     
     return(recordsFrame)

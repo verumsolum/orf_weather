@@ -29,11 +29,13 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
   }
   plotYear <- as.character(plotYear)
   col2legend <- c("Maximum" = "firebrick", 
+                  "Normal" = "darkgreen", 
                   "Current" = "black", 
                   "Minimum" = "blue")
   ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
                     ccprMonth = plotMonth,
-                    showYear = TRUE),
+                    showYear = TRUE,
+                    includeNormals = TRUE),
                   ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
     ggplot2::geom_point(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_line(ggplot2::aes(color = "Maximum")) + 
@@ -48,6 +50,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                                       family = "Optima")) + 
     ggplot2::labs(x = paste("Day of", month.name[plotMonth]),
                   y = "Precipitation (in inches)") + 
+    ggplot2::geom_point(ggplot2::aes(y = MTDNormal, color = "Normal")) + 
+    ggplot2::geom_line(ggplot2::aes(y = MTDNormal, color = "Normal")) + 
     ggplot2::geom_point(ggplot2::aes(y = MTD, color = "Current")) + 
     ggplot2::geom_line(ggplot2::aes(y = MTD, color = "Current")) + 
     ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
@@ -61,8 +65,9 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                        color = "black") +
     ggplot2::scale_color_manual(name = "Legend", 
                                 values = col2legend, 
-                                breaks = c("Maximum", "Current", "Minimum"), 
+                                breaks = c("Maximum", "Normal", "Current", "Minimum"), 
                                 labels = c("Maximum\n(1874-present)", 
+                                           "Normal\n(1981-2010)",
                                            plotYear, 
                                            "Minimum\n(1874-present)"))
   }
