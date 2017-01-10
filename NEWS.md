@@ -11,9 +11,12 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
-### Changes not yet ported to master
+### Changes in version 0.0.0.9038 (2017-01-10)
+* **computeCumulativePrecipRecords**: Add `includeNormals` parameter to
+include normals in data frame
 * *Data*: Add `ApNormals1981-2010.csv` to `data-raw` directory, convert to
 `airportNormals` dataset
+* **plotMTDPrecipitation**: Add normals to plot
 
 ### Changes in version 0.0.0.9037 (2017-01-09)
 * **computeCumulativePrecipitation**: Add `computeCumulativePrecipitation`
