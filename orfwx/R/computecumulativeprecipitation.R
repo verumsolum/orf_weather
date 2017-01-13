@@ -15,7 +15,7 @@
 #' \dontrun{computeCumulativePrecipitation()}
 #' @export
 #' @importFrom dplyr "%>%"
-computeCumulativePrecipitation <- function(originalFrame = allData(),
+computeCumulativePrecipitation <- function(originalFrame = orfwx::allData(),
                                            daysWeather = NULL) {
   # Give ccpDf the data to be used.
   if(is.null(daysWeather)) {
