@@ -10,7 +10,7 @@
 #' match, the function terminates with an error message.
 #' 
 #' The data from \code{daysWeather} is added to that provided by 
-#' \code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+#' \code{wxUniverse} (by default, \code{\link{allData}}) and the weather
 #' on the same date each year is compared.
 #' 
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
@@ -23,7 +23,7 @@
 #' highlighted with a bar of a different color in the barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
-#'   to be searched (defaults to \code{bothStations}).
+#'   to be searched (defaults to \code{allData}).
 #' @param plotDate (optional) The date to be searched for, defaulting to 
 #'   yesterday's date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -34,9 +34,10 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotCoolestMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
+#' plotCoolestMaxTempOverHistory(airportData, searchDate(11, 26))  
+#' # Returns plot for November 26th
 #' @export
-plotCoolestMaxTempOverHistory <- function(wxUniverse = orfwx::bothStations,
+plotCoolestMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                           plotDate = yesterdate(),
                                           daysWeather = NULL,
                                           twoTicks = TRUE,

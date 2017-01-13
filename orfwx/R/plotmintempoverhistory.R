@@ -10,7 +10,7 @@
 #' match, the function terminates with an error message.
 #' 
 #' The data from \code{daysWeather} is added to that provided by 
-#' \code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+#' \code{wxUniverse} (by default, \code{\link{allData}}) and the weather
 #' on the same date each year is compared.
 #' 
 #' A barplot is plotted by \code{\link{plotWithManyBars}} with the low 
@@ -20,7 +20,7 @@
 #' barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
-#'   to be searched (defaults to \code{bothStations}).
+#'   to be searched (defaults to \code{allData}).
 #' @param plotDate (optional) The date to be searched for, defaulting to
 #'   yesterday's date.
 #' @param daysWeather (optional) The weather for a date not yet included in
@@ -31,9 +31,10 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{TRUE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
+#' plotMinTempOverHistory(airportData, searchDate(11, 26))  
+#' # Returns plot for November 26th
 #' @export
-plotMinTempOverHistory <- function(wxUniverse = orfwx::bothStations,
+plotMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                    plotDate = yesterdate(),
                                    daysWeather = NULL,
                                    twoTicks = TRUE,
@@ -63,7 +64,8 @@ plotMinTempOverHistory <- function(wxUniverse = orfwx::bothStations,
   
   # Create a data frame with the weather for this day in history.
   dayInHistory <- dplyr::filter(wxUniverse, 
-                                format(Date, "%m%d") == format(plotDate, "%m%d"))
+                                format(Date, "%m%d") == 
+                                  format(plotDate, "%m%d"))
   
   # Sort orfTMax by highTemperature
   dayInHistory <- dayInHistory[order(dayInHistory$MinTemperature), ]

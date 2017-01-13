@@ -4,13 +4,13 @@
 \alias{plotWarmestMaxTempOverHistory}
 \title{Plot warmest historical high tempertures on a single date}
 \usage{
-plotWarmestMaxTempOverHistory(wxUniverse = orfwx::bothStations,
+plotWarmestMaxTempOverHistory(wxUniverse = orfwx::allData(),
   plotDate = yesterdate(), daysWeather = NULL, twoTicks = TRUE,
   fiveTicks = FALSE, tenTicks = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
-to be searched (defaults to \code{bothStations}).}
+to be searched (defaults to \code{allData}).}
 
 \item{plotDate}{(optional) The date to be searched for, defaulting to
 yesterday's date.}
@@ -40,7 +40,7 @@ function or the default value of the current system date). If they do not
 match, the function terminates with an error message.
 
 The data from \code{daysWeather} is added to that provided by 
-\code{wxUniverse} (by default, \code{\link{bothStations}}) and the weather
+\code{wxUniverse} (by default, \code{\link{allData}}) and the weather
 on the same date each year is compared.
 
 A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
@@ -53,6 +53,7 @@ the same temperature.) The bar for the year provided by \code{daysWeather}
 highlighted with a bar of a different color in the barplot.
 }
 \examples{
-plotWarmestMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
+plotWarmestMaxTempOverHistory(airportData, searchDate(11, 26))  
+# Returns plot for November 26th
 }
 

@@ -5,8 +5,8 @@
 #' 
 #' Details section to be written
 #' 
-#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} and 
-#'   \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
+#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} 
+#'   and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
 #' @param daysWeather (optional) The weather for a date not yet included in
 #'   the \code{originalFrame} data frame, usually passed by the
 #'   \code{singleDaysWeather} function.
@@ -15,7 +15,7 @@
 #' \dontrun{computeCumulativePrecipitation()}
 #' @export
 #' @importFrom dplyr "%>%"
-computeCumulativePrecipitation <- function(originalFrame = allData(),
+computeCumulativePrecipitation <- function(originalFrame = orfwx::allData(),
                                            daysWeather = NULL) {
   # Give ccpDf the data to be used.
   if(is.null(daysWeather)) {

@@ -18,7 +18,9 @@
 #' }
 #' @export
 getUpdatedCsv <- function(){
-  gucURL <- "https://github.com/verumsolum/orf_weather/raw/wxupdate/orfwx/data-raw/updates.csv"
+  gucURL <- paste0("https://github.com/verumsolum/orf_weather/raw/",
+                   "wxupdate/",
+                   "orfwx/data-raw/updates.csv")
   fLocation <- "~/.orfwx/updates.csv"
   bfTimestamp <- strftime(Sys.time(), "%Y%m%d%H%M%S")
   bfName <- paste0("~/.orfwx/updates.", bfTimestamp, ".backup.csv")
