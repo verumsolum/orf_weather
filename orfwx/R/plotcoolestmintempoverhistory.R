@@ -67,7 +67,8 @@ plotCoolestMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
   
   # Create a data frame with the weather for this day in history.
   dayInHistory <- dplyr::filter(wxUniverse, 
-                                format(Date, "%m%d") == format(plotDate, "%m%d"))
+                                format(Date, "%m%d") == 
+                                  format(plotDate, "%m%d"))
   
   # Sort orfTMin by lowTemperature
   dayInHistory <- dplyr::arrange(dayInHistory, MinTemperature)
@@ -83,7 +84,8 @@ plotCoolestMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
     # Otherwise, include all days colder than (or equal to)
     # daysWeather$MinTemperature
     dayInHistory <- dplyr::filter(dayInHistory,
-                                  MinTemperature <= daysWeather$MinTemperature)
+                                  MinTemperature <= 
+                                    daysWeather$MinTemperature)
   }
   
   plotWithManyBars(dayInHistory$MinTemperature,
