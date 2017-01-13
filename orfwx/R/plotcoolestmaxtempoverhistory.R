@@ -34,7 +34,8 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotCoolestMaxTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
+#' plotCoolestMaxTempOverHistory(airportData, searchDate(11, 26))  
+#' # Returns plot for November 26th
 #' @export
 plotCoolestMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                           plotDate = yesterdate(),
