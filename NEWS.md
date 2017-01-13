@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9039 (2017-01-13)
+* *wxUniverse*: Change parameter in several functions to default to `allData`,
+rather than `bothStations`
+
 ### Changes in version 0.0.0.9038 (2017-01-10)
 * **computeCumulativePrecipRecords**: Add `includeNormals` parameter to
 include normals in data frame

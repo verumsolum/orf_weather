@@ -4,12 +4,12 @@
 \alias{computeCumulativePrecipitation}
 \title{Compute cumulative precipitation variables}
 \usage{
-computeCumulativePrecipitation(originalFrame = allData(),
+computeCumulativePrecipitation(originalFrame = orfwx::allData(),
   daysWeather = NULL)
 }
 \arguments{
-\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} and 
-\code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
+\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
+and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
 the \code{originalFrame} data frame, usually passed by the
