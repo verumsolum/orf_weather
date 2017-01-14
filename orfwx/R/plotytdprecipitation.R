@@ -45,7 +45,7 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                        size = 3,
                        color = "black") +
     ggplot2::ggtitle(paste(month.name[plotMonth], 
-                           "month-to-date precipitation")) + 
+                           "year-to-date precipitation")) + 
     ggplot2::theme(plot.title = ggplot2::element_text(face = "bold",
                                                       family = "Optima")) + 
     ggplot2::labs(x = paste("Day of", month.name[plotMonth]),
