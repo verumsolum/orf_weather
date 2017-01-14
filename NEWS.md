@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9040 (2017-01-14)
+* **plotYTDPrecipitation**: New year-to-date plot based on 
+`plotMTDPrecipitation`.
+
 ### Changes in version 0.0.0.9039 (2017-01-13)
 * *wxUniverse*: Change parameter in several functions to default to `allData`,
 rather than `bothStations`
