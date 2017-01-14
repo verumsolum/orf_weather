@@ -16,7 +16,7 @@
 #' \dontrun{
 #' plotYTDPrecipitation()}
 #' @export
-plotMYDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
+plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
                                                     "%m")) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
