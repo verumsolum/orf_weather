@@ -1,12 +1,12 @@
-#' Plot month-to-date precipitation
+#' Plot year-to-date precipitation
 #' 
-#' \code{plotMTDPrecipitation} creates a plot with the precipitation
-#' of the month to date.
+#' \code{plotYTDPrecipitation} creates a plot of a month. with the precipitation
+#' of the year to date.
 #' 
-#' Three lines are displayed: a red line with the highest month-to-date
+#' Three lines are displayed: a red line with the highest year-to-date
 #' precipitation recorded by that point in the month, a blue line with the
-#' lowest month-to-date precipitation recorded by that point in the month, and
-#' a black line with the curent year's month-to-date precipitation.
+#' lowest year-to-date precipitation recorded by that point in the month, and
+#' a black line with the curent year-to-date precipitation.
 #' 
 #' @param plotMonth (optional) The month for which precipitation records are
 #'   desired. Defaults to the current month (except on the 1st of the month,
@@ -14,9 +14,9 @@
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
-#' plotMTDPrecipitation()}
+#' plotYTDPrecipitation()}
 #' @export
-plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
+plotMYDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
                                                     "%m")) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
@@ -36,10 +36,10 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                     ccprMonth = plotMonth,
                     showYear = TRUE,
                     includeNormals = TRUE),
-                  ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
+                  ggplot2::aes(DayOfMonth, maxYTDPrecip, color = "Maximum")) +
     ggplot2::geom_point(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_line(ggplot2::aes(color = "Maximum")) + 
-    ggplot2::geom_text(ggplot2::aes(label = maxMTDYear, color = "Maximum"), 
+    ggplot2::geom_text(ggplot2::aes(label = maxYTDYear, color = "Maximum"), 
                        nudge_y = 0.5, 
                        angle = 90, 
                        size = 3,
@@ -50,14 +50,14 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                                       family = "Optima")) + 
     ggplot2::labs(x = paste("Day of", month.name[plotMonth]),
                   y = "Precipitation (in inches)") + 
-    ggplot2::geom_point(ggplot2::aes(y = MTDNormal, color = "Normal")) + 
-    ggplot2::geom_line(ggplot2::aes(y = MTDNormal, color = "Normal")) + 
-    ggplot2::geom_point(ggplot2::aes(y = MTD, color = "Current")) + 
-    ggplot2::geom_line(ggplot2::aes(y = MTD, color = "Current")) + 
-    ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
-    ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
-    ggplot2::geom_text(ggplot2::aes(y = minMTDPrecip, 
-                                    label = minMTDYear, 
+    ggplot2::geom_point(ggplot2::aes(y = YTDNormal, color = "Normal")) + 
+    ggplot2::geom_line(ggplot2::aes(y = YTDNormal, color = "Normal")) + 
+    ggplot2::geom_point(ggplot2::aes(y = YTD, color = "Current")) + 
+    ggplot2::geom_line(ggplot2::aes(y = YTD, color = "Current")) + 
+    ggplot2::geom_point(ggplot2::aes(y = minYTDPrecip, color = "Minimum")) + 
+    ggplot2::geom_line(ggplot2::aes(y = minYTDPrecip, color = "Minimum")) + 
+    ggplot2::geom_text(ggplot2::aes(y = minYTDPrecip, 
+                                    label = minYTDYear, 
                                     color = "Minimum"), 
                        nudge_y = -0.5, 
                        angle = 90, 
