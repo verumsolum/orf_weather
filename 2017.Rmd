@@ -141,6 +141,8 @@ Days with highs greater than or equal to...
 
 | High temperature >= | Frequency (in days) |
 |------:|-----:|
+| 75 | `r as.integer(count(filter(wxYear, MaxTemperature >= 75)))` |
+| 70 | `r as.integer(count(filter(wxYear, MaxTemperature >= 70)))` |
 | 65 | `r as.integer(count(filter(wxYear, MaxTemperature >= 65)))` |
 | 60 | `r as.integer(count(filter(wxYear, MaxTemperature >= 60)))` |
 | 55 | `r as.integer(count(filter(wxYear, MaxTemperature >= 55)))` |
@@ -153,8 +155,6 @@ Days with highs less than or equal to...
 
 | High temperature <= | Frequency (in days) |
 |------:|-----:|
-| 60 | `r as.integer(count(filter(wxYear, MaxTemperature <= 60)))` |
-| 55 | `r as.integer(count(filter(wxYear, MaxTemperature <= 55)))` |
 | 50 | `r as.integer(count(filter(wxYear, MaxTemperature <= 50)))` |
 | 45 | `r as.integer(count(filter(wxYear, MaxTemperature <= 45)))` |
 | 40 | `r as.integer(count(filter(wxYear, MaxTemperature <= 40)))` |
@@ -170,17 +170,17 @@ Days with lows greater than or equal to...
 
 | Low temperature >= | Frequency (in days) |
 |------:|-----:|
+| 55 | `r as.integer(count(filter(wxYear, MinTemperature >= 55)))` |
 | 50 | `r as.integer(count(filter(wxYear, MinTemperature >= 50)))` |
 | 45 | `r as.integer(count(filter(wxYear, MinTemperature >= 45)))` |
 | 40 | `r as.integer(count(filter(wxYear, MinTemperature >= 40)))` |
-| 35 | `r as.integer(count(filter(wxYear, MinTemperature >= 35)))` |
-| 32 | `r as.integer(count(filter(wxYear, MinTemperature >= 32)))` |
+<!-- | 35 | `r as.integer(count(filter(wxYear, MinTemperature >= 35)))` | -->
+<!-- | 32 | `r as.integer(count(filter(wxYear, MinTemperature >= 32)))` | -->
 
 Days with lows less than or equal to...
 
 | Low temperature >= | Frequency (in days) |
 |------:|-----:|
-| 50 | `r as.integer(count(filter(wxYear, MinTemperature <= 50)))` |
 | 45 | `r as.integer(count(filter(wxYear, MinTemperature <= 45)))` |
 | 40 | `r as.integer(count(filter(wxYear, MinTemperature <= 40)))` |
 | 35 | `r as.integer(count(filter(wxYear, MinTemperature <= 35)))` |
