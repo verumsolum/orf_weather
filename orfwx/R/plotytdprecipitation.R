@@ -78,6 +78,9 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                            plotYear, 
                                            "Minimum\n(1874-present)")) +
     ggplot2::scale_y_continuous(expand = c(0.075, 0.075)) +
-    ggplot2::scale_x_continuous(breaks = seq(1, 31, 7),
+    ggplot2::scale_x_continuous(breaks = seq(orfwx::firstSunday(plotMonth,
+                                                                plotYear), 
+                                             31, 
+                                             7),
                                 expand = c(0.02, 0.02))
   }
