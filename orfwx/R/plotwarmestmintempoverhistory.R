@@ -34,7 +34,8 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotWarmestMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
+#' plotWarmestMinTempOverHistory(airportData, searchDate(11, 26))
+#' # Returns plot for November 26th
 #' @export
 plotWarmestMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                           plotDate = yesterdate(),
@@ -66,7 +67,8 @@ plotWarmestMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
   
   # Create a data frame with the weather for this day in history.
   dayInHistory <- dplyr::filter(wxUniverse, 
-                                format(Date, "%m%d") == format(plotDate, "%m%d"))
+                                format(Date, "%m%d") == 
+                                  format(plotDate, "%m%d"))
   
   # Sort orfTMax by highTemperature
   dayInHistory <- dplyr::arrange(dayInHistory, dplyr::desc(MinTemperature))
