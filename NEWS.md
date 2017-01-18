@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9042 (2017-01-18)
+* **plotWarmestMinTempOverHistory**: Change `wxUniverse` parameter to default to
+`allData` (This function was missed in 0.0.0.9039)
+
 ### Changes in version 0.0.0.9041 (2017-01-18)
 * **firstSunday**: Function to return the date of the first Sunday in a month
 * **plotMTDPrecipitation**: Label axis with ticks and labels each Sunday
