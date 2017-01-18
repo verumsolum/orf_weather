@@ -20,7 +20,7 @@
 firstSunday <- function(fsMonth, fsYear){
   for(d in 1:7) {
     if(weekdays(as.Date(paste0(fsYear, "-", fsMonth, "-0", d))) == "Sunday") {
-      d
+      return(d)
     }
   }
 }
