@@ -34,7 +34,7 @@
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
-#' plotWarmestMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 27th
+#' plotWarmestMinTempOverHistory(airportData, searchDate(11, 26))  # plot for November 26th
 #' @export
 plotWarmestMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                           plotDate = yesterdate(),
