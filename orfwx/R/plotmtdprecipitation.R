@@ -72,5 +72,10 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                 labels = c("Maximum\n(1874-present)", 
                                            "Normal\n(1981-2010)",
                                            plotYear, 
-                                           "Minimum\n(1874-present)"))
+                                           "Minimum\n(1874-present)")) +
+    ggplot2::scale_x_continuous(breaks = seq(orfwx::firstSunday(plotMonth,
+                                                                plotYear), 
+                                             31, 
+                                             7),
+                                expand = c(0.02, 0.02))
   }

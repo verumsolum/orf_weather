@@ -40,7 +40,9 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
     ggplot2::geom_point(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_line(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_text(ggplot2::aes(label = maxYTDYear, color = "Maximum"), 
-                       nudge_y = 0.5, 
+                       hjust = 0.0,
+                       vjust = 0.5,
+                       nudge_y = 0.25, 
                        angle = 90, 
                        size = 3,
                        color = "black") +
@@ -59,7 +61,9 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
     ggplot2::geom_text(ggplot2::aes(y = minYTDPrecip, 
                                     label = minYTDYear, 
                                     color = "Minimum"), 
-                       nudge_y = -0.5, 
+                       hjust = 1.0,
+                       vjust = 0.5,
+                       nudge_y = -0.25, 
                        angle = 90, 
                        size = 3,
                        color = "black") +
@@ -72,5 +76,11 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                 labels = c("Maximum\n(1874-present)", 
                                            "Normal\n(1981-2010)",
                                            plotYear, 
-                                           "Minimum\n(1874-present)"))
+                                           "Minimum\n(1874-present)")) +
+    ggplot2::scale_y_continuous(expand = c(0.075, 0.075)) +
+    ggplot2::scale_x_continuous(breaks = seq(orfwx::firstSunday(plotMonth,
+                                                                plotYear), 
+                                             31, 
+                                             7),
+                                expand = c(0.02, 0.02))
   }
