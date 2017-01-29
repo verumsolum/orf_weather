@@ -6,7 +6,7 @@
 \usage{
 plotMaxTempOverHistory(wxUniverse = orfwx::allData(),
   plotDate = yesterdate(), daysWeather = NULL, twoTicks = TRUE,
-  fiveTicks = FALSE, tenTicks = TRUE)
+  fiveTicks = FALSE, tenTicks = TRUE, saveToFile = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
@@ -24,6 +24,9 @@ the \code{wxUniverse} data frame, usually passed by the
 \item{fiveTicks}{(optional) Writes fifth ticks (defaults to \code{FALSE}).}
 
 \item{tenTicks}{(optional) Writes tenth ticks (defaults to \code{TRUE}).}
+
+\item{saveToFile}{(optional) Writes plot to a PNG file (defaults to 
+\code{FALSE}).}
 }
 \value{
 Returns a barplot.
