@@ -40,6 +40,14 @@ getUpdatedCsv <- function(){
       stop("Directory does not exist and apprently could not be created.")
     }
     utils::download.file(gucURL, fLocation)
+    # Notify the user whether or not the update is up-to-date or not
+    lastUpdated <- orfwx::findMostRecentDate()
+    if(lastUpdated == orfwx::yesterdate()) {
+      message("UP TO DATE! Updated through yesterday.")
+    } else {
+      message(paste("OUT OF DATE\n-----------\n\nMost recent date included:",
+                    lastUpdated))
+    }
   } else {
     stop(paste("Update not written to file: A file at",
                fLocation,
