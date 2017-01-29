@@ -43,7 +43,9 @@ getUpdatedCsv <- function(){
     # Notify the user whether or not the update is up-to-date or not
     lastUpdated <- orfwx::findMostRecentDate()
     if(lastUpdated == orfwx::yesterdate()) {
-      message("UP TO DATE! Updated through yesterday.")
+      message(paste0("UP TO DATE! Updated through yesterday (", 
+                     lastUpdated, 
+                     ")"))
     } else {
       message(paste("OUT OF DATE\n-----------\n\nMost recent date included:",
                     lastUpdated))
