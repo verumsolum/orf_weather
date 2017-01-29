@@ -6,6 +6,9 @@
 \usage{
 findMostRecentDate(fmrdSource = orfwx::updatedData())
 }
+\arguments{
+\item{fmrdSource}{The data frame to check. (Defaults to `updatedData()`).}
+}
 \value{
 Returns a date.
 }

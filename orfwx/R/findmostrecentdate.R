@@ -5,6 +5,7 @@
 #' 
 #' Details section to be written.
 #' 
+#' @param fmrdSource The data frame to check. (Defaults to `updatedData()`).
 #' @return Returns a date.
 #' @examples
 #' \dontrun{
