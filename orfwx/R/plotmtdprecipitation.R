@@ -11,13 +11,16 @@
 #' @param plotMonth (optional) The month for which precipitation records are
 #'   desired. Defaults to the current month (except on the 1st of the month,
 #'   when it defaults to the previous month).
+#' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
+#'   \code{FALSE}).
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
 #' plotMTDPrecipitation()}
 #' @export
 plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
-                                                    "%m")) {
+                                                    "%m"),
+                                 saveToFile = FALSE) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
   currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
@@ -32,11 +35,13 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                   "Normal" = "darkgreen", 
                   "Current" = "black", 
                   "Minimum" = "blue")
-  ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
-                    ccprMonth = plotMonth,
-                    showYear = TRUE,
-                    includeNormals = TRUE),
-                  ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
+  gmtd <- ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
+                            ccprMonth = plotMonth,
+                            showYear = TRUE,
+                            includeNormals = TRUE),
+                          ggplot2::aes(DayOfMonth, 
+                                       maxMTDPrecip, 
+                                       color = "Maximum")) +
     ggplot2::geom_point(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_line(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_text(ggplot2::aes(label = maxMTDYear, color = "Maximum"), 
@@ -78,4 +83,13 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                              31, 
                                              7),
                                 expand = c(0.02, 0.02))
+  if(saveToFile) {
+    ggplot2::ggsave(paste0(orfwx::padSingleDigitInteger(plotMonth), "pmtd.png"),
+                    device = "png",
+                    width = 10.24,
+                    height = 5.12,
+                    dpi = 100)
+  } else {
+    gmtd
   }
+}

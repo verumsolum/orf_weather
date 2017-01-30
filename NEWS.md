@@ -11,6 +11,14 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9044 (2017-01-30)
+* *saveToFile* parameter: Added to all `plot*` functions to direct function to
+save plot to file. (Defaults to `FALSE`.)  
+**WARNING:** The default for the `saveToFile` parameter is likely to change.
+It currently is set to `FALSE` while ensuring that there are no bugs or 
+unwelcome side effects, but I do hope to change it to `TRUE`, to make it easier
+for me to use this package.
+
 ### Changes in version 0.0.0.9043 (2017-01-30)
 * **findMostRecentDate**: Find most recent date in a data frame (defaults to
 `updatedData`)

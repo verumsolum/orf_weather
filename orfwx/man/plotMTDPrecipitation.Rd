@@ -4,12 +4,16 @@
 \alias{plotMTDPrecipitation}
 \title{Plot month-to-date precipitation}
 \usage{
-plotMTDPrecipitation(plotMonth = format(orfwx::yesterdate(), "\%m"))
+plotMTDPrecipitation(plotMonth = format(orfwx::yesterdate(), "\%m"),
+  saveToFile = FALSE)
 }
 \arguments{
 \item{plotMonth}{(optional) The month for which precipitation records are
 desired. Defaults to the current month (except on the 1st of the month,
 when it defaults to the previous month).}
+
+\item{saveToFile}{(optional) Writes plot to a PNG file (defaults to 
+\code{FALSE}).}
 }
 \value{
 Returns a plot.
