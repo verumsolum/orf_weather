@@ -47,7 +47,7 @@ getUpdatedCsv <- function(){
                      lastUpdated, 
                      ")"))
     } else {
-      message(paste("OUT OF DATE\n-----------\n\nMost recent date included:",
+      message(paste("OUT OF DATE\n-----------\nMost recent date included:",
                     lastUpdated))
     }
   } else {
