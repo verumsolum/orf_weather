@@ -11,6 +11,12 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9043 (2017-01-30)
+* **findMostRecentDate**: Find most recent date in a data frame (defaults to
+`updatedData`)
+* **getUpdatedCsv**: Report back to the user with the most recent date contained
+in the update.
+
 ### Changes in version 0.0.0.9042 (2017-01-18)
 * **plotWarmestMinTempOverHistory**: Change `wxUniverse` parameter to default to
 `allData` (This function was missed in 0.0.0.9039)
