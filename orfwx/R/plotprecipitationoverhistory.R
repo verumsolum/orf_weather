@@ -30,6 +30,8 @@
 #' @param twoTicks (optional) Writes half ticks (defaults to \code{TRUE}).
 #' @param fiveTicks (optional) Writes fifth ticks (defaults to \code{FALSE}).
 #' @param tenTicks (optional) Writes tenth ticks (defaults to \code{TRUE}).
+#' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
+#'   \code{FALSE}).
 #' @return Returns a barplot.
 #' @examples
 #' plotPrecipitationOverHistory(airportData, searchDate(11, 26))  
@@ -40,7 +42,8 @@ plotPrecipitationOverHistory <- function(wxUniverse = orfwx::allData(),
                                          daysWeather = NULL,
                                          twoTicks = TRUE,
                                          fiveTicks = FALSE,
-                                         tenTicks = TRUE) {
+                                         tenTicks = TRUE,
+                                         saveToFile = FALSE) {
   # Ensure that daysWeather is correct
   if (!is.null(daysWeather)) {
     # If daysWeather is set, 
@@ -83,6 +86,19 @@ plotPrecipitationOverHistory <- function(wxUniverse = orfwx::allData(),
   # Sort orfTMax by highTemperature
   dayInHistory <- dayInHistory[order(dayInHistory$PrecipitationInches), ]
   
+  # saveToFile is only effective if grDevices is available.
+  if(!requireNamespace("grDevices", quietly = TRUE)) {
+    if(saveToFile) {
+      saveToFile = FALSE
+      warning("FILE NOT SAVED: Saving file requires the 'grDevices' package.")
+    }
+  }
+  
+  if(saveToFile) {
+    grDevices::png(paste0(format(plotDate, "%m%d"), "prcp.png"),
+                   1024, 512, pointsize = 16)
+  }
+  
   plotWithManyBars(dayInHistory$PrecipitationInches,
                    dayInHistory,
                    paste("Precipitation on", 
@@ -99,4 +115,8 @@ plotPrecipitationOverHistory <- function(wxUniverse = orfwx::allData(),
   if (fiveTicks) tickFifth()
   if (tenTicks) tickTenth()
   graphics::mtext('Years \u2265 0.01" since 1874')
+  
+  if(saveToFile) {
+    grDevices::dev.off()
+  }
 }
