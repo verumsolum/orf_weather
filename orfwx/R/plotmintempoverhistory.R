@@ -103,6 +103,6 @@ plotMinTempOverHistory <- function(wxUniverse = orfwx::allData(),
   graphics::mtext('Since 1874')
   
   if(saveToFile) {
-    grDevices::dev.off()
+    invisible(grDevices::dev.off())
   }
 }

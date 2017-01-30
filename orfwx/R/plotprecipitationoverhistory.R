@@ -117,6 +117,6 @@ plotPrecipitationOverHistory <- function(wxUniverse = orfwx::allData(),
   graphics::mtext('Years \u2265 0.01" since 1874')
   
   if(saveToFile) {
-    grDevices::dev.off()
+    invisible(grDevices::dev.off())
   }
 }
