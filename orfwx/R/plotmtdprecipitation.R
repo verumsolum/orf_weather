@@ -89,7 +89,7 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                     width = 10.24,
                     height = 5.12,
                     dpi = 100)
-    } else {
-      gmtd
-    }
+  } else {
+    gmtd
   }
+}
