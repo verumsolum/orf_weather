@@ -82,7 +82,7 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                              7),
                                 expand = c(0.02, 0.02))
   if(saveToFile) {
-    ggplot2::ggsave(paste0(format(plotDate, "%m%d"), "pmtd.png"),
+    ggplot2::ggsave(paste0(orfwx::padSingleDigitInteger(plotMonth), "pmtd.png"),
                     device = "png",
                     width = 8,
                     height = 4,
