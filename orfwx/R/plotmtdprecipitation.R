@@ -11,13 +11,16 @@
 #' @param plotMonth (optional) The month for which precipitation records are
 #'   desired. Defaults to the current month (except on the 1st of the month,
 #'   when it defaults to the previous month).
+#' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
+#'   \code{FALSE}).
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
 #' plotMTDPrecipitation()}
 #' @export
 plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
-                                                    "%m")) {
+                                                    "%m"),
+                                 saveToFile = FALSE) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
   currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
@@ -78,4 +81,11 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                              31, 
                                              7),
                                 expand = c(0.02, 0.02))
+  if(saveToFile) {
+    ggplot2::ggsave(paste0(format(plotDate, "%m%d"), "pmtd.png"),
+                    device = "png",
+                    width = 8,
+                    height = 4,
+                    dpi = 128)
+    }
   }
