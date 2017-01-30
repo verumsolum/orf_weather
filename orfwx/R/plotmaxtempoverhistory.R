@@ -82,7 +82,7 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
   
   if(saveToFile) {
     grDevices::png(paste0(format(plotDate, "%m%d"), "tmax.png"),
-                   1024, 512)
+                   1024, 512, pointsize = 16)
   }
   
   plotWithManyBars(dayInHistory$MaxTemperature,
