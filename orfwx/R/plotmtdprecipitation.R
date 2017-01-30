@@ -86,9 +86,9 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
   if(saveToFile) {
     ggplot2::ggsave(paste0(orfwx::padSingleDigitInteger(plotMonth), "pmtd.png"),
                     device = "png",
-                    width = 8,
-                    height = 4,
-                    dpi = 128)
+                    width = 10.24,
+                    height = 5.12,
+                    dpi = 100)
     } else {
       gmtd
     }
