@@ -19,6 +19,12 @@ It currently is set to `FALSE` while ensuring that there are no bugs or
 unwelcome side effects, but I do hope to change it to `TRUE`, to make it easier
 for me to use this package.
 
+### Changes in version 0.0.0.9043 (2017-01-30)
+* **findMostRecentDate**: Find most recent date in a data frame (defaults to
+`updatedData`)
+* **getUpdatedCsv**: Report back to the user with the most recent date contained
+in the update.
+
 ### Changes in version 0.0.0.9042 (2017-01-18)
 * **plotWarmestMinTempOverHistory**: Change `wxUniverse` parameter to default to
 `allData` (This function was missed in 0.0.0.9039)
