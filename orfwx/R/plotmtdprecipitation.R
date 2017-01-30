@@ -35,11 +35,13 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                   "Normal" = "darkgreen", 
                   "Current" = "black", 
                   "Minimum" = "blue")
-  ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
-                    ccprMonth = plotMonth,
-                    showYear = TRUE,
-                    includeNormals = TRUE),
-                  ggplot2::aes(DayOfMonth, maxMTDPrecip, color = "Maximum")) +
+  gmtd <- ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
+                            ccprMonth = plotMonth,
+                            showYear = TRUE,
+                            includeNormals = TRUE),
+                          ggplot2::aes(DayOfMonth, 
+                                       maxMTDPrecip, 
+                                       color = "Maximum")) +
     ggplot2::geom_point(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_line(ggplot2::aes(color = "Maximum")) + 
     ggplot2::geom_text(ggplot2::aes(label = maxMTDYear, color = "Maximum"), 
@@ -87,5 +89,7 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                     width = 8,
                     height = 4,
                     dpi = 128)
+    } else {
+      gmtd
     }
   }
