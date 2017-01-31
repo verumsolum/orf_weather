@@ -37,10 +37,11 @@ removeBackups <- function(leaveOne = FALSE) {
       file.remove(rbFiles[f])
     }
   } else {
+    rbFiles <- paste0(rbPath, rbFiles)
+    rbInfo <- file.info(rbFiles) %>%
+      dplyr::filter(ctime <= Sys.time() - 604800)
+    # TODO: The filtering removed the row names. How do we get them back?
     browser()
-    for(f in 2:length(rbFiles)) {
-      message(paste(paste0(f, "."), rbFiles[f], file.info(rbFiles[f])))
-    }
   }
   
   # # If the file exists, rename it (as a backup), and then overwrite with 
