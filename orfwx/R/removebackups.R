@@ -36,6 +36,11 @@ removeBackups <- function(leaveOne = FALSE) {
     for(f in 2:length(rbFiles)) {  # Start with 2 so most recent not deleted
       file.remove(rbFiles[f])
     }
+  } else {
+    browser()
+    for(f in 2:length(rbFiles)) {
+      message(paste(paste0(f, "."), rbFiles[f], file.info(rbFiles[f])))
+    }
   }
   
   # # If the file exists, rename it (as a backup), and then overwrite with 
