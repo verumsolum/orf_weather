@@ -45,3 +45,4 @@ Date, MaxTemperature, MinTemperature, AvgTemperature, Precipitation, Snowfall
 2017-01-27, 49, 38, 43.5, 0.00, 0.0
 2017-01-28, 49, 28, 33.5, 0.00, 0.0
 2017-01-29, 55, 33, 44.0, T, M
+2017-01-30, 44, 29, 36.5, T, M
