@@ -14,6 +14,8 @@
 #'   year's data for comparison (defaults to \code{FALSE}).
 #' @param includeNormals (optional) Whether or not to show the 1981-2010 
 #'   normals for comparison (defaults to \code{FALSE}).
+#' @param showLeapDay (optional) Whether or not to show data for February 29th
+#'   (defaults to \code{FALSE}, unless the current year is a leap year).
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}
@@ -24,7 +26,10 @@ computeCumulativePrecipRecords <-
              orfwx::computeCumulativePrecipitation(),
            ccprMonth = format(orfwx::yesterdate(), "%m"),
            showYear = FALSE,
-           includeNormals = FALSE) {
+           includeNormals = FALSE,
+           showLeapDay = 
+             orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(), 
+                                                  "%Y")))) {
     # Ensure ccprMonth is an integer between 1 and 12, inclusive.
     ccprMonth <- as.integer(ccprMonth)
     if(ccprMonth < 1 | ccprMonth > 12) {
@@ -194,6 +199,14 @@ computeCumulativePrecipRecords <-
                                       YTDNormal,
                                       minYTDPrecip,
                                       minYTDYear)
+      }
+    }
+    
+    # If this is February, and showLeapDay is FALSE,
+    # hide data for February 29th.
+    if(ccprMonth == 2) {
+      if(!showLeapDay) {
+        recordsFrame <- dplyr::filter(recordsFrame, DayOfMonth != 29)
       }
     }
     

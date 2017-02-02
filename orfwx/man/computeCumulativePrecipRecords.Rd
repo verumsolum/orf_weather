@@ -7,7 +7,9 @@
 
   computeCumulativePrecipRecords(originalFrame = orfwx::computeCumulativePrecipitation(),
   ccprMonth = format(orfwx::yesterdate(), "\%m"), showYear = FALSE,
-  includeNormals = FALSE)
+  includeNormals = FALSE,
+  showLeapDay = orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(),
+  "\%Y"))))
 }
 \arguments{
 \item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
@@ -22,6 +24,9 @@ year's data for comparison (defaults to \code{FALSE}).}
 
 \item{includeNormals}{(optional) Whether or not to show the 1981-2010 
 normals for comparison (defaults to \code{FALSE}).}
+
+\item{showLeapDay}{(optional) Whether or not to show data for February 29th
+(defaults to \code{FALSE}, unless the current year is a leap year).}
 }
 \value{
 Returns a data frame.
