@@ -13,6 +13,8 @@
 #'   when it defaults to the previous month).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
 #'   \code{FALSE}).
+#' @param showLeapDay (optional) Whether or not to show data for February 29th
+#'   (defaults to \code{FALSE}, unless the current year is a leap year).
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
@@ -20,7 +22,10 @@
 #' @export
 plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(), 
                                                     "%m"),
-                                 saveToFile = FALSE) {
+                                 saveToFile = FALSE,
+                                 showLeapDay = 
+                                   orfwx::is.leapYear(as.integer(format(
+                                     orfwx::yesterdate(), "%Y")))) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
   currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
@@ -38,7 +43,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
   gmtd <- ggplot2::ggplot(orfwx::computeCumulativePrecipRecords(
                             ccprMonth = plotMonth,
                             showYear = TRUE,
-                            includeNormals = TRUE),
+                            includeNormals = TRUE,
+                            showLeapDay = showLeapDay),
                           ggplot2::aes(DayOfMonth, 
                                        maxMTDPrecip, 
                                        color = "Maximum")) +

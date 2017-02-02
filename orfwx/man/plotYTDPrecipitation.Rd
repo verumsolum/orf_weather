@@ -5,7 +5,9 @@
 \title{Plot year-to-date precipitation}
 \usage{
 plotYTDPrecipitation(plotMonth = format(orfwx::yesterdate(), "\%m"),
-  saveToFile = FALSE)
+  saveToFile = FALSE,
+  showLeapDay = orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(),
+  "\%Y"))))
 }
 \arguments{
 \item{plotMonth}{(optional) The month for which precipitation records are
@@ -14,6 +16,9 @@ when it defaults to the previous month).}
 
 \item{saveToFile}{(optional) Writes plot to a PNG file (defaults to 
 \code{FALSE}).}
+
+\item{showLeapDay}{(optional) Whether or not to show data for February 29th
+(defaults to \code{FALSE}, unless the current year is a leap year).}
 }
 \value{
 Returns a plot.

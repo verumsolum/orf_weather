@@ -11,6 +11,12 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9046 (2017-02-02)
+* *showLeapDay* parameter: Added to `computeCumulativePrecipRecords` and
+`plot?TDPrecipitation`functions. Data for Feb 29th will be hidden from those
+functions unless `showLeapDay` is set to `TRUE`. (Defaults to `TRUE` during leap
+years and `FALSE` at all other times.)
+
 ### Changes in version 0.0.0.9045 (2017-02-02)
 * **removeBackups**: Function added to remove backup files from `/.orfwx/` 
 directory (either after seven days, or all but the most recent backup files).
