@@ -36,7 +36,7 @@ removeBackups <- function(leaveOne = FALSE) {
   
   if(leaveOne) {
     for(f in 2:length(rbFiles)) {  # Start with 2 so most recent not deleted
-      file.remove(rbFiles[f])
+      invisible(file.remove(rbFiles[f]))
     }
   } else {
     rbFiles <- paste0(rbPath, rbFiles)
@@ -46,6 +46,6 @@ removeBackups <- function(leaveOne = FALSE) {
       dplyr::filter(ctime <= Sys.time() - 604800) %>%  # Only those >7 days old
       dplyr::arrange(dplyr::desc(ctime)) %>%
       .[-1, ]  # Exclude the most recent file
-    file.remove(rbInfo[["filename"]])
+    invisible(file.remove(rbInfo[["filename"]]))
   }
 }
