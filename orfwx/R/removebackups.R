@@ -34,17 +34,18 @@ removeBackups <- function(leaveOne = FALSE) {
   rbPattern <- "updates.*.backup.csv"
   rbFiles <- list.files(rbPath, pattern = rbPattern)
   
+  rbFiles <- paste0(rbPath, rbFiles) %>%
+    sort(decreasing = TRUE)
+  
   if(leaveOne) {
     for(f in 2:length(rbFiles)) {  # Start with 2 so most recent not deleted
       invisible(file.remove(rbFiles[f]))
     }
   } else {
-    rbFiles <- paste0(rbPath, rbFiles)
     rbInfo <- file.info(rbFiles) %>%
       as_tibble() %>%
       rownames_to_column(var = "filename") %>%
       dplyr::filter(ctime <= Sys.time() - 604800) %>%  # Only those >7 days old
-      dplyr::arrange(dplyr::desc(ctime)) %>%
       .[-1, ]  # Exclude the most recent file
     invisible(file.remove(rbInfo[["filename"]]))
   }
