@@ -22,6 +22,8 @@
 #' removeBackups()
 #' }
 #' @export
+#' @importFrom tibble as_tibble
+#' @importFrom tibble rownames_to_column
 removeBackups <- function(leaveOne = FALSE) {
 
   # # Important model lines from getUpdatedCsv
@@ -39,8 +41,9 @@ removeBackups <- function(leaveOne = FALSE) {
   } else {
     rbFiles <- paste0(rbPath, rbFiles)
     rbInfo <- file.info(rbFiles) %>%
+      as_tibble() %>%
+      rownames_to_column(var = "filename") %>%
       dplyr::filter(ctime <= Sys.time() - 604800)
-    # TODO: The filtering removed the row names. How do we get them back?
     browser()
   }
   
