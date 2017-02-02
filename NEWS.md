@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9045 (2017-02-02)
+* **removeBackups**: Function added to remove backup files from `/.orfwx/` 
+directory (either after seven days, or all but the most recent backup files).
+
 ### Changes in version 0.0.0.9044 (2017-01-30)
 * *saveToFile* parameter: Added to all `plot*` functions to direct function to
 save plot to file. (Defaults to `FALSE`.)  
