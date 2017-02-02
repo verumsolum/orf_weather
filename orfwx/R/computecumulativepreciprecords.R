@@ -210,5 +210,8 @@ computeCumulativePrecipRecords <-
       }
     }
     
+    # TODO: Provide code to print label on Feb 28th if it is missing because
+    #       it is identical to Feb 29th. (Not a problem with current data.)
+    
     return(recordsFrame)
 }
