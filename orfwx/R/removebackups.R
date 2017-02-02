@@ -43,8 +43,10 @@ removeBackups <- function(leaveOne = FALSE) {
     rbInfo <- file.info(rbFiles) %>%
       as_tibble() %>%
       rownames_to_column(var = "filename") %>%
-      dplyr::filter(ctime <= Sys.time() - 604800)
-    browser()
+      dplyr::filter(ctime <= Sys.time() - 604800) %>%  # Only those >7 days old
+      dplyr::arrange(dplyr::desc(ctime)) %>%
+      .[-1, ]  # Exclude the most recent file
+    file.remove(rbInfo[["filename"]])
   }
   
   # # If the file exists, rename it (as a backup), and then overwrite with 
