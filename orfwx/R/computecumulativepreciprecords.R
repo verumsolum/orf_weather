@@ -50,6 +50,15 @@ computeCumulativePrecipRecords <-
         # If we haven't yet had the month to be displayed this calendar year,
         # then use last year.
         currentYear <- currentYear - 1
+      } else if((currentMonth == ccprMonth) & showLastCompleteMonth) {
+        # If we're talking about the current month and
+        # showLastCompleteMonth is TRUE…
+        nextDaysMonth <- as.integer(format(Sys.Date(), "%m"))
+        if(nextDaysMonth == currentMonth) {
+          # If today's month and yesterday's month are the same,
+          # this is an incomplete month, so we should use last year.
+          currentYear <- currentYear - 1
+        }
       }
       yearColumnName <- as.character(currentYear)
     }
