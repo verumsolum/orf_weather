@@ -9,7 +9,7 @@
   ccprMonth = format(orfwx::yesterdate(), "\%m"), showYear = FALSE,
   includeNormals = FALSE,
   showLeapDay = orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(),
-  "\%Y"))))
+  "\%Y"))), showLastCompleteMonth = FALSE)
 }
 \arguments{
 \item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
@@ -27,6 +27,10 @@ normals for comparison (defaults to \code{FALSE}).}
 
 \item{showLeapDay}{(optional) Whether or not to show data for February 29th
 (defaults to \code{FALSE}, unless the current year is a leap year).}
+
+\item{showLastCompleteMonth}{(optional) Whether to show data from the last
+complete month or whether to show the month in progress (defaults to
+\code{FALSE}).}
 }
 \value{
 Returns a data frame.
@@ -39,6 +43,6 @@ the maximum and minimum values of \code{MTDPrecip}.
 Details section to be written
 }
 \examples{
-\dontrun{computeCumulativePrecipitation()}
+\dontrun{computeCumulativePrecipitationRecords()}
 }
 
