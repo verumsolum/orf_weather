@@ -15,6 +15,9 @@
 #'   \code{FALSE}).
 #' @param showLeapDay (optional) Whether or not to show data for February 29th
 #'   (defaults to \code{FALSE}, unless the current year is a leap year).
+#' @param showLastCompleteMonth (optional) Whether to show data from the last
+#'   complete month or whether to show the month in progress (defaults to
+#'   \code{FALSE}).
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
@@ -25,7 +28,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                  saveToFile = FALSE,
                                  showLeapDay = 
                                    orfwx::is.leapYear(as.integer(format(
-                                     orfwx::yesterdate(), "%Y")))) {
+                                     orfwx::yesterdate(), "%Y"))),
+                                 showLastCompleteMonth = FALSE) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
   currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
@@ -44,7 +48,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                             ccprMonth = plotMonth,
                             showYear = TRUE,
                             includeNormals = TRUE,
-                            showLeapDay = showLeapDay),
+                            showLeapDay = showLeapDay,
+                            showLastCompleteMonth = showLastCompleteMonth),
                           ggplot2::aes(DayOfMonth, 
                                        maxMTDPrecip, 
                                        color = "Maximum")) +

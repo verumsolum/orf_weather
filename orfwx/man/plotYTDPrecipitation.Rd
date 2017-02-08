@@ -7,7 +7,7 @@
 plotYTDPrecipitation(plotMonth = format(orfwx::yesterdate(), "\%m"),
   saveToFile = FALSE,
   showLeapDay = orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(),
-  "\%Y"))))
+  "\%Y"))), showLastCompleteMonth = FALSE)
 }
 \arguments{
 \item{plotMonth}{(optional) The month for which precipitation records are
@@ -19,6 +19,10 @@ when it defaults to the previous month).}
 
 \item{showLeapDay}{(optional) Whether or not to show data for February 29th
 (defaults to \code{FALSE}, unless the current year is a leap year).}
+
+\item{showLastCompleteMonth}{(optional) Whether to show data from the last
+complete month or whether to show the month in progress (defaults to
+\code{FALSE}).}
 }
 \value{
 Returns a plot.
