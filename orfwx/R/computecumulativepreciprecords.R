@@ -16,6 +16,9 @@
 #'   normals for comparison (defaults to \code{FALSE}).
 #' @param showLeapDay (optional) Whether or not to show data for February 29th
 #'   (defaults to \code{FALSE}, unless the current year is a leap year).
+#' @param showLastCompleteMonth (optional) Whether to show data from the last
+#'   complete month or whether to show the month in progress (defaults to
+#'   \code{FALSE}).
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitationRecords()}
@@ -29,7 +32,8 @@ computeCumulativePrecipRecords <-
            includeNormals = FALSE,
            showLeapDay = 
              orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(), 
-                                                  "%Y")))) {
+                                                  "%Y"))),
+           showLastCompleteMonth = FALSE) {
     # Ensure ccprMonth is an integer between 1 and 12, inclusive.
     ccprMonth <- as.integer(ccprMonth)
     if(ccprMonth < 1 | ccprMonth > 12) {
