@@ -18,7 +18,7 @@
 #'   (defaults to \code{FALSE}, unless the current year is a leap year).
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{computeCumulativePrecipitation()}
+#' \dontrun{computeCumulativePrecipitationRecords()}
 #' @export
 #' @importFrom dplyr "%>%"
 computeCumulativePrecipRecords <- 
