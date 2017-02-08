@@ -66,7 +66,8 @@ computeCumulativePrecipRecords <-
     originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
       dplyr::select(-DayOfYear) %>% 
       dplyr::filter(Month == ccprMonth)
-    recordsFrame <- originalFrame %>%
+    recordsFrame <- originalFrame
+    recordsFrame <- recordsFrame %>%
       dplyr::group_by(Month, DayOfMonth) %>% 
       dplyr::summarise(maxMTDPrecip = max(MTDPrecip),
                        minMTDPrecip = min(MTDPrecip),
