@@ -268,6 +268,22 @@ computeCumulativePrecipRecords <-
     # hide data for February 29th.
     if(ccprMonth == 2) {
       if(!showLeapDay) {
+        browser()
+        # Move labels from the 29th to the 28th if showLeapDay is FALSE
+        if(recordsFrame[["maxMTDYear"]][28] == "") {
+          recordsFrame[["maxMTDYear"]][28] <- recordsFrame[["maxMTDYear"]][29]
+        }
+        if(recordsFrame[["minMTDYear"]][28] == "") {
+          recordsFrame[["minMTDYear"]][28] <- recordsFrame[["minMTDYear"]][29]
+        }
+        if(recordsFrame[["maxYTDYear"]][28] == "") {
+          recordsFrame[["maxYTDYear"]][28] <- recordsFrame[["maxYTDYear"]][29]
+        }
+        if(recordsFrame[["minYTDYear"]][28] == "") {
+          recordsFrame[["minYTDYear"]][28] <- recordsFrame[["minYTDYear"]][29]
+        }
+        
+        # And then delete the data for Feb 29th
         recordsFrame <- dplyr::filter(recordsFrame, DayOfMonth != 29)
       }
     }
