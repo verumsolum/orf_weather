@@ -273,7 +273,6 @@ computeCumulativePrecipRecords <-
     # hide data for February 29th.
     if(ccprMonth == 2) {
       if(!showLeapDay) {
-        browser()
         # Move labels from the 29th to the 28th if showLeapDay is FALSE
         if(recordsFrame[["maxMTDYear"]][28] == "") {
           recordsFrame[["maxMTDYear"]][28] <- recordsFrame[["maxMTDYear"]][29]
