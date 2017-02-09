@@ -44,8 +44,13 @@
 #'       \item Renames the appropriate variables to \code{MTDNormal} and
 #'         \code{YTDNormal},
 #'     }
-#'   \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
-#'     \code{showLeapDay} is \code{FALSE}), and
+#'   \item If \code{showLeapDay} is \code{FALSE}:
+#'     \enumerate{
+#'       \item Ensures that year labels are visible in \code{recordsFrame} for
+#'         Feb 28th (copying them from Feb 29th, if the 28th is blank), and
+#'       \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
+#'         \code{showLeapDay} is \code{FALSE}), and
+#'     }
 #'   \item Returns \code{recordsFrame}.
 #' }
 #' 
