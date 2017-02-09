@@ -15,6 +15,9 @@
 #'   \code{FALSE}).
 #' @param showLeapDay (optional) Whether or not to show data for February 29th
 #'   (defaults to \code{FALSE}, unless the current year is a leap year).
+#' @param showLastCompleteMonth (optional) Whether to show data from the last
+#'   complete month or whether to show the month in progress (defaults to
+#'   \code{FALSE}).
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
@@ -25,7 +28,8 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                                  saveToFile = FALSE,
                                  showLeapDay = 
                                    orfwx::is.leapYear(as.integer(format(
-                                     orfwx::yesterdate(), "%Y")))) {
+                                     orfwx::yesterdate(), "%Y"))),
+                                 showLastCompleteMonth = FALSE) {
   # DRAFT - not yet suitable for inclusion in package
   plotMonth <- as.integer(plotMonth)
   currentMonth <- as.integer(format(orfwx::yesterdate(), "%m"))
@@ -34,6 +38,15 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
     # If we haven't yet had the month to be displayed this calendar year,
     # then use last year.
     plotYear <- plotYear - 1
+  } else if((currentMonth == plotMonth) & showLastCompleteMonth) {
+    # If we're talking about the current month and
+    # showLastCompleteMonth is TRUE…
+    nextDaysMonth <- as.integer(format(Sys.Date(), "%m"))
+    if(nextDaysMonth == currentMonth) {
+      # If today's month and yesterday's month are the same,
+      # this is an incomplete month, so we should use last year.
+      plotYear <- plotYear - 1
+    }
   }
   plotYear <- as.character(plotYear)
   col2legend <- c("Maximum" = "firebrick", 
@@ -44,7 +57,8 @@ plotYTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                             ccprMonth = plotMonth,
                             showYear = TRUE,
                             includeNormals = TRUE,
-                            showLeapDay = showLeapDay),
+                            showLeapDay = showLeapDay,
+                            showLastCompleteMonth = showLastCompleteMonth),
                           ggplot2::aes(DayOfMonth, 
                                        maxYTDPrecip, 
                                        color = "Maximum")) +

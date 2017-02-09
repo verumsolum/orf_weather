@@ -1,9 +1,53 @@
-#' Compute cumulative precipitation variables
+#' Compute cumulative precipitation records
 #' 
-#' \code{computeCumulativePrecipitationRecords} returns a data frame with
+#' \code{computeCumulativePrecipRecords} returns a data frame with
 #' the maximum and minimum values of \code{MTDPrecip}.
 #' 
-#' Details section to be written
+#' This function probably contains too much for one function.
+#' 
+#' The function:
+#' 
+#' \enumerate{
+#'   \item Checks to make sure that \code{ccprMonth} is an integer,
+#'   \item Sets the year to display (if \code{showYear} is \code{TRUE}),
+#'   \item Changes \code{originalFrame} to add date variables and include only
+#'     data from the same calendar month,
+#'   \item Creates \code{recordsFrame} (a copy of \code{originalFrame}), and 
+#'     uses it to determine the records for month-to-date and year-to-date 
+#'     (excluding the plotted year from the records),
+#'   \item Creates \code{yearsFrame} with a row for each day of the month, and
+#'     initializes variables,
+#'   \item Loops through \code{yearsFrame} to get the most recent year for each
+#'     day's record,
+#'   \item Joins \code{recordsFrame} to \code{yearsFrame} and orders re-order
+#'     the variables in a more human-friendly arrangement,
+#'   \item Makes copies of the year variables,
+#'   \item Loop through \code{yearsFrame} and change to an empty string where
+#'     the year is the same as both the previous day and the next day,
+#'   \item If \code{showYear} is \code{TRUE}:
+#'     \enumerate{
+#'       \item Creates \code{currentYearFrame} (a copy of \code{originalFrame}),
+#'       \item Filters out rows where \code{Year} matches \code{currentYear} and
+#'         \code{Month} matches \code{ccprMonth},
+#'       \item Shortens column names to \code{MTD} and \code{YTD},
+#'       \item Selects only the columns \code{Month}, \code{DayOfMonth},
+#'         \code{MTD}, and \code{YTD},
+#'       \item Joins \code{recordsFrame} and \code{currentYearsFrame} by
+#'         \code{Month} and \code{DayOfMonth}, amd
+#'       \item Reorders the variables in a more human-friendly arrangement,
+#'     }
+#'   \item If \code{includeNormals} is \code{TRUE}:
+#'     \enumerate{
+#'       \item Joins \code{recordsFrame} with the columns of 
+#'         \code{airportNormals} that don't relate to temperature, by
+#'         \code{Month} and \code{DayOfMonth},
+#'       \item Renames the appropriate variables to \code{MTDNormal} and
+#'         \code{YTDNormal},
+#'     }
+#'   \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
+#'     \code{showLeapDay} is \code{FALSE}), and
+#'   \item Returns \code{recordsFrame}.
+#' }
 #' 
 #' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} 
 #'   and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
@@ -16,9 +60,12 @@
 #'   normals for comparison (defaults to \code{FALSE}).
 #' @param showLeapDay (optional) Whether or not to show data for February 29th
 #'   (defaults to \code{FALSE}, unless the current year is a leap year).
+#' @param showLastCompleteMonth (optional) Whether to show data from the last
+#'   complete month or whether to show the month in progress (defaults to
+#'   \code{FALSE}).
 #' @return Returns a data frame.
 #' @examples
-#' \dontrun{computeCumulativePrecipitation()}
+#' \dontrun{computeCumulativePrecipRecords()}
 #' @export
 #' @importFrom dplyr "%>%"
 computeCumulativePrecipRecords <- 
@@ -29,7 +76,8 @@ computeCumulativePrecipRecords <-
            includeNormals = FALSE,
            showLeapDay = 
              orfwx::is.leapYear(as.integer(format(orfwx::yesterdate(), 
-                                                  "%Y")))) {
+                                                  "%Y"))),
+           showLastCompleteMonth = FALSE) {
     # Ensure ccprMonth is an integer between 1 and 12, inclusive.
     ccprMonth <- as.integer(ccprMonth)
     if(ccprMonth < 1 | ccprMonth > 12) {
@@ -46,6 +94,15 @@ computeCumulativePrecipRecords <-
         # If we haven't yet had the month to be displayed this calendar year,
         # then use last year.
         currentYear <- currentYear - 1
+      } else if((currentMonth == ccprMonth) & showLastCompleteMonth) {
+        # If we're talking about the current month and
+        # showLastCompleteMonth is TRUE…
+        nextDaysMonth <- as.integer(format(Sys.Date(), "%m"))
+        if(nextDaysMonth == currentMonth) {
+          # If today's month and yesterday's month are the same,
+          # this is an incomplete month, so we should use last year.
+          currentYear <- currentYear - 1
+        }
       }
       yearColumnName <- as.character(currentYear)
     }
@@ -53,7 +110,11 @@ computeCumulativePrecipRecords <-
     originalFrame <- orfwx::computeExtraDateVariables(originalFrame) %>% 
       dplyr::select(-DayOfYear) %>% 
       dplyr::filter(Month == ccprMonth)
-    recordsFrame <- dplyr::group_by(originalFrame, Month, DayOfMonth) %>% 
+    if(!showYear) {
+      currentYear <- as.integer(format(orfwx::yesterdate(), "%Y"))
+    }
+    recordsFrame <- dplyr::filter(originalFrame, Year < currentYear) %>%
+      dplyr::group_by(Month, DayOfMonth) %>% 
       dplyr::summarise(maxMTDPrecip = max(MTDPrecip),
                        minMTDPrecip = min(MTDPrecip),
                        maxYTDPrecip = max(YTDPrecip),
@@ -76,7 +137,8 @@ computeCumulativePrecipRecords <-
       minYTDOnDate <- recordsFrame[calDate, "minYTDPrecip"]
       searchFrame <- dplyr::filter(originalFrame,
                                    Month == ccprMonth,
-                                   DayOfMonth == calDate)
+                                   DayOfMonth == calDate,
+                                   Year < currentYear)
       maxYear <- dplyr::filter(searchFrame, MTDPrecip == maxOnDate) %>%
         dplyr::top_n(1, Year)
       minYear <- dplyr::filter(searchFrame, MTDPrecip == minOnDate) %>%

@@ -11,6 +11,15 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9047 (2017-02-09)
+* **computeCumulativePrecipitationRecords**: Add `showLastCompleteMonth`
+parameter for use when you would prefer last year's data to that of the month in
+progress. Also, exclude the plotted year (and more recent) from the calculation 
+of records. A correction was also made to the documentation example.
+* **plotMTDPrecipitation** and **plotYTDPrecipitation**: Add 
+`showLastCompleteMonth` parameter to pass through to 
+`computeCumulativePrecipitationRecords`.
+
 ### Changes in version 0.0.0.9046 (2017-02-02)
 * *showLeapDay* parameter: Added to `computeCumulativePrecipRecords` and
 `plot?TDPrecipitation`functions. Data for Feb 29th will be hidden from those
