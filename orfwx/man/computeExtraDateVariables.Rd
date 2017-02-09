@@ -18,13 +18,11 @@ Returns a data frame.
 }
 \details{
 These variables are integers for convenience use in filtering:
-
 \itemize{
 \item \code{Year}: The year
 \item \code{Month}: The month
 \item \code{DayOfMonth}: The date (1-31)
-\item \code{DayOfYear}: The so-called \dQuote{julian day} as an integer
-(1-366)
+\item \code{DayOfYear}: The so-called \dQuote{julian day} as an integer (1-366)
 }
 }
 \examples{

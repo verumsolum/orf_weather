@@ -6,16 +6,13 @@
 #' 
 #' The variables added are:
 #' 
-#' \itemize{
-#'   \item `PrecipitationInches`: The precipitation, accurate to the
-#'     hundredth of an inch (numeric)
-#'   \item `WithPrecipitation`: Logical value indicating whether or not
-#'     precipitation fell on this day
-#'   \item `SnowfallInches`: The snowfall, accurate to the tenth of an
-#'     inch (numeric)
-#'   \item `WithSnowfall`: Logical value indicating whether or not snow
-#'     fell on this day
-#' }
+#' * `PrecipitationInches`: The precipitation, accurate to the hundredth of an 
+#'   inch (numeric)
+#' * `WithPrecipitation`: Logical value indicating whether or not precipitation 
+#'   fell on this day
+#' * `SnowfallInches`: The snowfall, accurate to the tenth of an inch (numeric)
+#' * `WithSnowfall`: Logical value indicating whether or not snow fell on this 
+#'   day
 #' 
 #' @param originalFrame The data frame to which the date variables are 
 #'   appended.

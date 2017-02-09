@@ -7,52 +7,41 @@
 #' 
 #' The function:
 #' 
-#' \enumerate{
-#'   \item Checks to make sure that `ccprMonth` is an integer,
-#'   \item Sets the year to display (if `showYear` is `TRUE`),
-#'   \item Changes `originalFrame` to add date variables and include only
-#'     data from the same calendar month,
-#'   \item Creates `recordsFrame` (a copy of `originalFrame`), and 
-#'     uses it to determine the records for month-to-date and year-to-date 
-#'     (excluding the plotted year from the records),
-#'   \item Creates `yearsFrame` with a row for each day of the month, and
-#'     initializes variables,
-#'   \item Loops through `yearsFrame` to get the most recent year for each
-#'     day's record,
-#'   \item Joins `recordsFrame` to `yearsFrame` and orders re-order
-#'     the variables in a more human-friendly arrangement,
-#'   \item Makes copies of the year variables,
-#'   \item Loop through `yearsFrame` and change to an empty string where
-#'     the year is the same as both the previous day and the next day,
-#'   \item If `showYear` is `TRUE`:
-#'     \enumerate{
-#'       \item Creates `currentYearFrame` (a copy of `originalFrame`),
-#'       \item Filters out rows where `Year` matches `currentYear` and
-#'         `Month` matches `ccprMonth`,
-#'       \item Shortens column names to `MTD` and `YTD`,
-#'       \item Selects only the columns `Month`, `DayOfMonth`,
-#'         `MTD`, and `YTD`,
-#'       \item Joins `recordsFrame` and `currentYearsFrame` by
-#'         `Month` and `DayOfMonth`, and
-#'       \item Reorders the variables in a more human-friendly arrangement,
-#'     }
-#'   \item If `includeNormals` is `TRUE`:
-#'     \enumerate{
-#'       \item Joins `recordsFrame` with the columns of 
-#'         `airportNormals` that don't relate to temperature, by
-#'         `Month` and `DayOfMonth`, and
-#'       \item Renames the appropriate variables to `MTDNormal` and
-#'         `YTDNormal`,
-#'     }
-#'   \item If `showLeapDay` is `FALSE`:
-#'     \enumerate{
-#'       \item Ensures that year labels are visible in `recordsFrame` for
-#'         Feb 28th (copying them from Feb 29th, if the 28th is blank), and
-#'       \item Filters out `recordsFrame` to exclude Feb 29th data (if
-#'         `showLeapDay` is `FALSE`), and
-#'     }
-#'   \item Returns `recordsFrame`.
-#' }
+#' 1. Checks to make sure that `ccprMonth` is an integer,
+#' 2. Sets the year to display (if `showYear` is `TRUE`),
+#' 3. Changes `originalFrame` to add date variables and include only data from 
+#'    the same calendar month,
+#' 4. Creates `recordsFrame` (a copy of `originalFrame`), and uses it to 
+#'    determine the records for month-to-date and year-to-date (excluding the 
+#'    plotted year from the records),
+#' 5. Creates `yearsFrame` with a row for each day of the month, and
+#'    initializes variables,
+#' 6. Loops through `yearsFrame` to get the most recent year for each day's 
+#'    record,
+#' 7. Joins `recordsFrame` to `yearsFrame` and orders re-order the variables in 
+#'    a more human-friendly arrangement,
+#' 8. Makes copies of the year variables,
+#' 9. Loop through `yearsFrame` and change to an empty string where the year is 
+#'    the same as both the previous day and the next day,
+#' 10. If `showYear` is `TRUE`:
+#'     1. Creates `currentYearFrame` (a copy of `originalFrame`),
+#'     2. Filters out rows where `Year` matches `currentYear` and `Month` 
+#'        matches `ccprMonth`,
+#'     3. Shortens column names to `MTD` and `YTD`,
+#'     4. Selects only the columns `Month`, `DayOfMonth`, `MTD`, and `YTD`,
+#'     5. Joins `recordsFrame` and `currentYearsFrame` by `Month` and 
+#'        `DayOfMonth`, and
+#'     6. Reorders the variables in a more human-friendly arrangement,
+#' 11. If `includeNormals` is `TRUE`:
+#'     1. Joins `recordsFrame` with the columns of `airportNormals` that don't 
+#'        relate to temperature, by `Month` and `DayOfMonth`, and
+#'     2. Renames the appropriate variables to `MTDNormal` and `YTDNormal`,
+#' 12. If `showLeapDay` is `FALSE`:
+#'     1. Ensures that year labels are visible in `recordsFrame` for Feb 28th 
+#'        (copying them from Feb 29th, if the 28th is blank), and
+#'     2. Filters out `recordsFrame` to exclude Feb 29th data (if `showLeapDay` 
+#'        is `FALSE`), and
+#' 13. Returns `recordsFrame`.
 #' 
 #' @param originalFrame (optional) The data frame to which the `MTDPrecip` 
 #'   and `YTDPrecip` variables are appended. Defaults to `allData()`.
