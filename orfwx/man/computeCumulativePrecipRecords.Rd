@@ -2,7 +2,7 @@
 % Please edit documentation in R/computecumulativepreciprecords.R
 \name{computeCumulativePrecipRecords}
 \alias{computeCumulativePrecipRecords}
-\title{Compute cumulative precipitation variables}
+\title{Compute cumulative precipitation records}
 \usage{
 
   computeCumulativePrecipRecords(originalFrame = orfwx::computeCumulativePrecipitation(),
@@ -36,13 +36,29 @@ complete month or whether to show the month in progress (defaults to
 Returns a data frame.
 }
 \description{
-\code{computeCumulativePrecipitationRecords} returns a data frame with
+\code{computeCumulativePrecipRecords} returns a data frame with
 the maximum and minimum values of \code{MTDPrecip}.
 }
 \details{
-Details section to be written
+This function probably contains too much for one function.
+
+The function:
+
+\enumerate{
+  \item Checks to make sure that \code{ccprMonth} is an integer,
+  \item Sets the year to display (if \code{showYear} is \code{TRUE})
+  \item Changes \code{originalFrame} to add date variables and include only
+    data from the same calendar month.
+  \item Creates \code{recordsFrame} (a copy of \code{originalFrame}), and 
+    uses it to determine the records for month-to-date and year-to-date 
+    (excluding the plotted year from the records).
+  \item Creates \code{yearsFrame} with a row for each day of the month, and
+    initializes variables.
+  \item Loops through \code{yearsFrame} to get the most recent year for each
+    day's record
+}
 }
 \examples{
-\dontrun{computeCumulativePrecipitationRecords()}
+\dontrun{computeCumulativePrecipRecords()}
 }
 
