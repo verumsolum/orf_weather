@@ -9,7 +9,7 @@
 #' @return Deletes files from working directory.
 #' @examples
 #' \dontrun{
-#' removeBackups()
+#' removePlotFiles()
 #' }
 #' @export
 removePlotFiles <- function(rpfDir = getwd()) {
