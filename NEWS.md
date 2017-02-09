@@ -11,7 +11,7 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
-### Changes in version 0.0.0.9047 (2017-02-08)
+### Changes in version 0.0.0.9047 (2017-02-09)
 * **computeCumulativePrecipitationRecords**: Add `showLastCompleteMonth`
 parameter for use when you would prefer last year's data to that of the month in
 progress. Also, exclude the plotted year (and more recent) from the calculation 
