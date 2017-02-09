@@ -93,7 +93,8 @@ computeCumulativePrecipRecords <-
       minYTDOnDate <- recordsFrame[calDate, "minYTDPrecip"]
       searchFrame <- dplyr::filter(originalFrame,
                                    Month == ccprMonth,
-                                   DayOfMonth == calDate)
+                                   DayOfMonth == calDate,
+                                   Year < currentYear)
       maxYear <- dplyr::filter(searchFrame, MTDPrecip == maxOnDate) %>%
         dplyr::top_n(1, Year)
       minYear <- dplyr::filter(searchFrame, MTDPrecip == minOnDate) %>%
