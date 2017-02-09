@@ -1,6 +1,6 @@
 #' Check whether or not the provided year is valid.
 #' 
-#' \code{checkYear} returns the year provided to it, unless it is invalid (in
+#' `checkYear` returns the year provided to it, unless it is invalid (in
 #' which case, it returns the current year).
 #' 
 #' This function determines that the year in question is:

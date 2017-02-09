@@ -1,19 +1,19 @@
 #' Convert CSV values for precipitation and snowfall to numeric and logical
 #' 
-#' \code{convertCsvToNumericAndLogical} adds extra variables to express
-#' \code{CsvPrecipitation} and \code{CsvSnowfall} in numeric and logical
+#' `convertCsvToNumericAndLogical` adds extra variables to express
+#' `CsvPrecipitation` and `CsvSnowfall` in numeric and logical
 #' variables.
 #' 
 #' The variables added are:
 #' 
 #' \itemize{
-#'   \item \code{PrecipitationInches}: The precipitation, accurate to the
+#'   \item `PrecipitationInches`: The precipitation, accurate to the
 #'     hundredth of an inch (numeric)
-#'   \item \code{WithPrecipitation}: Logical value indicating whether or not
+#'   \item `WithPrecipitation`: Logical value indicating whether or not
 #'     precipitation fell on this day
-#'   \item \code{SnowfallInches}: The snowfall, accurate to the tenth of an
+#'   \item `SnowfallInches`: The snowfall, accurate to the tenth of an
 #'     inch (numeric)
-#'   \item \code{WithSnowfall}: Logical value indicating whether or not snow
+#'   \item `WithSnowfall`: Logical value indicating whether or not snow
 #'     fell on this day
 #' }
 #' 

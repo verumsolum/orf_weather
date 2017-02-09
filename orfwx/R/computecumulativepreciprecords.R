@@ -1,73 +1,73 @@
 #' Compute cumulative precipitation records
 #' 
-#' \code{computeCumulativePrecipRecords} returns a data frame with
-#' the maximum and minimum values of \code{MTDPrecip}.
+#' `computeCumulativePrecipRecords` returns a data frame with
+#' the maximum and minimum values of `MTDPrecip`.
 #' 
 #' This function probably contains too much for one function.
 #' 
 #' The function:
 #' 
 #' \enumerate{
-#'   \item Checks to make sure that \code{ccprMonth} is an integer,
-#'   \item Sets the year to display (if \code{showYear} is \code{TRUE}),
-#'   \item Changes \code{originalFrame} to add date variables and include only
+#'   \item Checks to make sure that `ccprMonth` is an integer,
+#'   \item Sets the year to display (if `showYear` is `TRUE`),
+#'   \item Changes `originalFrame` to add date variables and include only
 #'     data from the same calendar month,
-#'   \item Creates \code{recordsFrame} (a copy of \code{originalFrame}), and 
+#'   \item Creates `recordsFrame` (a copy of `originalFrame`), and 
 #'     uses it to determine the records for month-to-date and year-to-date 
 #'     (excluding the plotted year from the records),
-#'   \item Creates \code{yearsFrame} with a row for each day of the month, and
+#'   \item Creates `yearsFrame` with a row for each day of the month, and
 #'     initializes variables,
-#'   \item Loops through \code{yearsFrame} to get the most recent year for each
+#'   \item Loops through `yearsFrame` to get the most recent year for each
 #'     day's record,
-#'   \item Joins \code{recordsFrame} to \code{yearsFrame} and orders re-order
+#'   \item Joins `recordsFrame` to `yearsFrame` and orders re-order
 #'     the variables in a more human-friendly arrangement,
 #'   \item Makes copies of the year variables,
-#'   \item Loop through \code{yearsFrame} and change to an empty string where
+#'   \item Loop through `yearsFrame` and change to an empty string where
 #'     the year is the same as both the previous day and the next day,
-#'   \item If \code{showYear} is \code{TRUE}:
+#'   \item If `showYear` is `TRUE`:
 #'     \enumerate{
-#'       \item Creates \code{currentYearFrame} (a copy of \code{originalFrame}),
-#'       \item Filters out rows where \code{Year} matches \code{currentYear} and
-#'         \code{Month} matches \code{ccprMonth},
-#'       \item Shortens column names to \code{MTD} and \code{YTD},
-#'       \item Selects only the columns \code{Month}, \code{DayOfMonth},
-#'         \code{MTD}, and \code{YTD},
-#'       \item Joins \code{recordsFrame} and \code{currentYearsFrame} by
-#'         \code{Month} and \code{DayOfMonth}, and
+#'       \item Creates `currentYearFrame` (a copy of `originalFrame`),
+#'       \item Filters out rows where `Year` matches `currentYear` and
+#'         `Month` matches `ccprMonth`,
+#'       \item Shortens column names to `MTD` and `YTD`,
+#'       \item Selects only the columns `Month`, `DayOfMonth`,
+#'         `MTD`, and `YTD`,
+#'       \item Joins `recordsFrame` and `currentYearsFrame` by
+#'         `Month` and `DayOfMonth`, and
 #'       \item Reorders the variables in a more human-friendly arrangement,
 #'     }
-#'   \item If \code{includeNormals} is \code{TRUE}:
+#'   \item If `includeNormals` is `TRUE`:
 #'     \enumerate{
-#'       \item Joins \code{recordsFrame} with the columns of 
-#'         \code{airportNormals} that don't relate to temperature, by
-#'         \code{Month} and \code{DayOfMonth}, and
-#'       \item Renames the appropriate variables to \code{MTDNormal} and
-#'         \code{YTDNormal},
+#'       \item Joins `recordsFrame` with the columns of 
+#'         `airportNormals` that don't relate to temperature, by
+#'         `Month` and `DayOfMonth`, and
+#'       \item Renames the appropriate variables to `MTDNormal` and
+#'         `YTDNormal`,
 #'     }
-#'   \item If \code{showLeapDay} is \code{FALSE}:
+#'   \item If `showLeapDay` is `FALSE`:
 #'     \enumerate{
-#'       \item Ensures that year labels are visible in \code{recordsFrame} for
+#'       \item Ensures that year labels are visible in `recordsFrame` for
 #'         Feb 28th (copying them from Feb 29th, if the 28th is blank), and
-#'       \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
-#'         \code{showLeapDay} is \code{FALSE}), and
+#'       \item Filters out `recordsFrame` to exclude Feb 29th data (if
+#'         `showLeapDay` is `FALSE`), and
 #'     }
-#'   \item Returns \code{recordsFrame}.
+#'   \item Returns `recordsFrame`.
 #' }
 #' 
-#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} 
-#'   and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
+#' @param originalFrame (optional) The data frame to which the `MTDPrecip` 
+#'   and `YTDPrecip` variables are appended. Defaults to `allData()`.
 #' @param ccprMonth (optional) The month for which precipitation records are
 #'   desired. Defaults to the current month (except on the 1st of the month,
 #'   when it defaults to the previous month).
 #' @param showYear (optional) Whether or not to show the current or most recent
-#'   year's data for comparison (defaults to \code{FALSE}).
+#'   year's data for comparison (defaults to `FALSE`).
 #' @param includeNormals (optional) Whether or not to show the 1981-2010 
-#'   normals for comparison (defaults to \code{FALSE}).
+#'   normals for comparison (defaults to `FALSE`).
 #' @param showLeapDay (optional) Whether or not to show data for February 29th
-#'   (defaults to \code{FALSE}, unless the current year is a leap year).
+#'   (defaults to `FALSE`, unless the current year is a leap year).
 #' @param showLastCompleteMonth (optional) Whether to show data from the last
 #'   complete month or whether to show the month in progress (defaults to
-#'   \code{FALSE}).
+#'   `FALSE`).
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipRecords()}

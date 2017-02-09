@@ -8,7 +8,7 @@ computeCumulativePrecipitation(originalFrame = orfwx::allData(),
   daysWeather = NULL)
 }
 \arguments{
-\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
+\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip}
 and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
@@ -28,4 +28,3 @@ Details section to be written
 \examples{
 \dontrun{computeCumulativePrecipitation()}
 }
-

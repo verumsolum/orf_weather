@@ -7,7 +7,7 @@
 firstSunday(fsMonth, fsYear)
 }
 \arguments{
-\item{fsMonth}{An integer representing the month of the year (1=January, 
+\item{fsMonth}{An integer representing the month of the year (1=January,
 12=December) for which the first Sunday is desired.}
 
 \item{fsYear}{An integer representing the year of the month for which the
@@ -30,4 +30,3 @@ the first Sunday of the month.
 firstSunday(1, 2017) # Returns 1
 firstSunday(2, 2017) # Returns 5
 }
-

@@ -7,7 +7,7 @@
 convertCsvToNumericAndLogical(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame to which the date variables are 
+\item{originalFrame}{The data frame to which the date variables are
 appended.}
 }
 \value{
@@ -22,17 +22,16 @@ variables.
 The variables added are:
 
 \itemize{
-  \item \code{PrecipitationInches}: The precipitation, accurate to the
-    hundredth of an inch (numeric)
-  \item \code{WithPrecipitation}: Logical value indicating whether or not
-    precipitation fell on this day
-  \item \code{SnowfallInches}: The snowfall, accurate to the tenth of an
-    inch (numeric)
-  \item \code{WithSnowfall}: Logical value indicating whether or not snow
-    fell on this day
+\item \code{PrecipitationInches}: The precipitation, accurate to the
+hundredth of an inch (numeric)
+\item \code{WithPrecipitation}: Logical value indicating whether or not
+precipitation fell on this day
+\item \code{SnowfallInches}: The snowfall, accurate to the tenth of an
+inch (numeric)
+\item \code{WithSnowfall}: Logical value indicating whether or not snow
+fell on this day
 }
 }
 \examples{
 convertCsvToNumericAndLogical(airportData)
 }
-

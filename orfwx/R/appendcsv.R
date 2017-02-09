@@ -1,17 +1,17 @@
 #' Appending a row to a CSV.
 #' 
-#' \code{append.csv} appends a row or rows to an existing CSV file.
+#' `append.csv` appends a row or rows to an existing CSV file.
 #' 
-#' This is a convenience wrapper that uses \code{write.table} to append to 
+#' This is a convenience wrapper that uses `write.table` to append to 
 #' a CSV.
 #' 
 #' This function is still not well-developed. Users must ensure that the
 #' data to be appended to the CSV file has the same fields in the same order.
-#' No checking is performed by \code{append.csv}
+#' No checking is performed by `append.csv`
 #' 
 #' @param appendData The data frame with the information for the row(s) to be 
 #'   appended to the CSV.
-#' @param CsvFile The file name of the CSV to which \code{data} is appended.
+#' @param CsvFile The file name of the CSV to which `data` is appended.
 #' @return No return; appends to the specified file.
 #' @examples
 #' \dontrun{append.csv()}

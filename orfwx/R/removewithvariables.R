@@ -1,7 +1,7 @@
 #' Remove logical variables from a data frame
 #' 
-#' \code{removeWithVariables} removes from a data frame the
-#' \code{WithPrecipitation} and \code{WithSnowfall} variables.
+#' `removeWithVariables` removes from a data frame the
+#' `WithPrecipitation` and `WithSnowfall` variables.
 #' 
 #' This function may be used to keep them from cluttering up display, if these
 #' variables are no longer needed.

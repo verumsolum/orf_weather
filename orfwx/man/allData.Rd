@@ -10,14 +10,13 @@ allData()
 Returns a data frame.
 }
 \description{
-\code{allData} takes \code{\link{bothStations}} and 
-\code{\link{updatedData}} and combines them.
+\code{allData} takes \code{\link[=bothStations]{bothStations()}} and
+\code{\link[=updatedData]{updatedData()}} and combines them.
 }
 \details{
-This is a convenience wrapper that uses \code{\link{combineDataFrames}} to 
+This is a convenience wrapper that uses \code{\link[=combineDataFrames]{combineDataFrames()}} to
 combine the two data frames, sorted by date.
 }
 \examples{
 allData()
 }
-

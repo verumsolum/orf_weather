@@ -7,7 +7,7 @@
 removeWithSnowfall(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the \code{WithSnowfall} 
+\item{originalFrame}{The data frame from which the \code{WithSnowfall}
 variable is removed.}
 }
 \value{
@@ -24,4 +24,3 @@ cluttering up display, if it is no longer needed.
 \examples{
 removeWithSnowfall(convertCsvToNumericAndLogical(airportData))
 }
-

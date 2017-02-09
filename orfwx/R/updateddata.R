@@ -1,13 +1,13 @@
 #' Converting updated CSV to a data frame
 #' 
-#' \code{updatedData} turns the updated data (retrieved using 
-#' \code{\link{getUpdatedCsv}}) into a data frame, which may be combined with
-#' other data using \code{\link{combineDataFrames}}.
+#' `updatedData` turns the updated data (retrieved using 
+#' [getUpdatedCsv()]) into a data frame, which may be combined with
+#' other data using [combineDataFrames()].
 #' 
 #' Details section to be written.
 #' 
-#' @param runUpdate If \code{TRUE}, uses \code{\link{getUpdatedCsv}} to
-#'   retrieve updated data (defaults to \code{FALSE}).
+#' @param runUpdate If `TRUE`, uses [getUpdatedCsv()] to
+#'   retrieve updated data (defaults to `FALSE`).
 #' @return Returns a data frame
 #' @examples
 #' \dontrun{updatedData()}

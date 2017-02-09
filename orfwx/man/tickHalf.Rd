@@ -15,4 +15,3 @@ The smaller ticks are two-thirds the size of the full ticks.
 \examples{
 \dontrun{tickHalf()}
 }
-

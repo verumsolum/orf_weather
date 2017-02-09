@@ -1,6 +1,6 @@
 #' Yesterday's date
 #' 
-#' \code{yesterdate} returns the previous day's date.
+#' `yesterdate` returns the previous day's date.
 #' 
 #' This is a convenience function since many times, functions are run for the
 #' previous day's information.

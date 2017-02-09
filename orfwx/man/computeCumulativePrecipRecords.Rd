@@ -12,7 +12,7 @@
   "\%Y"))), showLastCompleteMonth = FALSE)
 }
 \arguments{
-\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip} 
+\item{originalFrame}{(optional) The data frame to which the \code{MTDPrecip}
 and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.}
 
 \item{ccprMonth}{(optional) The month for which precipitation records are
@@ -22,7 +22,7 @@ when it defaults to the previous month).}
 \item{showYear}{(optional) Whether or not to show the current or most recent
 year's data for comparison (defaults to \code{FALSE}).}
 
-\item{includeNormals}{(optional) Whether or not to show the 1981-2010 
+\item{includeNormals}{(optional) Whether or not to show the 1981-2010
 normals for comparison (defaults to \code{FALSE}).}
 
 \item{showLeapDay}{(optional) Whether or not to show data for February 29th
@@ -45,53 +45,52 @@ This function probably contains too much for one function.
 The function:
 
 \enumerate{
-  \item Checks to make sure that \code{ccprMonth} is an integer,
-  \item Sets the year to display (if \code{showYear} is \code{TRUE}),
-  \item Changes \code{originalFrame} to add date variables and include only
-    data from the same calendar month,
-  \item Creates \code{recordsFrame} (a copy of \code{originalFrame}), and 
-    uses it to determine the records for month-to-date and year-to-date 
-    (excluding the plotted year from the records),
-  \item Creates \code{yearsFrame} with a row for each day of the month, and
-    initializes variables,
-  \item Loops through \code{yearsFrame} to get the most recent year for each
-    day's record,
-  \item Joins \code{recordsFrame} to \code{yearsFrame} and orders re-order
-    the variables in a more human-friendly arrangement,
-  \item Makes copies of the year variables,
-  \item Loop through \code{yearsFrame} and change to an empty string where
-    the year is the same as both the previous day and the next day,
-  \item If \code{showYear} is \code{TRUE}:
-    \enumerate{
-      \item Creates \code{currentYearFrame} (a copy of \code{originalFrame}),
-      \item Filters out rows where \code{Year} matches \code{currentYear} and
-        \code{Month} matches \code{ccprMonth},
-      \item Shortens column names to \code{MTD} and \code{YTD},
-      \item Selects only the columns \code{Month}, \code{DayOfMonth},
-        \code{MTD}, and \code{YTD},
-      \item Joins \code{recordsFrame} and \code{currentYearsFrame} by
-        \code{Month} and \code{DayOfMonth}, and
-      \item Reorders the variables in a more human-friendly arrangement,
-    }
-  \item If \code{includeNormals} is \code{TRUE}:
-    \enumerate{
-      \item Joins \code{recordsFrame} with the columns of 
-        \code{airportNormals} that don't relate to temperature, by
-        \code{Month} and \code{DayOfMonth}, and
-      \item Renames the appropriate variables to \code{MTDNormal} and
-        \code{YTDNormal},
-    }
-  \item If \code{showLeapDay} is \code{FALSE}:
-    \enumerate{
-      \item Ensures that year labels are visible in \code{recordsFrame} for
-        Feb 28th (copying them from Feb 29th, if the 28th is blank), and
-      \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
-        \code{showLeapDay} is \code{FALSE}), and
-    }
-  \item Returns \code{recordsFrame}.
+\item Checks to make sure that \code{ccprMonth} is an integer,
+\item Sets the year to display (if \code{showYear} is \code{TRUE}),
+\item Changes \code{originalFrame} to add date variables and include only
+data from the same calendar month,
+\item Creates \code{recordsFrame} (a copy of \code{originalFrame}), and
+uses it to determine the records for month-to-date and year-to-date
+(excluding the plotted year from the records),
+\item Creates \code{yearsFrame} with a row for each day of the month, and
+initializes variables,
+\item Loops through \code{yearsFrame} to get the most recent year for each
+day's record,
+\item Joins \code{recordsFrame} to \code{yearsFrame} and orders re-order
+the variables in a more human-friendly arrangement,
+\item Makes copies of the year variables,
+\item Loop through \code{yearsFrame} and change to an empty string where
+the year is the same as both the previous day and the next day,
+\item If \code{showYear} is \code{TRUE}:
+\enumerate{
+\item Creates \code{currentYearFrame} (a copy of \code{originalFrame}),
+\item Filters out rows where \code{Year} matches \code{currentYear} and
+\code{Month} matches \code{ccprMonth},
+\item Shortens column names to \code{MTD} and \code{YTD},
+\item Selects only the columns \code{Month}, \code{DayOfMonth},
+\code{MTD}, and \code{YTD},
+\item Joins \code{recordsFrame} and \code{currentYearsFrame} by
+\code{Month} and \code{DayOfMonth}, and
+\item Reorders the variables in a more human-friendly arrangement,
+}
+\item If \code{includeNormals} is \code{TRUE}:
+\enumerate{
+\item Joins \code{recordsFrame} with the columns of
+\code{airportNormals} that don't relate to temperature, by
+\code{Month} and \code{DayOfMonth}, and
+\item Renames the appropriate variables to \code{MTDNormal} and
+\code{YTDNormal},
+}
+\item If \code{showLeapDay} is \code{FALSE}:
+\enumerate{
+\item Ensures that year labels are visible in \code{recordsFrame} for
+Feb 28th (copying them from Feb 29th, if the 28th is blank), and
+\item Filters out \code{recordsFrame} to exclude Feb 29th data (if
+\code{showLeapDay} is \code{FALSE}), and
+}
+\item Returns \code{recordsFrame}.
 }
 }
 \examples{
 \dontrun{computeCumulativePrecipRecords()}
 }
-

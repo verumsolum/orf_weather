@@ -1,6 +1,6 @@
 #' Add ticks to y-axis of grid.
 #' 
-#' \code{tickTenth} adds ten smaller ticks in between the full ticks.
+#' `tickTenth` adds ten smaller ticks in between the full ticks.
 #' 
 #' The smaller ticks are one-third the size of the full ticks.
 #' 

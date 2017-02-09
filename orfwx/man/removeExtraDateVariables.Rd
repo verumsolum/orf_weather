@@ -7,7 +7,7 @@
 removeExtraDateVariables(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the date variables are 
+\item{originalFrame}{The data frame from which the date variables are
 removed.}
 }
 \value{
@@ -15,7 +15,7 @@ Returns a data frame.
 }
 \description{
 \code{removeExtraDateVariables} removes from a data frame the date
-variables which have been added by \code{\link{computeExtraDateVariables}}.
+variables which have been added by \code{\link[=computeExtraDateVariables]{computeExtraDateVariables()}}.
 }
 \details{
 These variables are integers for convenience use in filtering, and this
@@ -27,4 +27,3 @@ Errors will result if any of the variables (\code{Year}, \code{Month},
 \examples{
 removeExtraDateVariables(computeExtraDateVariables(airportData))
 }
-

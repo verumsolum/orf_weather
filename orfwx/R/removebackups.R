@@ -1,22 +1,22 @@
 #' Deletes out-dated backup files
 #' 
-#' \code{removeBackups} deletes out-of-date backup files.
+#' `removeBackups` deletes out-of-date backup files.
 #' 
-#' The \code{\link{getUpdatedCsv}} function downloads \code{updates.csv} to the
-#' \code{~/.orfwx/} directory. In case of error, that function also copies the
-#' existing \code{~/.orfwx/updates.csv} and renames it, so that it can be used
-#' in case of a corrupted download. This \code{removeBackups} function deletes
+#' The [getUpdatedCsv()] function downloads `updates.csv` to the
+#' `~/.orfwx/` directory. In case of error, that function also copies the
+#' existing `~/.orfwx/updates.csv` and renames it, so that it can be used
+#' in case of a corrupted download. This `removeBackups` function deletes
 #' some of those backup files.
 #' 
-#' If called without parameters, \code{removeBackups} will delete all files that
-#' are older than approximately one week. If \code{leaveOne} is set to 
-#' \code{TRUE}, all backup files other than the most recent file will be 
+#' If called without parameters, `removeBackups` will delete all files that
+#' are older than approximately one week. If `leaveOne` is set to 
+#' `TRUE`, all backup files other than the most recent file will be 
 #' deleted.
 #' 
-#' @param leaveOne (Defaults to \code{FALSE}) If \code{TRUE}, delete all backup
+#' @param leaveOne (Defaults to `FALSE`) If `TRUE`, delete all backup
 #'   files except the most recent. Otherwise, any folder newer than 
 #'   approximately a week will be left and older files will be deleted.
-#' @return Deletes files from \code{~/.orfwx/} directory.
+#' @return Deletes files from `~/.orfwx/` directory.
 #' @examples
 #' \dontrun{
 #' removeBackups()

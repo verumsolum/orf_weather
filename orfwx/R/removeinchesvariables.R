@@ -1,7 +1,7 @@
 #' Remove inches variables from a data frame
 #' 
-#' \code{removeInchesVariables} removes from a data frame the
-#' \code{PrecipitationInches} and  \code{SnowfallInches} variables.
+#' `removeInchesVariables` removes from a data frame the
+#' `PrecipitationInches` and  `SnowfallInches` variables.
 #' 
 #' This function may be used to keep these variables from cluttering up
 #' display, if they are no longer needed.

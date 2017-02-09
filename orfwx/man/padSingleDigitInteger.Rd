@@ -18,7 +18,7 @@ single-digit integer with a leading zero, if required.
 }
 \details{
 This function converts \code{theInteger} into an integer and
-returns that integer if between 10 and 99 (inclusive); otherwise, 
+returns that integer if between 10 and 99 (inclusive); otherwise,
 it adds a leading zero, to create a two-character string.
 
 Errors will be provided for negative integers and integers with
@@ -29,4 +29,3 @@ padSingleDigitInteger(20)  # "20"
 padSingleDigitInteger(9)  # "09"
 padSingleDigitInteger(0)  # "00"
 }
-

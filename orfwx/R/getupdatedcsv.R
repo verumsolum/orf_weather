@@ -1,17 +1,17 @@
 #' Retrieves a file of updated weather observations
 #' 
-#' \code{getUpdatedCsv} downloads a CSV file with weather observations.
+#' `getUpdatedCsv` downloads a CSV file with weather observations.
 #' 
 #' Most observations are included within the `orfwx` package. (See 
-#' \code{\link{airportData}}, \code{\link{bothStations}}, and 
-#' \code{\link{earlyDowntownData}}).  This function is used to retrieve data
+#' [airportData()], [bothStations()], and 
+#' [earlyDowntownData()]).  This function is used to retrieve data
 #' newer than that included within the package.
 #' 
-#' \code{getUpdatedCsv} uses \code{httr} to download an
-#' \code{updates.csv} file. It is stored in the \code{~/.orfwx} directory,
+#' `getUpdatedCsv` uses `httr` to download an
+#' `updates.csv` file. It is stored in the `~/.orfwx` directory,
 #' which this function attempts to create if it is not already present.
 #' 
-#' @return Downloads a file to the \code{~/.orfwx} directory.
+#' @return Downloads a file to the `~/.orfwx` directory.
 #' @examples
 #' \dontrun{
 #' getUpdatedCsv()

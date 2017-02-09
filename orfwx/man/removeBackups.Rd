@@ -8,7 +8,7 @@ removeBackups(leaveOne = FALSE)
 }
 \arguments{
 \item{leaveOne}{(Defaults to \code{FALSE}) If \code{TRUE}, delete all backup
-files except the most recent. Otherwise, any folder newer than 
+files except the most recent. Otherwise, any folder newer than
 approximately a week will be left and older files will be deleted.}
 }
 \value{
@@ -18,15 +18,15 @@ Deletes files from \code{~/.orfwx/} directory.
 \code{removeBackups} deletes out-of-date backup files.
 }
 \details{
-The \code{\link{getUpdatedCsv}} function downloads \code{updates.csv} to the
+The \code{\link[=getUpdatedCsv]{getUpdatedCsv()}} function downloads \code{updates.csv} to the
 \code{~/.orfwx/} directory. In case of error, that function also copies the
 existing \code{~/.orfwx/updates.csv} and renames it, so that it can be used
 in case of a corrupted download. This \code{removeBackups} function deletes
 some of those backup files.
 
 If called without parameters, \code{removeBackups} will delete all files that
-are older than approximately one week. If \code{leaveOne} is set to 
-\code{TRUE}, all backup files other than the most recent file will be 
+are older than approximately one week. If \code{leaveOne} is set to
+\code{TRUE}, all backup files other than the most recent file will be
 deleted.
 }
 \examples{
@@ -34,4 +34,3 @@ deleted.
 removeBackups()
 }
 }
-

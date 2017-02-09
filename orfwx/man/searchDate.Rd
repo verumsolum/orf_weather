@@ -9,7 +9,7 @@ searchDate(searchMonth = format(Sys.Date(), "\%m"),
   "\%Y"))
 }
 \arguments{
-\item{searchMonth}{An integer between 1 [Jan] and 12 [Dec] (inclusive).}
+\item{searchMonth}{An integer between 1 \link{Jan} and 12 \link{Dec} (inclusive).}
 
 \item{searchDay}{An integer between 1 and 31 for the day of the month.}
 
@@ -24,7 +24,7 @@ day, the current date from the system clock will be used.
 }
 \details{
 This function passes \code{searchMonth} and \code{searchDay} through
-\code{padSingleDigitInteger} and uses them, along with \code{searchYear} to 
+\code{padSingleDigitInteger} and uses them, along with \code{searchYear} to
 create a string. That string is converted to a date.
 
 Errors will result from invalid months or most invalid dates. Missing
@@ -38,4 +38,3 @@ searchDate(10, 21, 1976)  # October 21st, 1976
 searchDate(12, 31)  # December 31st
 searchDate()  # The current date
 }
-

@@ -12,11 +12,11 @@
 #'   \item{AvgTemperature}{(double) the average temperature (in °F)}
 #'   \item{CsvPrecipitation}{(character) the day's precipitation (in inches),
 #'     as expressed in the original comma separated value (CSV) file.
-#'     \strong{NOTE:} Either the letter \code{T} (for trace) or a number,
+#'     \strong{NOTE:} Either the letter `T` (for trace) or a number,
 #'     expressed to the hundredth of an inch}
 #'   \item{CsvSnowfall}{(character) the day's snowfall (in inches),
 #'     as expressed in the original comma separated value (CSV) file.
-#'     \strong{NOTE:} Either the letter \code{T} (for trace) or a number,
+#'     \strong{NOTE:} Either the letter `T` (for trace) or a number,
 #'     expressed to the tenth of an inch}
 #' }
 #' @source \url{http://climodtest.nrcc.cornell.edu/}

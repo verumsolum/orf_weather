@@ -7,7 +7,7 @@
 removeTemperatureSpread(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the \code{TemperatureSpread} 
+\item{originalFrame}{The data frame from which the \code{TemperatureSpread}
 variable is removed.}
 }
 \value{
@@ -15,8 +15,8 @@ Returns a data frame.
 }
 \description{
 \code{removeTemperatureSpread} removes from a data frame the
-\code{TemperatureSpread} variable which was added by 
-\code{\link{computeTemperatureSpread}}.
+\code{TemperatureSpread} variable which was added by
+\code{\link[=computeTemperatureSpread]{computeTemperatureSpread()}}.
 }
 \details{
 This function may be used to keep the \code{TemperatureSpread} variable
@@ -25,4 +25,3 @@ from cluttering up display, if it is no longer needed.
 \examples{
 removeTemperatureSpread(computeTemperatureSpread(airportData))
 }
-

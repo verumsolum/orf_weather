@@ -1,14 +1,14 @@
 #' Add extra date variables to a data frame
 #' 
-#' \code{computeExtraDateVariables} appends extra date variables to a data frame.
+#' `computeExtraDateVariables` appends extra date variables to a data frame.
 #' 
 #' These variables are integers for convenience use in filtering:
 #' 
 #' \itemize{
-#'   \item \code{Year}: The year
-#'   \item \code{Month}: The month
-#'   \item \code{DayOfMonth}: The date (1-31)
-#'   \item \code{DayOfYear}: The so-called \dQuote{julian day} as an integer 
+#'   \item `Year`: The year
+#'   \item `Month`: The month
+#'   \item `DayOfMonth`: The date (1-31)
+#'   \item `DayOfYear`: The so-called \dQuote{julian day} as an integer 
 #'     (1-366)
 #' }
 #' 

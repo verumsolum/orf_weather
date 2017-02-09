@@ -7,7 +7,7 @@
 removeInchesVariables(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the inches variables are 
+\item{originalFrame}{The data frame from which the inches variables are
 removed.}
 }
 \value{
@@ -24,4 +24,3 @@ display, if they are no longer needed.
 \examples{
 removeInchesVariables(convertCsvToNumericAndLogical(airportData))
 }
-

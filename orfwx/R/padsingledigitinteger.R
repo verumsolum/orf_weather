@@ -1,9 +1,9 @@
 #' Pad a number with a zero to create a two-character string (if single digit).
 #' 
-#' \code{padSingleDigitInteger} returns a two-character string, padding a
+#' `padSingleDigitInteger` returns a two-character string, padding a
 #' single-digit integer with a leading zero, if required.
 #' 
-#' This function converts \code{theInteger} into an integer and
+#' This function converts `theInteger` into an integer and
 #' returns that integer if between 10 and 99 (inclusive); otherwise, 
 #' it adds a leading zero, to create a two-character string.
 #' 
