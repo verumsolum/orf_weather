@@ -4,11 +4,9 @@
 #' whether or not the year passed to it is a leap year or not.
 #' 
 #' This function determines that the year in question is:
-#' \itemize{
-#'   \item evenly divisible by 4, and
-#'   \item not evenly divisible by 100, or
-#'   \item \emph{(ignoring the previous conditions)} evenly divisible by 400
-#' }
+#' * evenly divisible by 4, and
+#' * not evenly divisible by 100, or
+#' * _(ignoring the previous conditions)_ evenly divisible by 400
 #' 
 #' @param year An integer value for the year in question.
 #' @return Returns a logical value (`TRUE` or `FALSE`).
