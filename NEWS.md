@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9050 (2017-02-09)
+* Documentation updated to Markdown format using roxygen2 version 6.0.1 
+(Initial conversion using roxygen2md version 0.0-2)
+
 ### Changes in version 0.0.0.9049 (2017-02-09)
 * **computeCumulativePrecipRecords**: Label Feb28th in all cases if
 \code{showLeapDay} is \code{TRUE}.
