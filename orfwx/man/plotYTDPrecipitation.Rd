@@ -14,7 +14,7 @@ plotYTDPrecipitation(plotMonth = format(orfwx::yesterdate(), "\%m"),
 desired. Defaults to the current month (except on the 1st of the month,
 when it defaults to the previous month).}
 
-\item{saveToFile}{(optional) Writes plot to a PNG file (defaults to 
+\item{saveToFile}{(optional) Writes plot to a PNG file (defaults to
 \code{FALSE}).}
 
 \item{showLeapDay}{(optional) Whether or not to show data for February 29th
@@ -41,4 +41,3 @@ a black line with the curent year-to-date precipitation.
 \dontrun{
 plotYTDPrecipitation()}
 }
-

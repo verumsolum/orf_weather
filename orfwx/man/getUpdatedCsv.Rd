@@ -13,9 +13,9 @@ Downloads a file to the \code{~/.orfwx} directory.
 \code{getUpdatedCsv} downloads a CSV file with weather observations.
 }
 \details{
-Most observations are included within the `orfwx` package. (See 
-\code{\link{airportData}}, \code{\link{bothStations}}, and 
-\code{\link{earlyDowntownData}}).  This function is used to retrieve data
+Most observations are included within the \code{orfwx} package. (See
+\code{\link[=airportData]{airportData()}}, \code{\link[=bothStations]{bothStations()}}, and
+\code{\link[=earlyDowntownData]{earlyDowntownData()}}).  This function is used to retrieve data
 newer than that included within the package.
 
 \code{getUpdatedCsv} uses \code{httr} to download an
@@ -27,4 +27,3 @@ which this function attempts to create if it is not already present.
 getUpdatedCsv()
 }
 }
-

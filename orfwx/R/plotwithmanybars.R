@@ -1,25 +1,25 @@
 #' Create a barplot with temperature or precipitation data
 #' 
-#' \code{plotWithManyBars} creates a barplot with the data provided to it.
+#' `plotWithManyBars` creates a barplot with the data provided to it.
 #' 
-#' Missing values in both \code{sortedData} and \code{sortedDataFrame} are
-#' discarded (to avoid them being chosen as \code{maxSortedData}). Also, 
-#' \code{highlightYear} is checked to ensure it is a valid year.
+#' Missing values in both `sortedData` and `sortedDataFrame` are
+#' discarded (to avoid them being chosen as `maxSortedData`). Also, 
+#' `highlightYear` is checked to ensure it is a valid year.
 #' 
 #' A barplot is created. Bars are created for all provided data. Unless
-#' \code{showAllLabels} is set to \code{TRUE}, labels are only shown for the
-#' highest and lowest values (and ties), as well as the \code{highlightYear}'s
+#' `showAllLabels` is set to `TRUE`, labels are only shown for the
+#' highest and lowest values (and ties), as well as the `highlightYear`'s
 #' data.
 #' 
 #' @param sortedData A vector used for the values to be shown on the barplot. 
-#' @param sortedDataFrame A data frame, from which \code{sortedData} has
+#' @param sortedDataFrame A data frame, from which `sortedData` has
 #'   usually been excerpted.
 #' @param titlePlotWmb The title of the barplot
 #' @param yAxisLabelPlotWmb The label for the y axis
 #' @param plottingPrecip A logical value indicating if we are dealing with
 #'   precipitation
 #' @param showAllLabels A logical value indicating if we are showing all
-#'   labels (if \code{FALSE}, labels will only be shown on the max and min
+#'   labels (if `FALSE`, labels will only be shown on the max and min
 #'   values and on the year as of yesterday)
 #' @param highlightYear The year to highlight in the graph (defaults to the
 #'   year as of yesterday)

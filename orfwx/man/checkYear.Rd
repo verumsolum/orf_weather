@@ -19,9 +19,9 @@ which case, it returns the current year).
 \details{
 This function determines that the year in question is:
 \itemize{
-  \item not NULL
-  \item not earlier than 1724 (the year the Fahrenheit scale was developed)
-  \item not later than the current year
+\item not NULL
+\item not earlier than 1724 (the year the Fahrenheit scale was developed)
+\item not later than the current year
 }
 }
 \examples{
@@ -30,4 +30,3 @@ This function determines that the year in question is:
 \dontrun{checkYear("1984")}  # "1984"
 \dontrun{checkYear("2020")}  # "2016" (future year becomes current year)
 }
-

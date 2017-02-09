@@ -7,7 +7,7 @@
 removeLeapYearAwareDayOfYear(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the 
+\item{originalFrame}{The data frame from which the
 \code{LeapYearAwareDayOfYear} variables is removed.}
 }
 \value{
@@ -15,8 +15,8 @@ Returns a data frame.
 }
 \description{
 \code{removeLeapYearAwareDayOfYear} removes from a data frame the
-\code{LeapYearAwareDayOfYear} variable which was added by 
-\code{\link{computeLeapYearAwareDayOfYear}}.
+\code{LeapYearAwareDayOfYear} variable which was added by
+\code{\link[=computeLeapYearAwareDayOfYear]{computeLeapYearAwareDayOfYear()}}.
 }
 \details{
 This function may be used to keep this variable from cluttering up display,
@@ -25,4 +25,3 @@ if the \code{LeapYearAwareDayOfYear} is no longer needed.
 \examples{
 removeLeapYearAwareDayOfYear(computeLeapYearAwareDayOfYear(computeExtraDateVariables(bothStations)))
 }
-

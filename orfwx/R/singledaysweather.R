@@ -1,17 +1,17 @@
 #' Create a data frame with a single day's weather
 #' 
-#' \code{singleDaysWeather} returns a data frame.
+#' `singleDaysWeather` returns a data frame.
 #' 
-#' There are several functions within the \code{orfwx} package that compare
+#' There are several functions within the `orfwx` package that compare
 #' a day's weather with past years' data. The past years' data are
 #' included in the provided datasets. The current year's data may be passed to
-#' those functions using \code{singleDaysWeather}.
+#' those functions using `singleDaysWeather`.
 #' 
-#' All of the parameters are optional. Most will be set to \code{NA} if they 
-#' are missing. The one exception is \code{dataDate}, which is set to 
+#' All of the parameters are optional. Most will be set to `NA` if they 
+#' are missing. The one exception is `dataDate`, which is set to 
 #' yesterday's date (as provided by the system), if it has not been explicitly 
-#' passed to \code{singleDaysWeather}.  \bold{NOTE:} \code{M} is converted to 
-#' \code{NA}, since that resembles the code used by the National Weather 
+#' passed to `singleDaysWeather`.  **NOTE:** `M` is converted to 
+#' `NA`, since that resembles the code used by the National Weather 
 #' Service for missing data.
 #' 
 #' @param highTemperature An integer representing the day's high temperature
@@ -21,10 +21,10 @@
 #' @param averageTemperature A number representing the day's average
 #'   temperature (in degrees F).
 #' @param precipitationString A character vector representing the day's 
-#'   precipitation (in inches) (or the values \code{T} for trace or \code{M} 
+#'   precipitation (in inches) (or the values `T` for trace or `M` 
 #'   for missing value).
 #' @param snowfallString A character vector representing the day's
-#'   precipitation (in inches) (or the values \code{T} for trace or \code{M} 
+#'   precipitation (in inches) (or the values `T` for trace or `M` 
 #'   for missing value).
 #' @param dataDate A date for the data represented (defaults to yesterday).
 #' @return Returns a data frame.

@@ -7,7 +7,7 @@
 findMostRecentDate(fmrdSource = orfwx::updatedData())
 }
 \arguments{
-\item{fmrdSource}{The data frame to check. (Defaults to `updatedData()`).}
+\item{fmrdSource}{The data frame to check. (Defaults to \code{updatedData()}).}
 }
 \value{
 Returns a date.
@@ -24,4 +24,3 @@ Details section to be written.
 findMostRecentDate()
 }
 }
-

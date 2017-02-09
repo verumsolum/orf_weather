@@ -7,7 +7,7 @@
 removeWithVariables(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the logical variables are 
+\item{originalFrame}{The data frame from which the logical variables are
 removed.}
 }
 \value{
@@ -24,4 +24,3 @@ variables are no longer needed.
 \examples{
 removeWithVariables(convertCsvToNumericAndLogical(airportData))
 }
-

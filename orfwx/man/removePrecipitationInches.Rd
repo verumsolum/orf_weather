@@ -24,4 +24,3 @@ from cluttering up display, if it is no longer needed.
 \examples{
 removePrecipitationInches(convertCsvToNumericAndLogical(airportData))
 }
-

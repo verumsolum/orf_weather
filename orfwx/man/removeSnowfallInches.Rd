@@ -24,4 +24,3 @@ cluttering up display, if it is no longer needed.
 \examples{
 removeSnowfallInches(convertCsvToNumericAndLogical(airportData))
 }
-

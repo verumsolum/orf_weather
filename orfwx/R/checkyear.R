@@ -1,14 +1,12 @@
 #' Check whether or not the provided year is valid.
 #' 
-#' \code{checkYear} returns the year provided to it, unless it is invalid (in
+#' `checkYear` returns the year provided to it, unless it is invalid (in
 #' which case, it returns the current year).
 #' 
 #' This function determines that the year in question is:
-#' \itemize{
-#'   \item not NULL
-#'   \item not earlier than 1724 (the year the Fahrenheit scale was developed)
-#'   \item not later than the current year
-#' }
+#' * not NULL
+#' * not earlier than 1724 (the year the Fahrenheit scale was developed)
+#' * not later than the current year
 #' 
 #' @param uncheckedYear A value for the year in question.
 #' @return Returns a string with the year.

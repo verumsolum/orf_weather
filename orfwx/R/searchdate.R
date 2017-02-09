@@ -1,17 +1,17 @@
 #' Create a date from a numeric month and day, for use in searches.
 #' 
-#' \code{searchDate} returns a date. If not provided with a numeric month and
+#' `searchDate` returns a date. If not provided with a numeric month and
 #' day, the current date from the system clock will be used.
 #' 
-#' This function passes \code{searchMonth} and \code{searchDay} through
-#' \code{padSingleDigitInteger} and uses them, along with \code{searchYear} to 
+#' This function passes `searchMonth` and `searchDay` through
+#' `padSingleDigitInteger` and uses them, along with `searchYear` to 
 #' create a string. That string is converted to a date.
 #' 
 #' Errors will result from invalid months or most invalid dates. Missing
 #' parameters are replaced with the appropriate portion of the current
 #' system date.
 #' 
-#' @param searchMonth An integer between 1 [Jan] and 12 [Dec] (inclusive).
+#' @param searchMonth An integer between 1 _(Jan)_ and 12 _(Dec)_ (inclusive).
 #' @param searchDay An integer between 1 and 31 for the day of the month.
 #' @param searchYear An integer representing the year.
 #' @return Returns a date.

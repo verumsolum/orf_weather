@@ -1,7 +1,7 @@
 #' Remove original precipitation and snowfall variables from a data frame
 #' 
-#' \code{removeCsvVariables} removes from a data frame the
-#' \code{CsvPrecipitation} and \code{CsvSnowfall} variables.
+#' `removeCsvVariables` removes from a data frame the
+#' `CsvPrecipitation` and `CsvSnowfall` variables.
 #' 
 #' This function may be used to keep them from cluttering up display, if the
 #' those variables are no longer needed.

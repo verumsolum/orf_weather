@@ -1,12 +1,12 @@
 #' Remove snowfall amount variable from a data frame
 #' 
-#' \code{removeSnowfallInches} removes from a data frame the
-#' \code{SnowfallInches} variable.
+#' `removeSnowfallInches` removes from a data frame the
+#' `SnowfallInches` variable.
 #' 
-#' This function may be used to keep the \code{SnowfallInches} variable from
+#' This function may be used to keep the `SnowfallInches` variable from
 #' cluttering up display, if it is no longer needed.
 #' 
-#' @param originalFrame The data frame from which the \code{SnowfallInches}
+#' @param originalFrame The data frame from which the `SnowfallInches`
 #'   variable is removed.
 #' @return Returns a data frame.
 #' @examples

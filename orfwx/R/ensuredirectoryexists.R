@@ -1,19 +1,19 @@
 #' Ensures directory exists, optionally create it
 #' 
-#' \code{ensureDirectoryExists} ensures that the a directory exists, and, if 
+#' `ensureDirectoryExists` ensures that the a directory exists, and, if 
 #' it does not, can create it.
 #' 
-#' By default, this checks for the presence of \code{~/.orfwx} but does not
+#' By default, this checks for the presence of `~/.orfwx` but does not
 #' create that directory if it is missing. Both of those options can be
 #' overridden by parameters.
 #' 
 #' @param whichDirectory The directory that is checked for existence. Defaults
-#'   to \code{~/.orfwx}
-#' @param createIfMissing If \code{TRUE}, create the directory if it does not
+#'   to `~/.orfwx`
+#' @param createIfMissing If `TRUE`, create the directory if it does not
 #'   exist.
-#' @return Logical value: \code{TRUE} if the directory exists (either it
-#'   already existed or was created if \code{createIfMissing == TRUE}) and
-#'   \code{FALSE} if the directory does not already exist.
+#' @return Logical value: `TRUE` if the directory exists (either it
+#'   already existed or was created if `createIfMissing == TRUE`) and
+#'   `FALSE` if the directory does not already exist.
 #' @examples
 #' \dontrun{
 #' ensureDirectoryExists("~/.orfwx")

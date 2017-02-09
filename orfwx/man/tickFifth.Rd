@@ -15,4 +15,3 @@ The smaller ticks are one-half the size of the full ticks.
 \examples{
 \dontrun{tickFifth()}
 }
-

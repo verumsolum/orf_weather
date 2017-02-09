@@ -1,39 +1,39 @@
 #' Plot warmest historical high tempertures on a single date
 #' 
-#' \code{plotWarmestMaxTempOverHistory} creates a barplot with the warmest 
+#' `plotWarmestMaxTempOverHistory` creates a barplot with the warmest 
 #' high temperatures of one day of the year.
 #' 
-#' If \code{daysWeather} is passed (usually using 
-#' \code{\link{singleDaysWeather}}), the function ensures that its weather is 
-#' for the same date as that provided by \code{plotDate} (either passed to the 
+#' If `daysWeather` is passed (usually using 
+#' [singleDaysWeather()]), the function ensures that its weather is 
+#' for the same date as that provided by `plotDate` (either passed to the 
 #' function or the default value of the current system date). If they do not 
 #' match, the function terminates with an error message.
 #' 
-#' The data from \code{daysWeather} is added to that provided by 
-#' \code{wxUniverse} (by default, \code{\link{allData}}) and the weather
+#' The data from `daysWeather` is added to that provided by 
+#' `wxUniverse` (by default, [allData()]) and the weather
 #' on the same date each year is compared.
 #' 
-#' A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
+#' A barplot is plotted by [plotWithManyBars()] with the high 
 #' temperatures for all days with a high temperature greater than or equal to 
-#' that provided by \code{daysWeather}. (In all cases, the ten warmest years 
+#' that provided by `daysWeather`. (In all cases, the ten warmest years 
 #' shown, along with any ties, with additional years added until the year 
-#' are provided by \code{daysWeather} is shown, and also all years tied with 
-#' the same temperature.) The bar for the year provided by \code{daysWeather} 
-#' (or, if \code{daysWeather} is not provided, the year as of yesterday) is 
+#' are provided by `daysWeather` is shown, and also all years tied with 
+#' the same temperature.) The bar for the year provided by `daysWeather` 
+#' (or, if `daysWeather` is not provided, the year as of yesterday) is 
 #' highlighted with a bar of a different color in the barplot.
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
-#'   to be searched (defaults to \code{allData}).
+#'   to be searched (defaults to `allData`).
 #' @param plotDate (optional) The date to be searched for, defaulting to
 #'   yesterday's date.
 #' @param daysWeather (optional) The weather for a date not yet included in
-#'   the \code{wxUniverse} data frame, usually passed by the
-#'   \code{singleDaysWeather} function.
-#' @param twoTicks (optional) Writes half ticks (defaults to \code{TRUE}).
-#' @param fiveTicks (optional) Writes fifth ticks (defaults to \code{FALSE}).
-#' @param tenTicks (optional) Writes tenth ticks (defaults to \code{FALSE}).
+#'   the `wxUniverse` data frame, usually passed by the
+#'   `singleDaysWeather` function.
+#' @param twoTicks (optional) Writes half ticks (defaults to `TRUE`).
+#' @param fiveTicks (optional) Writes fifth ticks (defaults to `FALSE`).
+#' @param tenTicks (optional) Writes tenth ticks (defaults to `FALSE`).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
-#'   \code{FALSE}).
+#'   `FALSE`).
 #' @return Returns a barplot.
 #' @examples
 #' plotWarmestMaxTempOverHistory(airportData, searchDate(11, 26))  

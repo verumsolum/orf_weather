@@ -27,4 +27,3 @@ in the proper format.
 \examples{
 combineDataFrames(earlyDowntownData, airportData)
 }
-

@@ -15,4 +15,3 @@ The smaller ticks are one-third the size of the full ticks.
 \examples{
 \dontrun{tickTenth()}
 }
-

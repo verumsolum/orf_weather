@@ -23,4 +23,3 @@ those variables are no longer needed.
 \examples{
 \dontrun{removeCsvVariables(bothStations)}
 }
-

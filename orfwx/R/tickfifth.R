@@ -1,6 +1,6 @@
 #' Add ticks to y-axis of grid.
 #' 
-#' \code{tickFifth} adds five smaller ticks in between the full ticks.
+#' `tickFifth` adds five smaller ticks in between the full ticks.
 #' 
 #' The smaller ticks are one-half the size of the full ticks.
 #' 

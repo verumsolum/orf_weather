@@ -18,10 +18,9 @@ Returns a data frame.
 \code{CsvSnowfall} variable.
 }
 \details{
-This function may be used to keep this information from cluttering up 
+This function may be used to keep this information from cluttering up
 display, if the \code{CsvSnowfall} is no longer needed.
 }
 \examples{
 removeCsvSnowfall(bothStations)
 }
-

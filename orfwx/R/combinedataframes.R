@@ -1,8 +1,8 @@
 #' Combines two data frames with weather observations
 #' 
-#' \code{combineDataFrames} takes two data frames and combines them.
+#' `combineDataFrames` takes two data frames and combines them.
 #' 
-#' This is a convenience wrapper that uses \code{rbind} to combine two data
+#' This is a convenience wrapper that uses `rbind` to combine two data
 #' frames, then sorts the resulting data frame by date.
 #' 
 #' No error checking is done: Users should ensure that both data frames are

@@ -19,4 +19,3 @@ previous day's information.
 \examples{
 yesterdate()
 }
-

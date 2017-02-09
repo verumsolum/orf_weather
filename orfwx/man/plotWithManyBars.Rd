@@ -36,7 +36,7 @@ Returns a barplot.
 }
 \details{
 Missing values in both \code{sortedData} and \code{sortedDataFrame} are
-discarded (to avoid them being chosen as \code{maxSortedData}). Also, 
+discarded (to avoid them being chosen as \code{maxSortedData}). Also,
 \code{highlightYear} is checked to ensure it is a valid year.
 
 A barplot is created. Bars are created for all provided data. Unless
@@ -47,4 +47,3 @@ data.
 \examples{
 # How do I show an example?
 }
-

@@ -19,9 +19,9 @@ whether or not the year passed to it is a leap year or not.
 \details{
 This function determines that the year in question is:
 \itemize{
-  \item evenly divisible by 4, and
-  \item not evenly divisible by 100, or
-  \item \emph{(ignoring the previous conditions)} evenly divisible by 400
+\item evenly divisible by 4, and
+\item not evenly divisible by 100, or
+\item \emph{(ignoring the previous conditions)} evenly divisible by 400
 }
 }
 \examples{
@@ -30,4 +30,3 @@ is.leapYear(2015)  # FALSE (not divisible by 4)
 is.leapYear(1900)  # FALSE (divisible by 100)
 is.leapYear(2000)  # TRUE (divisible by 400)
 }
-

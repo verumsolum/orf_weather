@@ -15,11 +15,11 @@ exist.}
 }
 \value{
 Logical value: \code{TRUE} if the directory exists (either it
-  already existed or was created if \code{createIfMissing == TRUE}) and
-  \code{FALSE} if the directory does not already exist.
+already existed or was created if \code{createIfMissing == TRUE}) and
+\code{FALSE} if the directory does not already exist.
 }
 \description{
-\code{ensureDirectoryExists} ensures that the a directory exists, and, if 
+\code{ensureDirectoryExists} ensures that the a directory exists, and, if
 it does not, can create it.
 }
 \details{
@@ -32,4 +32,3 @@ overridden by parameters.
 ensureDirectoryExists("~/.orfwx")
 }
 }
-

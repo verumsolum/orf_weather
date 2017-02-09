@@ -7,7 +7,7 @@
 computeTemperatureSpread(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame to which the \code{TemperatureSpread} 
+\item{originalFrame}{The data frame to which the \code{TemperatureSpread}
 variable is appended.}
 }
 \value{
@@ -27,4 +27,3 @@ This will stop with an error if those columns are not present in
 \examples{
 computeTemperatureSpread(airportData)
 }
-

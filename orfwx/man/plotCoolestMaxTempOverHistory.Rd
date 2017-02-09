@@ -12,7 +12,7 @@ plotCoolestMaxTempOverHistory(wxUniverse = orfwx::allData(),
 \item{wxUniverse}{(optional) The data frame containing the weather history
 to be searched (defaults to \code{allData}).}
 
-\item{plotDate}{(optional) The date to be searched for, defaulting to 
+\item{plotDate}{(optional) The date to be searched for, defaulting to
 yesterday's date.}
 
 \item{daysWeather}{(optional) The weather for a date not yet included in
@@ -25,38 +25,37 @@ the \code{wxUniverse} data frame, usually passed by the
 
 \item{tenTicks}{(optional) Writes tenth ticks (defaults to \code{FALSE}).}
 
-\item{saveToFile}{(optional) Writes plot to a PNG file (defaults to 
+\item{saveToFile}{(optional) Writes plot to a PNG file (defaults to
 \code{FALSE}).}
 }
 \value{
 Returns a barplot.
 }
 \description{
-\code{plotCoolestMaxTempOverHistory} creates a barplot with the coolest 
+\code{plotCoolestMaxTempOverHistory} creates a barplot with the coolest
 high temperatures of one day of the year.
 }
 \details{
-If \code{daysWeather} is passed (usually using 
-\code{\link{singleDaysWeather}}), the function ensures that its weather is 
-for the same date as that provided by \code{plotDate} (either passed to the 
-function or the default value of the current system date). If they do not 
+If \code{daysWeather} is passed (usually using
+\code{\link[=singleDaysWeather]{singleDaysWeather()}}), the function ensures that its weather is
+for the same date as that provided by \code{plotDate} (either passed to the
+function or the default value of the current system date). If they do not
 match, the function terminates with an error message.
 
-The data from \code{daysWeather} is added to that provided by 
-\code{wxUniverse} (by default, \code{\link{allData}}) and the weather
+The data from \code{daysWeather} is added to that provided by
+\code{wxUniverse} (by default, \code{\link[=allData]{allData()}}) and the weather
 on the same date each year is compared.
 
-A barplot is plotted by \code{\link{plotWithManyBars}} with the high 
-temperatures for all days with a high temperature less than or equal to that 
-provided by \code{daysWeather}. (In all cases, the ten coolest years are 
-shown, along with any ties, with additional years added until the year 
-provided by \code{daysWeather} is shown, and also all years tied with the 
+A barplot is plotted by \code{\link[=plotWithManyBars]{plotWithManyBars()}} with the high
+temperatures for all days with a high temperature less than or equal to that
+provided by \code{daysWeather}. (In all cases, the ten coolest years are
+shown, along with any ties, with additional years added until the year
+provided by \code{daysWeather} is shown, and also all years tied with the
 same temperature.) The bar for the year provided by \code{daysWeather} (or,
-if \code{daysWeather} is not provided, the year as of yesterday) is 
+if \code{daysWeather} is not provided, the year as of yesterday) is
 highlighted with a bar of a different color in the barplot.
 }
 \examples{
 plotCoolestMaxTempOverHistory(airportData, searchDate(11, 26))  
 # Returns plot for November 26th
 }
-

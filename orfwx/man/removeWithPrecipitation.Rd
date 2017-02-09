@@ -7,7 +7,7 @@
 removeWithPrecipitation(originalFrame)
 }
 \arguments{
-\item{originalFrame}{The data frame from which the \code{WithPrecipitation} 
+\item{originalFrame}{The data frame from which the \code{WithPrecipitation}
 variable is removed.}
 }
 \value{
@@ -24,4 +24,3 @@ from cluttering up display, if it is no longer needed.
 \examples{
 removeWithPrecipitation(convertCsvToNumericAndLogical(airportData))
 }
-

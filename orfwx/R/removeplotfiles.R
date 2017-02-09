@@ -1,6 +1,6 @@
 #' Deletes plot files from working directory
 #' 
-#' \code{removePlotFiles} deletes \code{*.png} files from the working directory.
+#' `removePlotFiles` deletes `*.png` files from the working directory.
 #' 
 #' This function deletes all PNG files from the working directory.
 #' 

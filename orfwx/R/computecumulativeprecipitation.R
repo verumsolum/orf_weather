@@ -1,15 +1,15 @@
 #' Compute cumulative precipitation variables
 #' 
-#' \code{computeCumulativePrecipitation} returns a data frame with
+#' `computeCumulativePrecipitation` returns a data frame with
 #' month-to-date and year-to-date variables for precipitation.
 #' 
 #' Details section to be written
 #' 
-#' @param originalFrame (optional) The data frame to which the \code{MTDPrecip} 
-#'   and \code{YTDPrecip} variables are appended. Defaults to \code{allData()}.
+#' @param originalFrame (optional) The data frame to which the `MTDPrecip` 
+#'   and `YTDPrecip` variables are appended. Defaults to `allData()`.
 #' @param daysWeather (optional) The weather for a date not yet included in
-#'   the \code{originalFrame} data frame, usually passed by the
-#'   \code{singleDaysWeather} function.
+#'   the `originalFrame` data frame, usually passed by the
+#'   `singleDaysWeather` function.
 #' @return Returns a data frame.
 #' @examples
 #' \dontrun{computeCumulativePrecipitation()}

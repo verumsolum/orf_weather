@@ -1,17 +1,15 @@
 #' Determining whether or not this is a leap year.
 #' 
-#' \code{is.leapYear} returns \code{TRUE} or \code{FALSE}, depending on
+#' `is.leapYear` returns `TRUE` or `FALSE`, depending on
 #' whether or not the year passed to it is a leap year or not.
 #' 
 #' This function determines that the year in question is:
-#' \itemize{
-#'   \item evenly divisible by 4, and
-#'   \item not evenly divisible by 100, or
-#'   \item \emph{(ignoring the previous conditions)} evenly divisible by 400
-#' }
+#' * evenly divisible by 4, and
+#' * not evenly divisible by 100, or
+#' * _(ignoring the previous conditions)_ evenly divisible by 400
 #' 
 #' @param year An integer value for the year in question.
-#' @return Returns a logical value (\code{TRUE} or \code{FALSE}).
+#' @return Returns a logical value (`TRUE` or `FALSE`).
 #' @examples
 #' is.leapYear(2016)  # TRUE (divisible by 4)
 #' is.leapYear(2015)  # FALSE (not divisible by 4)

@@ -24,4 +24,3 @@ This function deletes all PNG files from the working directory.
 removePlotFiles()
 }
 }
-

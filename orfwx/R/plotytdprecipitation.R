@@ -1,6 +1,6 @@
 #' Plot year-to-date precipitation
 #' 
-#' \code{plotYTDPrecipitation} creates a plot of a month. with the precipitation
+#' `plotYTDPrecipitation` creates a plot of a month. with the precipitation
 #' of the year to date.
 #' 
 #' Three lines are displayed: a red line with the highest year-to-date
@@ -12,12 +12,12 @@
 #'   desired. Defaults to the current month (except on the 1st of the month,
 #'   when it defaults to the previous month).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
-#'   \code{FALSE}).
+#'   `FALSE`).
 #' @param showLeapDay (optional) Whether or not to show data for February 29th
-#'   (defaults to \code{FALSE}, unless the current year is a leap year).
+#'   (defaults to `FALSE`, unless the current year is a leap year).
 #' @param showLastCompleteMonth (optional) Whether to show data from the last
 #'   complete month or whether to show the month in progress (defaults to
-#'   \code{FALSE}).
+#'   `FALSE`).
 #' @return Returns a plot.
 #' @examples
 #' \dontrun{
