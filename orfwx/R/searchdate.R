@@ -11,7 +11,7 @@
 #' parameters are replaced with the appropriate portion of the current
 #' system date.
 #' 
-#' @param searchMonth An integer between 1 [Jan] and 12 [Dec] (inclusive).
+#' @param searchMonth An integer between 1 _(Jan)_ and 12 _(Dec)_ (inclusive).
 #' @param searchDay An integer between 1 and 31 for the day of the month.
 #' @param searchYear An integer representing the year.
 #' @return Returns a date.

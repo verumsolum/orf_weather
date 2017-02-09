@@ -43,7 +43,7 @@ those functions using \code{singleDaysWeather}.
 All of the parameters are optional. Most will be set to \code{NA} if they
 are missing. The one exception is \code{dataDate}, which is set to
 yesterday's date (as provided by the system), if it has not been explicitly
-passed to \code{singleDaysWeather}.  \bold{NOTE:} \code{M} is converted to
+passed to \code{singleDaysWeather}.  \strong{NOTE:} \code{M} is converted to
 \code{NA}, since that resembles the code used by the National Weather
 Service for missing data.
 }

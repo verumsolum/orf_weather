@@ -9,7 +9,7 @@ searchDate(searchMonth = format(Sys.Date(), "\%m"),
   "\%Y"))
 }
 \arguments{
-\item{searchMonth}{An integer between 1 \link{Jan} and 12 \link{Dec} (inclusive).}
+\item{searchMonth}{An integer between 1 \emph{(Jan)} and 12 \emph{(Dec)} (inclusive).}
 
 \item{searchDay}{An integer between 1 and 31 for the day of the month.}
 

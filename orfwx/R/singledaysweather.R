@@ -10,7 +10,7 @@
 #' All of the parameters are optional. Most will be set to `NA` if they 
 #' are missing. The one exception is `dataDate`, which is set to 
 #' yesterday's date (as provided by the system), if it has not been explicitly 
-#' passed to `singleDaysWeather`.  \bold{NOTE:} `M` is converted to 
+#' passed to `singleDaysWeather`.  **NOTE:** `M` is converted to 
 #' `NA`, since that resembles the code used by the National Weather 
 #' Service for missing data.
 #' 
