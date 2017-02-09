@@ -11,12 +11,16 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9049 (2017-02-09)
+* **computeCumulativePrecipRecords**: Label Feb28th in all cases if
+\code{showLeapDay} is \code{TRUE}.
+
 ### Changes in version 0.0.0.9048 (2017-02-09)
 * **removePlotFiles**: Function added to remove PNG files from working
 directory.
 
 ### Changes in version 0.0.0.9047 (2017-02-09)
-* **computeCumulativePrecipitationRecords**: Add `showLastCompleteMonth`
+* **computeCumulativePrecipRecords**: Add `showLastCompleteMonth`
 parameter for use when you would prefer last year's data to that of the month in
 progress. Also, exclude the plotted year (and more recent) from the calculation 
 of records. A correction was also made to the documentation example.

@@ -70,19 +70,24 @@ The function:
       \item Selects only the columns \code{Month}, \code{DayOfMonth},
         \code{MTD}, and \code{YTD},
       \item Joins \code{recordsFrame} and \code{currentYearsFrame} by
-        \code{Month} and \code{DayOfMonth}, amd
+        \code{Month} and \code{DayOfMonth}, and
       \item Reorders the variables in a more human-friendly arrangement,
     }
   \item If \code{includeNormals} is \code{TRUE}:
     \enumerate{
       \item Joins \code{recordsFrame} with the columns of 
         \code{airportNormals} that don't relate to temperature, by
-        \code{Month} and \code{DayOfMonth},
+        \code{Month} and \code{DayOfMonth}, and
       \item Renames the appropriate variables to \code{MTDNormal} and
         \code{YTDNormal},
     }
-  \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
-    \code{showLeapDay} is \code{FALSE}), and
+  \item If \code{showLeapDay} is \code{FALSE}:
+    \enumerate{
+      \item Ensures that year labels are visible in \code{recordsFrame} for
+        Feb 28th (copying them from Feb 29th, if the 28th is blank), and
+      \item Filters out \code{recordsFrame} to exclude Feb 29th data (if
+        \code{showLeapDay} is \code{FALSE}), and
+    }
   \item Returns \code{recordsFrame}.
 }
 }
