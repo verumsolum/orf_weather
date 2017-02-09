@@ -12,7 +12,7 @@
 #' removePlotFiles()
 #' }
 #' @export
-removePlotFiles <- function(rpfDir = getwd()) {
+removePlotFiles <- function(rpfDir = paste0(getwd(), "/")) {
 
   # # Important model lines from getUpdatedCsv
   # fLocation <- "~/.orfwx/updates.csv"

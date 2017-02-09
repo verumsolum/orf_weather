@@ -4,7 +4,7 @@
 \alias{removePlotFiles}
 \title{Deletes plot files from working directory}
 \usage{
-removePlotFiles(rpfDir = getwd())
+removePlotFiles(rpfDir = paste0(getwd(), "/"))
 }
 \arguments{
 \item{rpfDir}{(optional) The directory to remove files from (defaults to the
