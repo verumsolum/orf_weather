@@ -7,9 +7,9 @@
 #' [earlyDowntownData()]).  This function is used to retrieve data
 #' newer than that included within the package.
 #' 
-#' `getUpdatedCsv` uses `httr` to download an
-#' `updates.csv` file. It is stored in the `~/.orfwx` directory,
-#' which this function attempts to create if it is not already present.
+#' `getUpdatedCsv` downloads an `updates.csv` file. It is stored in the 
+#' `~/.orfwx` directory, which this function attempts to create if it is not 
+#' already present.
 #' 
 #' @return Downloads a file to the `~/.orfwx` directory.
 #' @examples

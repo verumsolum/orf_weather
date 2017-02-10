@@ -18,9 +18,9 @@ Most observations are included within the \code{orfwx} package. (See
 \code{\link[=earlyDowntownData]{earlyDowntownData()}}).  This function is used to retrieve data
 newer than that included within the package.
 
-\code{getUpdatedCsv} uses \code{httr} to download an
-\code{updates.csv} file. It is stored in the \code{~/.orfwx} directory,
-which this function attempts to create if it is not already present.
+\code{getUpdatedCsv} downloads an \code{updates.csv} file. It is stored in the
+\code{~/.orfwx} directory, which this function attempts to create if it is not
+already present.
 }
 \examples{
 \dontrun{
