@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9051 (2017-02-10)
+* **getUpdatedCsv**: Updated documentation to remove outdated reference to use
+of `httr` package.
+
 ### Changes in version 0.0.0.9050 (2017-02-09)
 * Documentation updated to Markdown format using roxygen2 version 6.0.1 
 (Initial conversion using roxygen2md version 0.0-2)
