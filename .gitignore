@@ -44,3 +44,6 @@ vignettes/*.pdf
 
 # Preview version of NEWS.md created by RStudio
 NEWS.html
+
+# HTML versions of R Notebooks
+*.nb.html
