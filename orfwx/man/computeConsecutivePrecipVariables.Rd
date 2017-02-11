@@ -35,6 +35,10 @@ variables (which are usually created by
 \code{originalFrame} is sorted from earliest to most recent. If either of
 these is not the case, this function will fail or return data which are
 incorrect.
+
+This function has been extended to also create
+\code{consecutiveMeasurablePrecipitation} (counting days with precipitation ≥
+0.01").
 }
 \examples{
 computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(

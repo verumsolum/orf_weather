@@ -20,6 +20,10 @@
 #' these is not the case, this function will fail or return data which are
 #' incorrect.
 #' 
+#' This function has been extended to also create 
+#' `consecutiveMeasurablePrecipitation` (counting days with precipitation ≥ 
+#' 0.01").
+#' 
 #' @param originalFrame The data frame to which the 
 #'   `consecutivePrecipitation` and `consecutiveSnowfall` variables 
 #'   will be appended.
@@ -35,6 +39,7 @@ computeConsecutivePrecipVariables <- function(originalFrame) {
   # Set up variables for consecutive days...
   originalFrame[["consecutivePrecipitation"]] <- 0
   originalFrame[["consecutiveSnowfall"]] <- 0
+  originalFrame[["consecutiveMeasurablePrecipitation"]] <- 0
 
   for(i in 1:nrow(originalFrame)) {
     # For each row, first calculate for precipitation.
@@ -58,6 +63,18 @@ computeConsecutivePrecipVariables <- function(originalFrame) {
           originalFrame[["consecutiveSnowfall"]][i - 1] + 1
       } else {
         originalFrame[["consecutiveSnowfall"]][i] = 1
+      }
+    }
+    
+    # Next let's work with measurable precip.
+    if(!is.na(originalFrame[["PrecipitationInches"]][i]) & 
+       originalFrame[["PrecipitationInches"]][i] > 0) {
+      # If PrecipitationInches > 0, then in most cases...
+      if(i != 1) {
+        originalFrame[["consecutiveMeasurablePrecipitation"]][i] = 
+          originalFrame[["consecutiveMeasurablePrecipitation"]][i - 1] + 1
+      } else {
+        originalFrame[["consecutiveMeasurablePrecipitation"]][i] = 1
       }
     }
   }
