@@ -11,6 +11,11 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9052 (2017-02-11)
+* **computeConsecutivePrecipVariables**: Compute additional variables:
+`consecutiveMeasurablePrecipitation`, `consecutiveNoMeasurablePrecipitation,
+and `consecutiveNoPrecipitation`
+
 ### Changes in version 0.0.0.9051 (2017-02-10)
 * **getUpdatedCsv**: Updated documentation to remove outdated reference to use
 of `httr` package.
