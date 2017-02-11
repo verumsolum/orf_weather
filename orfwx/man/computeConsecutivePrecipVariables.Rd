@@ -38,8 +38,9 @@ incorrect.
 
 This function has been extended to also create
 \code{consecutiveMeasurablePrecipitation} (counting days with precipitation ≥
-0.01") and \code{consecutiveNoPrecipitation} (counting days with no
-precipitation).
+0.01"), \code{consecutiveNoPrecipitation} (counting days with no precipitation),
+and \code{consecutiveNoMeasurablePrecipitation} (counting days with precipitation
+either 0.00" or trace, i.e. not ≥ 0.01").
 }
 \examples{
 computeConsecutivePrecipVariables(convertCsvToNumericAndLogical(
