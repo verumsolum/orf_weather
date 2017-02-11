@@ -22,7 +22,8 @@
 #' 
 #' This function has been extended to also create 
 #' `consecutiveMeasurablePrecipitation` (counting days with precipitation ≥ 
-#' 0.01").
+#' 0.01") and `consecutiveNoPrecipitation` (counting days with no 
+#' precipitation).
 #' 
 #' @param originalFrame The data frame to which the 
 #'   `consecutivePrecipitation` and `consecutiveSnowfall` variables 
@@ -40,6 +41,7 @@ computeConsecutivePrecipVariables <- function(originalFrame) {
   originalFrame[["consecutivePrecipitation"]] <- 0
   originalFrame[["consecutiveSnowfall"]] <- 0
   originalFrame[["consecutiveMeasurablePrecipitation"]] <- 0
+  originalFrame[["consecutiveNoPrecipitation"]] <- 0
 
   for(i in 1:nrow(originalFrame)) {
     # For each row, first calculate for precipitation.
@@ -75,6 +77,18 @@ computeConsecutivePrecipVariables <- function(originalFrame) {
           originalFrame[["consecutiveMeasurablePrecipitation"]][i - 1] + 1
       } else {
         originalFrame[["consecutiveMeasurablePrecipitation"]][i] = 1
+      }
+    }
+    
+    # Next let's work with consecutive days with no precipitation.
+    if(!is.na(originalFrame[["WithPrecipitation"]][i]) & 
+       originalFrame[["WithPrecipitation"]][i] == FALSE) {
+      # If WithPrecipitation == TRUE, then in most cases...
+      if(i != 1) {
+        originalFrame[["consecutiveNoPrecipitation"]][i] = 
+          originalFrame[["consecutiveNoPrecipitation"]][i - 1] + 1
+      } else {
+        originalFrame[["consecutiveNoPrecipitation"]][i] = 1
       }
     }
   }
