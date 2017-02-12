@@ -47,7 +47,7 @@ orfwx::plotWarmestMaxTempOverHistory()
 
 ## Low temperature
 
-Yesterday had a high temperature of **`r yesterWx[["MinTemperature"]]`**°F
+Yesterday had a low temperature of **`r yesterWx[["MinTemperature"]]`**°F
 
 ```{r}
 orfwx::plotMinTempOverHistory()
