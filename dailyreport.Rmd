@@ -20,7 +20,11 @@ airport
 
 High: `r yesterWx[["MaxTemperature"]]`°    
 Low: `r yesterWx[["MinTemperature"]]`°    
-Precipitation: _Not yet implemented_
+Precipitation: `r if(yesterWx[["CsvPrecipitation"]] != "T") {
+paste0(yesterWx[["CsvPrecipitation"]], '"')
+} else {
+"Trace"
+}`
 
 ## High temperature
 
