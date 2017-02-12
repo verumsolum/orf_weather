@@ -39,3 +39,19 @@ orfwx::plotCoolestMaxTempOverHistory()
 orfwx::plotWarmestMaxTempOverHistory()
 ```
 
+## Low temperature
+
+Yesterday had a high temperature of **`r yesterWx[["MinTemperature"]]`**°F
+
+```{r}
+orfwx::plotMinTempOverHistory()
+```
+
+### Extremes
+
+We have two plots with the extremes recorded on that date.
+
+```{r}
+orfwx::plotCoolestMinTempOverHistory()
+orfwx::plotWarmestMinTempOverHistory()
+```
