@@ -61,3 +61,24 @@ We have two plots with the extremes recorded on that date.
 orfwx::plotCoolestMinTempOverHistory()
 orfwx::plotWarmestMinTempOverHistory()
 ```
+
+## Precipitation
+
+Yesterday had `r if(yesterWx[["CsvPrecipitation"]] == "T") {
+"trace"
+} else if(yesterWx[["CsvPrecipitation"]] == "0.00") {
+"no"
+} else {
+paste0("Precipitation: ", yesterWx[["CsvPrecipitation"]], '" of')
+}` precipitation recorded.
+
+```{r}
+orfwx::plotPrecipitationOverHistory()
+```
+
+### Month and year in progress
+
+```{r}
+suppressWarnings(orfwx::plotMTDPrecipitation())
+suppressWarnings(orfwx::plotYTDPrecipitation())
+```
