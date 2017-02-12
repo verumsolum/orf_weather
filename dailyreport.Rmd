@@ -20,3 +20,13 @@ Yesterday had a high temperature of **`r yesterWx[["MaxTemperature"]]`**°F
 ```{r}
 orfwx::plotMaxTempOverHistory()
 ```
+
+### Extremes
+
+We have two plots with the extremes recorded on that date.
+
+```{r}
+orfwx::plotCoolestMaxTempOverHistory()
+orfwx::plotWarmestMaxTempOverHistory()
+```
+
