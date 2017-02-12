@@ -13,6 +13,15 @@ yesterWx <- orfwx::allData() %>%
 This report is updated as of the end of 
 **`r format(orfwx::yesterdate(), "%A, %b %e, %Y")`**
 
+## Tweet-sized summary
+
+Weather summary for `r format(orfwx::yesterdate(), "%A, %B %e")` at Norfolk, VA
+airport
+
+High: `r yesterWx[["MaxTemperature"]]`°    
+Low: `r yesterWx[["MinTemperature"]]`°    
+Precipitation: _Not yet implemented_
+
 ## High temperature
 
 Yesterday had a high temperature of **`r yesterWx[["MaxTemperature"]]`**°F
