@@ -1,0 +1,22 @@
+---
+title: "@ORF_Weather Daily Report"
+output: html_notebook
+---
+
+```{r}
+library(orfwx)
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+yesterWx <- orfwx::allData() %>%
+  dplyr::filter(Date == orfwx::yesterdate())
+```
+
+This report is updated as of the end of 
+**`r format(orfwx::yesterdate(), "%A, %b %e, %Y")`**
+
+## High temperature
+
+Yesterday had a high temperature of **`r yesterWx[["MaxTemperature"]]`**°F
+
+```{r}
+orfwx::plotMaxTempOverHistory()
+```
