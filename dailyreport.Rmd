@@ -73,7 +73,7 @@ paste0("Precipitation: ", yesterWx[["CsvPrecipitation"]], '" of')
 }` precipitation recorded.
 
 ```{r}
-orfwx::plotPrecipitationOverHistory()
+suppressWarnings(orfwx::plotPrecipitationOverHistory())
 ```
 
 ### Month and year in progress
