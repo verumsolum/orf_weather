@@ -26,6 +26,13 @@ Low: `r yesterWx[["MinTemperature"]]`°
 ""
 } else {
 paste0("Precipitation: ", yesterWx[["CsvPrecipitation"]], '"')
+}`    
+`r if(yesterWx[["CsvSnowfall"]] == "T") {
+"Snowfall: Trace"
+} else if(yesterWx[["CsvSnowfall"]] == "0.0") {
+""
+} else {
+paste0("Snowfall: ", yesterWx[["CsvSnowfall"]], '"')
 }`
 
 ## High temperature
