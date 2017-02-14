@@ -82,3 +82,13 @@ suppressWarnings(orfwx::plotPrecipitationOverHistory())
 suppressWarnings(orfwx::plotMTDPrecipitation())
 suppressWarnings(orfwx::plotYTDPrecipitation())
 ```
+
+## Snowfall
+
+Yesterday had `r if(yesterWx[["CsvSnowfall"]] == "T") {
+"trace"
+} else if(yesterWx[["CsvSnowfall"]] == "0.0") {
+"no"
+} else {
+paste0("Precipitation: ", yesterWx[["CsvSnowfall"]], '" of')
+}` snowfall recorded.
