@@ -20,17 +20,18 @@ airport
 
 High: `r yesterWx[["MaxTemperature"]]`°    
 Low: `r yesterWx[["MinTemperature"]]`°    
-`r if(yesterWx[["CsvPrecipitation"]] == "T") {
-"Precipitation: Trace"
-} else if(yesterWx[["CsvPrecipitation"]] == "0.00") {
+`r if(is.na(yesterWx[["CsvPrecipitation"]]) | 
+        yesterWx[["CsvPrecipitation"]] == "0.00") {
 ""
+} else if(yesterWx[["CsvPrecipitation"]] == "T") {
+"Precipitation: Trace"
 } else {
 paste0("Precipitation: ", yesterWx[["CsvPrecipitation"]], '"')
 }`    
-`r if(yesterWx[["CsvSnowfall"]] == "T") {
-"Snowfall: Trace"
-} else if(yesterWx[["CsvSnowfall"]] == "0.0") {
+`r if(is.na(yesterWx[["CsvSnowfall"]]) | yesterWx[["CsvSnowfall"]] == "0.0") {
 ""
+} else if(yesterWx[["CsvSnowfall"]] == "T") {
+"Snowfall: Trace"
 } else {
 paste0("Snowfall: ", yesterWx[["CsvSnowfall"]], '"')
 }`
@@ -71,13 +72,17 @@ orfwx::plotWarmestMinTempOverHistory()
 
 ## Precipitation
 
-Yesterday had `r if(yesterWx[["CsvPrecipitation"]] == "T") {
-"trace"
+`r if(is.na(yesterWx[["CsvPrecipitation"]])) {
+"Yesterday's precipitation observation is missing."
+} else if(yesterWx[["CsvPrecipitation"]] == "T") {
+"Yesterday had trace precipitation recorded."
 } else if(yesterWx[["CsvPrecipitation"]] == "0.00") {
-"no"
+"Yesterday had no precipitation recorded."
 } else {
-paste0("Precipitation: ", yesterWx[["CsvPrecipitation"]], '" of')
-}` precipitation recorded.
+paste0("Yesterday had ", 
+       yesterWx[["CsvPrecipitation"]], 
+       '" of precipitation recorded.')
+}`
 
 ```{r}
 suppressWarnings(orfwx::plotPrecipitationOverHistory())
@@ -92,10 +97,12 @@ suppressWarnings(orfwx::plotYTDPrecipitation())
 
 ## Snowfall
 
-Yesterday had `r if(yesterWx[["CsvSnowfall"]] == "T") {
-"trace"
+`r if(is.na(yesterWx[["CsvSnowfall"]])) {
+"Yesterday's snowfall observation is missing."
+} else if(yesterWx[["CsvSnowfall"]] == "T") {
+"Yesterday had trace snowfall recorded."
 } else if(yesterWx[["CsvSnowfall"]] == "0.0") {
-"no"
+"Yesterday had no snowfall recorded."
 } else {
-paste0("Precipitation: ", yesterWx[["CsvSnowfall"]], '" of')
-}` snowfall recorded.
+paste0("Yesterday had ", yesterWx[["CsvSnowfall"]], '" of snowfall recorded.')
+}`
