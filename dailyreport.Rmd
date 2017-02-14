@@ -1,0 +1,108 @@
+---
+title: "@ORF_Weather Daily Report"
+output: html_notebook
+---
+
+```{r}
+library(orfwx)
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+yesterWx <- orfwx::allData() %>%
+  dplyr::filter(Date == orfwx::yesterdate())
+```
+
+This report is updated as of the end of 
+**`r format(orfwx::yesterdate(), "%A, %b %e, %Y")`**
+
+## Tweet-sized summary
+
+Weather summary for `r format(orfwx::yesterdate(), "%A, %B %e")` at Norfolk, VA
+airport
+
+High: `r yesterWx[["MaxTemperature"]]`°    
+Low: `r yesterWx[["MinTemperature"]]`°    
+`r if(is.na(yesterWx[["CsvPrecipitation"]]) | 
+        yesterWx[["CsvPrecipitation"]] == "0.00") {
+""
+} else if(yesterWx[["CsvPrecipitation"]] == "T") {
+"Precipitation: Trace"
+} else {
+paste0("Precipitation: ", yesterWx[["CsvPrecipitation"]], '"')
+}`    
+`r if(is.na(yesterWx[["CsvSnowfall"]]) | yesterWx[["CsvSnowfall"]] == "0.0") {
+""
+} else if(yesterWx[["CsvSnowfall"]] == "T") {
+"Snowfall: Trace"
+} else {
+paste0("Snowfall: ", yesterWx[["CsvSnowfall"]], '"')
+}`
+
+## High temperature
+
+Yesterday had a high temperature of **`r yesterWx[["MaxTemperature"]]`**°F
+
+```{r}
+orfwx::plotMaxTempOverHistory()
+```
+
+### Extremes
+
+We have two plots with the extremes recorded on that date.
+
+```{r}
+orfwx::plotCoolestMaxTempOverHistory()
+orfwx::plotWarmestMaxTempOverHistory()
+```
+
+## Low temperature
+
+Yesterday had a low temperature of **`r yesterWx[["MinTemperature"]]`**°F
+
+```{r}
+orfwx::plotMinTempOverHistory()
+```
+
+### Extremes
+
+We have two plots with the extremes recorded on that date.
+
+```{r}
+orfwx::plotCoolestMinTempOverHistory()
+orfwx::plotWarmestMinTempOverHistory()
+```
+
+## Precipitation
+
+`r if(is.na(yesterWx[["CsvPrecipitation"]])) {
+"Yesterday's precipitation observation is missing."
+} else if(yesterWx[["CsvPrecipitation"]] == "T") {
+"Yesterday had trace precipitation recorded."
+} else if(yesterWx[["CsvPrecipitation"]] == "0.00") {
+"Yesterday had no precipitation recorded."
+} else {
+paste0("Yesterday had ", 
+       yesterWx[["CsvPrecipitation"]], 
+       '" of precipitation recorded.')
+}`
+
+```{r}
+suppressWarnings(orfwx::plotPrecipitationOverHistory())
+```
+
+### Month and year in progress
+
+```{r}
+suppressWarnings(orfwx::plotMTDPrecipitation())
+suppressWarnings(orfwx::plotYTDPrecipitation())
+```
+
+## Snowfall
+
+`r if(is.na(yesterWx[["CsvSnowfall"]])) {
+"Yesterday's snowfall observation is missing."
+} else if(yesterWx[["CsvSnowfall"]] == "T") {
+"Yesterday had trace snowfall recorded."
+} else if(yesterWx[["CsvSnowfall"]] == "0.0") {
+"Yesterday had no snowfall recorded."
+} else {
+paste0("Yesterday had ", yesterWx[["CsvSnowfall"]], '" of snowfall recorded.')
+}`

@@ -11,6 +11,10 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9053 (2017-02-14)
+* **dailyreport.Rmd**: Daily report for showing previous day's information at a
+glance.
+
 ### Changes in version 0.0.0.9052 (2017-02-11)
 * **computeConsecutivePrecipVariables**: Compute additional variables:
 `consecutiveMeasurablePrecipitation`, `consecutiveNoMeasurablePrecipitation,
