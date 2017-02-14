@@ -77,8 +77,6 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                   y = "Precipitation (in inches)") + 
     ggplot2::geom_point(ggplot2::aes(y = MTDNormal, color = "Normal")) + 
     ggplot2::geom_line(ggplot2::aes(y = MTDNormal, color = "Normal")) + 
-    ggplot2::geom_point(ggplot2::aes(y = MTD, color = "Current")) + 
-    ggplot2::geom_line(ggplot2::aes(y = MTD, color = "Current")) + 
     ggplot2::geom_point(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
     ggplot2::geom_line(ggplot2::aes(y = minMTDPrecip, color = "Minimum")) + 
     ggplot2::geom_text(ggplot2::aes(y = minMTDPrecip, 
@@ -88,6 +86,8 @@ plotMTDPrecipitation <- function(plotMonth = format(orfwx::yesterdate(),
                        angle = 90, 
                        size = 3,
                        color = "black") +
+    ggplot2::geom_point(ggplot2::aes(y = MTD, color = "Current")) + 
+    ggplot2::geom_line(ggplot2::aes(y = MTD, color = "Current")) + 
     ggplot2::scale_color_manual(name = "Legend", 
                                 values = col2legend, 
                                 breaks = c("Maximum", 
