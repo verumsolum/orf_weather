@@ -86,6 +86,18 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                             hjust = 1, 
                             vjust = 0,
                             color = "cornflowerblue",
+                            family = "Optima") +
+          ggplot2::geom_hline(yintercept = plotContext[["Warmest"]],
+                              color = "firebrick1") +
+          ggplot2::annotate("text", 
+                            x = 1, 
+                            y = plotContext[["Warmest"]] - 1, 
+                            label = paste("Record hottest:",
+                                          paste0(plotContext[["Warmest"]],
+                                                 "°")), 
+                            hjust = 0, 
+                            vjust = 1,
+                            color = "firebrick1",
                             family = "Optima")
       }
     } else {
