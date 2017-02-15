@@ -18,4 +18,12 @@
 dayEachYear <- function(wxUniverse = orfwx::allData(), 
                         deyMonth, 
                         deyDayOfMonth) {
+  # Ensure sane values for deyMonth and deyDayOfMonth
+  deyMonth <- as.integer(deyMonth)
+  deyDayOfMonth <- as.integer(deyDayOfMonth)
+  
+  deyDf <- wxUniverse %>%
+    orfwx::computeExtraDateVariables() %>%
+    dplyr::filter(Month = deyMonth, DayOfMonth = deyDayOfMonth)
+  deyDf
 }
