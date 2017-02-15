@@ -24,6 +24,6 @@ dayEachYear <- function(wxUniverse = orfwx::allData(),
   
   deyDf <- wxUniverse %>%
     orfwx::computeExtraDateVariables() %>%
-    dplyr::filter(Month = deyMonth, DayOfMonth = deyDayOfMonth)
+    dplyr::filter(Month == deyMonth, DayOfMonth == deyDayOfMonth)
   deyDf
 }
