@@ -13,7 +13,7 @@
 #'   the date we are interested in.
 #' @return A data frame is returned.
 #' @examples
-#' dayEachYear(2, 15)  # Weather for February 15th
+#' dayEachYear(deyMonth = 2, deyDayOfMonth = 15)  # Weather for February 15th
 #' @export
 dayEachYear <- function(wxUniverse = orfwx::allData(), 
                         deyMonth, 

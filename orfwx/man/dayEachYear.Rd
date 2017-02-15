@@ -27,5 +27,5 @@ the weather for one particular day of each year.
 Details section to be written.
 }
 \examples{
-dayEachYear(2, 15)  # Weather for February 15th
+dayEachYear(deyMonth = 2, deyDayOfMonth = 15)  # Weather for February 15th
 }
