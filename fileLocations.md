@@ -12,7 +12,7 @@ There are two main directories that `orfwx` uses:
 
 ## Contents of ~/.orfwx/
 
-# Updated data
+### Updated data
 
 The data distributed through the package is updated somewhat regularly, but not
 often enough for those who may require very recent data.
