@@ -69,7 +69,13 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
   if(requireNamespace("ggrepel", quietly = TRUE)) {
     if (ranked) {
       if(!hideContext)  {
-        # TODO: Label min, max, &c.
+        plotContext <- dplyr::summarise(dayInHistory, 
+                                        Coolest = min(MaxTemperature),
+                                        Warmest = max(MaxTemperature),
+                                        Mean = mean(MaxTemperature),
+                                        Median = median(MaxTemperature))
+        maxTempPlot <- maxTempPlot +
+          ggplot2::geom_hline(yintercept = plotContext[["Coolest"]])
       }
     } else {
       maxTempPlot <- maxTempPlot + 
