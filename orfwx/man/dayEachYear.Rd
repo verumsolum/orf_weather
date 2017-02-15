@@ -4,17 +4,21 @@
 \alias{dayEachYear}
 \title{Find the weather for a give day each year.}
 \usage{
-dayEachYear(wxUniverse = orfwx::allData(), deyMonth, deyDayOfMonth)
+dayEachYear(wxUniverse = orfwx::allData(),
+  deyMonth = format(orfwx::yesterdate(), "\%m"),
+  deyDayOfMonth = format(orfwx::yesterdate(), "\%d"))
 }
 \arguments{
-\item{wxUniverse}{The data frame with the weather information we will be
-taking the data from.}
+\item{wxUniverse}{(optional)The data frame with the weather information we
+will be taking the data from (defaults to \code{allData}).}
 
-\item{deyMonth}{An integer representing the month of the year (1=January,
-12=December) for which the date we are interested in.}
+\item{deyMonth}{(optional) An integer representing the month of the year
+(1=January, 12=December) for which the date we are interested in (defaults
+to yesterday's month).}
 
-\item{deyDayOfMonth}{An integer representing the day of the month (1-31) for
-the date we are interested in.}
+\item{deyDayOfMonth}{(optional) An integer representing the day of the
+month (1-31) for the date we are interested in (defaults to yesterday's
+date).}
 }
 \value{
 A data frame is returned.

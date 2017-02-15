@@ -5,19 +5,21 @@
 #' 
 #' Details section to be written.
 #' 
-#' @param wxUniverse The data frame with the weather information we will be 
-#'   taking the data from.
-#' @param deyMonth An integer representing the month of the year (1=January, 
-#'   12=December) for which the date we are interested in.
-#' @param deyDayOfMonth An integer representing the day of the month (1-31) for
-#'   the date we are interested in.
+#' @param wxUniverse (optional)The data frame with the weather information we 
+#'   will be taking the data from (defaults to `allData`).
+#' @param deyMonth (optional) An integer representing the month of the year 
+#'   (1=January, 12=December) for which the date we are interested in (defaults 
+#'   to yesterday's month).
+#' @param deyDayOfMonth (optional) An integer representing the day of the 
+#'   month (1-31) for the date we are interested in (defaults to yesterday's
+#'   date).
 #' @return A data frame is returned.
 #' @examples
 #' dayEachYear(deyMonth = 2, deyDayOfMonth = 15)  # Weather for February 15th
 #' @export
 dayEachYear <- function(wxUniverse = orfwx::allData(), 
-                        deyMonth, 
-                        deyDayOfMonth) {
+                        deyMonth = format(orfwx::yesterdate(), "%m"), 
+                        deyDayOfMonth = format(orfwx::yesterdate(), "%d")) {
   # Ensure sane values for deyMonth and deyDayOfMonth
   deyMonth <- as.integer(deyMonth)
   deyDayOfMonth <- as.integer(deyDayOfMonth)
