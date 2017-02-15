@@ -6,7 +6,8 @@
 \usage{
 plotMaxTempOverHistory(wxUniverse = orfwx::allData(),
   plotMonth = format(orfwx::yesterdate(), "\%m"),
-  plotDayOfMonth = format(orfwx::yesterdate(), "\%d"), saveToFile = FALSE)
+  plotDayOfMonth = format(orfwx::yesterdate(), "\%d"), ranked = FALSE,
+  saveToFile = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
@@ -17,6 +18,9 @@ to be searched for (defaults to the month of \code{yesterdate}).}
 
 \item{plotDayOfMonth}{(optional) The day of the month (1-31) to be searched
 for (defaults to the day of the month of \code{yesterdate}).}
+
+\item{ranked}{(optional) Weather or not to order the plot by rank (defaults
+to \code{FALSE}).}
 
 \item{saveToFile}{(optional) Writes plot to a PNG file (defaults to
 \code{FALSE}).}

@@ -25,6 +25,8 @@
 #'   to be searched for (defaults to the month of `yesterdate`).
 #' @param plotDayOfMonth (optional) The day of the month (1-31) to be searched 
 #'   for (defaults to the day of the month of `yesterdate`).
+#' @param ranked (optional) Weather or not to order the plot by rank (defaults
+#'   to `FALSE`).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
 #'   `FALSE`).
 #' @return Returns a barplot.
@@ -37,19 +39,37 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                                        "%m"),
                                    plotDayOfMonth = format(orfwx::yesterdate(), 
                                                            "%d"),
+                                   ranked = FALSE,
                                    saveToFile = FALSE) {
   # Create a data frame with the weather for this day in history.
   dayInHistory <- orfwx::dayEachYear(wxUniverse, plotMonth, plotDayOfMonth) %>%
     dplyr::select(Date, Year, MaxTemperature)
+  if(ranked) {
+    dayInHistory <- dayInHistory %>%
+      dplyr::mutate(Rank = rank(MaxTemperature, 
+                                na.last = "keep", 
+                                ties.method = "first")) %>%
+      dplyr::arrange(Rank)
+    maxTempPlot <- ggplot2::ggplot(dayInHistory, 
+                                   ggplot2::aes(Rank, 
+                                                MaxTemperature, 
+                                                label = Year))
+  } else {
+    maxTempPlot <- ggplot2::ggplot(dayInHistory, 
+                                   ggplot2::aes(Year, 
+                                                MaxTemperature, 
+                                                label = Year))
+  }
   
-  maxTempPlot <- ggplot2::ggplot(dayInHistory, 
-                                 ggplot2::aes(Year, 
-                                              MaxTemperature, 
-                                              label = Year)) +
+  maxTempPlot <- maxTempPlot + 
     ggplot2::geom_point()
   if(requireNamespace("ggrepel", quietly = TRUE)) {
-    maxTempPlot <- maxTempPlot + 
-      ggrepel::geom_text_repel(size = 2.75)
+    if (ranked) {
+      # TODO: Label min, max, &c.
+    } else {
+      maxTempPlot <- maxTempPlot + 
+        ggrepel::geom_text_repel(size = 2.75)
+    }
   }
   maxTempPlot
 }
