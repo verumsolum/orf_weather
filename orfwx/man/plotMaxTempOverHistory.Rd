@@ -5,25 +5,18 @@
 \title{Plot historical high tempertures on a single date}
 \usage{
 plotMaxTempOverHistory(wxUniverse = orfwx::allData(),
-  plotDate = yesterdate(), daysWeather = NULL, twoTicks = TRUE,
-  fiveTicks = FALSE, tenTicks = TRUE, saveToFile = FALSE)
+  plotMonth = format(orfwx::yesterdate(), "\%m"),
+  plotDayOfMonth = format(orfwx::yesterdate(), "\%d"), saveToFile = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
 to be searched (defaults to \code{allData}).}
 
-\item{plotDate}{(optional) The date to be searched for, defaulting to
-yesterday's date.}
+\item{plotMonth}{(optional) The month (1=January, 12=December) of the date
+to be searched for (defaults to the month of \code{yesterdate}).}
 
-\item{daysWeather}{(optional) The weather for a date not yet included in
-the \code{wxUniverse} data frame, usually passed by the
-\code{singleDaysWeather} function.}
-
-\item{twoTicks}{(optional) Writes half ticks (defaults to \code{TRUE}).}
-
-\item{fiveTicks}{(optional) Writes fifth ticks (defaults to \code{FALSE}).}
-
-\item{tenTicks}{(optional) Writes tenth ticks (defaults to \code{TRUE}).}
+\item{plotDayOfMonth}{(optional) The day of the month (1-31) to be searched
+for (defaults to the day of the month of \code{yesterdate}).}
 
 \item{saveToFile}{(optional) Writes plot to a PNG file (defaults to
 \code{FALSE}).}
@@ -53,6 +46,6 @@ year as of yesterday) is highlighted with a bar of a different color in the
 barplot.
 }
 \examples{
-plotMaxTempOverHistory(airportData, searchDate(11, 26))  
+plotMaxTempOverHistory(airportData, 11, 26)  
 # Returns plot for November 26th
 }

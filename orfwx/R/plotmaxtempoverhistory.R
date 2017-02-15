@@ -21,87 +21,29 @@
 #' 
 #' @param wxUniverse (optional) The data frame containing the weather history
 #'   to be searched (defaults to `allData`).
-#' @param plotDate (optional) The date to be searched for, defaulting to
-#'   yesterday's date.
-#' @param daysWeather (optional) The weather for a date not yet included in
-#'   the `wxUniverse` data frame, usually passed by the
-#'   `singleDaysWeather` function.
-#' @param twoTicks (optional) Writes half ticks (defaults to `TRUE`).
-#' @param fiveTicks (optional) Writes fifth ticks (defaults to `FALSE`).
-#' @param tenTicks (optional) Writes tenth ticks (defaults to `TRUE`).
+#' @param plotMonth (optional) The month (1=January, 12=December) of the date 
+#'   to be searched for (defaults to the month of `yesterdate`).
+#' @param plotDayOfMonth (optional) The day of the month (1-31) to be searched 
+#'   for (defaults to the day of the month of `yesterdate`).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
 #'   `FALSE`).
 #' @return Returns a barplot.
 #' @examples
-#' plotMaxTempOverHistory(airportData, searchDate(11, 26))  
+#' plotMaxTempOverHistory(airportData, 11, 26)  
 #' # Returns plot for November 26th
 #' @export
 plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
-                                   plotDate = yesterdate(),
-                                   daysWeather = NULL,
-                                   twoTicks = TRUE,
-                                   fiveTicks = FALSE,
-                                   tenTicks = TRUE,
+                                   plotMonth =  format(orfwx::yesterdate(), 
+                                                       "%m"),
+                                   plotDayOfMonth = format(orfwx::yesterdate(), 
+                                                           "%d"),
                                    saveToFile = FALSE) {
-  # Ensure that daysWeather is correct
-  if (!is.null(daysWeather)) {
-    # If daysWeather is set, 
-    # ensure that the date value from daysWeather matches
-    if (format(daysWeather$Date, "%m%d") != format(plotDate, "%m%d")) {
-      # If days don't match…
-      stop("plotDate and daysWeather$Date do not match")
-    } else {
-      # If they match, ensure that plotDate uses the same year as
-      # daysWeather$Date
-      plotDate <- as.Date(daysWeather$Date)
-      daysWeatherYear <- format(daysWeather$Date, "%Y")
-      wxUniverse <- combineDataFrames(wxUniverse, daysWeather)
-    }
-  } else {
-    # If daysWeather is NULL
-    daysWeatherYear <- format(yesterdate(), "%Y")
-  }
-  
-  # Throw away extra information
-  wxUniverse <- dplyr::select(wxUniverse, Date, MaxTemperature)
-  
   # Create a data frame with the weather for this day in history.
-  dayInHistory <- dplyr::filter(wxUniverse, 
-                         format(Date, "%m%d") == format(plotDate, "%m%d"))
+  dayInHistory <- orfwx::dayEachYear(wxUniverse, plotMonth, plotDayOfMonth) %>%
+    dplyr::select(Date, Year, MaxTemperature)
   
-  # Sort orfTMax by highTemperature
-  dayInHistory <- dayInHistory[order(dayInHistory$MaxTemperature), ]
-  
-  # saveToFile is only effective if grDevices is available.
-  if(!requireNamespace("grDevices", quietly = TRUE)) {
-    if(saveToFile) {
-      saveToFile = FALSE
-      warning("FILE NOT SAVED: Saving file requires the 'grDevices' package.")
-    }
-  }
-  
-  if(saveToFile) {
-    grDevices::png(paste0(format(plotDate, "%m%d"), "tmax.png"),
-                   1024, 512, pointsize = 16)
-  }
-  
-  plotWithManyBars(dayInHistory$MaxTemperature,
-                   dayInHistory,
-                   paste("High Temperatures on", 
-                         format(plotDate, "%b %d"), 
-                         "in Norfolk Weather History"),
-                   paste("High Temperature on", 
-                         format(plotDate, "%b %d"), 
-                         "(in \u00b0F)"),
-                   highlightYear = daysWeatherYear
-  )
-  
-  if (twoTicks) tickHalf()
-  if (fiveTicks) tickFifth()
-  if (tenTicks) tickTenth()
-  graphics::mtext('Since 1874')
-  
-  if(saveToFile) {
-    invisible(grDevices::dev.off())
-  }
+  maxTempPlot <- ggplot2::ggplot(dayInHistory, 
+                                 ggplot2::aes(Year, MaxTemperature)) +
+    ggplot2::geom_blank()
+  maxTempPlot
 }
