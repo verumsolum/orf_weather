@@ -5,6 +5,8 @@
 #' 
 #' Details section to be written.
 #' 
+#' @param wxUniverse The data frame with the weather information we will be 
+#'   taking the data from.
 #' @param deyMonth An integer representing the month of the year (1=January, 
 #'   12=December) for which the date we are interested in.
 #' @param deyDayOfMonth An integer representing the day of the month (1-31) for
@@ -13,5 +15,7 @@
 #' @examples
 #' dayEachYear(2, 15)  # Weather for February 15th
 #' @export
-dayEachYear <- function(deyMonth, deyDayOfMonth){
+dayEachYear <- function(wxUniverse = orfwx::allData(), 
+                        deyMonth, 
+                        deyDayOfMonth) {
 }
