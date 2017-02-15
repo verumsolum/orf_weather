@@ -26,7 +26,7 @@
 #' @param plotDayOfMonth (optional) The day of the month (1-31) to be searched 
 #'   for (defaults to the day of the month of `yesterdate`).
 #' @param ranked (optional) Weather or not to order the plot by rank (defaults
-#'   to `FALSE`).
+#'   to `TRUE`).
 #' @param hideContext (optional) Whether or not to hide the lines and labels
 #'   providing context to the raw data (defaults to `FALSE`).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
@@ -41,7 +41,7 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                                        "%m"),
                                    plotDayOfMonth = format(orfwx::yesterdate(), 
                                                            "%d"),
-                                   ranked = FALSE,
+                                   ranked = TRUE,
                                    hideContext = FALSE,
                                    saveToFile = FALSE) {
   # Create a data frame with the weather for this day in history.

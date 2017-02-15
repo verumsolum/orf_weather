@@ -6,7 +6,7 @@
 \usage{
 plotMaxTempOverHistory(wxUniverse = orfwx::allData(),
   plotMonth = format(orfwx::yesterdate(), "\%m"),
-  plotDayOfMonth = format(orfwx::yesterdate(), "\%d"), ranked = FALSE,
+  plotDayOfMonth = format(orfwx::yesterdate(), "\%d"), ranked = TRUE,
   hideContext = FALSE, saveToFile = FALSE)
 }
 \arguments{
@@ -20,7 +20,7 @@ to be searched for (defaults to the month of \code{yesterdate}).}
 for (defaults to the day of the month of \code{yesterdate}).}
 
 \item{ranked}{(optional) Weather or not to order the plot by rank (defaults
-to \code{FALSE}).}
+to \code{TRUE}).}
 
 \item{hideContext}{(optional) Whether or not to hide the lines and labels
 providing context to the raw data (defaults to \code{FALSE}).}
