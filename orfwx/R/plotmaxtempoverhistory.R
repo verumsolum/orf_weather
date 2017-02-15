@@ -98,6 +98,18 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                             hjust = 0, 
                             vjust = 1,
                             color = "firebrick1",
+                            family = "Optima") +
+          ggplot2::geom_hline(yintercept = plotContext[["Median"]],
+                              color = "grey50") +
+          ggplot2::annotate("text", 
+                            x = 1, 
+                            y = plotContext[["Median"]] + 1, 
+                            label = paste("Median:",
+                                          paste0(plotContext[["Median"]],
+                                                 "°")), 
+                            hjust = 0, 
+                            vjust = 0,
+                            color = "grey50",
                             family = "Optima")
       }
     } else {
