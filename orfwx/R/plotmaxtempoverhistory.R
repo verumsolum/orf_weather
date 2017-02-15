@@ -27,6 +27,8 @@
 #'   for (defaults to the day of the month of `yesterdate`).
 #' @param ranked (optional) Weather or not to order the plot by rank (defaults
 #'   to `FALSE`).
+#' @param hideContext (optional) Whether or not to hide the lines and labels
+#'   providing context to the raw data (defaults to `FALSE`).
 #' @param saveToFile (optional) Writes plot to a PNG file (defaults to 
 #'   `FALSE`).
 #' @return Returns a barplot.
@@ -40,6 +42,7 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                    plotDayOfMonth = format(orfwx::yesterdate(), 
                                                            "%d"),
                                    ranked = FALSE,
+                                   hideContext = FALSE,
                                    saveToFile = FALSE) {
   # Create a data frame with the weather for this day in history.
   dayInHistory <- orfwx::dayEachYear(wxUniverse, plotMonth, plotDayOfMonth) %>%
@@ -65,7 +68,9 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
     ggplot2::geom_point()
   if(requireNamespace("ggrepel", quietly = TRUE)) {
     if (ranked) {
-      # TODO: Label min, max, &c.
+      if(!hideContext)  {
+        # TODO: Label min, max, &c.
+      }
     } else {
       maxTempPlot <- maxTempPlot + 
         ggrepel::geom_text_repel(size = 2.75)

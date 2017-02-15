@@ -7,7 +7,7 @@
 plotMaxTempOverHistory(wxUniverse = orfwx::allData(),
   plotMonth = format(orfwx::yesterdate(), "\%m"),
   plotDayOfMonth = format(orfwx::yesterdate(), "\%d"), ranked = FALSE,
-  saveToFile = FALSE)
+  hideContext = FALSE, saveToFile = FALSE)
 }
 \arguments{
 \item{wxUniverse}{(optional) The data frame containing the weather history
@@ -21,6 +21,9 @@ for (defaults to the day of the month of \code{yesterdate}).}
 
 \item{ranked}{(optional) Weather or not to order the plot by rank (defaults
 to \code{FALSE}).}
+
+\item{hideContext}{(optional) Whether or not to hide the lines and labels
+providing context to the raw data (defaults to \code{FALSE}).}
 
 \item{saveToFile}{(optional) Writes plot to a PNG file (defaults to
 \code{FALSE}).}
