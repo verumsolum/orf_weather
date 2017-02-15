@@ -75,7 +75,18 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                         Mean = mean(MaxTemperature),
                                         Median = median(MaxTemperature))
         maxTempPlot <- maxTempPlot +
-          ggplot2::geom_hline(yintercept = plotContext[["Coolest"]])
+          ggplot2::geom_hline(yintercept = plotContext[["Coolest"]], 
+                              color = "cornflowerblue") +
+          ggplot2::annotate("text", 
+                            x = max(dayInHistory[["Rank"]]), 
+                            y = plotContext[["Coolest"]] + 1, 
+                            label = paste("Record coldest:",
+                                          paste0(plotContext[["Coolest"]],
+                                                 "°")), 
+                            hjust = 1, 
+                            vjust = 0,
+                            color = "cornflowerblue",
+                            family = "Optima")
       }
     } else {
       maxTempPlot <- maxTempPlot + 
