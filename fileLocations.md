@@ -23,3 +23,11 @@ often enough for those who may require very recent data.
 There are other files with usernames in the form 
 _updates.**yyyymmddhhmmss**.backup.csv_, where the section in bold is replaced
 by a datetimestamp.
+
+### Internal git repository
+
+In order to update that file, `orfwx` contains functions which require a git
+repository to be checked out.
+
+That repository will be downloaded to `~/.orfwx/wxupdaterepo/`
+
