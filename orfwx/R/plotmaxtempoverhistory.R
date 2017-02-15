@@ -43,7 +43,9 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
     dplyr::select(Date, Year, MaxTemperature)
   
   maxTempPlot <- ggplot2::ggplot(dayInHistory, 
-                                 ggplot2::aes(Year, MaxTemperature, label = Year)) +
+                                 ggplot2::aes(Year, 
+                                              MaxTemperature, 
+                                              label = Year)) +
     ggplot2::geom_point()
   if(requireNamespace("ggrepel", quietly = TRUE)) {
     maxTempPlot <- maxTempPlot + 
