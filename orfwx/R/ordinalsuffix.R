@@ -22,31 +22,24 @@ ordinalSuffix <- function(osInteger) {
   
   # Initialize
   oSuffix <- character()
-  osReason <- character()
   
   if(osInteger < 1) {
     warning(paste("ordinalSuffix requires positive integer. Returning",
                   paste0('"', osInteger, '"'),
                   "unchanged."))
-    osReason <- "Not a positive integer"
   } else {
     osFinalDigit <- osInteger %% 10
     if(((osInteger %/% 10) %% 10) == 1 ) {
       # For numbers 10-19, 110-119, 210-219, etc.
       oSuffix <- "th"
-      osReason <- "Teens"
     } else if(osFinalDigit == 1) {
       oSuffix <- "st"
-      osReason <- "Ones"
     } else if(osFinalDigit == 2) {
       oSuffix <- "nd"
-      osReason <- "Twos"
     } else if(osFinalDigit == 3) {
       oSuffix <- "rd"
-      osReason <- "Threes"
     } else {
       oSuffix <- "th"
-      osReason <- "Default"
     }
   }
   paste0(osInteger, oSuffix)
