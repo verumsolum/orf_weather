@@ -64,19 +64,27 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                                 label = Year))
   }
   
+  if(!hideContext) {
+    plotContext <- dplyr::summarise(dayInHistory, 
+                                    Coolest = min(MaxTemperature),
+                                    Warmest = max(MaxTemperature),
+                                    Mean = mean(MaxTemperature),
+                                    Median = median(MaxTemperature))
+    maxTempPlot <- maxTempPlot +
+      ggplot2::geom_hline(yintercept = plotContext[["Coolest"]], 
+                          color = "cornflowerblue") +
+      ggplot2::geom_hline(yintercept = plotContext[["Warmest"]],
+                          color = "firebrick1") +
+      ggplot2::geom_hline(yintercept = plotContext[["Median"]],
+                          color = "grey50")
+  }
+  
   maxTempPlot <- maxTempPlot + 
     ggplot2::geom_point()
   if(requireNamespace("ggrepel", quietly = TRUE)) {
     if (ranked) {
       if(!hideContext)  {
-        plotContext <- dplyr::summarise(dayInHistory, 
-                                        Coolest = min(MaxTemperature),
-                                        Warmest = max(MaxTemperature),
-                                        Mean = mean(MaxTemperature),
-                                        Median = median(MaxTemperature))
         maxTempPlot <- maxTempPlot +
-          ggplot2::geom_hline(yintercept = plotContext[["Coolest"]], 
-                              color = "cornflowerblue") +
           ggplot2::annotate("text", 
                             x = max(dayInHistory[["Rank"]]), 
                             y = plotContext[["Coolest"]] + 1, 
@@ -87,8 +95,6 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                             vjust = 0,
                             color = "cornflowerblue",
                             family = "Optima") +
-          ggplot2::geom_hline(yintercept = plotContext[["Warmest"]],
-                              color = "firebrick1") +
           ggplot2::annotate("text", 
                             x = 1, 
                             y = plotContext[["Warmest"]] - 1, 
@@ -99,8 +105,6 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                             vjust = 1,
                             color = "firebrick1",
                             family = "Optima") +
-          ggplot2::geom_hline(yintercept = plotContext[["Median"]],
-                              color = "grey50") +
           ggplot2::annotate("text", 
                             x = 1, 
                             y = plotContext[["Median"]] + 1, 
