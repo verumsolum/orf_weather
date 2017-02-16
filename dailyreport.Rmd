@@ -15,7 +15,8 @@ This report is updated as of the end of
 
 ## Tweet-sized summary
 
-Weather summary for `r format(orfwx::yesterdate(), "%A, %B %e")` at Norfolk, VA
+Weather summary for `r format(orfwx::yesterdate(), "%A, %B")` 
+`r orfwx:::ordinalSuffix(format(orfwx::yesterdate(), "%e"))` at Norfolk, VA
 airport
 
 High: `r yesterWx[["MaxTemperature"]]`°    
