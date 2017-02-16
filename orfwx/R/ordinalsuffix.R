@@ -20,11 +20,11 @@
 #' @param osInteger The number to convert.
 #' @return Returns a string.
 #' @examples
-#' ordinalSuffix(1)  # Returns "1st"
-#' ordinalSuffix(2)  # Returns "2nd"
-#' ordinalSuffix(3)  # Returns "3rd"
-#' ordinalSuffix(4)  # Returns "4th"
-#' ordinalSuffix(11)  # Returns "11th"
+#' orfwx:::ordinalSuffix(1)  # Returns "1st"
+#' orfwx:::ordinalSuffix(2)  # Returns "2nd"
+#' orfwx:::ordinalSuffix(3)  # Returns "3rd"
+#' orfwx:::ordinalSuffix(4)  # Returns "4th"
+#' orfwx:::ordinalSuffix(11)  # Returns "11th"
 ordinalSuffix <- function(osInteger) {
   # Sanity check
   osInteger <- as.integer(osInteger)
