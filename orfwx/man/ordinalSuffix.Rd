@@ -17,11 +17,23 @@ Returns a string.
 ordinal suffix (\emph{st}, \emph{nd}, \emph{rd}, or \emph{th}) appended.
 }
 \details{
-This function determines that the year in question is:
+This function's workflow:
+\enumerate{
+\item Is \code{osInteger} a positive integer? If not, a warning is issued and this
+function returns \code{osInteger} unchanged.
+\item Determine what the proper suffix should be:
+\enumerate{
+\item If the \emph{tens} digit is a 1 (e.g., 10 through 19, 110 through 19, etc.),
+the suffix is \code{th}.
+\item In all other cases, look to the result of \code{osInteger} mod 10:
 \itemize{
-\item not NULL
-\item not earlier than 1724 (the year the Fahrenheit scale was developed)
-\item not later than the current year
+\item If 1, suffix is \code{st},
+\item If 2, suffix is `nd``,
+\item If 3, suffix is `rd``, and
+\item In all other cases, suffix is \code{th}.
+}
+}
+\item Paste together \code{osInteger} with the suffix and return this as a string.
 }
 }
 \examples{

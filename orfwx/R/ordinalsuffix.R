@@ -3,10 +3,19 @@
 #' `ordinalSuffix` returns the integer provided to it as a string, with the
 #' ordinal suffix (_st_, _nd_, _rd_, or _th_) appended.
 #' 
-#' This function determines that the year in question is:
-#' * not NULL
-#' * not earlier than 1724 (the year the Fahrenheit scale was developed)
-#' * not later than the current year
+#' This function's workflow:
+#' 
+#' 1. Is `osInteger` a positive integer? If not, a warning is issued and this
+#'    function returns `osInteger` unchanged.
+#' 2. Determine what the proper suffix should be:
+#'    1. If the _tens_ digit is a 1 (e.g., 10 through 19, 110 through 19, etc.),
+#'       the suffix is `th`.
+#'    2. In all other cases, look to the result of `osInteger` mod 10:
+#'       * If 1, suffix is `st`,
+#'       * If 2, suffix is `nd``,
+#'       * If 3, suffix is `rd``, and
+#'       * In all other cases, suffix is `th`.
+#' 3. Paste together `osInteger` with the suffix and return this as a string.
 #' 
 #' @param osInteger The number to convert.
 #' @return Returns a string.
