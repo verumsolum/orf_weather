@@ -11,6 +11,11 @@ I am successful in that undertaking.
 Consult [the Github repository](github.com/verumsolum/orf_weather) if you
 require details about earlier changes.
 
+### Changes in version 0.0.0.9055 (2017-02-16)
+* **ordinalSuffix**: Internal function to add the ordinal suffix to an integer.
+* **dailyreport.Rmd**: Use `ordinalSuffix` for the day of the month in the
+tweet-sized summary.
+
 ### Changes in version 0.0.0.9054 (2017-02-14)
 * **plotMTDPrecipitation**, **plotYTDPrecipitation**: Change layer order so that
 current year appears over top of minimum.
