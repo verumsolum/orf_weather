@@ -44,19 +44,20 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                    ranked = TRUE,
                                    hideContext = FALSE,
                                    saveToFile = FALSE) {
+  # Pre-compute variable for use in titles and labels
+  plotPrintDate <- paste(months(orfwx::searchDate(plotMonth, plotDayOfMonth),
+                                TRUE),
+                         plotDayOfMonth)
+  
   # Pre-compute titles and labels for later legibility:
   plotTitle <- paste("High temperatures on",
-                     months(orfwx::searchDate(plotMonth, plotDayOfMonth), 
-                            TRUE),
-                     plotDayOfMonth,
+                     plotPrintDate,
                      "in Norfolk, VA weather history")
   plotSubtitle <- ifelse(ranked,
                          "In temperature rank order",
                          "In chronological order")
   plotYAxisLabel <- paste("High temperatures on",
-                          months(orfwx::searchDate(plotMonth, plotDayOfMonth),
-                                 TRUE),
-                          plotDayOfMonth,
+                          plotPrintDate,
                           "(°F)")
   
   # Create a data frame with the weather for this day in history.
