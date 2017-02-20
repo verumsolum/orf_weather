@@ -143,5 +143,9 @@ plotMaxTempOverHistory <- function(wxUniverse = orfwx::allData(),
                                                       face = "bold"),
                    plot.subtitle = ggplot2::element_text(family = "Optima")) +
     ggplot2::ylab(plotYAxisLabel)
+  if(ranked) {
+    maxTempPlot <- maxTempPlot +
+      ggplot2::xlab("")
+  }
   maxTempPlot
 }
