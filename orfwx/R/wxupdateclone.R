@@ -12,7 +12,7 @@
 #' }
 #' @export
 wxUpdateClone <- function(){
-  wxucLocalDir <- "~/.orfwx/wxupdaterepo/"
+  wxucLocalDir <- path.expand("~/.orfwx/wxupdaterepo/")
   wxucGitRemote <- "https://github.com/verumsolum/orf_weather.git"
 
   # I have been having difficulty with cloning through git2r.
