@@ -93,3 +93,4 @@ Date, MaxTemperature, MinTemperature, AvgTemperature, Precipitation, Snowfall
 2017-03-16, 46, 30, 38.0, 0.00, 0.0
 2017-03-17, 56, 27, 41.5, T, M
 2017-03-18, 55, 44, 49.5, 0.09, M
+2017-03-19, 48, 36, 42.0, 0.42, 0.1
